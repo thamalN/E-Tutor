@@ -1,3 +1,116 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
+
+* {
+  font-family: 'Yomogi', cursive;
+  box-sizing: border-box;
+}
+
+.navbar {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  border-bottom: 3px solid #f2f2f2;
+}
+.navbar h1 {
+  color: #b9cced;
+  margin: 0px;
+}
+.navbar .links {
+  margin-left: auto;
+}
+.navbar a {
+  margin-left: 16px;
+  text-decoration: none;
+  padding: 6px;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.navbar a:visited {
+  color: black;
+}
+
+.navbar a:hover {
+  color: #b9cced;
+  font-weight: bold;
+}
+
+
+
+.authForm {
+  padding: 10px;
+  margin: 5% auto;
+  background-color: #b9cced;
+  width: 50%;
   text-align: center;
+  font-size: 1.2rem;
+  border-radius: 20px;
+}
+.authForm .nameRow div {
+  display: inline-block;
+  margin: 10px;
+}
+
+.authForm .addressRow div {
+  display: inline-block;
+  margin: 10px;
+}
+
+.authForm .selectors div {
+  display: inline-block;
+  margin: 25px;
+}
+
+.authForm label{
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.authForm input[type=submit]{
+  display: block;
+  margin: 10px auto;
+  background-color: white;
+  border: 2px solid #b9cced;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.authForm input[type=submit]:hover{
+  border: 2px solid;
+  font-weight: bold;
+}
+
+.authForm input[type=text],input[type=password]{
+  padding: 10px;
+  border: none;
+  border-bottom: 3px solid;
+  box-sizing: border-box;
+  background-color: inherit;
+  margin-bottom: 10px;
+}
+
+.authForm input[type=text],input[type=password]:focus {
+  outline: none;
+}
+
+.authForm select {
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.authForm select:focus {
+  outline:none;
+}
+
+.authForm input[type=date] {
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.authForm input[type=date]:focus {
+  outline: none;
 }

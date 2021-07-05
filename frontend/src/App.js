@@ -1,10 +1,39 @@
-import './App.css';
+import Navbar from './Navbar';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import AdminHome from './AdminHome';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { useState } from 'react';
 
 function App() {
+
+  const [id, setId] = useState({});
+
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              
+            </Route>
+
+            <Route path="/signIn">
+              <SignIn setId={setId}/>
+            </Route>
+
+            <Route path="/signUp">
+              <SignUp />
+            </Route>
+
+            <Route path="/adminHome">
+              <AdminHome id={id}/>
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
