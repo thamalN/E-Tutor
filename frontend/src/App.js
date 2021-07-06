@@ -2,7 +2,7 @@ import Navbar from './Navbar';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import AdminHome from './AdminHome';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
@@ -16,11 +16,11 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              
+
             </Route>
 
             <Route path="/signIn">
-              <SignIn setId={setId}/>
+              <SignIn setId={setId} />
             </Route>
 
             <Route path="/signUp">
@@ -28,7 +28,7 @@ function App() {
             </Route>
 
             <Route path="/adminHome">
-              <AdminHome id={id}/>
+              <AdminHome id={id} />
             </Route>
           </Switch>
         </div>
