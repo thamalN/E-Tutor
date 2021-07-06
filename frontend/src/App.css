@@ -18,10 +18,9 @@
 }
 .navbar .links {
   margin-left: auto;
-
+}
 .navbar a:visited {
   color: black;
-}
 }
 .navbar .joinForFree{
   padding-left: 2rem;
