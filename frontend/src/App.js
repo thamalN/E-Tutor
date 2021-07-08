@@ -2,6 +2,7 @@ import Navbar from './Navbar';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import AdminHome from './AdminHome';
+import CreateTeacherAcc from './CreateTeacherAcc';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import { useState } from 'react';
 
@@ -30,6 +31,11 @@ function App() {
             <Route path="/adminHome">
               <AdminHome id={id}/>
             </Route>
+
+            <Route path="/createTeacherAcc">
+              <CreateTeacherAcc />
+            </Route>
+
           </Switch>
         </div>
       </div>
