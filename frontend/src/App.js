@@ -1,4 +1,5 @@
 import Navbar from './Navbar';
+import Home from './Home';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import AdminHome from './AdminHome';
@@ -16,7 +17,7 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-
+              <Home setId={setId} />
             </Route>
 
             <Route path="/signIn">
