@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 
 * {
   font-family: 'Poppins', sans-serif;
@@ -17,6 +20,20 @@
   align-items: center;
   margin: auto;
   border-bottom: 3px solid rgba(0,0,0,.0);
+}
+
+.navbar{
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.navbar-inverse {
+   background-color: #222;
+   border-color: #080808;
+}
+
+.navbar.transparent {
+ background-color:rgba(0,0,0,0);
 }
 
 .navbar .joinForFree{
@@ -45,7 +62,9 @@
 .view,
 body,
 html{height:100%}
-.navbar{background-color:rgba(0,0,0,.0)}
+.navbar{
+  position: fixed;
+  background-color:rgba(0,0,0,.0)}
 .page-footer,
 .top-nav-collapse{
   color: rgb(255, 255, 255);
@@ -59,9 +78,11 @@ html{height:100%}
 }
 
 .vignette {
+  
   position: absolute;
   top: 0;
   left: 0;
+  overflow: hidden;
   width: 100%;
   height: 100%;
   background: linear-gradient(
@@ -69,9 +90,29 @@ html{height:100%}
     rgba(0, 0, 0, 0.41) 0%, 
     rgba(0, 0, 0, 0) 37.5%, 
     rgba(0, 0, 0, 0) 60.42%, 
-    rgba(0, 0, 0, 0.41) 100%), 
-    url(slide1.jpg);
+    rgba(0, 0, 0, 0.41) 100%);
 }
+
+.heading{
+  position: absolute;
+width: 516px;
+height: 184px;
+left: 796px;
+top: 372px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 800;
+font-size: 84px;
+line-height: 109.5%;
+/* or 92px */
+
+display: flex;
+align-items: center;
+
+color: #000000;
+}
+
 .navbar a {
   color: rgb(255, 255, 255);
   margin-left: 16px;
@@ -90,7 +131,60 @@ html{height:100%}
   font-weight: bold;
 }
 
+.relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+}
 
+.absolute1 {
+  position: absolute;
+width: 516px;
+height: 184px;
+left: 746px;
+top: 340px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: bolder;
+font-size: 84px;
+line-height: 109.5%;
+/* or 92px */
+
+display: flex;
+flex-direction: column;
+align-items: left;
+
+color: #000000;
+}
+
+.absolute2 {
+  position: absolute;
+width: 505px;
+height: 39px;
+left: 750px;
+top: 549px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 400;
+font-size: 26px;
+line-height: 39px;
+/* identical to box height */
+
+display: flex;
+align-items: center;
+
+color: #000000;
+}
+
+.container{
+  width: 100%;
+  position: relative;
+  left: -10px;
+  top: 0px;
+}
 
 .authForm {
   padding: 10px;

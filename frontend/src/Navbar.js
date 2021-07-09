@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    return ( 
+    return (
         <nav className="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+
             <div class="navbar-brand">
                 <Link to="/">
                     <img src="logo_white.png" className="rounded float-left" alt="eTutor" width="50%" />
                 </Link>
             </div>
-            
+
             <div className="links">
                 <Link to="/">Home</Link>
                 <Link to="/about">About</Link>
@@ -19,7 +20,7 @@ const Navbar = () => {
                 <Link className="joinForFree" to="/signUp">Join For Free</Link>
             </div>
         </nav>
-     );
+    );
 }
- 
+
 export default Navbar;
