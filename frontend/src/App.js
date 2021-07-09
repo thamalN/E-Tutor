@@ -1,8 +1,8 @@
 import Navbar from './Navbar';
 import Home from './Home';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
-import AdminHome from './AdminHome';
+import SignIn from './Authentication/SignIn';
+import SignUp from './Authentication/SignUp';
+import AdminHome from './Admin/AdminHome';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar />
+        <Navbar id={id}/>
         <div className="content">
           <Switch> 
             <Route exact path="/">
@@ -28,11 +28,10 @@ function App() {
               <SignUp />
             </Route>
 
-            <Route path="/adminHome">
+            <Route path="/Admin/adminHome">
               <AdminHome id={id} />
             </Route>
 
-            r
           </Switch>
         </div>
       </div>
