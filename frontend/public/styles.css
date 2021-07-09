@@ -10,35 +10,75 @@ body {
   padding: 0;
 }
 
+.navbar .links {
+  color: rgb(255, 255, 255);
+  margin-left: auto;
+}
+
 .navbar {
+  color: rgb(255, 255, 255);
   padding: 5px;
   display: flex;
   align-items: center;
   margin: auto;
-  border-bottom: 3px solid #f2f2f2;
+  border-bottom: 3px solid rgba(0,0,0,.0);
 }
-.navbar h1 {
-  color: #b9cced;
-  margin: 0px;
-}
-.navbar .links {
-  margin-left: auto;
-}
-.navbar a:visited {
-  color: black;
-}
+
 .navbar .joinForFree{
   padding-left: 2rem;
-  padding-top: 10px;
+  padding-top: 8px;
   padding-right: 2rem;
-  padding-bottom: 10px;
-  background-color: #0471ff;
+  padding-bottom: 8px;
+  background-color: #000000;
   border: none;
   border-radius: 3rem;
   color: rgb(255, 255, 255);
   
 }
+
+.navbar .joinForFree a:hover{
+    color: #ffffff;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+}
+
+@media (min-width: 800px) and (max-width: 850px) {
+  .navbar:not(.top-nav-collapse) {
+      background: rgba(0,0,0,0)!important;
+  }
+}
+.view,
+body,
+html{height:100%}
+.navbar{background-color:rgba(0,0,0,.0)}
+.page-footer,
+.top-nav-collapse{
+  color: rgb(255, 255, 255);
+  background-color:#1C2331
+}
+
+@media only screen and (max-width:768px){
+.navbar{
+  color: rgb(255, 255, 255);
+  background-color:#1C2331}
+}
+
+.vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg, 
+    rgba(0, 0, 0, 0.41) 0%, 
+    rgba(0, 0, 0, 0) 37.5%, 
+    rgba(0, 0, 0, 0) 60.42%, 
+    rgba(0, 0, 0, 0.41) 100%), 
+    url(slide1.jpg);
+}
 .navbar a {
+  color: rgb(255, 255, 255);
   margin-left: 16px;
   text-decoration: none;
   padding: 6px;
@@ -49,11 +89,13 @@ body {
 
 
 .navbar a:hover {
-  color: #b9cced;
+  color: #000000;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 3rem;
   font-weight: bold;
+  text-decoration: none;
+
 }
-
-
 
 .authForm {
   padding: 10px;

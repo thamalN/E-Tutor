@@ -4,6 +4,7 @@ import SignUp from './SignUp';
 import AdminHome from './AdminHome';
 import CreateTeacherAcc from './CreateTeacherAcc';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import Home from './Home';
 import { useState } from 'react';
 
 function App() {
@@ -13,11 +14,11 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar />
+        <Navbar id={id}/>
         <div className="content">
-          <Switch>
+          <Switch> 
             <Route exact path="/">
-
+              <Home setId={setId} />
             </Route>
 
             <Route path="/signIn">
@@ -28,7 +29,7 @@ function App() {
               <SignUp />
             </Route>
 
-            <Route path="/adminHome">
+            <Route path="/Admin/adminHome">
               <AdminHome id={id} />
             </Route>
 
