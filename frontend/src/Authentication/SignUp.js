@@ -41,8 +41,6 @@ const SignUp = () => {
 
     return (
 
-        <div className="vignette">
-
             <div className="authForm">
                 <form onSubmit={handleSubmit}>
                     <div className="nameRow">
@@ -150,7 +148,6 @@ const SignUp = () => {
                 </form>
             </div>
 
-        </div>
     );
 }
 

@@ -2,44 +2,47 @@ import Navbar from './Navbar';
 import SignIn from './Authentication/SignIn';
 import SignUp from './Authentication/SignUp';
 import AdminHome from './Admin/AdminHome';
-import CreateTeacherAcc from './CreateTeacherAcc';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './Home';
-import { useState } from 'react';
+
+import CreateTeacherAcc from './Admin/CreateTeacherAcc';
+import TeacherHome from './Teacher/TeacherHome';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import './Resources/styles.css'
 
 function App() {
 
-  const [id, setId] = useState({});
-
   return (
     <BrowserRouter>
-      <div className="App">
-        <Navbar id={id}/>
+        <Navbar />
         <div className="content">
           <Switch> 
             <Route exact path="/">
-              <Home setId={setId} />
+              <Home />
             </Route>
 
             <Route path="/signIn">
-              <SignIn setId={setId} />
+              <SignIn />
             </Route>
 
             <Route path="/signUp">
               <SignUp />
             </Route>
 
-            <Route path="/adminHome">
-              <AdminHome id={id} />
+            <Route path="/Admin/adminHome">
+              <AdminHome />
             </Route>
 
-            <Route path="/createTeacherAcc">
+            <Route path="/Teacher/teacherHome">
+              <TeacherHome />
+            </Route>
+
+            <Route path="/Admin/createTeacherAcc">
               <CreateTeacherAcc />
             </Route>
 
           </Switch>
         </div>
-      </div>
     </BrowserRouter>
   );
 }

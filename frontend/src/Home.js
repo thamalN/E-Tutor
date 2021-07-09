@@ -1,8 +1,11 @@
+import slide from './Resources/slide1.jpg';
+
 const Home = () => {
     return (
+
         <div>
             <div className="relative">
-            <img src="slide1.jpg" alt="slide1" width="100%"/>
+            <img src={slide} alt="slide1" width="100%"/>
             <div className="absolute1">
                 Modern Day Education
             </div>
@@ -12,7 +15,7 @@ const Home = () => {
         </div>
         
         <div className="relative">
-            <img src="slide1.jpg" alt="slide1" width="100%"/>
+            <img src={slide} alt="slide1" width="100%"/>
             <div className="absolute1">
                 Modern Day Education
             </div>
@@ -20,8 +23,8 @@ const Home = () => {
                 Join Today For An Immense Experience
             </div>
         </div>
+</div>
 
-        </div>
     );
 }
 

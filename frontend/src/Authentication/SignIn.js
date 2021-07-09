@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const SignIn = ({ setId }) => {
+const SignIn = () => {
 
     const history = useHistory()
 
@@ -29,20 +29,21 @@ const SignIn = ({ setId }) => {
                 return res.json();
             })
             .then(data => {
-                setId(data)
-                let flag = data.user_flag;
+                let flag = data.user_flag
+                
+                localStorage.setItem('user', JSON.stringify(data))
 
                 if (flag === 1)
-                    history.push("/adminHome")
-                else
+                    history.push("/Admin/adminHome")
+                else if (flag === 3) {
+                    history.push("/Teacher/teacherHome")
+                } else
                     alert("wrong username or password")
-            })
+                })
 
     }
 
     return (
-
-        <div className="vignette">
 
             <div className="authForm">
                 <form onSubmit={handleSubmit}>
@@ -66,7 +67,6 @@ const SignIn = ({ setId }) => {
                 </form>
             </div>
 
-        </div>
     );
 }
 
