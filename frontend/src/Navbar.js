@@ -7,7 +7,13 @@ const Navbar = ({id}) => {
     switch (id.user_flag) {
         case 1:
             navbar = <div className="links">
-                        
+                        <Link to="/">Home</Link>
+                        <Link to="/about">About</Link>
+                        <Link to="/courses">Courses</Link>
+                        <Link to="/staff">Staff</Link>
+                        <Link to="/contact">Contact</Link>
+                        <Link to="/signIn">Sign In</Link>
+                        <Link className="join for free" to="/">Sign Out</Link>
                     </div>
             break;
         case 2:

@@ -33,7 +33,7 @@ const SignIn = ({ setId }) => {
                 let flag = data.user_flag;
 
                 if (flag === 1)
-                    history.push("/Admin/adminHome")
+                    history.push("/adminHome")
                 else
                     alert("wrong username or password")
             })

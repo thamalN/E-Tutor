@@ -175,6 +175,7 @@ html{height:100%}
 }
 
 .Sidebar {
+  margin-top: 5%;
   height: 800px;
   width: 250px;
   background-color: #2f4050;
@@ -217,4 +218,9 @@ html{height:100%}
 
 .row #title {
   flex: 70%;
+}
+
+.adminHome body{
+  background-color: rgb(23, 193, 199);
+  
 }

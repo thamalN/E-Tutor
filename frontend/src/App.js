@@ -1,7 +1,7 @@
 import Navbar from './Navbar';
-import SignIn from './SignIn';
-import SignUp from './SignUp';
-import AdminHome from './AdminHome';
+import SignIn from './Authentication/SignIn';
+import SignUp from './Authentication/SignUp';
+import AdminHome from './Admin/AdminHome';
 import CreateTeacherAcc from './CreateTeacherAcc';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './Home';
@@ -29,7 +29,7 @@ function App() {
               <SignUp />
             </Route>
 
-            <Route path="/Admin/adminHome">
+            <Route path="/adminHome">
               <AdminHome id={id} />
             </Route>
 
