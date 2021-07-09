@@ -15,7 +15,7 @@ function App() {
       <div className="App">
         <Navbar />
         <div className="content">
-          <Switch>
+          <Switch> 
             <Route exact path="/">
               <Home setId={setId} />
             </Route>
@@ -31,6 +31,8 @@ function App() {
             <Route path="/adminHome">
               <AdminHome id={id} />
             </Route>
+
+            r
           </Switch>
         </div>
       </div>
