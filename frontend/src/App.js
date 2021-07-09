@@ -17,11 +17,11 @@ function App() {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              
+
             </Route>
 
             <Route path="/signIn">
-              <SignIn setId={setId}/>
+              <SignIn setId={setId} />
             </Route>
 
             <Route path="/signUp">
@@ -29,7 +29,7 @@ function App() {
             </Route>
 
             <Route path="/adminHome">
-              <AdminHome id={id}/>
+              <AdminHome id={id} />
             </Route>
 
             <Route path="/createTeacherAcc">
