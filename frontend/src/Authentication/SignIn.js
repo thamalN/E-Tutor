@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const SignIn = () => {
+const SignIn = (props) => {
 
     const history = useHistory()
 
@@ -11,6 +11,7 @@ const SignIn = () => {
             password: ""
         }
     );
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -32,6 +33,8 @@ const SignIn = () => {
                 let flag = data.user_flag
                 
                 localStorage.setItem('user', JSON.stringify(data))
+
+                props.setLoggedIn(true)
 
                 if (flag === 1)
                     history.push("/adminHome")

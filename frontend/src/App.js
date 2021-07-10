@@ -7,14 +7,19 @@ import Home from './Home';
 import CreateTeacherAcc from './Admin/CreateTeacherAcc';
 import TeacherHome from './Teacher/TeacherHome';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import React, { useState } from 'react';
+
 
 import './Resources/styles.css'
 
 function App() {
 
+  const [loggedIn, setLoggedIn] = useState(false)
+
   return (
     <BrowserRouter>
-        <Navbar />
+        <Navbar loggedIn = { loggedIn } setLoggedIn = { setLoggedIn }/>
+
         <div className="content">
           <Switch> 
             <Route exact path="/">
@@ -22,7 +27,7 @@ function App() {
             </Route>
 
             <Route path="/signIn">
-              <SignIn />
+              <SignIn setLoggedIn = { setLoggedIn }/>
             </Route>
 
             <Route path="/signUp">
@@ -30,14 +35,14 @@ function App() {
             </Route>
 
             <Route path="/adminHome">
-              <AdminHome />
+              <AdminHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
             <Route path="/Teacher/teacherHome">
-              <TeacherHome />
+              <TeacherHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
-            <Route path="/Admin/createTeacherAcc">
+            <Route path="/createTeacherAcc">
               <CreateTeacherAcc />
             </Route>
 
