@@ -18,7 +18,7 @@ module.exports = function (app, db) {
         const username = req.body.username;
         const password = req.body.password;
     
-         const query = "InSERT INTO user (firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, username, password, user_flag) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,2);";
+         const query = "InSERT INTO user (firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, username, password, user_flag) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,3);";
     
         db.query(query, [firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, username, password], (err, result) => {
             if (err) throw err;

@@ -34,7 +34,7 @@ const SignIn = () => {
                 localStorage.setItem('user', JSON.stringify(data))
 
                 if (flag === 1)
-                    history.push("/Admin/adminHome")
+                    history.push("/adminHome")
                 else if (flag === 3) {
                     history.push("/Teacher/teacherHome")
                 } else

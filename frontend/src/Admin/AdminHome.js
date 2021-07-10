@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Sidebar from "../Sidebar";
+import Card from "../Card";
 
 const AdminHome = () => {
     return ( <div>
@@ -9,7 +10,12 @@ const AdminHome = () => {
                 <Link to="/">Create Supporting Staff Account</Link>
             </div>
         </nav>
-        <Sidebar/></div>);
+        <Sidebar/>
+        <div className="wrapper">
+            <Card title="Users Online" description="456" button="View Users"></Card>
+            <Card title="Unenrolled Courses" description="12" button="View Courses"></Card>
+            </div>
+        </div>);
 }
  
 export default AdminHome;

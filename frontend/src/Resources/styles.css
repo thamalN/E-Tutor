@@ -174,7 +174,6 @@ html{height:100%}
 }
 
 .Sidebar {
-  margin-top: 5%;
   height: 800px;
   width: 250px;
   background-color: #2f4050;
@@ -219,7 +218,30 @@ html{height:100%}
   flex: 70%;
 }
 
-.adminHome body{
-  background-color: rgb(23, 193, 199);
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto_fit, minmax(12rem, 16rem));
+  gap: 2rem;
+  justify-content: center;
+}
+
+.card-body {
+  margin: 1rem;
+  margin-top: 0.5rem;
+}
+.card{
+  overflow: hidden;
+  box-shadow: 0 2px 20px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+  align-items: center;
+}
+
+.card_description{
+  color: red;
+  font-size:40px ;
   
 }

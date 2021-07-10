@@ -29,7 +29,7 @@ function App() {
               <SignUp />
             </Route>
 
-            <Route path="/Admin/adminHome">
+            <Route path="/adminHome">
               <AdminHome />
             </Route>
 
