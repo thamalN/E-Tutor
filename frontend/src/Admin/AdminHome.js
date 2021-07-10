@@ -14,6 +14,8 @@ const AdminHome = () => {
         <div className="wrapper">
             <Card title="Users Online" description="456" button="View Users"></Card>
             <Card title="Unenrolled Courses" description="12" button="View Courses"></Card>
+            <Card title="Users Online" description="456" button="View Users"></Card>
+            <Card title="Users Online" description="456" button="View Users"></Card>
             </div>
         </div>);
 }
