@@ -17,7 +17,25 @@ export default function SidebarData() {
     if (flag === 1) {
         return [{ title: "Home", icon: <HomeIcon />, link: "/adminHome" },
         { title: "Courses", icon: <SchoolIcon />, link: "/courses" },
-        { title: "Users", icon: <GroupAddIcon />, link: "/users" },
+        { title: "Users", icon: <GroupAddIcon />, link: "/users", iconClosed: <ArrowDropDownIcon/>,
+        iconClosed: <ArrowDropDownIcon/>,
+        subNav: [
+            {
+                title: "Teachers",
+                icon: <PersonIcon/>,
+                link: "/users/teachers"
+            },
+            {
+                title: "Supporting Staff",
+                icon: <PersonIcon/>,
+                link: "/users/supportingStaff"
+            },
+            {
+                title: "Students",
+                icon: <PersonIcon/>,
+                link: "/users/students"
+            }
+        ] },
         { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/announcements" },
         { title: "feedback", icon: <FeedbackIcon />, link: "/feedback" }
