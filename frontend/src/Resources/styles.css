@@ -47,7 +47,7 @@
 .view,
 body,
 html{height:100%}
-.navbar{background-color:rgba(0, 0, 0, 0.5)}
+.navbar{background-color:rgba(0, 0, 0, 0.8)}
 .page-footer,
 .top-nav-collapse{
   color: rgb(255, 255, 255);
@@ -176,9 +176,10 @@ html{height:100%}
 }
 
 .Sidebar {
+  position: relative;
+  float: left;
   height: 800px;
   width: 250px;
-  position: absolute;
   background-color: #2f4050;
 }
 
@@ -199,12 +200,15 @@ html{height:100%}
   justify-content: center;
   align-items: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-decoration: none;
 
 }
 
 .SidebarList .row:hover {
   cursor: pointer;
   background-color: #293846;
+  text-decoration: none;
+
 }
 .SidebarList #active{
   background-color: #293846;
@@ -227,7 +231,45 @@ html{height:100%}
   align-items: stretch;
   gap: 2rem;
   justify-content: center;
+}
   
+.course-card {
+  border: 2px solid black;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  padding: 10px;
+
+}
+
+.course-card-container {
+  text-decoration: none;
+}
+
+.course-card:hover {
+  cursor: pointer;
+}
+
+.course-btn {
+  margin: 10px;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #ffffff;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.course-btn:hover{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 2px solid;
+  cursor: pointer;
+}
+
+.adminHome body{
+  background-color: rgb(23, 193, 199);
 }
 
 .card-body {

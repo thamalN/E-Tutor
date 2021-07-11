@@ -42,11 +42,11 @@ export default function SidebarData() {
         ]
 
     } else if (flag === 3) {
-        return [{ title: "Home", icon: <HomeIcon />, link: "/adminHome" },
-        { title: "Courses", icon: <SchoolIcon />, link: "/courses" },
+        return [{ title: "Home", icon: <HomeIcon />, link: "/teacher/teacherHome" },
+        { title: "Courses", icon: <SchoolIcon />, link: "/teacher/courses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/announcements" },
-        { title: "feedback", icon: <FeedbackIcon />, link: "/feedback" }
+        { title: "Feedback", icon: <FeedbackIcon />, link: "/feedback" }
         ]
     }
 }

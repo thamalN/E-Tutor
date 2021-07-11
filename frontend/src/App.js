@@ -11,6 +11,9 @@ import React, { useState } from 'react';
 
 
 import './Resources/styles.css'
+import Courses from './Teacher/Courses';
+import AddCourse from './Teacher/CourseDetails';
+import CourseDetails from './Teacher/CourseDetails';
 
 function App() {
 
@@ -34,22 +37,31 @@ function App() {
               <SignUp />
             </Route>
 
-            <Route exact path="/adminHome">
+            <Route path="/admin/adminHome">
               <AdminHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
-            <Route path="/Teacher/teacherHome">
-              <TeacherHome setLoggedIn = { setLoggedIn }/>
+            <Route path="/admin/createTeacherAcc">
+              <CreateTeacherAcc />
             </Route>
 
-            <Route exact path="/adminHome/createTeacherAcc">
-              <CreateTeacherAcc />
+            <Route path="/teacher/teacherHome">
+              <TeacherHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
             <Route exact path="/createAnnouncement">
               <CreateAnnouncement />
             </Route>
+            
 
+            <Route path="/teacher/courses">
+              <Courses />
+            </Route>
+
+            <Route path="/teacher/courses/:id">
+              <CourseDetails />
+            </Route>
+            
           </Switch>
         </div>
     </BrowserRouter>

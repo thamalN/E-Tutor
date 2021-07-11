@@ -13,16 +13,19 @@ const TeacherHome = (props) => {
         history.replace("/")
     };
 
-    return ( 
-        
-        <div className="dashboard">
-            <h1> User Id = {user.user_id } </h1>
-            <button onClick={logOut}>Log Out</button>
+    return (
 
-            <Sidebar/>
+        <div className="dashboard">
+
+            <Sidebar />
+
+            <div className="homeContent">
+            <button className = "course-btn" onClick={logOut} style={{float: "right"}}>Log Out</button>
+            </div>
+
         </div>
 
-     );
+    );
 }
- 
+
 export default TeacherHome;

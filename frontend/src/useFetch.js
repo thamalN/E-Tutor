@@ -11,7 +11,7 @@ const useFetch = (url, options) => {
         .then(data => {
             setData(data);
         })
-    })
+    }, [url])
 
     return ( {data} );
 }

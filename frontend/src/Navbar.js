@@ -7,6 +7,9 @@ const Navbar = (props) => {
 
     const location = useLocation()
 
+    const user = JSON.parse(localStorage.getItem('user'))
+
+
     useEffect(() => {
         const loggedUser = localStorage.getItem('user')
         if (loggedUser)
@@ -39,7 +42,7 @@ const Navbar = (props) => {
                 </Link>
             </div>
             <div className="links">
-                <Link to="/about">username</Link>
+                <Link to="/about">user id - { user.user_id}</Link>
             </div>
 
             
