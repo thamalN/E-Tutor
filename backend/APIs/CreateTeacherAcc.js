@@ -18,16 +18,17 @@ module.exports = function (app, db) {
         const username = req.body.username;
         const password = req.body.password;
     
-         const com = "INSERT INTO user (firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, reg_date, username, password, user_flag) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,3);";
+         const query = "INSERT INTO user (firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, reg_date, username, password, user_flag) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,3);";
+         const query2 = " INSERT INTO teacher (teacher_id, nic, school, qualifications) VALUES (?,?,?,?);";
+         let user_id;
     
-        var query = db.query(com, [firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, reg_date, username, password]);
-            query.on('result', (err, result) =>{
-                if (err) throw err;
-            user_id = result.insertId;
+        db.query(query, [firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, reg_date, username, password], (err, result) =>{
+            if (err) throw err;
+            let user_id = result.insertId;
             console.log(user_id);
-                const query = " INSERT INTO teacher (teacher_id, nic, school, qualifications) VALUES (?,?,?,?);";
+                
     
-                db.query(query3, [1, nic, school, qualifications], () => {
+                db.query(query2, [user_id, nic, school, qualifications], (err, result) => {
                     res.json(result.insertId);
                     
                 });

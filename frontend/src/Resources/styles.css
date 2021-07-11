@@ -176,10 +176,12 @@ html{height:100%}
 }
 
 .Sidebar {
-  position: relative;
+  position: fixed;
   float: left;
-  height: 800px;
+  height: 100%;
   width: 250px;
+  top: 7.5%;
+  left: 0%;
   background-color: #2f4050;
 }
 
@@ -452,4 +454,36 @@ color: #000000;
   position: relative;
   left: -10px;
   top: 0px;
+}
+
+.reg_buttons {
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.reg_buttons button{
+  margin: 1rem auto;
+  padding: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+ 
+  border: 2px solid #d50000;
+  background: transparent;
+  color: #d50000;
+  border-radius: 0.2rem;
+  transition: background 200ms ease-in, color 200ms ease-in;
+  cursor: pointer;
+  display: block;
+  width: 50%;
+  color: gray;
+}
+
+
+
+.reg_buttons button:hover {
+  background: #d50000;
+  color: white;
+  text-decoration: none;
 }

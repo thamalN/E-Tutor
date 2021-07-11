@@ -37,7 +37,7 @@ const SignIn = (props) => {
                 props.setLoggedIn(true)
 
                 if (flag === 1)
-                    history.push("/admin/adminHome")
+                    history.push("/adminHome")
                 else if (flag === 3) {
                     history.push("/teacher/teacherHome")
                 } else

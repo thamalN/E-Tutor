@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from './Resources/logo_white.png';
+import PersonIcon from '@material-ui/icons/Person';
 
 const Navbar = (props) => {
     let navbar;
@@ -42,7 +43,7 @@ const Navbar = (props) => {
                 </Link>
             </div>
             <div className="links">
-                <Link to="/about">user id - { user.user_id}</Link>
+                <Link to="/about"><PersonIcon/> { user.user_id}</Link>
             </div>
 
             

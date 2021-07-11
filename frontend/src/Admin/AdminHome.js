@@ -16,12 +16,6 @@ const AdminHome = (props) => {
 
     return ( 
         <div>
-            <nav className="navbar">
-                <div className="links">
-                    <Link to="/adminHome/createTeacherAcc">Create Teacher Account</Link>
-                    <Link to="/">Create Supporting Staff Account</Link>
-                </div>
-            </nav>
 
             <Sidebar/>
         <div className="wrapper">

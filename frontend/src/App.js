@@ -5,6 +5,9 @@ import AdminHome from './Admin/AdminHome';
 import Home from './Home';
 import CreateAnnouncement from './Admin/CreateAnnouncement';
 import CreateTeacherAcc from './Admin/CreateTeacherAcc';
+import CreateSupStaffAcc from './Admin/CreateSupStaffAcc';
+import Registrations from './Admin/Registrations';
+import AdCourses from './Admin/AdCourses';
 import TeacherHome from './Teacher/TeacherHome';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import React, { useState } from 'react';
@@ -29,38 +32,51 @@ function App() {
               <Home />
             </Route>
 
-            <Route path="/signIn">
+            <Route exact path="/signIn">
               <SignIn setLoggedIn = { setLoggedIn }/>
             </Route>
 
-            <Route path="/signUp">
+            <Route exact path="/signUp">
               <SignUp />
             </Route>
 
-            <Route path="/admin/adminHome">
+            <Route exact path="/adminHome">
               <AdminHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
-            <Route path="/admin/createTeacherAcc">
+            <Route exact path="/adminHome/createTeacherAcc">
               <CreateTeacherAcc />
             </Route>
 
-            <Route path="/teacher/teacherHome">
+            <Route exact path="/adminHome/createSupStaffAcc">
+              <CreateSupStaffAcc />
+            </Route>
+
+            <Route exact path="/teacher/teacherHome">
               <TeacherHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
-            <Route exact path="/createAnnouncement">
+            <Route exact path="/adminHome/createAnnouncement">
               <CreateAnnouncement />
+            </Route>
+
+            <Route exact path="/adminHome/registrations">
+              <Registrations />
             </Route>
             
 
-            <Route path="/teacher/courses">
+            <Route exact path="/teacher/courses">
               <Courses />
             </Route>
 
-            <Route path="/teacher/courses/:id">
+            <Route exact path="/teacher/courses/:id">
               <CourseDetails />
             </Route>
+
+            <Route exact path="/adminHome/courses">
+              <AdCourses />
+            </Route>
+            
             
           </Switch>
         </div>
