@@ -5,6 +5,9 @@ import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import PaymentIcon from '@material-ui/icons/Payment';
 import AddAlertIcon from '@material-ui/icons/AddAlert';
 import FeedbackIcon from '@material-ui/icons/Feedback';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
+import PersonIcon from '@material-ui/icons/Person';
 
 export const SidebarData = [
     {
@@ -16,11 +19,31 @@ export const SidebarData = [
         title: "Courses",
         icon: <SchoolIcon/>,
         link: "/courses"
+
     },
     {
         title: "Users",
         icon: <GroupAddIcon/>,
-        link: "/users"
+        link: "/users",
+        iconClosed: <ArrowDropDownIcon/>,
+        iconClosed: <ArrowDropDownIcon/>,
+        subNav: [
+            {
+                title: "Teachers",
+                icon: <PersonIcon/>,
+                link: "/users/teachers"
+            },
+            {
+                title: "Supporting Staff",
+                icon: <PersonIcon/>,
+                link: "/users/supportingStaff"
+            },
+            {
+                title: "Students",
+                icon: <PersonIcon/>,
+                link: "/users/students"
+            }
+        ]
     },
     {
         title: "Payments",

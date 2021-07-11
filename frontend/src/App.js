@@ -3,7 +3,7 @@ import SignIn from './Authentication/SignIn';
 import SignUp from './Authentication/SignUp';
 import AdminHome from './Admin/AdminHome';
 import Home from './Home';
-
+import CreateAnnouncement from './Admin/CreateAnnouncement';
 import CreateTeacherAcc from './Admin/CreateTeacherAcc';
 import TeacherHome from './Teacher/TeacherHome';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -34,7 +34,7 @@ function App() {
               <SignUp />
             </Route>
 
-            <Route path="/adminHome">
+            <Route exact path="/adminHome">
               <AdminHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
@@ -42,8 +42,12 @@ function App() {
               <TeacherHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
-            <Route path="/createTeacherAcc">
+            <Route exact path="/adminHome/createTeacherAcc">
               <CreateTeacherAcc />
+            </Route>
+
+            <Route exact path="/createAnnouncement">
+              <CreateAnnouncement />
             </Route>
 
           </Switch>

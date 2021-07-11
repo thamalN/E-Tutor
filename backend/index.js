@@ -13,6 +13,7 @@ app.use(cors());
 
 require('./APIs/SignIn')(app,db)
 require('./APIs/CreateTeacherAcc')(app,db)
+require('./APIs/CreateAnnouncement')(app,db)
 
 app.listen(3001, () => {
     console.log("Server Started")

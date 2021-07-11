@@ -14,10 +14,10 @@ const CreateTeacherAcc = () => {
         contact: "",
         birthday: "",
         gender: "",
-        // nic: "",
-        // school: "",
-        // reg_date: "",
-        // qualifications: ""
+        nic: "",
+        school: "",
+        reg_date: "",
+        qualifications: ""
         }
     );
 
@@ -39,7 +39,7 @@ const CreateTeacherAcc = () => {
         })
     }
 
-    console.log(id);
+   
 
     return ( 
         <div className="authForm">
@@ -145,27 +145,8 @@ const CreateTeacherAcc = () => {
                     </div>
                 </div>
 
-                <div className="nameRow">
-                    <div>
-                        <label>Username</label>
-                        <input type="text" 
-                            value={ data.username } 
-                            onChange = { (e) => setData({ ...data, username: e.target.value })}
-                            required
-                        />
-                    </div>
 
-                    <div>
-                        <label>Password</label>
-                        <input type="text" 
-                            value={ data.password } 
-                            onChange = { (e) => setData({ ...data, password: e.target.value })}
-                            required
-                        />
-                    </div>
-                </div>
-
-                {/* <div>
+                <div>
                         <label>NIC</label>
                         <input type="text" 
                             value={ data.nic } 
@@ -177,8 +158,8 @@ const CreateTeacherAcc = () => {
                     <div>
                         <label>School</label>
                         <input type="text" 
-                            value={ data.street } 
-                            onChange = { (e) => setData({ ...data, street: e.target.value })}
+                            value={ data.school } 
+                            onChange = { (e) => setData({ ...data, school: e.target.value })}
                             required
                         />
                     </div>
@@ -199,7 +180,27 @@ const CreateTeacherAcc = () => {
                             onChange = { (e) => setData({ ...data, qualifications: e.target.value })}
                             required
                         />
-                    </div> */}
+                    </div>
+
+                    <div className="nameRow">
+                    <div>
+                        <label>Username</label>
+                        <input type="text" 
+                            value={ data.username } 
+                            onChange = { (e) => setData({ ...data, username: e.target.value })}
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label>Password</label>
+                        <input type="text" 
+                            value={ data.password } 
+                            onChange = { (e) => setData({ ...data, password: e.target.value })}
+                            required
+                        />
+                    </div>
+                </div>
 
                 <input type="submit" value="Create Account"/>
             </form>
