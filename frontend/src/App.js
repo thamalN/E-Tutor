@@ -17,6 +17,7 @@ import './Resources/styles.css'
 import Courses from './Teacher/Courses';
 import AddCourse from './Teacher/CourseDetails';
 import CourseDetails from './Teacher/CourseDetails';
+import AllCourses from './Admin/AllCourses';
 
 function App() {
 
@@ -75,6 +76,10 @@ function App() {
 
             <Route exact path="/adminHome/courses">
               <AdCourses />
+            </Route>
+
+            <Route exact path="/adminHome/allCourses">
+              <AllCourses />
             </Route>
             
             

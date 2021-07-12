@@ -15,6 +15,7 @@ require('./APIs/SignIn')(app,db)
 require('./APIs/CreateTeacherAcc')(app,db)
 require('./APIs/CreateAnnouncement')(app,db)
 require('./APIs/Course')(app,db)
+require('./APIs/AllCourses')(app,db)
 
 app.listen(3001, () => {
     console.log("Server Started")
