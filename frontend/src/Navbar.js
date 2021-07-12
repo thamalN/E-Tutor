@@ -43,7 +43,7 @@ const Navbar = (props) => {
                 </Link>
             </div>
             <div className="links">
-                <Link to="/about"><PersonIcon/> { user.user_id}</Link>
+                <Link to="/about"><PersonIcon/> { user.firstname}</Link>
             </div>
 
             

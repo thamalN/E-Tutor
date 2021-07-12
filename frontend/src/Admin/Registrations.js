@@ -5,7 +5,7 @@ const Registrations = () => {
     return (
         <div>
             <Sidebar/>
-            <h1>Registrations</h1>
+            <h1 style={{marginLeft: "250px"}}>Registrations</h1>
             <div className="reg_buttons">
             <Link to="/signUp"><button >Student Registration</button></Link>
             <Link to="/adminHome/createTeacherAcc"><button >Teacher Registration</button></Link>

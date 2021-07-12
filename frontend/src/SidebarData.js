@@ -19,8 +19,8 @@ export default function SidebarData() {
         return [{ title: "Home", icon: <HomeIcon />, link: "/adminHome" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/adminHome/registrations" },
         { title: "Courses", icon: <SchoolIcon />, link: "/adminHome/courses" },
-        { title: "User Accounts", icon: <PeopleIcon />, link: "/users" },
-        { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
+        { title: "User Accounts", icon: <PeopleIcon />, link: "/adminHome/userAccounts" },
+        { title: "Payments", icon: <PaymentIcon />, link: "/adminHome/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/announcements" },
         { title: "feedback", icon: <FeedbackIcon />, link: "/feedback" }
         ]

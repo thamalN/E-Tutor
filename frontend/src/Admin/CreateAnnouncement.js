@@ -30,6 +30,7 @@ const CreateAnnouncement = () => {
         })
     }
     return (<div className="authForm">
+        <div><h1> Add New Announcement</h1></div>
     <form onSubmit = { handleSubmit }>
             <div>
                 <label>Topic</label>

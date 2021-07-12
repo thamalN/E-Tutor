@@ -17,17 +17,23 @@ const AdminHome = (props) => {
     return ( 
         <div>
 
-            <Sidebar/>
+<div className="dashboard">
+
+<Sidebar />
+
+{/* <div className="homeContent">
+<button className = "course-btn" onClick={logOut} style={{float: "right"}}>Log Out</button>
+</div> */}
+
+
         <div className="wrapper">
-            <Card title="Users Online" description="456" button="View Users"></Card>
-            <Card title="Users Online" description="456" button="View Users"></Card>
-            <Card title="Users Online" description="456" button="View Users"></Card>
-            <Card title="Users Online" description="456" button="View Users"></Card>
+            <Card title="Users Online" description="456" button="View"></Card>
+            <Card title="Unenrolled Courses" description="12" button="View"></Card>
+            <Card title="Incomplete Courses" description="10" button="View"></Card>
+            <Card title="Pending Payments" description="13" button="View"></Card>
             </div>
 
-            <h1> User Id = {user.user_id } </h1>
-            <button onClick={logOut}>Log Out</button>
-        
+            </div>
         </div>);
 }
  

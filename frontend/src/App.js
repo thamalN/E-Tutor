@@ -18,6 +18,8 @@ import Courses from './Teacher/Courses';
 import AddCourse from './Teacher/CourseDetails';
 import CourseDetails from './Teacher/CourseDetails';
 import AllCourses from './Admin/AllCourses';
+import UserAccounts from './Admin/UserAccounts';
+import Payments from './Admin/Payments';
 
 function App() {
 
@@ -80,6 +82,14 @@ function App() {
 
             <Route exact path="/adminHome/allCourses">
               <AllCourses />
+            </Route>
+
+            <Route exact path="/adminHome/userAccounts">
+              <UserAccounts />
+            </Route>
+
+            <Route exact path="/adminHome/payments">
+              <Payments/>
             </Route>
             
             
