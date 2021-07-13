@@ -17,7 +17,13 @@ const SignUp = () => {
             email: "",
             contact: "",
             birthday: "",
-            gender: ""
+            gender: "",
+            username: "",
+            password: "",
+            confirmPassword: "",
+            school: "",
+            grade: "",
+            guardian_contact: ""
         }
     );
 
@@ -192,7 +198,7 @@ const SignUp = () => {
                         onChange={(e) => setData({ ...data, province: e.target.value })}
                         required
                     >
-                        <option selected>Choose...</option>
+                        <option>Choose...</option>
                         <option>Western</option>
                         <option>Central</option>
                         <option>Southern</option>
@@ -252,7 +258,7 @@ const SignUp = () => {
                         value={data.gender}
                         onChange={(e) => setData({ ...data, gender: e.target.value })}
                     >
-                        <option selected>Choose...</option>
+                        <option>Choose...</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
@@ -274,7 +280,7 @@ const SignUp = () => {
                     </div>
                 </div>
                 <div className="col-12 mt-4">
-                    <input type="submit" className="btn btn-dark" value="Sign Up" />
+                    <input type="submit" className="btn btn-dark" value="Create Account" />
                 </div>
             </form>
 

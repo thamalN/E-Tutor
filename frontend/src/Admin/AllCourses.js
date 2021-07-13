@@ -7,7 +7,7 @@ const Courses = () => {
     const url = "http://localhost:3001/AllCourses"
 
 
-
+    useEffect(() => {
         fetch(url, {
             method: 'GET',
             headers: { "Content-Type": "application/json" },
@@ -19,7 +19,7 @@ const Courses = () => {
                 setData(data)
             })
 
-    
+        }, [url])
 
 
     return (

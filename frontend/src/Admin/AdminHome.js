@@ -1,4 +1,4 @@
-import { useHistory, Link } from "react-router-dom";
+import { useHistory} from "react-router-dom";
 import Sidebar from "../Sidebar";
 import Card from "../Card";
         
