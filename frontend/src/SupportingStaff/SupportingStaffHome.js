@@ -122,9 +122,17 @@ const SupportingStaffHome = (props) => {
                         </tbody>
                     </table>
                 </div>
-                <Calendar />
-                <div className="b3"></div>
+            
 
+
+                <div className="row g-3 t1">
+                    <div className="col-md-6">
+                        
+                    </div>
+                    <div className="col-md-4">
+                    <Calendar />
+                    </div>
+                </div>
             </div>
         </div>);
 }

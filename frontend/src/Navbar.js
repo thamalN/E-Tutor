@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import logo from './Resources/logo_white.png';
 import PersonIcon from '@material-ui/icons/Person';
+import './Resources/styles.css';
 
 const Navbar = (props) => {
     let navbar;
@@ -51,7 +52,7 @@ const Navbar = (props) => {
 
             </div>
             <div className="links">
-            <button className="joinForFree" onClick={logOut} >Log Out</button>
+            <button className="logout" onClick={logOut} >Log Out</button>
             </div>
 
         </nav>
