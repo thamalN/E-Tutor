@@ -7,8 +7,9 @@ module.exports = function (app, db) {
     
         db.query(query, [username, password], (err, result) => {
             if (err) throw err;
+            if(result.length === 0)
+                res.json("wrong")
             res.json(result[0])
-            console.log(result)
         })
     })
 };

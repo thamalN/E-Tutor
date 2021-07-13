@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { useHistory } from "react-router";
+
 const CreateTeacherAcc = () => {
+    const history = useHistory()
 
     const [id, setId] = useState(null);
 
@@ -24,6 +27,19 @@ const CreateTeacherAcc = () => {
         }
     );
 
+    useEffect(() => {
+        if (data.password.length !== 0) {
+            if (data.password === data.confirmPassword) {
+                document.getElementById('pass').innerHTML = '(Passwords match!)';
+                document.getElementById('pass').style.color = "green";
+            } else {
+                document.getElementById('pass').innerHTML = '(Passwords do not match!)';
+                document.getElementById('pass').style.color = "red";
+
+            }
+        }
+    })
+
     const handleSubmit = (e) => {
         e.preventDefault();
         
@@ -39,6 +55,8 @@ const CreateTeacherAcc = () => {
         })
         .then(data => {
             setId(data);
+            alert("Registration Successful!")
+            history.push("/signIn")
         })
     }
 
@@ -104,6 +122,7 @@ const CreateTeacherAcc = () => {
 
     <div className="col-md-4">
         <label htmlFor="confirmPassword" className="mt-2">Confirm Password</label>
+        <span id="pass" style={{ "margin-left": 50, fontSize:12 }}></span>
         <input
             type="password"
             className="form-control"

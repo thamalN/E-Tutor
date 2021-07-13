@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { Hidden } from "@material-ui/core";
+import { green } from "@material-ui/core/colors";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 
 import '../Resources/signUp.css'
 
 const SignUp = () => {
+
+    const history = useHistory()
 
     const [id, setId] = useState(null);
 
@@ -27,8 +32,24 @@ const SignUp = () => {
         }
     );
 
+
+
+    useEffect(() => {
+        if (data.password.length !== 0) {
+            if (data.password === data.confirmPassword) {
+                document.getElementById('pass').innerHTML = '(Passwords match!)';
+                document.getElementById('pass').style.color = "green";
+            } else {
+                document.getElementById('pass').innerHTML = '(Passwords do not match!)';
+                document.getElementById('pass').style.color = "red";
+
+            }
+        }
+    })
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
 
         const url = "http://localhost:3001/signUp"
 
@@ -42,6 +63,8 @@ const SignUp = () => {
             })
             .then(data => {
                 setId(data);
+                alert("Registration Successful!")
+                history.push("/signIn")
             })
     }
 
@@ -104,6 +127,7 @@ const SignUp = () => {
 
                 <div className="col-md-4">
                     <label htmlFor="confirmPassword" className="mt-2">Confirm Password</label>
+                    <span id="pass" style={{ "margin-left": 50, fontSize:12 }}></span>
                     <input
                         type="password"
                         className="form-control"
@@ -112,6 +136,7 @@ const SignUp = () => {
                         onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
                         required
                     />
+
                 </div>
 
                 <div className="col-md-8">
@@ -262,7 +287,7 @@ const SignUp = () => {
                     </select>
                 </div>
 
-                
+
 
                 <div className="col-12">
                     <div className="form-check mt-4">

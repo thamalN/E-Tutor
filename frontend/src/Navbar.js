@@ -50,7 +50,8 @@ const Navbar = (props) => {
                 <img src={logo} className="rounded float-left" alt="eTutor" width="50%" />
 
             </div>
-            <div className="links">
+            <div className="links" >
+            <p className="joinForFree"  style={{display:"inline-block", margin:10}}>{ user.fname } { user.lname} </p>   
             <button className="joinForFree" onClick={logOut} >Log Out</button>
             </div>
 

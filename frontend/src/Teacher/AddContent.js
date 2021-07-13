@@ -21,14 +21,13 @@ const AddContent = () => {
 
     useEffect(() => {
         if (data.topic !== "new") {
+            document.getElementById("newTopic").required = false
             document.getElementById("newTopic").style.display = "none"
             document.getElementById("content").required = true
-
+            
         } else {
             document.getElementById("newTopic").style.display = "block"
             document.getElementById("content").required = false
-            document.getElementById("newTopic").required = true
-
         }
     })
 
