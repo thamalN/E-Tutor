@@ -13,7 +13,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import React, { useState } from 'react';
 
 
-import './Resources/styles.css'
+import './Resources/styles.css';
+import './Resources/home.css';
 import Courses from './Teacher/Courses';
 import AddCourse from './Teacher/CourseDetails';
 import CourseDetails from './Teacher/CourseDetails';
