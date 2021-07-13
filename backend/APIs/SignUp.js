@@ -13,7 +13,7 @@ module.exports = function (app, db) {
         const gender = req.body.gender;
         const guardian_contact = req.body.guardian_contact;
         const school = req.body.school;
-        const school_grade = req.body.school_grade;
+        const grade = req.body.grade;
         const username = req.body.username;
         const password = req.body.password;
     
@@ -27,7 +27,7 @@ module.exports = function (app, db) {
             console.log(user_id);
                 
     
-                db.query(query2, [user_id, school_grade, school, guardian_contact], (err, result) => {
+                db.query(query2, [user_id, grade, school, guardian_contact], (err, result) => {
                     res.json(result.insertId);
                     
                 });
