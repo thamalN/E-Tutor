@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Sidebar from "../Sidebar"
 
-const AllCourses = () => {
+const ViewCourses = () => {
     const [data, setData] = useState([])
     const url = "http://localhost:3001/AllCourses"
 
@@ -29,15 +29,17 @@ const AllCourses = () => {
             <div className="homeContent">
                 <div className="courses">
                     {data.map(course => (
+                        <div className="course-card-container">
                         <div key={course.course_id} className="course-card" >
-                            <Link to={`/teacher/courses/${course.course_id}`} className="course-card-container">
+                            
                                 <div className="card-container">
                                     <h1>{course.course_name} {course.year}</h1>
                                     <p>{course.description}</p>
                                 </div>
-                            </Link>
 
                         </div>
+                        </div>
+
                     ))}
                 </div>
             </div>
@@ -45,4 +47,4 @@ const AllCourses = () => {
 
 }
 
-export default AllCourses;
+export default ViewCourses;

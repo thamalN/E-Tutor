@@ -25,6 +25,8 @@ import StudentRegistrations from './SupportingStaff/StudentRegistrations';
 import AddContent from './Teacher/AddContent';
 import Announcements from './Admin/Announcements';
 import StudentHome from './Student/StudentHome';
+import ViewCourses from './Student/ViewCourses';
+import MyCourses from './Student/MyCourses';
 
 function App() {
 
@@ -109,12 +111,20 @@ function App() {
               <StudentRegistrations/>
             </Route>
             
-            <Route path="/teacher/addContent">
+            <Route exact path="/teacher/addContent">
               <AddContent />
             </Route>
 
-            <Route path="/studentHome">
+            <Route exact path="/studentHome">
               <StudentHome setLoggedIn = { setLoggedIn }/>
+            </Route>
+
+            <Route exact path="/studentHome/viewCourses">
+              <ViewCourses />
+            </Route>
+
+            <Route exact path="/studentHome/myCourses">
+              <MyCourses />
             </Route>
             
           </Switch>
