@@ -56,13 +56,8 @@
   }
 
   .absolute3{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
     width: 156px;
     height: 143.67px;
-    left: auto;
-    top: 704.33px;
     font-size: 4rem;
     text-align: center;
     color: rgb(255, 255, 255);
@@ -75,13 +70,8 @@
   }
   
   .absolute4{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
     width: 156px;
     height: 143.67px;
-    left: auto;
-    top: 704.33px;
     font-size: 4rem;
     text-align: center;
     color: rgb(255, 255, 255);
@@ -93,13 +83,8 @@
   }
   
   .absolute5{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
     width: 156px;
     height: 143.67px;
-    left: auto;
-    top: 704.33px;
     font-size: 4rem;
     text-align: center;
     color: rgb(255, 255, 255);
@@ -111,13 +96,8 @@
   }
   
   .absolute6{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
     width: 156px;
     height: 143.67px;
-    left: auto;
-    top: 704.33px;
     font-size: 4rem;
     text-align: center;
     color: rgb(255, 255, 255);
@@ -251,12 +231,12 @@
   width: 516px;
   height: 184px;
   left: 806px;
-  top: 200px;
+  top: 100px;
   
   font-family: Poppins;
   font-style: normal;
   font-weight: bolder;
-  font-size: 84px;
+  font-size: 74px;
   line-height: 109.5%;
   text-shadow: 2px 2px 4px #000000;
   /* or 92px */
@@ -335,7 +315,7 @@
     color: rgb(255, 255, 255);
   }
   
-  .p1{
+  /* .p1{
     margin: 0;
     position: absolute;
     width: 50%;
@@ -346,7 +326,7 @@
     left:50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-  }
+  } */
   
   .absolute34{
     position: relative;
@@ -400,4 +380,19 @@
     margin-bottom: 200px;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+  }
+
+  .options1 {
+    position: absolute;
+    top:80%;
+    z-index: 3;
+    width: 100%;
+    text-align: center;
+}
+
+  .options1>div {
+    
+    display: inline-block;
+    margin: 10px;
+
   }

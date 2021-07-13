@@ -19,25 +19,27 @@ const Home = () => {
                 <div className="absolute2">
                     Join Today For An Immense Experience
                 </div>
+                
+                <div className="options1">
+                    <div className="absolute3">
+                        <i className="bi bi-book-half"></i>
+                        <p className="p1">Full Course Materials</p>
+                    </div>
+                    <div className="absolute4">
+                        <i className="bi bi-book-half"></i>
+                        <p className="p1">Certified Teachers</p>
+                    </div>
+                    <div className="absolute5">
+                        <i className="bi bi-book-half"></i>
+                        <p className="p1">Online Payments</p>
+                    </div>
+                    <div className="absolute6">
+                        <i className="bi bi-book-half"></i>
+                        <p className="p1">Creative Lessons</p>
+                    </div>
+                </div>
             </div>
-            <div className="options1">
-                <div className="absolute3">
-                    <i className="bi bi-book-half"></i>
-                    <p className="p1">Full Course Materials</p>
-                </div>
-                <div className="absolute4">
-                    <i className="bi bi-book-half"></i>
-                    <p className="p1">Certified Teachers</p>
-                </div>
-                <div className="absolute5">
-                    <i className="bi bi-book-half"></i>
-                    <p className="p1">Online Payments</p>
-                </div>
-                <div className="absolute6">
-                    <i className="bi bi-book-half"></i>
-                    <p className="p1">Creative Lessons</p>
-                </div>
-            </div>
+
 
 
             <div className="relative2">
@@ -50,7 +52,9 @@ const Home = () => {
                 </div>
                 <div className="absolute12">
                     <h1 className="center2">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dignissim ultrices neque ullamcorper malesuada. Duis scelerisque tristique molestie. Nam viverra ornare magna,
+                        eTutor brings you the best online education experience
+                        to your finger tips by collaborating with
+                        leading teachers and lecturers in the country.
                     </h1>
                 </div>
             </div>
@@ -63,17 +67,18 @@ const Home = () => {
                 </div>
                 <div className="absolute14">
                     <h1 className="center4">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dignissim ultrices neque ullamcorper malesuada. Duis scelerisque tristique molestie. Nam viverra ornare magna,
+                        With all the knowledge provided, our students can
+                        stay ahead of the competition with ease.
                     </h1>
                 </div>
             </div>
             <div className="relative">
                 <img src={slide4} alt="slide4" width="100%" />
-                <div className="absolute21">
-                    Stay Ahead
+                <div className="absolute21" >
+                Top-Stars
                 </div>
                 <div className="absolute22">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dignissim ultrices neque ullamcorper malesuada. Duis scelerisque tristique molestie. Nam viverra ornare magna,
+                Our course content is created by a well-recognized academic staff, which  guarantees the accuracy of the content.                
                 </div>
             </div>
             <div className="relative2">
@@ -113,10 +118,10 @@ const Home = () => {
             <div className="relative">
                 <img src={slide5} alt="slide5" width="100%" />
                 <div className="absolute21">
-                    Lorem Ip.
+                Non-Academic Activities
                 </div>
                 <div className="absolute22">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dignissim ultrices neque ullamcorper malesuada. Duis scelerisque tristique molestie. Nam viverra ornare magna,
+                Here in E-Tutor, we offer a variety of extra activities apart from the academic activities to improve the educational environment of the students..
                 </div>
             </div>
             <div className="relative4">
@@ -125,7 +130,7 @@ const Home = () => {
                 </div>
                 <div className="absolute41">
                     <h1 className="center7">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dignissim ultrices neque ullamcorper malesuada. Duis scelerisque tristique molestie. Nam viverra ornare magna,
+                    There are different varieties of courses available. Courses serve a multitude of purposes for different students: they are sometimes used to bridge the gap between different phases of academic study.
                     </h1>
                 </div>
             </div>

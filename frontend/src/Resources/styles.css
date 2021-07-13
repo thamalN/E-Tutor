@@ -21,7 +21,7 @@
   border-bottom: 3px solid rgba(0,0,0,.1);
 }
 
-.navbar .joinForFree{
+.joinForFree{
   padding-left: 2rem;
   padding-top: 8px;
   padding-right: 2rem;
@@ -33,7 +33,7 @@
   
 }
 
-.navbar .joinForFree a:hover{
+.joinForFree a:hover{
     color: #ffffff;
     font-weight: bold;
     background-color: rgb(255, 255, 255);
@@ -47,11 +47,36 @@
 .view,
 body,
 html{height:100%}
-.navbar{background-color:rgba(0, 0, 0, 0.8)}
+.navbar{background-color:rgba(0, 0, 0, 1)}
 .page-footer,
 .top-nav-collapse{
   color: rgb(255, 255, 255);
   background-color:#1C2331
+}
+
+.logout{
+  padding-left: 2rem;
+  padding-top: 8px;
+  padding-right: 2rem;
+  padding-bottom: 8px;
+  background-color: grey;
+  border: none;
+  border-radius: 3rem;
+  color: rgb(0, 0, 0);
+  
+}
+
+.logout:hover{
+  padding-left: 2rem;
+  padding-top: 8px;
+  padding-right: 2rem;
+  padding-bottom: 8px;
+  background-color: #000000;
+  border-style: solid;
+  border-color: grey;
+  border-radius: 3rem;
+  color: rgb(255, 0, 0);
+  
 }
 
 @media only screen and (max-width:768px){
@@ -175,19 +200,19 @@ html{height:100%}
   padding: 5px;
   border-radius: 10px;
 }
-
+ 
 .authForm input[type=date]:focus {
   outline: none;
 }
 
 .Sidebar {
-  position: absolute;
+  position: fixed;
   float: left;
   height: 100%;
   width: 250px;
-  top: 9.35%;
+  top: 0%;
   left: 0%;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgb(0, 0, 0);
 }
 
 .SidebarList {
@@ -213,19 +238,19 @@ html{height:100%}
 
 .SidebarList .row:hover {
   cursor: pointer;
-  background-color: #2d2f31;
+  background-color: grey;
   text-decoration: none;
+  color: red;
 
 }
 .SidebarList #active{
-  background-color: #2d2f31;
+  background-color: grey;
 }
 
 .row #icon {
   flex: 30%;
   display: grid;
   place-items: center;
-
 }
 
 .row #title {

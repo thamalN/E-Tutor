@@ -1,6 +1,7 @@
 import React from 'react'
-import HomeIcon from '@material-ui/icons/Home';
 import SchoolIcon from '@material-ui/icons/School';
+import HomeIcon from '@material-ui/icons/Home';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import PaymentIcon from '@material-ui/icons/Payment';
 import AddAlertIcon from '@material-ui/icons/AddAlert';
@@ -16,9 +17,10 @@ export default function SidebarData() {
     let flag = user.user_flag
 
     if (flag === 1) {
-        return [{ title: "Home", icon: <HomeIcon />, link: "/adminHome" },
+        return [{title: "eTutor", icon: <SchoolIcon/>, link: "/"},
+            { title: "Home", icon: <HomeIcon />, link: "/adminHome" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/adminHome/registrations" },
-        { title: "Courses", icon: <SchoolIcon />, link: "/adminHome/courses" },
+        { title: "Courses", icon: <MenuBookIcon />, link: "/adminHome/courses" },
         { title: "User Accounts", icon: <PeopleIcon />, link: "/adminHome/userAccounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/adminHome/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/adminHome/announcements" },
@@ -29,7 +31,8 @@ export default function SidebarData() {
 
     } 
     else if (flag === 2) {
-        return [{ title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome" },
+        return [{title: "eTutor", icon: <SchoolIcon/>, link: "/"},
+            { title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/supportingStaffHome/registrations" },
         { title: "Student Accounts", icon: <PeopleIcon />, link: "/accounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
@@ -40,8 +43,9 @@ export default function SidebarData() {
     }
     
     else if (flag === 3) {
-        return [{ title: "Home", icon: <HomeIcon />, link: "/teacher/teacherHome" },
-        { title: "Courses", icon: <SchoolIcon />, link: "/teacher/courses" },
+        return [{title: "eTutor", icon: <SchoolIcon/>, link: "/"},
+            { title: "Home", icon: <HomeIcon />, link: "/teacher/teacherHome" },
+        { title: "Courses", icon: <MenuBookIcon />, link: "/teacher/courses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/announcements" },
         { title: "Feedback", icon: <FeedbackIcon />, link: "/feedback" }

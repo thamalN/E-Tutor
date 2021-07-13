@@ -22,7 +22,7 @@ const TeacherHome = (props) => {
             <Sidebar />
 
             <div className="homeContent">
-                <button className="course-btn" onClick={logOut} style={{ float: "right" }}>Log Out</button>
+                
                 <div  id="adminCard">
                     <Card title="My Courses" description="5" button="View"></Card>
                     <Card title="Total Students" description="634" button="View"></Card>

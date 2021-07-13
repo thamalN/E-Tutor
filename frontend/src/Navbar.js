@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useHistory, Link, useLocation } from "react-router-dom";
 import logo from './Resources/logo_white.png';
 import PersonIcon from '@material-ui/icons/Person';
+import './Resources/styles.css';
 
 const Navbar = (props) => {
     let navbar;
@@ -10,12 +11,20 @@ const Navbar = (props) => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
+    const history = useHistory()
+
 
     useEffect(() => {
         const loggedUser = localStorage.getItem('user')
         if (loggedUser)
             props.setLoggedIn(true)
     })
+
+    const logOut = () => {
+        props.setLoggedIn(false)
+        localStorage.clear();
+        history.replace("/")
+    };
 
     if (!(props.loggedIn)) {
         navbar = <nav className="navbar">
@@ -43,7 +52,7 @@ const Navbar = (props) => {
 
             </div>
             <div className="links">
-                <Link to="/about"><PersonIcon/> { user.fname} { user.lname}</Link>
+            <button className="logout" onClick={logOut} >Log Out</button>
             </div>
 
         </nav>

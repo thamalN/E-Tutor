@@ -1,5 +1,7 @@
 import { useHistory} from "react-router-dom";
 import Sidebar from "../Sidebar";
+import Calendar from "../Calendar";
+
 const StudentHome = (props) => {
 
     const history = useHistory()
@@ -19,7 +21,8 @@ const StudentHome = (props) => {
             <Sidebar />
 
             <div className="homeContent">
-                <button className="course-btn" onClick={logOut} style={{ float: "right" }}>Log Out</button>
+            <Calendar />
+
             </div>
 
         </div>

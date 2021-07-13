@@ -22,7 +22,6 @@ const AdminHome = (props) => {
 <Sidebar />
 
 <div className="homeContent">
-<button className = "course-btn" onClick={logOut} style={{float: "right"}}>Log Out</button>
 </div>
 
 
