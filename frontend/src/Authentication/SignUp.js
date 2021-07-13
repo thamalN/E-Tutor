@@ -24,7 +24,7 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "/"
+        const url = "http://localhost:3001/signUp"
 
         fetch(url, {
             method: 'POST',
@@ -49,7 +49,7 @@ const SignUp = () => {
 
 
                 <div className="col-md-6">
-                    <label htmlFor="firstName" className="form-label">First Name</label>
+                    <label htmlFor="firstName" className="mt-2">First Name</label>
                     <input
                         type="text"
                         className="form-control"
@@ -61,7 +61,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="col-md-6">
-                    <label htmlFor="lastName" className="form-label">Last Name</label>
+                    <label htmlFor="lastName" className="mt-2">Last Name</label>
                     <input
                         type="text"
                         className="form-control"
@@ -72,7 +72,77 @@ const SignUp = () => {
                     />
                 </div>
 
+                <div className="col-md-4">
+                    <label htmlFor="userName" className="mt-2">Username</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="userName"
+                        value={data.username}
+                        onChange={(e) => setData({ ...data, username: e.target.value })}
+                        required
+                    />
+                </div>
 
+                <div className="col-md-4">
+                    <label htmlFor="password" className="mt-2">Password</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        value={data.passowrd}
+                        onChange={(e) => setData({ ...data, password: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <div className="col-md-4">
+                    <label htmlFor="confirmPassword" className="mt-2">Confirm Password</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        value={data.confirmPassword}
+                        onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <div className="col-md-8">
+                    <label className="mt-2" htmlFor="school" >School</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="school"
+                        value={data.school}
+                        onChange={(e) => setData({ ...data, school: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <div className="col-md-4">
+                    <label className="mt-2" htmlFor="grade" >Grade</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="grade"
+                        value={data.grade}
+                        onChange={(e) => setData({ ...data, grade: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <div className="col-12">
+                    <label htmlFor="guardianContact" className="mt-2">Guardian's Contact</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="guardianContact"
+                        value={data.guardian_contact}
+                        onChange={(e) => setData({ ...data, guardian_contact: e.target.value })}
+                        required
+                    />
+                </div>
 
                 <div className="col-md-2">
                     <label className="mt-2" htmlFor="streetNo">Street No</label>
@@ -185,6 +255,8 @@ const SignUp = () => {
                         <option>Female</option>
                     </select>
                 </div>
+
+                
 
                 <div className="col-12">
                     <div className="form-check mt-4">
