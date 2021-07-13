@@ -74,7 +74,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-6">
+                <div className="col-md-4">
                     <label htmlFor="userName" className="mt-2">Username</label>
                     <input
                         type="text"
@@ -86,7 +86,31 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-6">
+                <div className="col-md-4">
+                    <label htmlFor="password" className="mt-2">Password</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        value={data.passowrd}
+                        onChange={(e) => setData({ ...data, password: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <div className="col-md-4">
+                    <label htmlFor="confirmPassword" className="mt-2">Confirm Password</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        value={data.confirmPassword}
+                        onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <div className="col-md-8">
                     <label className="mt-2" htmlFor="school" >School</label>
                     <input
                         type="text"
@@ -94,6 +118,30 @@ const SignUp = () => {
                         id="school"
                         value={data.school}
                         onChange={(e) => setData({ ...data, school: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <div className="col-md-4">
+                    <label className="mt-2" htmlFor="grade" >Grade</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="grade"
+                        value={data.grade}
+                        onChange={(e) => setData({ ...data, grade: e.target.value })}
+                        required
+                    />
+                </div>
+
+                <div className="col-12">
+                    <label htmlFor="guardianContact" className="mt-2">Guardian's Contact</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="guardianContact"
+                        value={data.guardian_contact}
+                        onChange={(e) => setData({ ...data, guardian_contact: e.target.value })}
                         required
                     />
                 </div>
@@ -210,29 +258,7 @@ const SignUp = () => {
                     </select>
                 </div>
 
-                <div className="col-md-6">
-                    <label htmlFor="password" className="mt-2">Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        value={data.passowrd}
-                        onChange={(e) => setData({ ...data, password: e.target.value })}
-                        required
-                    />
-                </div>
-
-                <div className="col-md-6">
-                    <label htmlFor="confirmPassword" className="mt-2">Confirm Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        id="password"
-                        value={data.confirmPassword}
-                        onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
-                        required
-                    />
-                </div>
+                
 
                 <div className="col-12">
                     <div className="form-check mt-4">
