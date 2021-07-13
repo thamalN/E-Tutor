@@ -1,0 +1,33 @@
+.b1{
+    display: flex;
+    margin-top: 100px;
+    height: 50px;
+    flex-direction: row;
+}
+
+.btn-primary{
+    float: right;
+    margin: right;
+
+}
+
+.c1{
+    font-size: x-large;
+    margin-top: 10px;
+    font-weight: 600;
+    margin-left: 300px;
+}
+
+.b2{
+    background-color: rgb(175, 175, 175);
+}
+
+.b2 h3{
+    margin-left: 300px;
+}
+
+.t1{
+    margin-left: 250px;
+    width: 80%;
+}
+

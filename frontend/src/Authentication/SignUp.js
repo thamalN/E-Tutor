@@ -45,8 +45,6 @@ const SignUp = () => {
             })
     }
 
-    console.log(id);
-
     return (
 
         <div className="form-signup">

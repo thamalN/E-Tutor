@@ -15,13 +15,14 @@ import React, { useState } from 'react';
 
 import './Resources/styles.css';
 import Courses from './Teacher/Courses';
-import AddCourse from './Teacher/CourseDetails';
 import CourseDetails from './Teacher/CourseDetails';
 import AllCourses from './Admin/AllCourses';
 import UserAccounts from './Admin/UserAccounts';
 import Payments from './Admin/Payments';
 import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
 import StudentRegistrations from './SupportingStaff/StudentRegistrations';
+
+import AddContent from './Teacher/AddContent';
 
 function App() {
 
@@ -102,6 +103,9 @@ function App() {
               <StudentRegistrations/>
             </Route>
             
+            <Route path="/teacher/addContent">
+              <AddContent />
+            </Route>
             
           </Switch>
         </div>
