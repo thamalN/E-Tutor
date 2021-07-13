@@ -407,7 +407,7 @@ text-align: center;}
 }
 
 .card_description{
-  color: red;
+  color: rgb(17, 0, 255);
   font-size:70px ;
   
 }
@@ -418,9 +418,9 @@ text-align: center;}
   font-weight: bold;
   font-size: 1rem;
   margin: 1rem;
-  border: 2px solid #d50000;
+  border: 2px solid #0400d5;
   background: transparent;
-  color: #d50000;
+  color: #0004d5;
   border-radius: 0.2rem;
   transition: background 200ms ease-in, color 200ms ease-in;
   cursor: pointer;
@@ -428,7 +428,7 @@ text-align: center;}
 }
 
 .card_body .card_btn:hover {
-  background: #d50000;
+  background: #4000d5;
   color: white;
 }
 .dropdown-btn {
