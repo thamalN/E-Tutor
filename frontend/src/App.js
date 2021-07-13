@@ -24,6 +24,7 @@ import StudentRegistrations from './SupportingStaff/StudentRegistrations';
 
 import AddContent from './Teacher/AddContent';
 import Announcements from './Admin/Announcements';
+import StudentHome from './Student/StudentHome';
 
 function App() {
 
@@ -110,6 +111,10 @@ function App() {
             
             <Route path="/teacher/addContent">
               <AddContent />
+            </Route>
+
+            <Route path="/studentHome">
+              <StudentHome setLoggedIn = { setLoggedIn }/>
             </Route>
             
           </Switch>

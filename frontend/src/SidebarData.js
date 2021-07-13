@@ -47,4 +47,14 @@ export default function SidebarData() {
         { title: "Feedback", icon: <FeedbackIcon />, link: "/feedback" }
         ]
     }
+    else if (flag === 4) {
+        return [{ title: "Home", icon: <HomeIcon />, link: "/studentHome" },
+        { title: "Courses", icon: <SchoolIcon />, link: "/studentHome/courses" },
+        { title: "My Courses", icon: <SchoolIcon />, link: "/studentHome/myCourses" },
+        { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
+        { title: "Emails", icon: <EmailIcon />, link: "/emails" },
+        { title: "Notifications", icon: <NotificationsIcon />, link: "/notifications" },
+        { title: "Reports", icon: <DescriptionIcon />, link: "/reports" }
+        ]
+    }
 }
