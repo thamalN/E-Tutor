@@ -97,6 +97,17 @@ const AddContent = () => {
                             </div>
 
                             <div className="Row">
+                                <label>File Name</label>
+                                <input
+                                    name="fileName"
+                                    type="text"
+                                    value={data.fileName}
+                                    onChange={(e) => setData({ ...data, fileName: e.target.value })}
+                                // required
+                                />
+                            </div>
+
+                            <div className="Row">
                                 <label>Content</label>
                                 <input
                                     type="file"
@@ -107,16 +118,6 @@ const AddContent = () => {
                                 />
                             </div>
 
-                            <div className="Row">
-                                <label>File Name</label>
-                                <input
-                                    name="fileName"
-                                    type="text"
-                                    value={data.fileName}
-                                    onChange={(e) => setData({ ...data, fileName: e.target.value })}
-                                // required
-                                />
-                            </div>
                         </div>
 
                         <input type="submit" value="Add Content" />

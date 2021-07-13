@@ -35,22 +35,23 @@ const CourseDetails = () => {
             {data[0] && (
                 <div className="homeContent">
                     <div className="course-details">
-                        <h1>{data[0].course_name} - {data[0].year}</h1>
+                        <h1>{data[0].course_name} {data[0].year}</h1>
                         <h5>Conducted by: {user.fname} {user.lname}</h5>
                         <p>{data[0].description}</p>
                     </div>
                     <hr />
                     <div className="course-content">
-                        <h5>Course Content</h5>
-                        <button>
+                        <h4>Course Content</h4>
                         <Link to="/teacher/addContent">
-                            Add Content
+                            <button className="course-btn" style={{float:"right"}}>
+                                Add Content
+                            </button> 
                         </Link>
-                        </button>
+
 
                         {unique.map((lesson, i) => (
                             <div className="lesson">
-                                <h4 key={i}>{lesson.topic}</h4>
+                                <h5 key={i}>{lesson.topic}</h5>
                                 {data.filter(content => (content.lesson_id === lesson.lesson_id)).map((filtered) => (
                                     <a href={filtered.content} target="_blank" rel="noreferrer">
                                         <ul>
@@ -65,11 +66,11 @@ const CourseDetails = () => {
                     </div>
                     <hr />
                     <div className="course-quiz">
-                        <h5>Quizzes</h5>
+                        <h4>Quizzes</h4>
                     </div>
                     <hr />
                     <div className="course-discn">
-                        <h5>Discussion</h5>
+                        <h4>Discussion</h4>
                     </div>
                 </div>)
             }
