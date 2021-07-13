@@ -3,7 +3,7 @@ module.exports = function (app, db) {
         const username = req.body.username;
         const password = req.body.password;
     
-         const query = "SELECT user_id,user_flag,firstname,lastname FROM user WHERE username=? AND password=?;";
+         const query = "SELECT user_id,user_flag,fname,lname FROM user WHERE username=? AND password=?;";
     
         db.query(query, [username, password], (err, result) => {
             if (err) throw err;

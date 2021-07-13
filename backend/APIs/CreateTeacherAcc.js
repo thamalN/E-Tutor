@@ -18,7 +18,7 @@ module.exports = function (app, db) {
         const username = req.body.username;
         const password = req.body.password;
     
-         const query = "INSERT INTO user (firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, reg_date, username, password, user_flag) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,3);";
+         const query = "INSERT INTO user (fname, lname, street_no, street, city, province, email, contact, birthday, gender, reg_date, username, password, user_flag) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,3);";
          const query2 = " INSERT INTO teacher (teacher_id, nic, school, qualifications) VALUES (?,?,?,?);";
          let user_id;
     
