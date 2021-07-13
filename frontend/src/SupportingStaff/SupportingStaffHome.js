@@ -1,7 +1,7 @@
 import { useHistory, Link } from "react-router-dom";
 import Sidebar from "../Sidebar";
 import Card from "../Card";
-import './staffhome.css'
+import './staffhome.css';
 import Calendar from "../Calendar";
 
 
@@ -27,12 +27,6 @@ const SupportingStaffHome = (props) => {
                 <div className="b1">
                     <div className="c1">Welcome back, Hayley!</div>
                 </div>
-                <button className="btn btn-primary" onClick={logOut} >Log Out</button>
-
-                <div className="col-md-6">
-
-                </div>
-
 
                 <div className="wrapper">
                     <Card title="Users Online" description="456" button="View"></Card>
@@ -129,6 +123,7 @@ const SupportingStaffHome = (props) => {
                     </table>
                 </div>
                 <Calendar />
+                <div className="b3"></div>
 
             </div>
         </div>);

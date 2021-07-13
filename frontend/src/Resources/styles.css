@@ -185,7 +185,7 @@ html{height:100%}
   float: left;
   height: 100%;
   width: 250px;
-  top: 9.35%;
+  top: 0%;
   left: 0%;
   background-color: rgba(0, 0, 0, .8);
 }
@@ -225,7 +225,6 @@ html{height:100%}
   flex: 30%;
   display: grid;
   place-items: center;
-
 }
 
 .row #title {
