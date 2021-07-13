@@ -14,7 +14,7 @@
 
 .navbar {
   color: rgb(255, 255, 255);
-  padding: 5px;
+  padding: 0px;
   display: flex;
   align-items: center;
   margin: auto;
@@ -75,7 +75,7 @@ html{height:100%}
   border-style: solid;
   border-color: grey;
   border-radius: 3rem;
-  color: rgb(255, 0, 0);
+  color: grey;
   
 }
 
@@ -238,9 +238,9 @@ html{height:100%}
 
 .SidebarList .row:hover {
   cursor: pointer;
-  background-color: grey;
+  background-color: rgb(65, 65, 65);
   text-decoration: none;
-  color: red;
+  color: rgb(255, 255, 255);
 
 }
 .SidebarList #active{

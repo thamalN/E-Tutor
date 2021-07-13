@@ -63,7 +63,7 @@
     color: rgb(255, 255, 255);
   }
   
-  .absolute3 .p1{
+  .absolute3 .p2{
     font-size: 26px;
     font-weight: 600;
     text-align: center;
@@ -77,7 +77,7 @@
     color: rgb(255, 255, 255);
   }
   
-  .absolute4 .p1{
+  .absolute4 .p2{
     font-size: 26px;
     font-weight: 600;
   }
@@ -90,7 +90,7 @@
     color: rgb(255, 255, 255);
   }
   
-  .absolute5 .p1{
+  .absolute5 .p2{
     font-size: 26px;
     font-weight: 600;
   }
@@ -103,7 +103,7 @@
     color: rgb(255, 255, 255);
   }
   
-  .absolute6 .p1{
+  .absolute6 .p{
     font-size: 26px;
     font-weight: 600;
   }
@@ -315,7 +315,7 @@
     color: rgb(255, 255, 255);
   }
   
-  /* .p1{
+   .p2{
     margin: 0;
     position: absolute;
     width: 50%;
@@ -326,7 +326,7 @@
     left:50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-  } */
+  } 
   
   .absolute34{
     position: relative;
@@ -395,4 +395,8 @@
     display: inline-block;
     margin: 10px;
 
+  }
+
+  .t1{
+    font-size: 40px;
   }

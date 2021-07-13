@@ -3,6 +3,10 @@ import slide2 from './Resources/slide2.jpg';
 import slide3 from './Resources/slide3.jpg';
 import slide4 from './Resources/slide4.png';
 import slide5 from './Resources/slide5.png';
+import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
+import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
+import PaymentIcon from '@material-ui/icons/Payment';
+import ExtensionIcon from '@material-ui/icons/Extension';
 
 import './Resources/styles.css'
 import './Resources/home.css'
@@ -22,20 +26,20 @@ const Home = () => {
                 
                 <div className="options1">
                     <div className="absolute3">
-                        <i className="bi bi-book-half"></i>
-                        <p className="p1">Full Course Materials</p>
+                        <LocalLibraryIcon />
+                        <p className="h3">Full Course Materials</p>
                     </div>
                     <div className="absolute4">
-                        <i className="bi bi-book-half"></i>
-                        <p className="p1">Certified Teachers</p>
+                        <VerifiedUserIcon/>
+                        <p className="h3">Certified Teachers</p>
                     </div>
                     <div className="absolute5">
-                        <i className="bi bi-book-half"></i>
-                        <p className="p1">Online Payments</p>
+                        <PaymentIcon/>
+                        <p className="h3">Online Payments</p>
                     </div>
                     <div className="absolute6">
-                        <i className="bi bi-book-half"></i>
-                        <p className="p1">Creative Lessons</p>
+                        <ExtensionIcon/>
+                        <p className="h3">Creative Lessons</p>
                     </div>
                 </div>
             </div>
@@ -86,7 +90,7 @@ const Home = () => {
                     <div>
                         <h1 className="center5">69</h1>
                     </div>
-                    <div className="p1">
+                    <div className="p2">
                         Certified Teachers
                     </div>
                 </div>
@@ -94,7 +98,7 @@ const Home = () => {
                     <div>
                         <h1 className="center5">2500</h1>
                     </div>
-                    <div className="p1">
+                    <div className="p2">
                         Students
                     </div>
                 </div>
@@ -102,7 +106,7 @@ const Home = () => {
                     <div>
                         <h1 className="center5">48</h1>
                     </div>
-                    <div className="p1">
+                    <div className="p2">
                         Subjects
                     </div>
                 </div>
@@ -110,7 +114,7 @@ const Home = () => {
                     <div>
                         <h1 className="center5">225</h1>
                     </div>
-                    <div className="p1">
+                    <div className="p2">
                         Courses
                     </div>
                 </div>
