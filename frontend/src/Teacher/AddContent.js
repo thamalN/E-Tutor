@@ -27,6 +27,8 @@ const AddContent = () => {
         } else {
             document.getElementById("newTopic").style.display = "block"
             document.getElementById("content").required = false
+            document.getElementById("newTopic").required = true
+
         }
     })
 

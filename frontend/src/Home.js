@@ -19,25 +19,27 @@ const Home = () => {
                 <div className="absolute2">
                     Join Today For An Immense Experience
                 </div>
+                
+                <div className="options1">
+                    <div className="absolute3">
+                        <i className="bi bi-book-half"></i>
+                        <p className="p1">Full Course Materials</p>
+                    </div>
+                    <div className="absolute4">
+                        <i className="bi bi-book-half"></i>
+                        <p className="p1">Certified Teachers</p>
+                    </div>
+                    <div className="absolute5">
+                        <i className="bi bi-book-half"></i>
+                        <p className="p1">Online Payments</p>
+                    </div>
+                    <div className="absolute6">
+                        <i className="bi bi-book-half"></i>
+                        <p className="p1">Creative Lessons</p>
+                    </div>
+                </div>
             </div>
-            <div className="options1">
-                <div className="absolute3">
-                    <i className="bi bi-book-half"></i>
-                    <p className="p1">Full Course Materials</p>
-                </div>
-                <div className="absolute4">
-                    <i className="bi bi-book-half"></i>
-                    <p className="p1">Certified Teachers</p>
-                </div>
-                <div className="absolute5">
-                    <i className="bi bi-book-half"></i>
-                    <p className="p1">Online Payments</p>
-                </div>
-                <div className="absolute6">
-                    <i className="bi bi-book-half"></i>
-                    <p className="p1">Creative Lessons</p>
-                </div>
-            </div>
+
 
 
             <div className="relative2">
