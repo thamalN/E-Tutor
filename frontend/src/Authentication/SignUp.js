@@ -77,7 +77,7 @@ const SignUp = () => {
 
 
                 <div className="col-md-2">
-                    <label htmlFor="streetNo">Street No</label>
+                    <label className="mt-2" htmlFor="streetNo">Street No</label>
                     <input
                         type="text"
                         className="form-control"
@@ -89,7 +89,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="col-md-3">
-                    <label htmlFor="streetName">Street</label>
+                    <label className="mt-2" htmlFor="streetName">Street</label>
                     <input
                         type="text"
                         className="form-control"
@@ -101,7 +101,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="col-md-3">
-                    <label htmlFor="city">City</label>
+                    <label className="mt-2" htmlFor="city">City</label>
                     <input
                         type="text"
                         className="form-control"
@@ -113,7 +113,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="col-md-4">
-                    <label htmlFor="province">Province</label>
+                    <label className="mt-2" htmlFor="province">Province</label>
                     <select
                         className="form-control"
                         id="province"
@@ -137,7 +137,7 @@ const SignUp = () => {
 
 
                 <div className="col-12">
-                    <label htmlFor="email">Email</label>
+                    <label className="mt-2" htmlFor="email">Email</label>
                     <input
                         type="text"
                         className="form-control"
@@ -149,7 +149,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="col-md-5">
-                    <label htmlFor="contact">Contact</label>
+                    <label className="mt-2" htmlFor="contact">Contact</label>
                     <input
                         type="text"
                         className="form-control"
@@ -162,7 +162,7 @@ const SignUp = () => {
 
 
                 <div className="col-md-4">
-                    <label htmlFor="birthday">Birthday</label>
+                    <label className="mt-2" htmlFor="birthday">Birthday</label>
                     <input type="date"
                         value={data.birthday}
                         className="form-control"
@@ -173,7 +173,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="col-md-3">
-                    <label htmlFor="gender">Gender</label>
+                    <label className="mt-2" htmlFor="gender">Gender</label>
                     <select
                         className="form-control"
                         id="gender"
@@ -189,7 +189,7 @@ const SignUp = () => {
                 </div>
 
                 <div className="col-12">
-                    <div className="form-check">
+                    <div className="form-check mt-4">
                         <input
                             className="form-check-input"
                             type="checkbox"
@@ -201,7 +201,7 @@ const SignUp = () => {
                         </label>
                     </div>
                 </div>
-                <div className="col-12">
+                <div className="col-12 mt-4">
                     <input type="submit" class="btn btn-dark" value="Sign Up" />
                 </div>
             </form>

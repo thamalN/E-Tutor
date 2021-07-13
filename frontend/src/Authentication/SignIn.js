@@ -53,7 +53,7 @@ const SignIn = (props) => {
 
                     <input
                         type="text"
-                        className="form-control"
+                        className="form-control mb-2 "
                         id="userName"
                         placeholder="Username"
                         value={data.username}
@@ -62,7 +62,7 @@ const SignIn = (props) => {
                     />
                     <input
                         type="password"
-                        className="form-control"
+                        className="form-control "
                         id="password"
                         placeholder="Password"
                         value={data.password}
@@ -70,11 +70,11 @@ const SignIn = (props) => {
                         required
                     />
 
-                    <label >
+                    <label className="mt-2">
                         <input type="checkbox" value="remember-me" className="checkbox mb-3" /> Remember me
                     </label>
 
-                    <button className="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
+                    <button className="w-100 btn btn-lg btn-dark" type="submit">Sign In</button>
                 </form>
                 
             </main>
