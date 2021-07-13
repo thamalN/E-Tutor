@@ -181,13 +181,13 @@ html{height:100%}
 }
 
 .Sidebar {
-  position: fixed;
+  position: absolute;
   float: left;
   height: 100%;
   width: 250px;
-  top: 9.5%;
+  top: 9.35%;
   left: 0%;
-  background-color: #2f4050;
+  background-color: rgba(0, 0, 0, .8);
 }
 
 .SidebarList {
@@ -213,12 +213,12 @@ html{height:100%}
 
 .SidebarList .row:hover {
   cursor: pointer;
-  background-color: #293846;
+  background-color: #2d2f31;
   text-decoration: none;
 
 }
 .SidebarList #active{
-  background-color: #293846;
+  background-color: #2d2f31;
 }
 
 .row #icon {
@@ -246,6 +246,7 @@ html{height:100%}
   padding: 10px;
 }
 
+
 .homeContent hr {
   border-top: 3px solid #bbb;
 }
@@ -268,15 +269,32 @@ display: inline;}
   border-radius: 10px;
   display: inline-block;
   margin: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 10px 15px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   padding: 10px;
+  transition: transform ease 0.5s;
 
 }
+
+
+.course-card:hover {
+transform: scale(1.02);}
 
 .course-card-container {
   text-decoration: none;
 }
+
+.course-card-container h1 {
+color: #000000;
+font-weight: bold;
+}
+
+.course-card-container p {
+  color: #504d4d;
+  font-style: italic;
+  }
+
+
 
 .course-card:hover {
   cursor: pointer;
@@ -298,10 +316,38 @@ display: inline;}
   cursor: pointer;
 }
 
+.course-details h1 {
+  font-weight: bold;
+}
+
+.course-details h5 {
+  font-style: italic;
+}
+
+.course-content h4 {
+  font-weight: bold;
+}
+
+.course-quiz h4 {
+  font-weight: bold;
+}
+
+.course-discn h4 {
+  font-weight: bold;
+}
+
+#adminCard {
+  margin-top: 50px;
+  display: flex;
+  align-items: stretch;
+  gap: 2rem;
+  justify-content: center;
+}
+
 .addContent {
   padding: 10px;
   margin: 5% auto;
-  background-color: #b9cced;
+  background-color: #8e9297;
   width: 50%;
   text-align: center;
   font-size: 1.2rem;
@@ -365,7 +411,27 @@ display: inline;}
   box-sizing: border-box;
   background-color: inherit;
   margin-bottom: 10px;
-text-align: center;}
+ text-align: center;
+}
+
+.lesson>h5 {
+  text-decoration: underline;
+}
+
+.lesson>h4 {
+  font-weight: bold;
+}
+
+.lesson>a {
+  text-decoration: none;
+  font-style: italic;
+  color: #7a7676;
+}
+
+.lesson>a:hover {
+  color: #000000;
+  font-weight: bold;
+}
 
 
 .adminHome body{
@@ -388,7 +454,7 @@ text-align: center;}
   align-items: center; */
   width: 20%;
   display: inline-block;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .15);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.473);
     display: flex;
     flex-direction: column;
     margin: 5px;
@@ -398,7 +464,18 @@ text-align: center;}
     transition: all .2s ease-in-out;
     justify-content: space-between;
     align-items: center;
-    
+    border: 2px solid black;
+    border-radius: 10px;
+    transition: transform ease 0.5s;
+}
+
+.card h2 {
+  font-weight: bold;
+}
+
+.card:hover {
+ transform: scale(1.03); 
+ cursor: pointer;
 }
 
 .card_title{
@@ -407,7 +484,7 @@ text-align: center;}
 }
 
 .card_description{
-  color: rgb(17, 0, 255);
+  color: red;
   font-size:70px ;
   
 }
@@ -418,9 +495,9 @@ text-align: center;}
   font-weight: bold;
   font-size: 1rem;
   margin: 1rem;
-  border: 2px solid #0400d5;
+  border: 2px solid #000000;
   background: transparent;
-  color: #0004d5;
+  color: #000000;
   border-radius: 0.2rem;
   transition: background 200ms ease-in, color 200ms ease-in;
   cursor: pointer;
@@ -428,7 +505,7 @@ text-align: center;}
 }
 
 .card_body .card_btn:hover {
-  background: #4000d5;
+  background: #000000;
   color: white;
 }
 .dropdown-btn {
@@ -515,10 +592,19 @@ color: #000000;
   top: 0px;
 }
 
-.reg_buttons {
+.reg_buttons button {
   margin: auto;
   align-items: center;
   justify-content: center;
+}
+.reg_buttons a button {
+  transition: transform 0.5s ease
+
+}
+
+
+.reg_buttons button:hover {
+  transform: scale(1.02);
 }
 
 .reg_buttons button{
@@ -527,11 +613,10 @@ color: #000000;
   font-family: inherit;
   font-weight: bold;
   font-size: 1rem;
- 
-  border: 2px solid #d50000;
+  border: 2px solid #000000;
+  border-radius: 10px;
   background: transparent;
-  color: #d50000;
-  border-radius: 0.2rem;
+  color: #000000;
   transition: background 200ms ease-in, color 200ms ease-in;
   cursor: pointer;
   display: block;
@@ -539,9 +624,15 @@ color: #000000;
   color: gray;
 }
 
-
-
 .reg_buttons button:hover {
-  background: #d50000;
+  background: #000000;
   color: white;
+  text-decoration: none;
 }
+
+.reg_buttons a:hover {
+  text-decoration: none;
+}
+
+
+
