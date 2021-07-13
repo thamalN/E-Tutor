@@ -23,6 +23,7 @@ import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
 import StudentRegistrations from './SupportingStaff/StudentRegistrations';
 
 import AddContent from './Teacher/AddContent';
+import Announcements from './Admin/Announcements';
 
 function App() {
 
@@ -93,6 +94,10 @@ function App() {
 
             <Route exact path="/adminHome/payments">
               <Payments/>
+            </Route>
+
+            <Route exact path="/adminHome/announcements">
+              <Announcements/>
             </Route>
 
             <Route exact path="/SupportingStaffHome">

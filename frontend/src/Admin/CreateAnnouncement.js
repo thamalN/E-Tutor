@@ -51,7 +51,7 @@ const CreateAnnouncement = () => {
                 />
             </div>
 
-        <input type="submit" value="Make Announcement"/>
+        <input type="submit" value="Add Announcement"/>
     </form>
 </div>  );
 }
