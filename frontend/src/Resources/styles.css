@@ -97,9 +97,13 @@ html{height:100%}
 
 }
 
+.user-icon {  
+  vertical-align: middle;
+}
+
 .authForm {
   padding: 10px;
-  margin: 10% auto;
+  margin: 5% auto;
   background-color: #b9cced;
   width: 100%;
   text-align: center;
@@ -142,14 +146,15 @@ html{height:100%}
   font-weight: bold;
 }
 
-.authForm input[type=text],input[type=password]{
+.authForm,input[type=text],input[type=password]{
   padding: 10px;
   border: none;
   border-bottom: 3px solid;
   box-sizing: border-box;
   background-color: inherit;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
+
 
 .authForm input[type=text],input[type=password]:focus {
   outline: none;
@@ -235,6 +240,28 @@ html{height:100%}
   gap: 2rem;
   justify-content: center;
 }
+
+.homeContent {
+  margin-left: 250px;
+  padding: 10px;
+}
+
+.homeContent hr {
+  border-top: 3px solid #bbb;
+}
+
+.homeContent .course-content .lesson{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.course-content >h5{
+display: inline;}
+
+.course-content>button{
+  display: inline;
+  float: right;
+}
   
 .course-card {
   border: 2px solid black;
@@ -270,6 +297,76 @@ html{height:100%}
   border: 2px solid;
   cursor: pointer;
 }
+
+.addContent {
+  padding: 10px;
+  margin: 5% auto;
+  background-color: #b9cced;
+  width: 50%;
+  text-align: center;
+  font-size: 1.2rem;
+  border-radius: 20px;
+}
+
+.addContent .Row {
+  padding: 10px;
+}
+
+.addContent label{
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.addContent input[type=submit]{
+  display: block;
+  margin: 10px auto;
+  background-color: white;
+  border: 2px solid #b9cced;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.addContent input[type=submit]:hover{
+  border: 2px solid;
+  font-weight: bold;
+}
+
+.addContent input[type=text]{
+  padding: 10px;
+  border: none;
+  border-bottom: 3px solid;
+  box-sizing: border-box;
+  background-color: inherit;
+  margin-bottom: 10px;
+}
+
+/* .newTopic {
+  display: none;
+} */
+
+.addContent input[type=text]:focus {
+  outline: none;
+}
+
+.addContent select {
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.addContent select:focus {
+  outline:none;
+}
+
+.addContent input[type=file]{
+  padding: 10px;
+  border: none;
+  box-sizing: border-box;
+  background-color: inherit;
+  margin-bottom: 10px;
+text-align: center;}
+
 
 .adminHome body{
   background-color: rgb(23, 193, 199);

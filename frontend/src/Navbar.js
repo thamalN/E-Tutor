@@ -37,17 +37,15 @@ const Navbar = (props) => {
 
     } else {
         navbar = <nav className="navbar">
-            <div className="navbar-brand">
-                <Link to={location.pathname}>
-                    <img src={logo} className="rounded float-left" alt="eTutor" width="50%" />
-                </Link>
+            <div className="navbar-brand fixed">
+
+                <img src={logo} className="rounded float-left" alt="eTutor" width="50%" />
+
             </div>
             <div className="links">
                 <Link to="/about"><PersonIcon/> { user.fname} { user.lname}</Link>
             </div>
 
-            
-            
         </nav>
 
     }

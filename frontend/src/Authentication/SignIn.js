@@ -36,12 +36,11 @@ const SignIn = (props) => {
                 props.setLoggedIn(true)
                 if (flag === 1)
                     history.push("/adminHome")
-                    else if (flag === 2) {
-                        history.push("/SupportingStaffHome")
-                    }
-                else if (flag === 3) {
+                else if (flag === 2) 
+                    history.push("/SupportingStaffHome")
+                else if (flag === 3) 
                     history.push("/Teacher/teacherHome")
-                } else
+                else
                     alert("wrong username or password")
             })
 
@@ -56,7 +55,7 @@ const SignIn = (props) => {
 
                     <input
                         type="text"
-                        className="form-control mb-2 "
+                        className="form-control "
                         id="userName"
                         placeholder="Username"
                         value={data.username}
@@ -79,9 +78,9 @@ const SignIn = (props) => {
 
                     <button className="w-100 btn btn-lg btn-dark" type="submit">Sign In</button>
                 </form>
-                
+
             </main>
-            
+
         </div>
 
 

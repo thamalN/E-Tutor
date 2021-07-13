@@ -5,7 +5,7 @@ const TeacherHome = (props) => {
 
     const history = useHistory()
 
-    const user = JSON.parse(localStorage.getItem('user'))
+    //const user = JSON.parse(localStorage.getItem('user'))
 
     const logOut = () => {
         props.setLoggedIn(false)
@@ -20,7 +20,7 @@ const TeacherHome = (props) => {
             <Sidebar />
 
             <div className="homeContent">
-            <button className = "course-btn" onClick={logOut} style={{float: "right"}}>Log Out</button>
+                <button className="course-btn" onClick={logOut} style={{ float: "right" }}>Log Out</button>
             </div>
 
         </div>
