@@ -38,6 +38,9 @@ const SignIn = (props) => {
 
                 if (flag === 1)
                     history.push("/adminHome")
+                    else if (flag === 2) {
+                        history.push("/SupportingStaffHome")
+                    }
                 else if (flag === 3) {
                     history.push("/teacher/teacherHome")
                 } else

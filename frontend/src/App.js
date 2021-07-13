@@ -21,6 +21,8 @@ import CourseDetails from './Teacher/CourseDetails';
 import AllCourses from './Admin/AllCourses';
 import UserAccounts from './Admin/UserAccounts';
 import Payments from './Admin/Payments';
+import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
+import StudentRegistrations from './SupportingStaff/StudentRegistrations';
 
 function App() {
 
@@ -91,6 +93,14 @@ function App() {
 
             <Route exact path="/adminHome/payments">
               <Payments/>
+            </Route>
+
+            <Route exact path="/SupportingStaffHome">
+              <SupportingStaffHome setLoggedIn = { setLoggedIn }/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/registrations">
+              <StudentRegistrations/>
             </Route>
             
             

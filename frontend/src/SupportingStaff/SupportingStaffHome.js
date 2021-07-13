@@ -2,7 +2,7 @@ import { useHistory, Link } from "react-router-dom";
 import Sidebar from "../Sidebar";
 import Card from "../Card";
         
-const AdminHome = (props) => {
+const SupportingStaffHome = (props) => {
 
     const history = useHistory()
 
@@ -37,4 +37,4 @@ const AdminHome = (props) => {
         </div>);
 }
  
-export default AdminHome;
+export default SupportingStaffHome;

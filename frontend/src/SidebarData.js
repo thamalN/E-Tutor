@@ -6,6 +6,9 @@ import PaymentIcon from '@material-ui/icons/Payment';
 import AddAlertIcon from '@material-ui/icons/AddAlert';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import PeopleIcon from '@material-ui/icons/People';
+import DescriptionIcon from '@material-ui/icons/Description';
+import EmailIcon from '@material-ui/icons/Email';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import PersonIcon from '@material-ui/icons/Person';
@@ -22,10 +25,24 @@ export default function SidebarData() {
         { title: "User Accounts", icon: <PeopleIcon />, link: "/adminHome/userAccounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/adminHome/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/announcements" },
-        { title: "feedback", icon: <FeedbackIcon />, link: "/feedback" }
+        { title: "feedback", icon: <FeedbackIcon />, link: "/feedback" },
+        { title: "Reports", icon: <DescriptionIcon />, link: "/reports" }
+        
         ]
 
-    } else if (flag === 3) {
+    } 
+    else if (flag === 2) {
+        return [{ title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome" },
+        { title: "Registrations", icon: <GroupAddIcon />, link: "/supportingStaffHome/registrations" },
+        { title: "Student Accounts", icon: <PeopleIcon />, link: "/accounts" },
+        { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
+        { title: "Emails", icon: <EmailIcon />, link: "/emails" },
+        { title: "Notifications", icon: <NotificationsIcon />, link: "/notifications" },
+        { title: "Reports", icon: <DescriptionIcon />, link: "/reports" }
+        ]
+    }
+    
+    else if (flag === 3) {
         return [{ title: "Home", icon: <HomeIcon />, link: "/teacher/teacherHome" },
         { title: "Courses", icon: <SchoolIcon />, link: "/teacher/courses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
