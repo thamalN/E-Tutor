@@ -24,7 +24,7 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "/"
+        const url = "http://localhost:3001/signUp"
 
         fetch(url, {
             method: 'POST',

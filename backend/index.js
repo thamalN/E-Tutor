@@ -12,6 +12,7 @@ app.use(cors());
 
 
 require('./APIs/SignIn')(app,db)
+require('./APIs/SignUp')(app,db)
 require('./APIs/CreateTeacherAcc')(app,db)
 require('./APIs/CreateAnnouncement')(app,db)
 require('./APIs/Course')(app,db)
