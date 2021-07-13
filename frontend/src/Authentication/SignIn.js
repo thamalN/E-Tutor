@@ -39,7 +39,7 @@ const SignIn = (props) => {
                 else if (flag === 2) 
                     history.push("/SupportingStaffHome")
                 else if (flag === 3) 
-                    history.push("/Teacher/teacherHome")
+                    history.push("/Teacher/teacherHome")    
                 else
                     alert("wrong username or password")
             })

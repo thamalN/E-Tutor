@@ -7,6 +7,8 @@ const CourseDetails = () => {
     const { id } = useParams()
     const [data, setData] = useState([])
 
+    const user = JSON.parse(localStorage.getItem('user'))
+
     const url = "http://localhost:3001/teacherCourses/" + id
 
     useEffect(() => {
@@ -34,7 +36,7 @@ const CourseDetails = () => {
                 <div className="homeContent">
                     <div className="course-details">
                         <h1>{data[0].course_name} - {data[0].year}</h1>
-                        <h5>Conducted by: {data[0].teacher_id}</h5>
+                        <h5>Conducted by: {user.fname} {user.lname}</h5>
                         <p>{data[0].description}</p>
                     </div>
                     <hr />
