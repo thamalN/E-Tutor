@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import '../Resources/signIn.css'
 
 const SignIn = (props) => {
 
@@ -11,7 +12,6 @@ const SignIn = (props) => {
             password: ""
         }
     );
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,44 +31,57 @@ const SignIn = (props) => {
             })
             .then(data => {
                 let flag = data.user_flag
-                
+
                 localStorage.setItem('user', JSON.stringify(data))
-
                 props.setLoggedIn(true)
-
                 if (flag === 1)
                     history.push("/adminHome")
                 else if (flag === 3) {
-                    history.push("/teacher/teacherHome")
+                    history.push("/Teacher/teacherHome")
                 } else
                     alert("wrong username or password")
-                })
+            })
 
     }
 
     return (
-
-            <div className="authForm">
+        <div className="text-center">
+            <main className="form-signin">
                 <form onSubmit={handleSubmit}>
-                    <label>Username</label>
+                    <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" />
+                    <h1 className="h3 mb-3 fw-normal">Please Sign In</h1>
+
                     <input
                         type="text"
+                        className="form-control"
+                        id="userName"
+                        placeholder="Username"
                         value={data.username}
                         onChange={(e) => setData({ ...data, username: e.target.value })}
                         required
                     />
-
-                    <label>Password</label>
                     <input
                         type="password"
+                        className="form-control"
+                        id="password"
+                        placeholder="Password"
                         value={data.password}
                         onChange={(e) => setData({ ...data, password: e.target.value })}
                         required
                     />
 
-                    <input type="submit" value="SIGN IN" />
+                    <label >
+                        <input type="checkbox" value="remember-me" className="checkbox mb-3" /> Remember me
+                    </label>
+
+                    <button className="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
                 </form>
-            </div>
+                
+            </main>
+            
+        </div>
+
+
 
     );
 }
