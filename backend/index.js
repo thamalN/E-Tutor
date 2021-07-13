@@ -27,6 +27,7 @@ require('./APIs/CreateTeacherAcc')(app,db)
 require('./APIs/CreateAnnouncement')(app,db)
 require('./APIs/Course')(app,db, upload)
 require('./APIs/AllCourses')(app,db)
+require('./APIs/StudentCourses')(app,db)
 
 
 app.listen(3001, () => {

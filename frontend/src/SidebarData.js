@@ -49,7 +49,7 @@ export default function SidebarData() {
     }
     else if (flag === 4) {
         return [{ title: "Home", icon: <HomeIcon />, link: "/studentHome" },
-        { title: "Courses", icon: <SchoolIcon />, link: "/studentHome/courses" },
+        { title: "Courses", icon: <SchoolIcon />, link: "/studentHome/viewCourses" },
         { title: "My Courses", icon: <SchoolIcon />, link: "/studentHome/myCourses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
         { title: "Emails", icon: <EmailIcon />, link: "/emails" },

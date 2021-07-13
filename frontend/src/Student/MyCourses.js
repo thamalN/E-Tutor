@@ -2,15 +2,20 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Sidebar from "../Sidebar"
 
-const AllCourses = () => {
-    const [data, setData] = useState([])
-    const url = "http://localhost:3001/AllCourses"
+const MyCourses = () => {
 
+    const [data, setData] = useState([])
+    const user = JSON.parse(localStorage.getItem('user'))
+    const id = { id: user.user_id }
+
+    const url = "http://localhost:3001/studentCourses"
 
     useEffect(() => {
+
         fetch(url, {
-            method: 'GET',
+            method: 'POST',
             headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(id)
         })
             .then(res => {
                 return res.json();
@@ -19,7 +24,7 @@ const AllCourses = () => {
                 setData(data)
             })
 
-        }, [url])
+    }, [url])
 
 
     return (
@@ -29,15 +34,17 @@ const AllCourses = () => {
             <div className="homeContent">
                 <div className="courses">
                     {data.map(course => (
+                        <div className="course-card-container">
                         <div key={course.course_id} className="course-card" >
-                            <Link to={`/teacher/courses/${course.course_id}`} className="course-card-container">
+                            
                                 <div className="card-container">
                                     <h1>{course.course_name} {course.year}</h1>
                                     <p>{course.description}</p>
                                 </div>
-                            </Link>
 
                         </div>
+                        </div>
+
                     ))}
                 </div>
             </div>
@@ -45,4 +52,4 @@ const AllCourses = () => {
 
 }
 
-export default AllCourses;
+export default MyCourses;
