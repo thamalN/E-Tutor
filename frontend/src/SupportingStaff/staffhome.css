@@ -1,21 +1,19 @@
 .b1{
     display: flex;
-    margin-top: 100px;
+    margin-top: 3vw;
     height: 50px;
     flex-direction: row;
 }
 
-.btn-primary{
-    float: right;
-    margin: right;
-
+.btn-dark{
+    width: 80%;
 }
 
 .c1{
     font-size: x-large;
     margin-top: 10px;
     font-weight: 600;
-    margin-left: 300px;
+    margin-left: 25vw;
 }
 
 .b2{
@@ -27,8 +25,9 @@
 }
 
 .t1{
-    margin-left: 250px;
-    width: 90%;
+    margin-left: 21vw;
+    width: 77vw;
+    font-size: large;
 }
 
 .b3{
@@ -42,4 +41,8 @@
 
 .row g-3{
     background-color: black;
+}
+
+.a1{
+    left: 21vw;
 }

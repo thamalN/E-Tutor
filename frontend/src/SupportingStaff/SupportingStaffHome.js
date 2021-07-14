@@ -1,8 +1,9 @@
 import { useHistory, Link } from "react-router-dom";
 import Sidebar from "../Sidebar";
-import Card from "../Card";
+import Card2 from "../Card2.js";
 import './staffhome.css';
 import Calendar from "../Calendar";
+import background1 from "../Resources/background1.jpg";
 
 
 const SupportingStaffHome = (props) => {
@@ -25,16 +26,17 @@ const SupportingStaffHome = (props) => {
                 <Sidebar />
 
                 <div className="b1">
-                    <div className="c1">Welcome back, Hayley!</div>
+                    <div className="c1">Welcome back, {user.fname} !</div>
                 </div>
 
                 <div className="wrapper">
-                    <Card title="Users Online" description="456" button="View"></Card>
-                    <Card title="Unenrolled Courses" description="12" button="View"></Card>
-                    <Card title="Incomplete Courses" description="10" button="View"></Card>
-                    <Card title="Pending Payments" description="13" button="View"></Card>
+                    <Card2 title="Users Online" description="456" button="View"></Card2>
+                    <Card2 title="Unenrolled Courses" description="12" button="View"></Card2>
+                    <Card2 title="Incomplete Courses" description="10" button="View"></Card2>
+                    <Card2 title="Pending Payments" description="13" button="View"></Card2>
                 </div>
 
+                
                 <div className="b2">
                     <h3>Recent Registrations</h3>
 
@@ -122,15 +124,15 @@ const SupportingStaffHome = (props) => {
                         </tbody>
                     </table>
                 </div>
-            
+
 
 
                 <div className="row g-3 t1">
                     <div className="col-md-6">
-                        
+
                     </div>
                     <div className="col-md-4">
-                    <Calendar />
+                        <Calendar />
                     </div>
                 </div>
             </div>

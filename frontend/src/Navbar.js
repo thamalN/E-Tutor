@@ -90,11 +90,11 @@ const Navbar = (props) => {
                 <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                    <p style={{ display: "inline-block", margin: 10 }}>
+                    <p className="fs-5" style={{ display: "inline-block", margin: 10 }}>
                         {user.fname}{" "}{user.lname} 
-                    </p>
-                    {/* <button className="btn btn-secondary rounded-pill" onClick={logOut} >Log Out</button> */}
-                    <Link className="btn btn-secondary rounded-pill" onClick={logOut}>Log Out</Link>
+                    </p></li>
+                    <li className="nav-item">
+                        <Link className="btn btn-secondary rounded-pill fs-5" onClick={logOut}>Log Out</Link>
                     </li>
                 </ul>
                 </div>
