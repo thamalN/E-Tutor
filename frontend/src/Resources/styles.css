@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 * {
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
 
-.navbar .links {
+.navbar{
+  z-index: 1;
+}
+
+/* .fw-bold{
+  font-weight: 700;
+} */
+/* .navbar .links {
   color: rgb(255, 255, 255);
   margin-left: auto;
 }
@@ -19,7 +27,7 @@
   align-items: center;
   margin: auto;
   border-bottom: 3px solid rgba(0,0,0,.1);
-}
+} */
 
 .joinForFree{
   padding-left: 2rem;
@@ -39,7 +47,7 @@
     background-color: rgb(255, 255, 255);
 }
 
-@media (min-width: 800px) and (max-width: 850px) {
+/* @media (min-width: 800px) and (max-width: 850px) {
   .navbar:not(.top-nav-collapse) {
       background: rgba(0,0,0,0)!important;
   }
@@ -52,7 +60,7 @@ html{height:100%}
 .top-nav-collapse{
   color: rgb(255, 255, 255);
   background-color:#1C2331
-}
+} */
 
 .logout{
   padding-left: 2rem;
@@ -79,11 +87,11 @@ html{height:100%}
   
 }
 
-@media only screen and (max-width:768px){
+/* @media only screen and (max-width:768px){
 .navbar{
   color: rgb(255, 255, 255);
   background-color:#1C2331}
-}
+} */
 
 .vignette {
   position: relative;
@@ -104,7 +112,7 @@ html{height:100%}
     url(slide1.jpg);
 }
 
-.navbar a {
+/* .navbar a {
   color: rgb(255, 255, 255);
   margin-left: 16px;
   text-decoration: none;
@@ -120,7 +128,7 @@ html{height:100%}
   font-weight: bold;
   text-decoration: none;
 
-}
+} */
 
 .user-icon {  
   vertical-align: middle;
@@ -206,6 +214,7 @@ html{height:100%}
 }
 
 .Sidebar {
+  z-index: 5;
   position: fixed;
   float: left;
   height: 100%;
@@ -574,7 +583,7 @@ font-weight: bold;
   background-color: #3e8e41;
 }
 
-.navbar{
+/* .navbar{
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
 }
@@ -586,7 +595,7 @@ font-weight: bold;
 
 .navbar.transparent {
  background-color:rgba(0,0,0,0);
-}
+} */
 
 .heading{
   position: absolute;

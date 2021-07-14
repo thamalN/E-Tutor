@@ -23,28 +23,28 @@ const Home = () => {
                 <div className="absolute2">
                     Join Today For An Immense Experience
                 </div>
-                
+
                 <div className="options1">
                     <div className="absolute3">
                         <LocalLibraryIcon />
                         <p className="h3">Full Course Materials</p>
                     </div>
                     <div className="absolute4">
-                        <VerifiedUserIcon/>
+                        <VerifiedUserIcon />
                         <p className="h3">Certified Teachers</p>
                     </div>
                     <div className="absolute5">
-                        <PaymentIcon/>
+                        <PaymentIcon />
                         <p className="h3">Online Payments</p>
                     </div>
                     <div className="absolute6">
-                        <ExtensionIcon/>
+                        <ExtensionIcon />
                         <p className="h3">Creative Lessons</p>
                     </div>
                 </div>
             </div>
 
-
+            
 
             <div className="relative2">
                 <img src={slide2} alt="slide2" width="100%" />
@@ -79,10 +79,10 @@ const Home = () => {
             <div className="relative">
                 <img src={slide4} alt="slide4" width="100%" />
                 <div className="absolute21" >
-                Top-Stars
+                    Top-Stars
                 </div>
                 <div className="absolute22">
-                Our course content is created by a well-recognized academic staff, which  guarantees the accuracy of the content.                
+                    Our course content is created by a well-recognized academic staff, which  guarantees the accuracy of the content.
                 </div>
             </div>
             <div className="relative2">
@@ -122,10 +122,10 @@ const Home = () => {
             <div className="relative">
                 <img src={slide5} alt="slide5" width="100%" />
                 <div className="absolute21">
-                Non-Academic Activities
+                    Non-Academic Activities
                 </div>
                 <div className="absolute22">
-                Here in E-Tutor, we offer a variety of extra activities apart from the academic activities to improve the educational environment of the students..
+                    Here in E-Tutor, we offer a variety of extra activities apart from the academic activities to improve the educational environment of the students..
                 </div>
             </div>
             <div className="relative4">
@@ -134,7 +134,7 @@ const Home = () => {
                 </div>
                 <div className="absolute41">
                     <h1 className="center7">
-                    There are different varieties of courses available. Courses serve a multitude of purposes for different students: they are sometimes used to bridge the gap between different phases of academic study.
+                        There are different varieties of courses available. Courses serve a multitude of purposes for different students: they are sometimes used to bridge the gap between different phases of academic study.
                     </h1>
                 </div>
             </div>
