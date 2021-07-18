@@ -4,6 +4,11 @@ const app = express()
 const cors = require("cors")
 const db = require('./db_connection')
 const multer = require('multer')
+const http = require("http");
+const socket = require('socket.io')
+
+
+
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -29,8 +34,34 @@ require('./APIs/Course')(app,db, upload)
 require('./APIs/AllCourses')(app,db)
 require('./APIs/StudentCourses')(app,db)
 
+const server = http.createServer(app)
 
-app.listen(3001, () => {
+
+server.listen(3001, () => {
     console.log("Server Started")
 })
 
+io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"]
+  }
+})
+
+io.on('connection', (socket) => {
+  console.log(socket.id)
+
+  socket.on('join_chat', (data) => {
+    socket.join(data)
+    console.log("user joined " + data)
+  })
+
+  socket.on('send_message', (data) => {
+    socket.to(data.room).emit('receive_message', data.content)
+  })
+
+  socket.on('disconnect', () => {
+    console.log("user disconnected")
+  })
+  
+})

@@ -6,7 +6,7 @@ function Sidebar() {
 
     return (
         <Route>
-            <div className="Sidebar">
+            <div className="Sidebar ">
                 <ul className="SidebarList">
                     {SidebarData().map((val, key) => {
                         return (

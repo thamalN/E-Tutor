@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import Chatroom from "../Chatroom";
 import Sidebar from "../Sidebar";
 
 const CourseDetails = () => {
@@ -43,9 +44,9 @@ const CourseDetails = () => {
                     <div className="course-content">
                         <h4>Course Content</h4>
                         <Link to="/teacher/addContent">
-                            <button className="course-btn" style={{float:"right"}}>
+                            <button className="course-btn" style={{ float: "right" }}>
                                 Add Content
-                            </button> 
+                            </button>
                         </Link>
 
 
@@ -64,16 +65,22 @@ const CourseDetails = () => {
                         ))}
 
                     </div>
+
                     <hr />
                     <div className="course-quiz">
                         <h4>Quizzes</h4>
                     </div>
+                    
                     <hr />
                     <div className="course-discn">
                         <h4>Discussion</h4>
                     </div>
-                </div>)
-            }
+
+                    <hr />
+
+                    <Chatroom />
+                </div>
+            )}
         </div>
     );
 }

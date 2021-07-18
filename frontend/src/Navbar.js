@@ -27,7 +27,7 @@ const Navbar = (props) => {
     };
 
     if (!(props.loggedIn)) {
-        navbar = <nav className="navbar navbar-expand-md fixed-top navbar-light ">
+        navbar = <nav className="navbar navbar-expand-md fixed-top navbar-dark ">
             <div className="container-xxl">
                 <Link to="/" className="navbar-brand">
                     <img src={logo} className="rounded float-left" alt="eTutor" width="7%" />
@@ -72,7 +72,7 @@ const Navbar = (props) => {
         </nav>
 
     } else {
-        navbar = <nav className="navbar navbar-expand-md fixed-top navbar-light">
+        navbar = <nav className="navbar navbar-expand-md fixed-top navbar-dark">
             <div className="container-xxl">
 
                 <Link to="/" className="navbar-brand">

@@ -25,9 +25,9 @@ const SupportingStaffHome = (props) => {
 
                 <Sidebar />
 
-                <div className="b1">
-                    <div className="c1">Welcome back, {user.fname} !</div>
-                </div>
+                {/* <div className="b1">
+                    <div className="c1">Welcome back, Hayley!</div>
+                </div> */}
 
                 <div className="wrapper">
                     <Card2 title="Users Online" description="456" button="View"></Card2>
@@ -62,7 +62,7 @@ const SupportingStaffHome = (props) => {
                                 <th scope="row">2500</th>
                                 <td>13/07/2021</td>
                                 <td>9:11PM</td>
-                                <td>Thamal Nanaprakara</td>
+                                <td>Thamal Nanayakkara</td>
                                 <td>0123212234</td>
                             </tr>
                             <tr>

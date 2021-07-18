@@ -17,22 +17,22 @@ export default function SidebarData() {
     let flag = user.user_flag
 
     if (flag === 1) {
-        return [{title: "eTutor", icon: <SchoolIcon/>, link: "/"},
-            { title: "Home", icon: <HomeIcon />, link: "/adminHome" },
+        return [
+        { title: "Home", icon: <HomeIcon />, link: "/adminHome" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/adminHome/registrations" },
         { title: "Courses", icon: <MenuBookIcon />, link: "/adminHome/courses" },
         { title: "User Accounts", icon: <PeopleIcon />, link: "/adminHome/userAccounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/adminHome/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/adminHome/announcements" },
-        { title: "feedback", icon: <FeedbackIcon />, link: "/feedback" },
+        { title: "Feedback", icon: <FeedbackIcon />, link: "/feedback" },
         { title: "Reports", icon: <DescriptionIcon />, link: "/reports" }
         
         ]
 
     } 
     else if (flag === 2) {
-        return [{title: "eTutor", icon: <SchoolIcon/>, link: "/"},
-            { title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome" },
+        return [
+        { title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/supportingStaffHome/registrations" },
         { title: "Student Accounts", icon: <PeopleIcon />, link: "/accounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
@@ -43,8 +43,8 @@ export default function SidebarData() {
     }
     
     else if (flag === 3) {
-        return [{title: "eTutor", icon: <SchoolIcon/>, link: "/"},
-            { title: "Home", icon: <HomeIcon />, link: "/teacher/teacherHome" },
+        return [
+        { title: "Home", icon: <HomeIcon />, link: "/teacher/teacherHome" },
         { title: "Courses", icon: <MenuBookIcon />, link: "/teacher/courses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/announcements" },
@@ -52,14 +52,14 @@ export default function SidebarData() {
         ]
     }
     else if (flag === 4) {
-        return [{title: "eTutor", icon: <SchoolIcon/>, link: "/"},
-            { title: "Home", icon: <HomeIcon />, link: "/studentHome" },
+        return [
+        { title: "Home", icon: <HomeIcon />, link: "/studentHome" },
         { title: "Courses", icon: <SchoolIcon />, link: "/studentHome/viewCourses" },
         { title: "My Courses", icon: <SchoolIcon />, link: "/studentHome/myCourses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
         { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         { title: "Notifications", icon: <NotificationsIcon />, link: "/notifications" },
-        { title: "Reports", icon: <DescriptionIcon />, link: "/reports" }
+        { title: "Events", icon: <DescriptionIcon />, link: "/reports" }
         ]
     }
 }

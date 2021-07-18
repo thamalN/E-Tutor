@@ -42,8 +42,9 @@ const SignIn = (props) => {
                     history.push("/Teacher/teacherHome")
                 else if (flag === 4) 
                     history.push("/studentHome")     
-                else
+                else 
                     alert("wrong username or password")
+                    
             })
 
     }
