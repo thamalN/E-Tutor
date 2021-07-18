@@ -10,6 +10,8 @@
 
 .navbar{
   z-index: 1;
+  background-color: #000000;
+  height: 10vh;
 }
 
 /* .fw-bold{
@@ -214,14 +216,12 @@ html{height:100%}
 }
 
 .Sidebar {
-  z-index: 5;
   position: fixed;
-  float: left;
-  height: 100%;
-  width: 20vw;
-  top: 0%;
-  left: 0%;
+  height: 100vh;
+  width: 18vw;
   background-color: rgb(0, 0, 0);
+  display: inline-block;
+  vertical-align: top;
 }
 
 .SidebarList {
@@ -275,9 +275,18 @@ html{height:100%}
   justify-content: center;
 }
 
+.content {
+  position: relative;
+  top: 10vh;
+}
+
 .homeContent {
-  margin-left: 250px;
+  /* margin-left: 250px; */
+  width: 80vw;
   padding: 10px;
+  display: inline-block;
+  position: relative;
+  left: 18vw;
 }
 
 
@@ -368,6 +377,26 @@ font-weight: bold;
 
 .course-discn h4 {
   font-weight: bold;
+}
+
+.chat h4 {
+  font-weight: bold;
+}
+
+.chat-room {
+  width: 100%;
+}
+
+.message-input {
+  display: flex;
+}
+
+.message-input input {
+  flex: 80%;
+}
+
+.message-input button {
+  flex: 20%;
 }
 
 #adminCard {
