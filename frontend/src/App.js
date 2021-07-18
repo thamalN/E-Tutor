@@ -27,6 +27,8 @@ import Announcements from './Admin/Announcements';
 import StudentHome from './Student/StudentHome';
 import ViewCourses from './Student/ViewCourses';
 import MyCourses from './Student/MyCourses';
+import HomeNew from './HomeNew';
+import Footer from './Footer.js';
 
 function App() {
 
@@ -39,7 +41,7 @@ function App() {
         <div className="content">
           <Switch> 
             <Route exact path="/">
-              <Home />
+              <HomeNew />
             </Route>
 
             <Route exact path="/signIn">
@@ -129,6 +131,7 @@ function App() {
             
           </Switch>
         </div>
+        <Footer/>
     </BrowserRouter>
   );
 }

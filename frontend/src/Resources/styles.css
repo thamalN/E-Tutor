@@ -707,5 +707,16 @@ color: #000000;
   text-decoration: none;
 }
 
+.footer{
+  text-align: center;
+  background-color: #212529;
+  color: white;
+}
+
+.footer h6{
+  padding-top: 60px;
+  margin-bottom: 40px;
+}
+
 
 
