@@ -277,7 +277,7 @@ html{height:100%}
 
 .content {
   position: relative;
-  top: 10vh;
+  height: 100%;
 }
 
 .homeContent {
@@ -790,14 +790,22 @@ color: #000000;
 }
 
 .footer{
+  bottom: 0;
+  left: 0;
+  height: 16vh;
+  width: 100%;
+  position: relative;
   text-align: center;
   background-color: #212529;
   color: white;
 }
 
 .footer h6{
-  padding-top: 60px;
-  margin-bottom: 40px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%);
 }
 
 
