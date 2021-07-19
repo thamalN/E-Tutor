@@ -1,7 +1,9 @@
+import './Resources/styles.css'
+
 const Footer = () => {
     return (
         <div className="footer">
-            <h6>eTutor © 2021</h6>
+            <h6 className="text-center">eTutor © 2021</h6>
         </div>
     );
 }

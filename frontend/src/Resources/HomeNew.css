@@ -266,6 +266,10 @@ div .counters-list-titles td {
   position: relative;
 }
 
+.courses-list li img{
+    border-radius: 12px;
+}
+
 .courses-list li h4{
     padding-top: 20px;
     font-weight: 600;
@@ -290,4 +294,5 @@ div .counters-list-titles td {
     text-align: center;
     padding-bottom: 8%;
     display: block;
+    margin: 0;
 }
