@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client'
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
+import SendIcon from '@material-ui/icons/Send';
 
 const connentionPort = 'http://localhost:3001/'
 let socket = io(connentionPort)
@@ -15,6 +17,7 @@ const Chatroom = () => {
 
     const [message, setMessage] = useState("")
     const [messageList, setMessageList] = useState([])
+
 
     // useEffect(() => {
     //     socket = io(connentionPort)
@@ -59,6 +62,15 @@ const Chatroom = () => {
         //localStorage.removeItem('messages')
     }
 
+    const showChat = () => {
+        var chatBox = document.getElementById("chat-room")
+        if (chatBox.style.display === "flex")
+            chatBox.style.display = "none"
+        else
+            chatBox.style.display = "flex"
+        joinChat()
+    }
+
     const sendMessage = () => {
         if (message) {
             let messageContent = {
@@ -91,37 +103,37 @@ const Chatroom = () => {
             setJoined(false)
     }, [joined])
 
+
     return (
         <div className="chat">
-            <h4>Chat Room</h4>
 
-            {joined ? (
-                <div className="chat-room">
-                    <div className="message-list" id="message-list" >
-                        {messageList.map((message, index) => (
-                            <div id={message.sender === userName ? "sent-msg" : "received-msg"} className="message-box" key={index} >
-                                <span className="sender">{message.sender}</span>
-                                <div className="message-content">{message.message}</div>
-                                <span className="time sender">{message.time}</span>
-                            </div>
+            <button onClick={showChat} className="chat-box-toggle"><ChatBubbleIcon className="chat-icon" /></button>
 
-                        ))}
-                    </div>
-                    <div className="message-input">
-                        <input
-                            placeholder="Type your message..."
-                            type="text"
-                            className="input-message"
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e.target.value) : null)}
-                            autoFocus />
-                        <button onClick={sendMessage} className="message-send" >Send</button>
-                    </div>
+            <div className="chat-room" id="chat-room">
+                <div className="message-list" id="message-list" >
+                    {messageList.map((message, index) => (
+                        <div id={message.sender === userName ? "sent-msg" : "received-msg"} className="message-box" key={index} >
+                            <span className="sender">{message.sender}</span>
+                            <div className="message-content">{message.message}</div>
+                            <span className="time sender">{message.time}</span>
+                        </div>
 
-                    <button onClick={exitChat} className="join-chat">Exit Chat Room</button>
+                    ))}
                 </div>
-            ) : (<button onClick={joinChat} className="join-chat">Join Chat Room</button>)}
+                <div className="message-input">
+                    <input
+                        placeholder="Type your message..."
+                        type="text"
+                        className="input-message"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e.target.value) : null)}
+                        autoFocus />
+                    <button onClick={sendMessage} className="message-send" ><SendIcon className="send-icon" /></button>
+                </div>
+
+                {/* <h4>Chat Room</h4> */}
+            </div>
 
         </div>
     );

@@ -10,7 +10,7 @@
 
 .navbar{
   z-index: 1;
-  background-color: #000000;
+  background-color: black;
   height: 10vh;
 }
 
@@ -136,7 +136,7 @@ html{height:100%}
   vertical-align: middle;
 }
 
-.authForm {
+/* .authForm {
   padding: 10px;
   margin: 5% auto;
   background-color: #b9cced;
@@ -181,13 +181,19 @@ html{height:100%}
   font-weight: bold;
 }
 
-.authForm input[type=text],input[type=password]{
-  padding: 10px;
+*/
+
+.authForm input[type=password]{
   border: none;
   border-bottom: 3px solid;
-  box-sizing: border-box;
   background-color: inherit;
-  margin-bottom: 20px;
+}
+
+.authForm input[type=text]{
+  border: none;
+  border-bottom: 3px solid;
+  background-color: inherit;
+
 }
 
 
@@ -195,6 +201,7 @@ html{height:100%}
   outline: none;
 }
 
+/*
 .authForm select {
   border: none;
   padding: 5px;
@@ -213,13 +220,13 @@ html{height:100%}
  
 .authForm input[type=date]:focus {
   outline: none;
-}
+} */
 
 .Sidebar {
   position: fixed;
   height: 100vh;
   width: 18vw;
-  background-color: rgb(0, 0, 0);
+  background-color: #5dcc35;
   display: inline-block;
   vertical-align: top;
 }
@@ -237,7 +244,7 @@ html{height:100%}
   margin: 0%;
   display: flex;
   flex-direction: row;
-  color: white;
+  color: black;
   justify-content: center;
   align-items: center;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -247,13 +254,14 @@ html{height:100%}
 
 .SidebarList .row:hover {
   cursor: pointer;
-  background-color: rgb(65, 65, 65);
+  background-color: black;
   text-decoration: none;
-  color: rgb(255, 255, 255);
+  color: #5dcc35;
 
 }
-.SidebarList #active{
-  background-color: grey;
+.SidebarList #active .row{
+  background-color: black;
+  color: #5dcc35;
 }
 
 .row #icon {
@@ -275,10 +283,41 @@ html{height:100%}
   justify-content: center;
 }
 
-.content {
+/* .content {
   position: relative;
-  height: 100%;
+  top: 10vh;
+  background-image: url(./background.jpg);
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: cover;
+} */
+
+.content {
+  /* overflow: auto; */
+  position: relative;
+  top: 10vh;
+  background-color: #EAE7DC;
 }
+
+/* .content::before {
+  content: "";
+  position: fixed;
+  top: -5%;
+  left: -5%;
+  z-index: -1;
+
+  display: block;
+  background-image: url(./background.jpg);
+  background-size:cover;
+  width: 110%;
+  height: 110%;
+
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+} */
 
 .homeContent {
   /* margin-left: 250px; */
@@ -287,6 +326,7 @@ html{height:100%}
   display: inline-block;
   position: relative;
   left: 18vw;
+  /* color: #25274d; */
 }
 
 
@@ -316,7 +356,7 @@ display: inline;}
   transition: 0.3s;
   padding: 10px;
   transition: transform ease 0.5s;
-
+  background-image: url(./background1.jpg);
 }
 
 
@@ -383,33 +423,61 @@ font-weight: bold;
   font-weight: bold;
 }
 
+
+.chat-box-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  margin: 10px;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #000000;
+  color: white;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+.chat-box-toggle:hover {
+  background-color: white;
+}
+
+.chat-box-toggle:hover .chat-icon {
+  fill: black;
+}
+
 .chat-room {
-  width: 100%;
+  position: fixed;
+  width: 400px;
   height: 400px;
-  border: 5px solid black;
+  bottom: 100px;
+  right: 20px;
+  border: 5px solid rgba(0, 0, 0, 0);
   border-radius: 10px;
-  display: flex;
+  display: none; 
   flex-direction: column;
+  background-image: url(./chat.jpg);
+  background-size: cover;
 }
 
 .message-list {
-  margin: 5px;
+  /* z-index: -1; */
   flex: 80%;
   overflow: auto;
-  background-color: #b1a9a9;
-
+ 
+  
 }
 
 .message-input {
   display: flex;
   flex: 10%;
   margin: 5px;
+ 
 }
 
 .chat-room .join-chat {
   flex: 10%;
   width: 20%;
   margin: 10px auto;
+  
 }
 
 .join-chat {
@@ -429,11 +497,12 @@ font-weight: bold;
 }
 
 .message-input input {
-  flex: 80%;
+  flex: 85%;
   height: 100%;
   padding: 10px;
   margin-right: 10px;
   border-radius: 10px;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 .message-input input:focus {
@@ -442,17 +511,20 @@ font-weight: bold;
 
 
 .message-input button {
-  flex: 20%;
+  flex: 15%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 50%;
+  border: 2px solid #348c2b;
+  background-color: #348c2b;
+  color: white;
 }
 
 .message-box {
-  width: 30%;
+  width: 40%;
   background-color: white;
   margin: 10px;
   border: 2px solid black;
-  border-radius: 30px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
 }
@@ -466,7 +538,7 @@ font-weight: bold;
 .message-box .time {
   font-size: 10px;
   flex: 10%;
-  padding-left: 80%;
+  padding-left: 70%;
 }
 
 .message-content {
@@ -487,8 +559,8 @@ font-weight: bold;
 #received-msg {
   clear: both;
   float: left;
-  background-color: rgb(245, 245, 245);
-  border-color: rgb(245, 245, 245);
+  background-color: #e5e8be;
+  border-color: #e5e8be;
 }
 
 #adminCard {
@@ -789,7 +861,7 @@ color: #000000;
   text-decoration: none;
 }
 
-.footer{
+/* .footer{
   bottom: 0;
   left: 0;
   height: 16vh;
@@ -807,6 +879,6 @@ color: #000000;
   text-align: center;
   transform: translateX(-50%);
 }
-
+ */
 
 

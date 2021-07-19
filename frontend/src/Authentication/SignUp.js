@@ -70,11 +70,11 @@ const SignUp = () => {
 
     return (
 
-        <div className="form-signup">
+        <main className="form-signup">
 
             {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
             <h1 className="h3 mb-3 fw-normal">Sign Up</h1>
-            <form onSubmit={handleSubmit} className="row g-3">
+            <form onSubmit={handleSubmit} className="row g-3 authForm">
 
 
                 <div className="col-md-6">
@@ -308,7 +308,7 @@ const SignUp = () => {
             </form>
 
 
-        </div>
+        </main>
 
     );
 }

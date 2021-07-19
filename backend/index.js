@@ -60,8 +60,8 @@ io.on('connection', (socket) => {
     console.log(data.user + " left room " + data.room)
   })
 
-  socket.on('disconnect', () => {
-    console.log("user disconnected")
+  socket.on('disconnect', (reason) => {
+    console.log("user disconnected due to " + reason)
   })
   
 })
