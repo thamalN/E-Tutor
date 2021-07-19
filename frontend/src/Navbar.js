@@ -90,7 +90,7 @@ const Navbar = (props) => {
                 <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                    <p className="fs-5" style={{ display: "inline-block", margin: 10 }}>
+                    <p className="fs-5" style={{ display: "inline-block", margin: 10, color: "white" }}>
                         {user.fname}{" "}{user.lname} 
                     </p></li>
                     <li className="nav-item">

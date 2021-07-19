@@ -34,7 +34,7 @@ const MyCourses = () => {
             <div className="homeContent">
                 <div className="courses">
                     {data.map(course => (
-                        <div className="course-card-container">
+                        <Link to={`/studentHome/myCourses/${course.course_id}`} className="course-card-container">
                         <div key={course.course_id} className="course-card" >
                             
                                 <div className="card-container">
@@ -43,7 +43,7 @@ const MyCourses = () => {
                                 </div>
 
                         </div>
-                        </div>
+                        </Link>
 
                     ))}
                 </div>

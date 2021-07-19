@@ -7,9 +7,6 @@ const multer = require('multer')
 const http = require("http");
 const socket = require('socket.io')
 
-
-
-
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, 'Content/')
@@ -36,7 +33,6 @@ require('./APIs/StudentCourses')(app,db)
 
 const server = http.createServer(app)
 
-
 server.listen(3001, () => {
     console.log("Server Started")
 })
@@ -49,15 +45,19 @@ io = socket(server, {
 })
 
 io.on('connection', (socket) => {
-  console.log(socket.id)
 
   socket.on('join_chat', (data) => {
-    socket.join(data)
-    console.log("user joined " + data)
+    socket.join(data.room)
+    console.log(data.user + " joined room " + data.room)
   })
 
   socket.on('send_message', (data) => {
     socket.to(data.room).emit('receive_message', data.content)
+  })
+
+  socket.on('leave_chat', (data) => {
+    socket.leave(data.room)
+    console.log(data.user + " left room " + data.room)
   })
 
   socket.on('disconnect', () => {
