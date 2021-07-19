@@ -2,7 +2,7 @@ import { useHistory, Link } from "react-router-dom";
 import Sidebar from "../Sidebar";
 import Card2 from "../Card2.js";
 import './staffhome.css';
-import Calendar from "../Calendar";
+// import Calendar from "../Calendar";
 import background1 from "../Resources/background1.jpg";
 
 
@@ -132,9 +132,9 @@ const SupportingStaffHome = (props) => {
                         <div className="col-md-6">
 
                         </div>
-                        <div className="col-md-4">
+                        {/* <div className="col-md-4">
                             <Calendar />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

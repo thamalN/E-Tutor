@@ -12,6 +12,7 @@ import bxBookReader from '@iconify-icons/bx/bx-book-reader';
 import certificate24Regular from '@iconify-icons/fluent/certificate-24-regular';
 import payment16Regular from '@iconify-icons/fluent/payment-16-regular';
 import puzzleEditOutline from '@iconify-icons/mdi/puzzle-edit-outline';
+import './sandbox.js';
 
 
 
@@ -92,7 +93,7 @@ const HomeNew = () => {
             <section className="banner">
                 <div className="courses-list">
                     <ul>
-                        <li><img src={chemistry} alt="chemistry" width="100%" border-radius="9px"/> <br /> <h4>Chemistry</h4></li>
+                        <li><img src={chemistry} alt="chemistry" width="100%" /> <br /> <h4>Chemistry</h4></li>
                         <li><img src={mathematics} alt="mathematics" width="100%" /> <br /> <h4>Combined Maths</h4></li>
                         <li><img src={physics} alt="physics" width="100%" /> <br /> <h4>Physics</h4></li>
                         <li><img src={biology} alt="biology" width="100%" /> <br /> <h4>Biology</h4></li>
@@ -103,6 +104,7 @@ const HomeNew = () => {
                 <h2>“An investment in knowledge <br /> pays the best interest...” </h2>
                 <h6>-Benjamin Franklin - </h6>
             </div>
+            <script src="./sandbox.js"></script>
         </main>
     );
 }

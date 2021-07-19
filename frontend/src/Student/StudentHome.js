@@ -1,6 +1,6 @@
 import { useHistory} from "react-router-dom";
 import Sidebar from "../Sidebar";
-import Calendar from "../Calendar";
+// import Calendar from "../Calendar";
 
 const StudentHome = (props) => {
 
@@ -34,7 +34,7 @@ const StudentHome = (props) => {
                     
                 </div>
             
-            <div ><Calendar /></div>
+            {/* <div ><Calendar /></div> */}
 
             </div>
 
