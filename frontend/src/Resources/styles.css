@@ -226,7 +226,7 @@ html{height:100%}
   position: fixed;
   height: 100vh;
   width: 18vw;
-  background-color: #5dcc35;
+  background-color: #FFC056;
   display: inline-block;
   vertical-align: top;
 }
@@ -321,6 +321,7 @@ html{height:100%}
 
 .homeContent {
   /* margin-left: 250px; */
+  height: 100vh;
   width: 80vw;
   padding: 10px;
   display: inline-block;

@@ -15,14 +15,14 @@ const AdminHome = (props) => {
     };
 
     return ( 
-        <div>
+        
 
-<div className="dashboard">
+<div>
 
 <Sidebar />
 
 <div className="homeContent">
-</div>
+
 
 
         <div className="wrapper">
@@ -31,9 +31,9 @@ const AdminHome = (props) => {
             <Card title="Incomplete Courses" description="10" button="View"></Card>
             <Card title="Pending Payments" description="13" button="View"></Card>
             </div>
-
             </div>
-        </div>);
+            </div>
+        );
 }
  
 export default AdminHome;
