@@ -1,7 +1,51 @@
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useParams, Link } from "react-router-dom";
 
 const StudentDetails = () => {
+
+
+    const { id } = useParams()
+    const [data, setData] = useState({
+        firstname:' ' , lastname:'',username:'',school:'',grade:'',
+        guardian_contact:'',street_no:'',street:'',city:'',province:'',contact:'',birthday:'',gender:'' });
+
+    //const user = JSON.parse(localStorage.getItem('user'))
+
+    const url = "http://localhost:3001/StudentHome/StudentDetails/" + id
+
+    useEffect(() => {
+        fetch(url)
+            .then((res => {
+                return res.json()
+            }))
+            .then((data => {
+                setData(data)
+                console.log(data)
+            }))
+    }, [url])
+
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+
+        const url = "http://localhost:3001/signUp"
+
+        fetch(url, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                // setId(data);
+                alert("Registration Successful!")
+                // history.push("/signIn")
+            })
+    }
 
     return ( 
         <main className="form-signup">
@@ -47,7 +91,7 @@ const StudentDetails = () => {
                     />
                 </div>
 
-                <div className="col-md-4">
+                {/* <div className="col-md-4">
                     <label htmlFor="password" className="mt-2">Password</label>
                     <input
                         type="password"
@@ -71,7 +115,7 @@ const StudentDetails = () => {
                         required
                     />
 
-                </div>
+                </div> */}
 
                 <div className="col-md-8">
                     <label className="mt-2" htmlFor="school" >School</label>
@@ -98,7 +142,7 @@ const StudentDetails = () => {
                 </div>
 
                 <div className="col-12">
-                    <label htmlFor="guardianContact" className="mt-2">Guardian's Contact</label>
+                    <label htmlFor="guardianContact" className="mt-2">Guardian's Contact</label> 
                     <input
                         type="text"
                         className="form-control"
@@ -169,7 +213,7 @@ const StudentDetails = () => {
                 </div>
 
 
-                <div className="col-12">
+                {/* <div className="col-12">
                     <label className="mt-2" htmlFor="email">Email</label>
                     <input
                         type="text"
@@ -179,7 +223,7 @@ const StudentDetails = () => {
                         onChange={(e) => setData({ ...data, email: e.target.value })}
                         required
                     />
-                </div>
+                </div> */}
 
                 <div className="col-md-5">
                     <label className="mt-2" htmlFor="contact">Contact</label>
@@ -194,6 +238,7 @@ const StudentDetails = () => {
                 </div>
 
 
+                
                 <div className="col-md-4">
                     <label className="mt-2" htmlFor="birthday">Birthday</label>
                     <input type="date"

@@ -95,7 +95,7 @@ const Navbar = (props) => {
                             </Link>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <Link class="dropdown-item" to="#">Action</Link>
-                                <Link class="dropdown-item" to="#">Another action</Link>
+                                <Link class="dropdown-item" to={`/StudentHome/StudentDetails/${user.user_id}`}>My Details</Link>  
                                 <div class="dropdown-divider"></div>
                                 <Link class="dropdown-item" onClick={logOut}>Log Out</Link>
                             </div>

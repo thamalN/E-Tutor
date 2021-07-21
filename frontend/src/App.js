@@ -30,6 +30,7 @@ import MyCourses from './Student/MyCourses';
 import HomeNew from './HomeNew';
 import Footer from './Footer.js';
 import MyCourseDetails from './Student/MyCourseDetails';
+import StudentDetails from './Student/StudentDetails';
 
 function App() {
 
@@ -132,6 +133,10 @@ function App() {
 
             <Route exact path="/studentHome/myCourses/:id">
               <MyCourseDetails />
+            </Route>
+
+            <Route exact path="/studentHome/StudentDetails/:id">
+              <StudentDetails/>
             </Route>
             
           </Switch>
