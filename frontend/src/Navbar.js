@@ -10,7 +10,7 @@ const Navbar = (props) => {
     const location = useLocation()
 
     const user = JSON.parse(localStorage.getItem('user'))
-
+    console.log(user);
     const history = useHistory()
 
 
