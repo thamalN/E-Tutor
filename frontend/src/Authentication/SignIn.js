@@ -50,7 +50,6 @@ const SignIn = (props) => {
     }
 
     return (
-        <div className="text-center">
             <main className="form-signin">
                 <form onSubmit={handleSubmit} className="authForm">
                     <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" />
@@ -84,7 +83,7 @@ const SignIn = (props) => {
 
             </main>
 
-        </div>
+   
 
 
 

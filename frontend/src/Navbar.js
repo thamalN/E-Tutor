@@ -88,15 +88,19 @@ const Navbar = (props) => {
                 </button>
 
                 <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                    <p className="fs-5" style={{ display: "inline-block", margin: 10, color: "white" }}>
-                        {user.fname}{" "}{user.lname} 
-                    </p></li>
-                    <li className="nav-item">
-                        <Link className="btn btn-secondary rounded-pill fs-5" onClick={logOut}>Log Out</Link>
-                    </li>
-                </ul>
+                    <ul className="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <Link class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <PersonIcon />{" " + user.fname + " " + user.lname}
+                            </Link>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <Link class="dropdown-item" to="#">Action</Link>
+                                <Link class="dropdown-item" to="#">Another action</Link>
+                                <div class="dropdown-divider"></div>
+                                <Link class="dropdown-item" onClick={logOut}>Log Out</Link>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
