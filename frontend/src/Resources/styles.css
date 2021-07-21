@@ -14,6 +14,11 @@
   height: 10vh;
 }
 
+@media (min-width: 1400px) {
+  .container-xxl {
+  max-width: 2000px;
+}
+}
 /* .fw-bold{
   font-weight: 700;
 } */
@@ -226,7 +231,7 @@ html{height:100%}
   position: fixed;
   height: 100vh;
   width: 18vw;
-  background-color: #5dcc35;
+  background-color: #ffc156;
   display: inline-block;
   vertical-align: top;
 }
@@ -256,12 +261,12 @@ html{height:100%}
   cursor: pointer;
   background-color: black;
   text-decoration: none;
-  color: #5dcc35;
+  color: #ffc156;
 
 }
 .SidebarList #active .row{
   background-color: black;
-  color: #5dcc35;
+  color: #ffc156;
 }
 
 .row #icon {
@@ -326,6 +331,7 @@ html{height:100%}
   display: inline-block;
   position: relative;
   left: 18vw;
+  height: 100vh;
   /* color: #25274d; */
 }
 
@@ -459,11 +465,8 @@ font-weight: bold;
 }
 
 .message-list {
-  /* z-index: -1; */
   flex: 80%;
   overflow: auto;
- 
-  
 }
 
 .message-input {
@@ -559,8 +562,8 @@ font-weight: bold;
 #received-msg {
   clear: both;
   float: left;
-  background-color: #e5e8be;
-  border-color: #e5e8be;
+  background-color: #EAE7DC;
+  border-color: #EAE7DC;
 }
 
 #adminCard {
