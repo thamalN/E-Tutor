@@ -4,24 +4,23 @@ import { useParams, Link } from "react-router-dom";
 const StudentDetails = () => {
 
 
-    const { id } = useParams()
+    // const { id } = useParams()
     const [data, setData] = useState({
-        firstname:' ' , lastname:'',username:'',school:'',grade:'',
-        guardian_contact:'',street_no:'',street:'',city:'',province:'',contact:'',birthday:'',gender:'' });
+        fname:' ' , lname:'',username:'',street_no:'',street:'',city:'',province:'',contact:'',birthday:'',gender:'' });
 
-    //const user = JSON.parse(localStorage.getItem('user'))
+    const user = JSON.parse(localStorage.getItem('user'));
 
-    const url = "http://localhost:3001/StudentHome/StudentDetails/" + id
+    const url = "http://localhost:3001/StudentHome/StudentDetails/" + user.user_id;
 
     useEffect(() => {
         fetch(url)
-            .then((res => {
+            .then(res => {
                 return res.json()
-            }))
-            .then((data => {
-                setData(data)
-                console.log(data)
-            }))
+            })
+            .then(res => {
+                setData({ ...data, fname:res.fname , lname: res.lname ,username:res.username,street_no:res.street_no,street:res.street,city:res.city,province:res.province,contact:res.contact,birthday:res.birthday,gender:res.gender  })
+                console.log(res)
+            })
     }, [url])
 
 
@@ -32,6 +31,7 @@ const StudentDetails = () => {
 
         const url = "http://localhost:3001/signUp"
 
+        
         fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -61,8 +61,8 @@ const StudentDetails = () => {
                         type="text"
                         className="form-control"
                         id="firstName"
-                        value={data.firstname}
-                        onChange={(e) => setData({ ...data, firstname: e.target.value })}
+                        value={data.fname}
+                        onChange={(e) => setData({ ...data, fname: e.target.value })}
                         required
                     />
                 </div>
@@ -73,7 +73,7 @@ const StudentDetails = () => {
                         type="text"
                         className="form-control"
                         id="lastName"
-                        value={data.lastname}
+                        value={data.lname}
                         onChange={(e) => setData({ ...data, lastname: e.target.value })}
                         required
                     />
@@ -267,22 +267,8 @@ const StudentDetails = () => {
                 </div>
 
 
-
-                <div className="col-12">
-                    <div className="form-check mt-4">
-                        <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id="gridCheck"
-                            required
-                        />
-                        <label className="form-check-label" htmlFor="gridCheck">
-                            I agree to the Terms and Conditions
-                        </label>
-                    </div>
-                </div>
                 <div className="col-12 mt-4">
-                    <input type="submit" className="btn btn-dark" value="Create Account" />
+                    <input type="submit" className="btn btn-dark" value="Save" />
                 </div>
             </form>
 

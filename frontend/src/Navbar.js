@@ -10,7 +10,7 @@ const Navbar = (props) => {
     const location = useLocation()
 
     const user = JSON.parse(localStorage.getItem('user'))
-    console.log(user);
+    //console.log(user);
     const history = useHistory()
 
 
@@ -90,12 +90,12 @@ const Navbar = (props) => {
                 <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                     <ul className="navbar-nav">
                         <li class="nav-item dropdown">
-                            <Link class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <PersonIcon />{" " + user.fname + " " + user.lname}
-                            </Link>
+                            </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <Link class="dropdown-item" to="#">Action</Link>
-                                <Link class="dropdown-item" to={`/StudentHome/StudentDetails/${user.user_id}`}>My Details</Link>  
+                               { user.user_flag === 4 &&  <a class="dropdown-item" href= {`/StudentHome/StudentDetails/${user.user_id}`}>My Details</a> }
                                 <div class="dropdown-divider"></div>
                                 <Link class="dropdown-item" onClick={logOut}>Log Out</Link>
                             </div>

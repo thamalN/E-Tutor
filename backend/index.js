@@ -30,6 +30,7 @@ require('./APIs/CreateAnnouncement')(app,db)
 require('./APIs/Course')(app,db, upload)
 require('./APIs/AllCourses')(app,db)
 require('./APIs/StudentCourses')(app,db)
+require('./APIs/StudentDetails')(app,db)
 
 const server = http.createServer(app)
 
