@@ -52,7 +52,7 @@ const SignIn = (props) => {
     }
 
     return (
-            <main className="form-signin">
+            <main className="form-signin text-center">
                 <form onSubmit={handleSubmit} className="authForm">
                     <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" />
                     <h1 className="h3 mb-3 fw-normal">Please Sign In</h1>

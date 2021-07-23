@@ -1,12 +1,10 @@
-import { Hidden } from "@material-ui/core";
-import { green } from "@material-ui/core/colors";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import Sidebar from "../Sidebar";
+import { Link, Route } from 'react-router-dom';
+import './staffhome.css';
 
-import '../Resources/signUp.css'
-
-const SignUp = () => {
-
+const SearchToUpdate = () => {
     const history = useHistory()
 
     const [id, setId] = useState(null);
@@ -31,115 +29,48 @@ const SignUp = () => {
             guardian_contact: ""
         }
     );
-
-
-
-    useEffect(() => {
-        if (data.password.length !== 0) {
-            if (data.password === data.confirmPassword) {
-                document.getElementById('pass').innerHTML = '(Passwords match!)';
-                document.getElementById('pass').style.color = "green";
-            } else {
-                document.getElementById('pass').innerHTML = '(Passwords do not match!)';
-                document.getElementById('pass').style.color = "red";
-
-            }
-        }
-    })
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-
-        const url = "http://localhost:3001/signUp"
-
-        fetch(url, {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        })
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                setId(data);
-                alert("Registration Successful!")
-                history.push("/signIn")
-            })
-    }
-
     return (
-
-        <main className="form-signup">
-
-            {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
-            <h1 className="h3 mb-3 fw-normal">Sign Up</h1>
-            <form onSubmit={handleSubmit} className="row g-3 authForm">
-
-
+        <div>
+            <Sidebar />
+            <h1 className="stuRegHeader">Search To Update</h1>
+            <form className="searchForm">
                 <div className="col-md-6">
                     <label htmlFor="firstName" className="mt-2">First Name</label>
                     <input
                         type="text"
                         className="form-control"
                         id="firstName"
-                        value={data.firstname}
-                        onChange={(e) => setData({ ...data, firstname: e.target.value })}
                         required
                     />
                 </div>
-
                 <div className="col-md-6">
                     <label htmlFor="lastName" className="mt-2">Last Name</label>
                     <input
                         type="text"
                         className="form-control"
                         id="lastName"
-                        value={data.lastname}
-                        onChange={(e) => setData({ ...data, lastname: e.target.value })}
                         required
                     />
                 </div>
-
-                <div className="col-md-4">
+                <div className="col-md-6">
                     <label htmlFor="userName" className="mt-2">Username</label>
                     <input
                         type="text"
                         className="form-control"
                         id="userName"
-                        value={data.username}
-                        onChange={(e) => setData({ ...data, username: e.target.value })}
                         required
                     />
                 </div>
-
-                <div className="col-md-4">
+                <div className="col-md-6">
                     <label htmlFor="password" className="mt-2">Password</label>
                     <input
                         type="password"
                         className="form-control"
                         id="password"
-                        value={data.passowrd}
-                        onChange={(e) => setData({ ...data, password: e.target.value })}
                         required
                     />
                 </div>
-
-                <div className="col-md-4">
-                    <label htmlFor="confirmPassword" className="mt-2">Confirm Password</label>
-                    <span id="pass" style={{ "marginLeft": 50, fontSize:12 }}></span>
-                    <input
-                        type="password"
-                        className="form-control"
-                        id="confirmpassword"
-                        value={data.confirmPassword}
-                        onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
-                        required
-                    />
-
-                </div>
-
-                <div className="col-md-8">
+                <div className="col-md-6">
                     <label className="mt-2" htmlFor="school" >School</label>
                     <input
                         type="text"
@@ -151,7 +82,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-6">
                     <label className="mt-2" htmlFor="grade" >Grade</label>
                     <input
                         type="text"
@@ -163,7 +94,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-12">
+                <div className="col-md-6">
                     <label htmlFor="guardianContact" className="mt-2">Guardian's Contact</label>
                     <input
                         type="text"
@@ -175,7 +106,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-2">
+                <div className="col-md-6">
                     <label className="mt-2" htmlFor="streetNo">Street No</label>
                     <input
                         type="text"
@@ -187,7 +118,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-3">
+                <div className="col-md-6">
                     <label className="mt-2" htmlFor="streetName">Street</label>
                     <input
                         type="text"
@@ -199,7 +130,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-3">
+                <div className="col-md-6">
                     <label className="mt-2" htmlFor="city">City</label>
                     <input
                         type="text"
@@ -211,17 +142,16 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-6">
                     <label className="mt-2" htmlFor="province">Province</label>
                     <select
-                        className="form-control"
+                        className="form-select"
                         id="province"
-                        placeholder="Choose..."
                         value={data.province}
                         onChange={(e) => setData({ ...data, province: e.target.value })}
                         required
                     >
-                        <option>Choose...</option>
+                        <option value="" disabled defaultValue hidden>Choose...</option>
                         <option>Western</option>
                         <option>Central</option>
                         <option>Southern</option>
@@ -235,7 +165,7 @@ const SignUp = () => {
                 </div>
 
 
-                <div className="col-12">
+                <div className="col-md-6">
                     <label className="mt-2" htmlFor="email">Email</label>
                     <input
                         type="text"
@@ -247,7 +177,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-5">
+                <div className="col-md-6">
                     <label className="mt-2" htmlFor="contact">Contact</label>
                     <input
                         type="text"
@@ -260,7 +190,7 @@ const SignUp = () => {
                 </div>
 
 
-                <div className="col-md-4">
+                <div className="col-md-6">
                     <label className="mt-2" htmlFor="birthday">Birthday</label>
                     <input type="date"
                         value={data.birthday}
@@ -271,46 +201,27 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-3">
+                <div className="col-md-6">
                     <label className="mt-2" htmlFor="gender">Gender</label>
                     <select
-                        className="form-control"
+                        className="form-select"
                         id="gender"
-                        placeholder="Choose..."
+
                         required
                         value={data.gender}
                         onChange={(e) => setData({ ...data, gender: e.target.value })}
                     >
-                        <option>Choose...</option>
+                        <option value="" disabled defaultValue hidden>Choose...</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
                 </div>
-
-
-
-                <div className="col-12">
-                    <div className="form-check mt-4">
-                        <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id="gridCheck"
-                            required
-                        />
-                        <label className="form-check-label" htmlFor="gridCheck">
-                            I agree to the Terms and Conditions
-                        </label>
-                    </div>
-                </div>
-                <div className="col-12 mt-4">
-                    <input type="submit" className="btn btn-dark" value="Create Account" />
-                </div>
             </form>
-
-
-        </main>
-
+            <div className="searchbuttonsection">
+                <input type="submit" className="btn btn-dark" value="Search" />
+            </div>
+        </div>
     );
 }
 
-export default SignUp;
+export default SearchToUpdate;

@@ -4,16 +4,16 @@ import { Link, Route } from 'react-router-dom';
 const StudentRegistrations = () => {
     return (
         <div>
-            <Sidebar/>
-            <h1 style={{marginLeft: "250px"}}>Registrations</h1>
+            <Sidebar />
+            <h1 className="stuRegHeader">Registrations</h1>
             <div className="reg_buttons">
-            <Link to="/signUp"><button >Register new Student</button></Link>
-            <Link to="/supportingStaffHome/recentRegistrations"><button >View Recent Registrations</button></Link>
-            <Link to="/supportingStaffHome"><button >Back to Dashboard</button></Link>
+                <Link className="linkbutton" to="/signUp"><button>Register new Student</button></Link>
+                <Link className="linkbutton" to="/supportingStaffHome/recentRegistrations"><button>View Recent Registrations</button></Link>
+                <Link className="linkbutton" to="/supportingStaffHome"><button>Back to Dashboard</button></Link>
+            </div>
         </div>
-        </div>
-        
-      );
+
+    );
 }
- 
+
 export default StudentRegistrations;

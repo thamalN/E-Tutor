@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import SignIn from './Authentication/SignIn';
 import SignUp from './Authentication/SignUp';
+
 import AdminHome from './Admin/AdminHome';
 import Home from './Home';
 import CreateAnnouncement from './Admin/CreateAnnouncement';
@@ -21,7 +22,8 @@ import UserAccounts from './Admin/UserAccounts';
 import Payments from './Admin/Payments';
 import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
 import StudentRegistrations from './SupportingStaff/StudentRegistrations';
-
+import StudentAccounts from './SupportingStaff/StudentAccounts';
+import SearchToUpdate from './SupportingStaff/SearchToUpdate';
 import AddContent from './Teacher/AddContent';
 import Announcements from './Admin/Announcements';
 import StudentHome from './Student/StudentHome';
@@ -30,6 +32,7 @@ import MyCourses from './Student/MyCourses';
 import HomeNew from './HomeNew';
 import Footer from './Footer.js';
 import MyCourseDetails from './Student/MyCourseDetails';
+
 
 function App() {
 
@@ -113,7 +116,15 @@ function App() {
             <Route exact path="/supportingStaffHome/registrations">
               <StudentRegistrations/>
             </Route>
+
+            <Route exact path="/supportingStaffHome/studentAccounts">
+              <StudentAccounts />
+            </Route>
             
+            <Route exact path="/supportingStaffHome/searchToUpdate">
+              <SearchToUpdate />
+            </Route>
+
             <Route exact path="/teacher/addContent">
               <AddContent />
             </Route>

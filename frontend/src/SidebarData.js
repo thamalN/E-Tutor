@@ -34,7 +34,7 @@ export default function SidebarData() {
         return [
         { title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/supportingStaffHome/registrations" },
-        { title: "Student Accounts", icon: <PeopleIcon />, link: "/accounts" },
+        { title: "Student Accounts", icon: <PeopleIcon />, link: "/supportingStaffHome/studentAccounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
         { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         { title: "Notifications", icon: <NotificationsIcon />, link: "/notifications" },

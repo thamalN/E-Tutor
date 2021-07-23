@@ -1,14 +1,12 @@
-import background1 from "./Resources/background1.jpg";
+
+import './Resources/card2.css';
 
 function Card2({ title, description, button }) {
     return (
-        <div className="card">
-            <img src={background1} className="card-img" alt="background" />
-            <div className="card-img-overlay">
-                <h2 className="card-title">{title}</h2>
-                <p className="card_description">{description}</p>
+        <div className="card2">
+                <h2 className="card2-title">{title}</h2>
+                <p className="card2_description">{description}</p>
                 <button className="btn btn-dark">{button}</button>
-            </div>
         </div>);
 }
 

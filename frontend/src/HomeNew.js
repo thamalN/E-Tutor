@@ -12,7 +12,10 @@ import bxBookReader from '@iconify-icons/bx/bx-book-reader';
 import certificate24Regular from '@iconify-icons/fluent/certificate-24-regular';
 import payment16Regular from '@iconify-icons/fluent/payment-16-regular';
 import puzzleEditOutline from '@iconify-icons/mdi/puzzle-edit-outline';
+<<<<<<< Updated upstream
 // import './sandbox.js';
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -104,7 +107,6 @@ const HomeNew = () => {
                 <h2>“An investment in knowledge <br /> pays the best interest...” </h2>
                 <h6>-Benjamin Franklin - </h6>
             </div>
-            <script src="./sandbox.js"></script>
         </main>
     );
 }
