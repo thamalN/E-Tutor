@@ -131,7 +131,7 @@ const SignUp = () => {
                     <input
                         type="password"
                         className="form-control"
-                        id="password"
+                        id="confirmpassword"
                         value={data.confirmPassword}
                         onChange={(e) => setData({ ...data, confirmPassword: e.target.value })}
                         required

@@ -20,6 +20,7 @@ const SignIn = (props) => {
 
         fetch(url, {
             method: 'POST',
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         })
@@ -27,6 +28,7 @@ const SignIn = (props) => {
                 if (!res.ok) {
                     throw Error('Could not fetch the data for that resource');
                 }
+                console.log(res)
                 return res.json();
             })
             .then(data => {

@@ -6,6 +6,10 @@ const db = require('./db_connection')
 const multer = require('multer')
 const http = require("http");
 const socket = require('socket.io')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const cookieParser = require('cookie-parser')
+
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -19,9 +23,14 @@ var storage = multer.diskStorage({
   
 var upload = multer({ storage: storage, preservePath: true })
 
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:3000"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 require('./APIs/SignIn')(app,db)
 require('./APIs/SignUp')(app,db)

@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt')
 module.exports = function (app, db) {
     
     app.post("/signUp", (req, res) => {
@@ -16,12 +17,14 @@ module.exports = function (app, db) {
         const grade = req.body.grade;
         const username = req.body.username;
         const password = req.body.password;
-    
-         const query = "INSERT INTO user (fname, lname, street_no, street, city, province, email, contact, birthday, gender, username, password, regDate, user_flag) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,now(),4);";
+
+        bcrypt.hash(password, 10).then((hash) => {
+
+            const query = "INSERT INTO user (fname, lname, street_no, street, city, province, email, contact, birthday, gender, username, password, regDate, user_flag) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,now(),4);";
          const query2 = " INSERT INTO student (student_id, grade, school, guardian_contact) VALUES (?,?,?,?);";
          
     
-        db.query(query, [firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, username, password], (err, result) =>{
+        db.query(query, [firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, username, hash], (err, result) =>{
             if (err) throw err;
             let user_id = result.insertId;
             console.log(user_id);
@@ -32,6 +35,9 @@ module.exports = function (app, db) {
                     
                 });
             });
+        })
+    
+         
             
     })
 };
