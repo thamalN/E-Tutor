@@ -39,7 +39,7 @@ require('./APIs/CreateAnnouncement')(app,db)
 require('./APIs/Course')(app,db, upload)
 require('./APIs/AllCourses')(app,db)
 require('./APIs/StudentCourses')(app,db)
-
+require('dotenv').config()
 const server = http.createServer(app)
 
 server.listen(3001, () => {
