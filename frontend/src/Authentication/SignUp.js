@@ -303,7 +303,7 @@ const SignUp = () => {
                     </div>
                 </div>
                 <div className="col-12 mt-4">
-                    <input type="submit" className="btn btn-dark" value="Create Account" />
+                    <input type="submit" className="w-100 btn btn-lg btn-dark" value="Create Account" />
                 </div>
             </form>
 

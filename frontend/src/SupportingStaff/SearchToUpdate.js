@@ -32,6 +32,8 @@ const SearchToUpdate = () => {
     return (
         <div>
             <Sidebar />
+            <div className="homeContent">
+
             <h1 className="stuRegHeader">Search To Update</h1>
             <form className="searchForm">
                 <div className="col-md-6">
@@ -220,6 +222,7 @@ const SearchToUpdate = () => {
             <div className="searchbuttonsection">
                 <input type="submit" className="btn btn-dark" value="Search" />
             </div>
+        </div>
         </div>
     );
 }
