@@ -25,10 +25,11 @@ const SignIn = (props) => {
             body: JSON.stringify(data)
         })
             .then(res => {
-                if (!res.ok) {
+                if (res.status === 404) {
                     throw Error('Could not fetch the data for that resource');
+                } else if(res.status === 422) {
+                    alert("wrong username or password")
                 }
-                console.log(res)
                 return res.json();
             })
             .then(data => {
@@ -43,16 +44,13 @@ const SignIn = (props) => {
                 else if (flag === 3) 
                     history.push("/Teacher/teacherHome")
                 else if (flag === 4) 
-                    history.push("/studentHome")     
-                else 
-                    alert("wrong username or password")
-                    
+                    history.push("/studentHome")
             })
 
     }
 
     return (
-            <main className="form-signin">
+            <main className="form-signin text-center">
                 <form onSubmit={handleSubmit} className="authForm">
                     <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" />
                     <h1 className="h3 mb-3 fw-normal">Please Sign In</h1>
@@ -80,7 +78,7 @@ const SignIn = (props) => {
                         <input type="checkbox" value="remember-me" className="checkbox mb-3" /> Remember me
                     </label>
 
-                    <button className="w-100 btn btn-lg btn-dark" type="submit">Sign In</button>
+                    <button className="w-100 btn btn-lg btn-dark" type="submit" >Sign In</button>
                 </form>
 
             </main>

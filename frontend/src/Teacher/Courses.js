@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Sidebar from "../Sidebar"
+import PhysicsIcon from '../Resources/physics_icon.jpg'
 
 const Courses = () => {
 
@@ -35,14 +36,19 @@ const Courses = () => {
                 <div className="courses">
                     {data.map(course => (
                         <Link to={`/teacher/courses/${course.course_id}`} className="course-card-container">
-                        <div key={course.course_id} className="course-card" >
-                            
+                            <div key={course.course_id} className="course-card" >
+
                                 <div className="card-container">
-                                    <h1>{course.course_name} {course.year}</h1>
-                                    <p>{course.description}</p>
+                                    <div className="card-info">
+                                        <h1>{course.course_name} {course.year}</h1>
+                                        <p>{course.description}</p>
+                                        <h3>{course.price}</h3>
+                                    </div>
+
+                                    <img className="course_icon" src={PhysicsIcon} alt="physics_icon" />
                                 </div>
 
-                        </div>
+                            </div>
                         </Link>
 
                     ))}

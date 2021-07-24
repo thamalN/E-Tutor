@@ -2,16 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
 * {
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
 
+body {
+  width: auto;
+}
+
 .navbar{
   z-index: 1;
   background-color: black;
   height: 10vh;
+  width: 100%;
 }
 
 @media (min-width: 1400px) {
@@ -229,11 +235,12 @@ html{height:100%}
 
 .Sidebar {
   position: fixed;
-  height: 100vh;
-  width: 18vw;
+  height: calc(100% - 10vh);
+  width: 20vw;
   background-color: #ffc156;
   display: inline-block;
-  vertical-align: top;
+  box-sizing: border-box;
+
 }
 
 .SidebarList {
@@ -281,7 +288,7 @@ html{height:100%}
 
 .wrapper {
   margin-top: 50px;
-  margin-left: 250px;
+  /* margin-left: 250px; */
   display: flex;
   align-items: stretch;
   gap: 2rem;
@@ -302,6 +309,7 @@ html{height:100%}
   position: relative;
   top: 10vh;
   background-color: #EAE7DC;
+  width: 100%;
 }
 
 /* .content::before {
@@ -326,13 +334,13 @@ html{height:100%}
 
 .homeContent {
   /* margin-left: 250px; */
-  height: 100vh;
-  width: 80vw;
+  width: calc(100% - 20vw);
   padding: 10px;
-  display: inline-block;
+  /* margin: auto; */
+  /* display: inline-block; */
   position: relative;
-  left: 18vw;
-  height: 100vh;
+  left: 20vw; 
+  height: 100%;
   /* color: #25274d; */
 }
 
@@ -358,14 +366,14 @@ display: inline;}
   border: 2px solid black;
   border-radius: 10px;
   display: inline-block;
-  margin: 10px;
+  margin: 30px;
   box-shadow: 0 10px 15px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   padding: 10px;
   transition: transform ease 0.5s;
-  background-image: url(./background1.jpg);
+  background-image: url(./course_background.jpg);
+  background-size: cover;
 }
-
 
 .course-card:hover {
 transform: scale(1.02);}
@@ -374,20 +382,48 @@ transform: scale(1.02);}
   text-decoration: none;
 }
 
-.course-card-container h1 {
+
+.card-container {
+  display: flex;
+}
+
+.card-container .card-info {
+  display: flex;
+  flex-direction: column;
+  flex: 60%;
+}
+
+.card-container h1 {
+  flex: 20%;
 color: #000000;
 font-weight: bold;
 }
 
-.course-card-container p {
-  color: #504d4d;
+.card-container p {
+  flex: 60%;
+  color: #696767;
   font-style: italic;
   }
+
+.card-container h3 {
+  color: #000000;
+}
+
+ .card-container img {
+   flex: 30%;
+   height: auto;
+   width: 30%;
+   margin: 5px;
+ } 
 
 
 
 .course-card:hover {
   cursor: pointer;
+}
+
+.course-card a:hover {
+  text-decoration: none;
 }
 
 .course-btn {
@@ -690,7 +726,7 @@ font-weight: bold;
   flex-direction: column;
   margin: 5px;
   position: relative;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   text-align: center;
   transition: all .2s ease-in-out;
   justify-content: space-between;
@@ -698,6 +734,8 @@ font-weight: bold;
   border: 2px solid black;
   border-radius: 10px;
   transition: transform ease 0.5s;
+  box-sizing: border-box;
+
 }
  
 .card h2 {
@@ -739,6 +777,7 @@ font-weight: bold;
   background: #000000;
   color: white;
 }
+
 .dropdown-btn {
   background-color: #4CAF50;
   color: white;
@@ -823,11 +862,35 @@ color: #000000;
   top: 0px;
 }
 
-.reg_buttons button {
+.stuRegHeader{
+  margin-Left: 25vw;
+  height: 10vh;
+  box-sizing: border-box;
+  padding-top: 10vh;
+  margin-bottom: 10vh;
+}
+
+.reg_buttons {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  color: #000000;
+  height: 65vh;
+  /* margin-Left: 25vw; */
+  margin: 15vh auto;
+}
+
+/* .reg_buttons  button {
   margin: auto;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+} */
+
+.linkbutton{
+  text-decoration: none;
 }
+
 .reg_buttons a button {
   transition: transform 0.5s ease
 
@@ -852,12 +915,15 @@ color: #000000;
   cursor: pointer;
   display: block;
   width: 50%;
-  color: gray;
+  color: rgb(0, 0, 0);
+}
+
+.reg_buttons a {
+  text-decoration: none;
 }
 
 .reg_buttons button:hover {
-  background: #000000;
-  color: white;
+  background: #ffc156;
   text-decoration: none;
 }
 

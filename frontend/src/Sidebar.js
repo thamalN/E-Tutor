@@ -6,12 +6,12 @@ function Sidebar() {
 
     return (
         <Route>
-            <div className="Sidebar ">
+            <div className="Sidebar">
                 <ul className="SidebarList">
                     {SidebarData().map((val, key) => {
                         return (
                             <div className="sidelistadjust">
-                                <li key={key} id={window.location.pathname.includes(val.link) ? "active" : ""} >
+                                <li key={key} id={window.location.pathname === val.link ? "active" : ""} >
 
                                     <Link className="row" to={val.link}>
 

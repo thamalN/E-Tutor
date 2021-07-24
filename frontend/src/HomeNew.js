@@ -16,6 +16,7 @@ import puzzleEditOutline from '@iconify-icons/mdi/puzzle-edit-outline';
 
 
 
+
 import './Resources/HomeNew.css'
 
 const HomeNew = () => {
@@ -104,7 +105,6 @@ const HomeNew = () => {
                 <h2>“An investment in knowledge <br /> pays the best interest...” </h2>
                 <h6>-Benjamin Franklin - </h6>
             </div>
-            <script src="./sandbox.js"></script>
         </main>
     );
 }
