@@ -12,9 +12,7 @@ function Sidebar() {
                         return (
                             <div className="sidelistadjust">
                                 <li key={key} id={window.location.pathname === val.link ? "active" : ""} >
-
                                     <Link className="row" to={val.link}>
-
                                         <div className="row">
                                             <div id="icon">{val.icon}</div>
                                             <div id="title">{val.title}</div>

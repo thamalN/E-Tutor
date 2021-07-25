@@ -24,6 +24,8 @@ import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
 import StudentRegistrations from './SupportingStaff/StudentRegistrations';
 import StudentAccounts from './SupportingStaff/StudentAccounts';
 import SearchToUpdate from './SupportingStaff/SearchToUpdate';
+import ManagePayments from './SupportingStaff/ManagePayments';
+import PendingReceipts from './SupportingStaff/PendingReceipts';
 import AddContent from './Teacher/AddContent';
 import Announcements from './Admin/Announcements';
 import StudentHome from './Student/StudentHome';
@@ -34,6 +36,7 @@ import Footer from './Footer.js';
 import MyCourseDetails from './Student/MyCourseDetails';
 import AddNewCourse from './Admin/AddNewCourse';
 import RecentRegistrations from './Admin/RecentRegistrations';
+
 
 
 function App() {
@@ -133,6 +136,14 @@ function App() {
             
             <Route exact path="/supportingStaffHome/searchToUpdate">
               <SearchToUpdate />
+            </Route>
+
+            <Route exact path="/supportingStaffHome/managePayments">
+              <ManagePayments />
+            </Route>
+
+            <Route exact path="/pendingReceipts">
+              <PendingReceipts />
             </Route>
 
             <Route exact path="/teacher/addContent">
