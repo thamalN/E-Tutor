@@ -1,7 +1,7 @@
 import Sidebar from "../Sidebar";
 import { useEffect, useState } from "react";
 
-const Notification = () => {
+const StudentNotification = () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
     console.log(user);
@@ -47,4 +47,4 @@ const Notification = () => {
     );
 }
 
-export default Notification;
+export default StudentNotification;

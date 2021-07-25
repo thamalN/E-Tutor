@@ -14,6 +14,7 @@ import React, { useState } from 'react';
 
 
 import './Resources/styles.css';
+import './Resources/payment.css';
 import Courses from './Teacher/Courses';
 import CourseDetails from './Teacher/CourseDetails';
 import AllCourses from './Admin/AllCourses';
@@ -30,7 +31,8 @@ import MyCourses from './Student/MyCourses';
 import HomeNew from './HomeNew';
 import Footer from './Footer.js';
 import MyCourseDetails from './Student/MyCourseDetails';
-import Notification from './Student/StudentNotification';
+import StudentNotification from './Student/StudentNotification';
+import StudentPayment from './Student/StudentPayment';
 
 function App() {
 
@@ -136,7 +138,15 @@ function App() {
             </Route>
 
             <Route exact path="/studentHome/notifications">
-              <Notification/>
+              <StudentNotification/>
+            </Route>
+
+            <Route exact path="/studentHome/payments">
+              <StudentPayment/>
+            </Route>
+
+            <Route exact path="/studentHome/payments/payslip">
+            {/* <ViewCourses /> */}
             </Route>
             
           </Switch>
