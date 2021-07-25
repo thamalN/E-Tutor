@@ -8,7 +8,7 @@ const MyCourses = () => {
     const user = JSON.parse(localStorage.getItem('user'))
     const id = { id: user.user_id }
 
-    const url = "http://localhost:3001/studentCourses"
+    const url = "http://localhost:3001/studentCourses" 
 
     useEffect(() => {
 
@@ -22,6 +22,7 @@ const MyCourses = () => {
             })
             .then(data => {
                 setData(data)
+                console.log(data)
             })
 
     }, [url])
