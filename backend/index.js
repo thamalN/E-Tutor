@@ -34,11 +34,12 @@ app.use(cors({
 
 require('./APIs/SignIn')(app,db)
 require('./APIs/SignUp')(app,db)
-require('./APIs/CreateTeacherAcc')(app,db)
+require('./APIs/Registrations')(app,db)
 require('./APIs/CreateAnnouncement')(app,db)
 require('./APIs/Course')(app,db, upload)
 require('./APIs/AllCourses')(app,db)
 require('./APIs/StudentCourses')(app,db)
+require('./APIs/Teachers')(app,db)
 require('dotenv').config()
 const server = http.createServer(app)
 

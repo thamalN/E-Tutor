@@ -19,7 +19,7 @@ const CreateTeacherAcc = () => {
         gender: "",
         nic: "",
         school: "",
-        reg_date: "",
+        joined_date: "",
         qualifications: "",
         username: "",
         password: "",
@@ -56,7 +56,7 @@ const CreateTeacherAcc = () => {
         .then(data => {
             setId(data);
             alert("Registration Successful!")
-            history.push("/signIn")
+            history.push("/adminHome/registrations")
         })
     }
 
@@ -242,13 +242,13 @@ const CreateTeacherAcc = () => {
     </div>
 
     <div className="col-12">
-        <label className="mt-2" htmlFor="reg_date">Registered Date</label>
+        <label className="mt-2" htmlFor="joined_date">Joined Date</label>
         <input
             type="date"
             className="form-control"
-            id="reg_date"
-            value={data.reg_date}
-            onChange={(e) => setData({ ...data, reg_date: e.target.value })}
+            id="joined_date"
+            value={data.joined_date}
+            onChange={(e) => setData({ ...data, joined_date: e.target.value })}
             required
         />
     </div>

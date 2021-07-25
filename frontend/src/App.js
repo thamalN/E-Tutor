@@ -32,6 +32,8 @@ import MyCourses from './Student/MyCourses';
 import HomeNew from './HomeNew';
 import Footer from './Footer.js';
 import MyCourseDetails from './Student/MyCourseDetails';
+import AddNewCourse from './Admin/AddNewCourse';
+import RecentRegistrations from './Admin/RecentRegistrations';
 
 
 function App() {
@@ -97,6 +99,10 @@ function App() {
               <AllCourses />
             </Route>
 
+            <Route exact path="/adminHome/addNewCourse">
+              <AddNewCourse />
+            </Route>
+
             <Route exact path="/adminHome/userAccounts">
               <UserAccounts />
             </Route>
@@ -107,6 +113,10 @@ function App() {
 
             <Route exact path="/adminHome/announcements">
               <Announcements/>
+            </Route>
+
+            <Route exact path="/adminHome/courses/recentRegistrations">
+              <RecentRegistrations/>
             </Route>
 
             <Route exact path="/SupportingStaffHome">

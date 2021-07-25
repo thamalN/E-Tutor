@@ -74,4 +74,23 @@ module.exports = function (app, db, upload) {
 
     })
 
+    app.post("/addNewCourse", (req, res) => {
+        console.log(req.body.teacher);
+        const course_name = req.body.course_name;
+        const user_id = req.body.user_id;
+        const teacher = parseInt(req.body.teacher);
+        const year = req.body.year;
+        const description = req.body.description;
+        const price = req.body.price;
+        console.log(teacher);
+        
+        const query = "INSERT INTO course (course_name, added_by, teacher_id, year, description, price) VALUES (?,?,?,?,?,?);";
+       
+           db.query(query, [course_name, user_id, teacher, year, description, price], (err, result) => {
+               if (err) throw err;
+               res.json(result)
+               console.log(result.insertId)
+           })
+       })
+
 };
