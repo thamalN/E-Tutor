@@ -25,7 +25,7 @@ module.exports = function (app, db) {
          const query2 = " INSERT INTO teacher (teacher_id, nic, school, qualifications, joined_date) VALUES (?,?,?,?,?);";
          let user_id;
     
-        db.query(query, [firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, username, password], (err, result) =>{
+        db.query(query, [firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, username, hash], (err, result) =>{
             if (err) throw err;
             let user_id = result.insertId;
             console.log(user_id);
@@ -61,7 +61,7 @@ module.exports = function (app, db) {
          const query = "INSERT INTO user (fname, lname, street_no, street, city, province, email, contact, birthday, gender, username, password, user_flag, regDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,2,now());";
          const query2 = " INSERT INTO staff (staff_id, nic, joined_date) VALUES (?,?,?);";
     
-        db.query(query, [firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, username, password], (err, result) =>{
+        db.query(query, [firstname, lastname, street_no, street, city, province, email, contact, birthday, gender, username, hash], (err, result) =>{
             if (err) throw err;
             let user_id = result.insertId;
             console.log(user_id);
