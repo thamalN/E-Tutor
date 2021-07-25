@@ -15,13 +15,13 @@ const StudentPayment = () => {
                         <div>
                        <Link to = "/studentHome/payments/payslip" >
                        <div className="payment-card">
-                                CARD ONE
+                                Opload your payslip
                         </div>
                        </Link>
                             
                         <Link to = "/">
                         <div className="payment-card">
-                                CARD TWO
+                                Pay Online
                             </div>
                         </Link>
                             

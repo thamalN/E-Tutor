@@ -33,6 +33,7 @@ import Footer from './Footer.js';
 import MyCourseDetails from './Student/MyCourseDetails';
 import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
+import StudentPayslip from './Student/StudentPayslip';
 
 function App() {
 
@@ -146,7 +147,7 @@ function App() {
             </Route>
 
             <Route exact path="/studentHome/payments/payslip">
-            {/* <ViewCourses /> */}
+            <StudentPayslip/>
             </Route>
             
           </Switch>

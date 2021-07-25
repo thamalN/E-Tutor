@@ -48,4 +48,47 @@
         background: rgb(255, 255, 255);
         transform: scale(1.02);
 }
+.payform {
+    text-align: center;
+    width: 70%;
+    padding: 15px;
+    /* padding-top: 100px; */
+    margin: 50px auto;
+    display: inline-block;
+    border: 2px solid black;
+    border-radius: 15px;
+    /* margin-top: 5%;
+    margin-bottom: 10%; */
+}
+
+.payform h2 {
+    margin-bottom: 40px;
+}
+
+.payform .button {
+    margin-right: 50px;
+    border-radius: 15px;
+}
+
+.payform .button:hover {
+    background: white;
+    border: 2px solid black;
+    transform: scale(1.03);
+    transition: 0.3s;
+}
+
+.payform .button1:hover {
+    transform: scale(1.03);
+    transition: 0.3s;
+}
+
+.payform .image {
+    display:block;
+    margin:auto;
+    margin-bottom: 30px;
+}
+
+
+
+
 
