@@ -863,11 +863,11 @@ color: #000000;
 }
 
 .stuRegHeader{
-  margin-Left: 25vw;
+  margin-left: 2vw;
   height: 10vh;
+  min-width: 100%;
   box-sizing: border-box;
-  padding-top: 10vh;
-  margin-bottom: 10vh;
+  margin-bottom: 2vh;
 }
 
 .reg_buttons {
@@ -877,7 +877,7 @@ color: #000000;
   color: #000000;
   height: 65vh;
   /* margin-Left: 25vw; */
-  margin: 15vh auto;
+  margin: 5vh auto;
 }
 
 /* .reg_buttons  button {
