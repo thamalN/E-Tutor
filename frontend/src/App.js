@@ -29,6 +29,7 @@ import ManagePayments from './SupportingStaff/ManagePayments';
 import PendingReceipts from './SupportingStaff/PendingReceipts';
 import AddContent from './Teacher/AddContent';
 import Announcements from './Admin/Announcements';
+import ViewPreviousAnnouncements from './Admin/ViewPreviousAnnouncements';
 import StudentHome from './Student/StudentHome';
 import ViewCourses from './Student/ViewCourses';
 import MyCourses from './Student/MyCourses';
@@ -124,6 +125,10 @@ function App() {
 
             <Route exact path="/adminHome/courses/recentRegistrations">
               <RecentRegistrations/>
+            </Route>
+
+            <Route exact path="/adminHome/announcements/viewPreviousAnnouncements">
+              <ViewPreviousAnnouncements/>
             </Route>
 
             <Route exact path="/SupportingStaffHome">
