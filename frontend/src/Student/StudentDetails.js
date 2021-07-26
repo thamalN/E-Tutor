@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useHistory } from "react-router";
 
 const StudentDetails = () => {
 
 
-    // const { id } = useParams()
+    const history = useHistory();
     const [data, setData] = useState({});
 
     const user = JSON.parse(localStorage.getItem('user'));
@@ -41,9 +42,8 @@ const StudentDetails = () => {
                 return res.json();
             })
             .then(data => {
-                // setId(data);
                 alert("Update Successful!")
-                // history.push("/signIn")
+                history.push("/studentHome")
             })
     }
 
