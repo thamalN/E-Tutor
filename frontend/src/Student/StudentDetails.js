@@ -5,8 +5,7 @@ const StudentDetails = () => {
 
 
     // const { id } = useParams()
-    const [data, setData] = useState({
-        fname:' ' , lname:'',username:'',street_no:'',street:'',city:'',province:'',contact:'',birthday:'',gender:'' });
+    const [data, setData] = useState({});
 
     const user = JSON.parse(localStorage.getItem('user'));
 
@@ -18,7 +17,7 @@ const StudentDetails = () => {
                 return res.json()
             })
             .then(res => {
-                setData({ ...data, fname:res.fname , lname: res.lname ,username:res.username,street_no:res.street_no,street:res.street,city:res.city,province:res.province,contact:res.contact,birthday:res.birthday,gender:res.gender  })
+                setData(res)
                 console.log(res)
             })
     }, [url])
