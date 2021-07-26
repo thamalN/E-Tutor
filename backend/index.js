@@ -41,6 +41,8 @@ require('./APIs/AllCourses')(app,db)
 require('./APIs/StudentCourses')(app,db)
 require('./APIs/Teachers')(app,db)
 require('dotenv').config()
+require('./APIs/StudentNotification')(app,db)
+
 const server = http.createServer(app)
 
 server.listen(3001, () => {

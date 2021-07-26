@@ -17,6 +17,7 @@ const AllCourses = () => {
             })
             .then(data => {
                 setData(data)
+                console.log(data)
             })
 
         }, [url])
