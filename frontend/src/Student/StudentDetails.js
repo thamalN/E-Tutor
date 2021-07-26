@@ -8,6 +8,7 @@ const StudentDetails = () => {
     const [data, setData] = useState({});
 
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
 
     const url = "http://localhost:3001/StudentHome/StudentDetails/" + user.user_id;
 
@@ -28,7 +29,7 @@ const StudentDetails = () => {
         e.preventDefault();
 
 
-        const url = "http://localhost:3001/signUp"
+        const url = "http://localhost:3001/studentHome/StudentDetailsUpdate/" + user.user_id;
 
         
         fetch(url, {
@@ -41,7 +42,7 @@ const StudentDetails = () => {
             })
             .then(data => {
                 // setId(data);
-                alert("Registration Successful!")
+                alert("Update Successful!")
                 // history.push("/signIn")
             })
     }
@@ -141,7 +142,7 @@ const StudentDetails = () => {
                 </div>
 
                 <div className="col-12">
-                    <label htmlFor="guardianContact" className="mt-2">Guardian's Contact</label> 
+                    <label htmlFor="guardianContact" className="mt-2">Guardian's Name</label> 
                     <input
                         type="text"
                         className="form-control"
