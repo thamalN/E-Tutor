@@ -5,11 +5,11 @@ const StudentNotification = () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
     console.log(user);
-    const dueDate = true ; 
+    const dueDate = true;
     // let monthNumber = new Date();
     // console.log(monthNumber.getMonth());
     const id = { id: user.user_id };
-    const url = "http://localhost:3001/StudentNotification" ;
+    const url = "http://localhost:3001/StudentNotification";
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -31,15 +31,20 @@ const StudentNotification = () => {
 
 
     return (
-        
+
         <div>
             <Sidebar></Sidebar>
             <div className="homeContent">
-                <div className="course-card">
+                {data.map((value, key) => (
+                    <div className="course-card" key={key} >
                     <p>Notification</p>
-                {dueDate&&<h2>Hellow {user.fname} , I am the notification</h2>}
+                    {dueDate && <h2>Hellow {user.fname} , I am the notification</h2>}
+                    <p> {value.course_id} </p>
+                    <p></p>
                 </div>
-                
+                ))}
+
+
             </div>
         </div>
 
