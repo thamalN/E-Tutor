@@ -10,7 +10,7 @@ const Navbar = (props) => {
     const location = useLocation()
 
     const user = JSON.parse(localStorage.getItem('user'))
-
+    //console.log(user);
     const history = useHistory()
 
 
@@ -88,15 +88,15 @@ const Navbar = (props) => {
 
                 <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                     <ul className="navbar-nav">
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" to="#">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <PersonIcon />{" " + user.fname + " " + user.lname}
                             </a>
-                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link className="dropdown-item" to="#">Action</Link>
-                                <Link className="dropdown-item" to="#">Another action</Link>
-                                <div className ="dropdown-divider"></div>
-                                <Link className="dropdown-item" to="#" onClick={logOut}>Log Out</Link>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <Link class="dropdown-item" to="#">Action</Link>
+                               { user.user_flag === 4 &&  <a class="dropdown-item" href= {`/StudentHome/StudentDetails/${user.user_id}`}>My Details</a> }
+                                <div class="dropdown-divider"></div>
+                                <Link class="dropdown-item" onClick={logOut}>Log Out</Link>
                             </div>
                         </li>
                     </ul>

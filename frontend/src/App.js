@@ -42,6 +42,7 @@ import RecentRegistrations from './Admin/RecentRegistrations';
 import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
+import StudentDetails from './Student/StudentDetails';
 
 function App() {
 
@@ -180,6 +181,10 @@ function App() {
 
             <Route exact path="/studentHome/payments/payslip">
             <StudentPayslip/>
+            </Route>
+            
+            <Route exact path="/studentHome/StudentDetails/:id">
+              <StudentDetails/>
             </Route>
             
           </Switch>
