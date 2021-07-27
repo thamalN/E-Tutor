@@ -21,7 +21,7 @@ module.exports = function (app, db, upload) {
     })
 
     app.get("/viewPreviousAnnouncements", (req, res) => {
-        const query = "SELECT * from announcement;";
+        const query = "SELECT announcement_id, topic, description, file_name, attachment, date_time, fname, lname  FROM announcement LEFT JOIN user on announcement.user_id=user.user_id  ;";
 
         db.query(query, (err, result) => {
             if (err) throw err;

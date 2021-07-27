@@ -27,16 +27,17 @@ const PreviousAnnouncements = () => {
             <h1>Previous Announcements</h1>
             <div className="courses">
                     {data.map(announcement => (
-                        <div key={announcement.announcement_id} className="course-card" >
-                            <div className="course-card-container">
-                                <div className="card-container">
-                                    <h1>{announcement.topic}</h1><br></br>
-                                    <p>{announcement.description}</p><br></br>
+                        <div key={announcement.announcement_id} className="display-card" >
+                            <div className="display-card-container">
+                                <div className="n-card-container">
+                                    <h1>{announcement.topic}</h1>
+                                    <h6> By {announcement.fname} {announcement.lname} {announcement.date_time}</h6>
+                                    <div><p>{announcement.description}</p></div>
                                     
                                     <a href={announcement.attachment} target="_blank" rel="noreferrer">
-                                    <ul>
-                                    {announcement.attachment && <li>{announcement.file_name}</li>}
-                                        </ul>
+                                    
+                                    {announcement.attachment && <div>{announcement.file_name}</div>}
+                                        
                                         </a>
                                 </div>
                             </div>
