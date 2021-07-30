@@ -15,6 +15,7 @@ import React, { useState } from 'react';
 
 
 import './Resources/styles.css';
+import './Resources/payment.css';
 import Courses from './Teacher/Courses';
 import CourseDetails from './Teacher/CourseDetails';
 import AllCourses from './Admin/AllCourses';
@@ -24,8 +25,11 @@ import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
 import StudentRegistrations from './SupportingStaff/StudentRegistrations';
 import StudentAccounts from './SupportingStaff/StudentAccounts';
 import SearchToUpdate from './SupportingStaff/SearchToUpdate';
+import ManagePayments from './SupportingStaff/ManagePayments';
+import PendingReceipts from './SupportingStaff/PendingReceipts';
 import AddContent from './Teacher/AddContent';
 import Announcements from './Admin/Announcements';
+import ViewPreviousAnnouncements from './Admin/ViewPreviousAnnouncements';
 import StudentHome from './Student/StudentHome';
 import ViewCourses from './Student/ViewCourses';
 import MyCourses from './Student/MyCourses';
@@ -35,7 +39,13 @@ import MyCourseDetails from './Student/MyCourseDetails';
 import AddQuiz from './Teacher/AddQuiz';
 import TeacherQuiz from './Teacher/TeacherQuiz';
 import TeacherQuizEdit from './Teacher/TeacherQuizEdit';
+import AddNewCourse from './Admin/AddNewCourse';
+import RecentRegistrations from './Admin/RecentRegistrations';
 
+
+import StudentNotification from './Student/StudentNotification';
+import StudentPayment from './Student/StudentPayment';
+import StudentPayslip from './Student/StudentPayslip';
 
 function App() {
 
@@ -100,6 +110,10 @@ function App() {
               <AllCourses />
             </Route>
 
+            <Route exact path="/adminHome/addNewCourse">
+              <AddNewCourse />
+            </Route>
+
             <Route exact path="/adminHome/userAccounts">
               <UserAccounts />
             </Route>
@@ -110,6 +124,14 @@ function App() {
 
             <Route exact path="/adminHome/announcements">
               <Announcements/>
+            </Route>
+
+            <Route exact path="/adminHome/courses/recentRegistrations">
+              <RecentRegistrations/>
+            </Route>
+
+            <Route exact path="/adminHome/announcements/viewPreviousAnnouncements">
+              <ViewPreviousAnnouncements/>
             </Route>
 
             <Route exact path="/SupportingStaffHome">
@@ -126,6 +148,14 @@ function App() {
             
             <Route exact path="/supportingStaffHome/searchToUpdate">
               <SearchToUpdate />
+            </Route>
+
+            <Route exact path="/supportingStaffHome/managePayments">
+              <ManagePayments />
+            </Route>
+
+            <Route exact path="/pendingReceipts">
+              <PendingReceipts />
             </Route>
 
             <Route exact path="/teacher/addContent">
@@ -158,6 +188,18 @@ function App() {
 
             <Route exact path="/studentHome/myCourses/:id">
               <MyCourseDetails />
+            </Route>
+
+            <Route exact path="/studentHome/notifications">
+              <StudentNotification/>
+            </Route>
+
+            <Route exact path="/studentHome/payments">
+              <StudentPayment/>
+            </Route>
+
+            <Route exact path="/studentHome/payments/payslip">
+            <StudentPayslip/>
             </Route>
             
           </Switch>

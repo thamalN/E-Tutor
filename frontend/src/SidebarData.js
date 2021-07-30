@@ -35,7 +35,7 @@ export default function SidebarData() {
         { title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/supportingStaffHome/registrations" },
         { title: "Student Accounts", icon: <PeopleIcon />, link: "/supportingStaffHome/studentAccounts" },
-        { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
+        { title: "Payments", icon: <PaymentIcon />, link: "/supportingStaffHome/managePayments" },
         { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         { title: "Notifications", icon: <NotificationsIcon />, link: "/notifications" },
         { title: "Reports", icon: <DescriptionIcon />, link: "/reports" }
@@ -58,7 +58,7 @@ export default function SidebarData() {
         { title: "My Courses", icon: <SchoolIcon />, link: "/studentHome/myCourses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
         { title: "Emails", icon: <EmailIcon />, link: "/emails" },
-        { title: "Notifications", icon: <NotificationsIcon />, link: "/notifications" },
+        { title: "Notifications", icon: <NotificationsIcon />, link: "/studentHome/notifications" },
         { title: "Events", icon: <DescriptionIcon />, link: "/reports" }
         ]
     }

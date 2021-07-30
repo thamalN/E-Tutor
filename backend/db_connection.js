@@ -4,7 +4,8 @@ const db = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "",
-    database: "etutor"
+    database: "etutor",
+    dateStrings: true
 })
 
 module.exports = db 
