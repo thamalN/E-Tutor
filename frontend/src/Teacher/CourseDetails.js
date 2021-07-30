@@ -2,30 +2,50 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Chatroom from "../Chatroom";
 import Sidebar from "../Sidebar";
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const CourseDetails = () => {
 
     const { id } = useParams()
-    const [data, setData] = useState([])
+    const [content, setContent] = useState([])
+    const [quiz, setQuiz] = useState([])
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const url = "http://localhost:3001/teacherCourses/" + id
+    const contentUrl = "http://localhost:3001/teacherCourses/content/" + id
 
     useEffect(() => {
-        fetch(url)
+        fetch(contentUrl)
             .then((res => {
                 return res.json()
             }))
             .then((data => {
-                setData(data)
+                setContent(data)
             }))
-    }, [url])
+    }, [contentUrl])
 
-    if (data) {
-        var unique = [...new Map(data.map(item => [item['lesson_id'], item])).values()];
+    if (content) {
+        var unique = [...new Map(content.map(item => [item['lesson_id'], item])).values()];
         localStorage.setItem('course', JSON.stringify(unique))
-        console.log(unique)
+    }
+
+    const quizUrl = "http://localhost:3001/teacherCourses/quiz/" + id
+
+    useEffect(() => {
+        fetch(quizUrl)
+            .then((res => {
+                return res.json()
+            }))
+            .then((data => {
+                setQuiz(data)
+            }))
+    }, [quizUrl])
+
+    if (quiz) {
+        localStorage.setItem('quiz', JSON.stringify(quiz))
+        console.log(quiz)
     }
 
 
@@ -33,32 +53,36 @@ const CourseDetails = () => {
         <div>
 
             <Sidebar />
-            {data[0] && (
+            {content[0] && (
                 <div className="homeContent">
                     <div className="course-details">
-                        <h1>{data[0].course_name} {data[0].year}</h1>
+                        <h1>{content[0].course_name} {content[0].year}</h1>
                         <h5>Conducted by: {user.fname} {user.lname}</h5>
-                        <p>{data[0].description}</p>
+                        <p>{content[0].description}</p>
                     </div>
                     <hr />
                     <div className="course-content">
-                        <h4>Course Content</h4>
-                        <Link to="/teacher/addContent">
-                            <button className="course-btn" style={{ float: "right" }}>
-                                Add Content
-                            </button>
-                        </Link>
-
+                        <div className="content-add">
+                            <h4>Course Content</h4>
+                            <Link to="/teacher/addContent">
+                                <button className="course-btn">
+                                    <AddCircleOutlineIcon /> Add Content
+                                </button>
+                            </Link>
+                        </div>
 
                         {unique.map((lesson, i) => (
-                            <div className="lesson">
-                                <h5 key={i}>{lesson.topic}</h5>
-                                {data.filter(content => (content.lesson_id === lesson.lesson_id)).map((filtered) => (
-                                    <a href={filtered.content} target="_blank" rel="noreferrer">
-                                        <ul>
-                                            {filtered.content && <li key={filtered.course_id}>{filtered.content_name}</li>}
-                                        </ul>
-                                    </a>
+                            <div className="lesson" key={i}>
+                                <h5>{lesson.topic}</h5>
+                                {content.filter(content => (content.lesson_id === lesson.lesson_id)).map((filtered, j) => (
+                                    filtered.content && <div className="content-name" key={j}>
+                                        <a href={filtered.content} target="_blank" rel="noreferrer">
+                                            <ul>
+                                                <li key={filtered.course_id}>{filtered.content_name}</li>
+                                            </ul>
+                                        </a>
+                                        <EditIcon style={{ color: "green" }} /><DeleteIcon style={{ color: "red" }} />
+                                    </div>
                                 ))}
 
                             </div>
@@ -68,12 +92,40 @@ const CourseDetails = () => {
 
                     <hr />
                     <div className="course-quiz">
-                        <h4>Quizzes</h4>
+                        <div className="content-add">
+                            <h4>Quizzes</h4>
+                            <Link to="/teacher/addQuiz">
+                                <button className="course-btn">
+                                    <AddCircleOutlineIcon /> Add Quiz
+                                </button>
+                            </Link>
+                        </div>
+
+                        <div className="quiz">
+                            {quiz.map((value, key) => (
+                                <div className="content-name" key={key}>
+                                    <Link to={`/teacher/courses/quiz/${value.quiz_id}`}>
+                                        <ul>
+                                            <li key={value.quiz_id}>{value.quiz_name}</li>
+                                        </ul>
+                                    </Link>
+                                    <EditIcon style={{ color: "green" }} /><DeleteIcon style={{ color: "red" }} />
+                                </div>
+                            ))}
+
+                        </div>
                     </div>
-                    
+
                     <hr />
                     <div className="course-discn">
-                        <h4>Discussion</h4>
+                        <div className="content-add">
+                            <h4>Discussions</h4>
+                            <Link to="/teacher/addContent">
+                                <button className="course-btn">
+                                    <AddCircleOutlineIcon /> Add Discussion
+                                </button>
+                            </Link>
+                        </div>
                     </div>
 
                     <hr />

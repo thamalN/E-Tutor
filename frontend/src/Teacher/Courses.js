@@ -34,8 +34,8 @@ const Courses = () => {
             <Sidebar />
             <div className="homeContent">
                 <div className="courses">
-                    {data.map(course => (
-                        <Link to={`/teacher/courses/${course.course_id}`} className="course-card-container">
+                    {data.map((course,i) => (
+                        <Link to={`/teacher/courses/${course.course_id}`} className="course-card-container" key={i}>
                             <div key={course.course_id} className="course-card" >
 
                                 <div className="card-container">
