@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+main{
+    background-color: #E5E5E5;
+}
+
+h6 {
+    display: inline-block;
+}
+
+div .features-list{
+    position: absolute;
+    bottom: -5%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%,-50%);
+    color: white;
+    text-shadow: 2px 2px 10px #212529;
+    
+}
+div .features-list ul {
+    padding-inline-start: 0px;
+    white-space: nowrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+div .features-list ul li {
+    width: 25%;
+    margin: 10px;
+    display: inline-block;
+    
+}
+
+div .features-list ul li h6 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+div .features-list ul li span{
+    filter: drop-shadow(2px 2px 10px #212529);
+    font-size: 80px;
+}
+
+.banner {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.banner .modern {
+    position: absolute;
+    top: 20%;
+    left: 55%;
+}
+
+.banner .modern h1 {
+    color: #212529;
+    font-size: 80px;
+    font-weight: 600;
+    top: 30%;
+    left: 60%;
+}
+
+.banner p {
+    font-size: 26px;
+}
+
+.banner .best-panel {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.banner .best-panel ul{
+    list-style-type: disc;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+    justify-content: center;
+    height: 220px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.banner .best-panel ul li {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+}
+
+.banner .best-panel ul li.li33{
+    width: 33%;
+}
+
+.banner .best-panel ul li.li67{
+    width: 67%;
+    
+}
+
+.banner .best-panel ul li h2{
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
+    display: inline-block;
+    margin: 0;
+    font-size: 60px;
+    font-weight: 600;
+    justify-content: center;
+    width: auto;
+    left: 25%;
+}
+
+.banner .best-panel ul li h2 span{
+    font-size: 50px;
+}
+
+.banner .best-panel ul li p{
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: inline-block;
+    justify-content: center;
+    width: auto;
+    margin-left: 10%;
+}
+
+.banner .best-panel h1 {
+    color: #212529;
+    font-size: 80px;
+    font-weight: 600;
+    top: 30%;
+    left: 60%;
+}
+
+.banner .best-panel p {
+    font-size: 26px;
+}
+
+.banner .topstars{
+    position: absolute;
+    top: 30%;
+    left: 60%;
+}
+
+.banner .topstars h2{
+    font-size: 60px;
+    font-weight: 600;
+    text-align: left;
+    color: white;
+}
+
+.banner .topstars p{
+    top: 30%;
+    color: white;
+}
+
+.table1{
+    margin-top: 30px ;
+    margin-bottom: 30px;
+}
+
+div .counters-list-numbers{
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 10px #212529;
+    
+}
+
+div .counters-list-numbers th {
+    font-size: 26px;
+    filter: drop-shadow(2px 2px 10px #212529);
+    font-weight: 500;
+    font-size: 80px;
+}
+
+div .counters-list-titles{
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 10px #212529;
+    
+}
+
+div .counters-list-titles td {
+    justify-content: center;
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.banner .extracurricular{
+    position: absolute;
+    top: 25%;
+    left: 60%;
+}
+
+.banner .extracurricular h2{
+    font-size: 60px;
+    font-weight: 600;
+    text-align: left;
+    color: white;
+    margin-bottom: 10%;
+}
+
+.banner .extracurricular p{
+    color: white;
+}
+
+.banner .top-courses {
+    height: 100%;
+    width: 100%;
+}
+
+.banner .top-courses{
+    list-style-type: disc;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    padding-inline-start: 0;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.banner .top-courses {
+    width: 100%;
+
+}
+
+.banner .top-courses h2{
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    font-size: 60px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.banner .top-courses p{
+    margin-bottom: 100px;
+    margin-left: 10rem;
+}
+
+.banner .courses-list{
+  text-align: center;
+  margin: 80px 0;
+  white-space: nowrap;
+}
+
+.courses-list li{
+  display: inline-block;
+  list-style-type: none;
+  width: 20%;
+  margin: 20px 1%;
+  position: relative;
+}
+
+.courses-list li img{
+    border-radius: 12px;
+}
+
+.courses-list li h4{
+    padding-top: 20px;
+    font-weight: 600;
+}
+
+.quote{
+    background-color: #212529;
+}
+
+.quote h2{
+    color: white;
+    font-size: 60px;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 8%;
+    margin-bottom: 3%;
+}
+
+.quote h6{
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    padding-bottom: 8%;
+    display: block;
+    margin: 0;
+}

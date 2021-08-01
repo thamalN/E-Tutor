@@ -1,0 +1,289 @@
+
+
+
+
+.dashboard{
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+
+}
+
+.staffContent {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* margin-left: 18vw; */
+    /* padding: 0px 2vw; */
+    /* width: 77%; */
+
+    /* color: #25274d; */
+}
+
+.title{
+    background-color: rgb(247, 247, 247);
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    box-sizing: border-box;
+}
+
+.title h2{
+    margin-left: 6vw;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.calendarsection{
+    display: flex;
+    flex-direction: column;
+    margin-left: 6vw;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+.calendarsection ul{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.calendarsection ul li h3{
+    margin-left: 1vw;
+    margin-bottom: 5vh;
+}
+
+.calendarsection li.calendar{
+    align-self: flex-end;
+    margin-right: 6vw;
+}
+
+.calendarsection ul li ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style-type: square;
+}
+
+.calendarsection ul li ul li{
+    margin-bottom: 5vh;
+}
+
+.linkbutton{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.staffWrapper {
+    margin: 10vh auto;
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: center;
+    box-sizing: border-box;
+
+  }
+
+.b1{
+    display: flex;
+    margin-top: 3vw;
+    height: 50px;
+    flex-direction: row;
+}
+
+.btn-dark{
+    width: 80%;
+}
+
+.c1{
+    font-size: x-large;
+    margin-top: 10px;
+    font-weight: 600;
+    margin-left: 25vw;
+}
+
+.b2{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(175, 175, 175);
+    width: 100%;
+    margin: auto;
+    box-sizing: border-box;
+    align-items: flex-start;
+
+}
+
+.b2 ul{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+    list-style: none;
+    margin-top: 10vh;
+    padding-inline-start: 0;
+}
+
+.b2 ul li.reg_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.b2 ul li .viewAll{
+    text-decoration: none;
+    color: black;
+}
+
+.b2 ul li h3{
+    margin-left: 6vw;
+}
+
+.b2 ul li h6{
+    margin-right: 3vw;
+}
+
+
+.b2 ul li table{
+    margin: 0 auto;
+}
+
+.b2 ul li.reg_table{
+    flex-grow: 1;
+    align-self: flex-start;
+    padding: 5vh 2vw;
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.table{
+    width: 100%;
+    font-size: large;
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+    background-color: #ffc156;
+    color: rgb(0, 0, 0);
+}
+
+div.b2 > ul > li.reg_table > table > tbody > tr:hover{
+    background-color: rgb(0, 0, 0);
+    border: 1px solid #ffc156;
+    color: #ffc156;
+}
+.b3{
+    width: 100%;
+    height: 300px;
+}
+/* 
+.col-md-6{
+    background-color: white;
+} */
+
+.row g-3{
+    background-color: black;
+}
+
+.a1{
+    left: 21vw;
+}
+
+.react-calendar{
+    margin-right: 0;
+}
+
+.searchForm{
+    background-color: lightgray;
+    padding: 5vw;
+    padding-bottom: 10vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.searchbuttonsection{
+    width: 100%;
+    
+}
+
+.searchResults{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 7vh;
+    margin-left: 6vw;
+    margin-right: 5vw;
+}
+
+.col1{
+    text-align: center;
+}
+
+.addFields{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-color: rgba(0, 0, 0, 0.5);
+    border-style: solid;
+    border-radius: 8px;
+    padding-left: 0;
+    margin-bottom: 5vh;
+    list-style: none;
+}
+
+ul.addFields li{
+    gap: 2rem;
+    margin: 1rem 2vw;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.addFields li button{
+    display: flex;
+    padding: 0.5rem 1rem;
+    flex: 1 0 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.addFields li button h6{
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.searchbar{
+    display: flex;
+    box-sizing: border-box;
+    margin-right: 2vw;
+}
+
+.searchbar:hover{
+    box-shadow: 2px 2px 10px;
+    border-radius: 32px;
+}
+
+.searchbar input{
+    border-top-left-radius: 32px;
+    border-bottom-left-radius: 32px;
+    border-style: none;
+}
+
+.searchbar button{
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
+    border-style: none;
+    width: 5vw;
+    background-color: white;
+}
+
+#exampleModal > div > div > div.modal-body.text-start.m-1 > img:hover{
+    cursor: zoom-in;
+}
