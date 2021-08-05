@@ -46,6 +46,7 @@ import RecentRegistrations from './Admin/RecentRegistrations';
 import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
+import FeedbackReply from './Admin/FeedbackReply';
 
 function App() {
 
@@ -132,6 +133,10 @@ function App() {
 
             <Route exact path="/adminHome/announcements/viewPreviousAnnouncements">
               <ViewPreviousAnnouncements/>
+            </Route>
+
+            <Route exact path="/adminHome/feedback/reply">
+              <FeedbackReply/>
             </Route>
 
             <Route exact path="/SupportingStaffHome">

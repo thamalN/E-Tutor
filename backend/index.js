@@ -9,6 +9,8 @@ const socket = require('socket.io')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
+const { getMaxListeners } = require('./db_connection')
+const StudentCourses = require('./APIs/StudentCourses')
 
 
 var storage = multer.diskStorage({
@@ -32,6 +34,8 @@ app.use(cors({
   credentials: true
 }));
 
+
+
 require('./APIs/SignIn')(app,db)
 require('./APIs/SignUp')(app,db)
 require('./APIs/Registrations')(app,db)
@@ -42,6 +46,7 @@ require('./APIs/StudentCourses')(app,db)
 require('./APIs/Teachers')(app,db)
 require('dotenv').config()
 require('./APIs/StudentNotification')(app,db)
+require('./APIs/Feedback')(app,db)
 
 const server = http.createServer(app)
 
@@ -77,3 +82,6 @@ io.on('connection', (socket) => {
   })
   
 })
+
+
+
