@@ -41,20 +41,20 @@ const UserAccounts = () => {
             document.getElementById("guardian").style.display = "block";
             document.getElementById("school").style.display = "block";
             document.getElementById("nic").style.display = "none";
-            
-        } else if(document.getElementById("user").value == 3){
+
+        } else if (document.getElementById("user").value == 3) {
             document.getElementById("dropdownMenuButton3").style.display = "none";
             document.getElementById("guardian").style.display = "none";
             document.getElementById("school").style.display = "block";
             document.getElementById("nic").style.display = "block";
         }
-        else if(document.getElementById("user").value == 2){
+        else if (document.getElementById("user").value == 2) {
             document.getElementById("dropdownMenuButton3").style.display = "none"
             document.getElementById("guardian").style.display = "none";
             document.getElementById("school").style.display = "none";
             document.getElementById("nic").style.display = "block";
         }
-        else{
+        else {
             document.getElementById("dropdownMenuButton3").style.display = "none";
             document.getElementById("guardian").style.display = "none";
             document.getElementById("school").style.display = "none";
@@ -67,23 +67,23 @@ const UserAccounts = () => {
     }
     return (
         <div>
-            <Sidebar/>
+            <Sidebar />
             <div className="homeContent">
-            <form className="searchForm">
+                <form className="searchForm">
                     <h1 className="stuRegHeader">Search User</h1>
-
-                    <div className="searchBar">
-                    <select
-                        id="user"
-                        placeholder="Choose..."
-                        onChange={(e) => setData({ ...data, user: e.target.value })}
-                        required
-                    >
-                        <option value="all">All</option>
-                        <option value="4">Students</option>
-                        <option value="3">Teachers</option>
-                        <option value="2">Staff</option>
-                    </select>
+                    <div className="searchRow mb-4">
+                        <select
+                            id="user"
+                            placeholder="Choose..."
+                            className="userColumn form-select text-center"
+                            onChange={(e) => setData({ ...data, user: e.target.value })}
+                            required
+                        >
+                            <option value="all">All Users</option>
+                            <option value="4">Students</option>
+                            <option value="3">Teachers</option>
+                            <option value="2">Staff</option>
+                        </select>
                         <input
                             type="text"
                             className="form-control"
@@ -94,192 +94,452 @@ const UserAccounts = () => {
                             <Icon icon={searchOutlined} />
                         </button>
                     </div>
-                    <div className="addFilters">
-                        
-                    
-                   
-                            <h8>Add filters:</h8>
+                    {/* <div className="searchBar">
+                        <select
+                            id="user"
+                            placeholder="Choose..."
+                            onChange={(e) => setData({ ...data, user: e.target.value })}
+                            required
+                        >
+                            <option value="all">All</option>
+                            <option value="4">Students</option>
+                            <option value="3">Teachers</option>
+                            <option value="2">Staff</option>
+                        </select>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="search"
+                            placeholder="Search"
+                        />
+                        <button>
+                            <Icon icon={searchOutlined} />
+                        </button>
+                    </div> */}
+
+                    <div className="filterRow my-4">
+                        <div>
+                            <h8>Filter by </h8>
                             <Icon icon={filterIcon} />
-                        
+                        </div>
+                        <button type="filter button dropdown-toggle" className="btn btn-outline-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <h6>Province</h6>
+                            <Icon icon={dropdownIcon} />
+                        </button>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        All
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Western
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Central
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Southern
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Uva
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Sabaragamuwa
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        North Western
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        North Central
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Nothern
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Eastern
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                        <button type="filter button dropdown-toggle" class="btn btn-outline-dark" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <h6>Gender</h6>
+                            <Icon icon={dropdownIcon} />
+                        </button>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                    <label className="form-check-label" for="flexRadioDefault1">
+                                        All
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                                    <label className="form-check-label" for="flexRadioDefault2">
+                                        Male
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
+                                    <label className="form-check-label" for="flexRadioDefault3">
+                                        Female
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                        <button type="button dropdown-toggle" class="btn btn-outline-dark" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                            <h6>Grade</h6>
+                            <Icon icon={dropdownIcon} />
+                        </button>
 
-                    
-                    <button type="button dropdown-toggle" className="btn-small" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <h6>Province</h6>
-                                <Icon icon={dropdownIcon} />
-                            </button>
-                            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            All
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            Western
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            Central
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            Southern
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            Uva
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            Sabaragamuwa
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            North Western
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            North Central
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            Nothern
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            Eastern
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <button type="button dropdown-toggle" class="btn-small" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                <h6>Gender</h6>
-                                <Icon icon={dropdownIcon} />
-                            </button>
-                            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                        <label className="form-check-label" for="flexRadioDefault1">
-                                            All
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                                        <label className="form-check-label" for="flexRadioDefault2">
-                                            Male
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
-                                        <label className="form-check-label" for="flexRadioDefault3">
-                                            Female
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <button type="button dropdown-toggle" class="btn-small" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
-                                <h6>Grade</h6>
-                                <Icon icon={dropdownIcon} />
-                            </button>
-
-                            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            All
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
-                                            2021 O/Level
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        All
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        2021 O/Level
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
                                         2022 O/Level
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
                                         2021 A/Level
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
                                         2022 A/Level
-                                        </label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                        <label className="form-check-label" for="flexCheckDefault">
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
                                         2023 A/Level
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
-                            
-                    
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    
+                    {/* <div className="addFilters">
+                        <h8>Add filters:</h8>
+                        <Icon icon={filterIcon} />
+                        <button type="button dropdown-toggle" className="btn-small" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <h6>Province</h6>
+                            <Icon icon={dropdownIcon} />
+                        </button>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        All
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Western
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Central
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Southern
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Uva
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Sabaragamuwa
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        North Western
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        North Central
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Nothern
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        Eastern
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <button type="button dropdown-toggle" class="btn-small" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <h6>Gender</h6>
+                            <Icon icon={dropdownIcon} />
+                        </button>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                                    <label className="form-check-label" for="flexRadioDefault1">
+                                        All
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
+                                    <label className="form-check-label" for="flexRadioDefault2">
+                                        Male
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
+                                    <label className="form-check-label" for="flexRadioDefault3">
+                                        Female
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <button type="button dropdown-toggle" class="btn-small" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                            <h6>Grade</h6>
+                            <Icon icon={dropdownIcon} />
+                        </button>
+
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        All
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        2021 O/Level
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        2022 O/Level
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        2021 A/Level
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        2022 A/Level
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div className="form-check">
+                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <label className="form-check-label" for="flexCheckDefault">
+                                        2023 A/Level
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+
+
+                    </div> */}
+
+                    <ul className="addFields my-4">
+                        <li>
+                            <h5>Add Fields to Search</h5>
+                        </li>
+                        <li>
+                            <button onClick={(e) => handleClick(e)} value="" type="button" class="btn btn-outline-dark">
+                                <h6>First Name</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>Last Name</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>Username</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                        </li>
+                        <li>
+
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>School</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>Grade</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>Guardian's Contact</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>Street No.</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+
+
+
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>Street Name</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>City</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>Email</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>Contact</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                            <button type="button" class="btn btn-outline-dark">
+                                <h6>Birthday</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                        </li>
+                    </ul>
+
                     <ul className="enhSearch">
 
                         <li>
@@ -303,8 +563,8 @@ const UserAccounts = () => {
                                 <h6>Email</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-                            
-                        
+
+
                             <button type="button" class="btn btn-small">
                                 <h6>Street No.</h6>
                                 <Icon icon={plusIcon} />
@@ -322,7 +582,7 @@ const UserAccounts = () => {
                             </button>
                         </li>
                         <li>
-                            
+
                             <button type="button" class="btn btn-small">
                                 <h6>Contact</h6>
                                 <Icon icon={plusIcon} />
@@ -344,16 +604,16 @@ const UserAccounts = () => {
                                 <h6>NIC</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-                            
+
                         </li>
                     </ul>
-                   
-                
+
+
                 </form>
+            </div>
         </div>
-        </div>
-        
-      );
+
+    );
 }
- 
+
 export default UserAccounts;
