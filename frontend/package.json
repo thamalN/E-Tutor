@@ -50,7 +50,9 @@
     "@iconify-icons/ant-design": "^1.1.0",
     "@iconify-icons/bx": "^1.1.1",
     "@iconify-icons/cil": "^1.1.0",
+    "@iconify-icons/codicon": "^1.1.18",
     "@iconify-icons/fluent": "^1.1.22",
+    "@iconify-icons/ls": "^1.1.0",
     "@iconify-icons/mdi": "^1.1.16",
     "@iconify/react": "^1.1.4"
   }

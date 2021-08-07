@@ -34,7 +34,7 @@ const AddContent = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:3001/teacherCourses/add"
+        const url = "http://localhost:3001/teacherCourses/addContent"
 
         const formData = new FormData(document.getElementById("content-form"))
         formData.append("lesson_id", data.lesson_id)

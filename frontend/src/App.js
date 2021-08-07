@@ -36,6 +36,9 @@ import MyCourses from './Student/MyCourses';
 import HomeNew from './HomeNew';
 import Footer from './Footer.js';
 import MyCourseDetails from './Student/MyCourseDetails';
+import AddQuiz from './Teacher/AddQuiz';
+import TeacherQuiz from './Teacher/TeacherQuiz';
+import TeacherQuizEdit from './Teacher/TeacherQuizEdit';
 import AddNewCourse from './Admin/AddNewCourse';
 import RecentRegistrations from './Admin/RecentRegistrations';
 
@@ -158,6 +161,18 @@ function App() {
 
             <Route exact path="/teacher/addContent">
               <AddContent />
+            </Route>
+
+            <Route exact path="/teacher/addQuiz">
+              <AddQuiz />
+            </Route>
+
+            <Route exact path="/teacher/courses/quiz/:id">
+              <TeacherQuiz />
+            </Route>
+            
+            <Route exact path="/teacher/courses/quiz/:id/edit">
+              <TeacherQuizEdit />
             </Route>
 
             <Route exact path="/studentHome">
