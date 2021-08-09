@@ -47,6 +47,7 @@ import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
 import FeedbackReply from './Admin/FeedbackReply';
+import Feedback from './Admin/Feedback';
 
 function App() {
 
@@ -127,7 +128,7 @@ function App() {
               <Announcements/>
             </Route>
 
-            <Route exact path="/adminHome/courses/recentRegistrations">
+            <Route exact path="/adminHome/registrations/recentRegistrations">
               <RecentRegistrations/>
             </Route>
 
@@ -135,7 +136,11 @@ function App() {
               <ViewPreviousAnnouncements/>
             </Route>
 
-            <Route exact path="/adminHome/feedback/reply">
+            <Route exact path="/adminHome/viewFeedback">
+              <Feedback/>
+            </Route>
+
+            <Route exact path="/adminHome/feedback/reply/:feedback_id">
               <FeedbackReply/>
             </Route>
 

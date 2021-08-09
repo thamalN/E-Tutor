@@ -1,6 +1,10 @@
 const nodemailer = require("nodemailer")
-module.exports = function (app, db, transporter) {
+module.exports = function (app, db) {
     app.post("/feedbackReply", (req, res) => {
+
+      const feedback_id = req.body.feedback_id;
+      const remarks = req.body.remarks;
+      const handled_by = req.body.handled_by;
        
 
            let transporter = nodemailer.createTransport({
@@ -25,20 +29,41 @@ module.exports = function (app, db, transporter) {
             text: req.body.message
            };
           
-           transporter.sendMail(mailOptions, function (err, data) {
+           
+
+           const query = "UPDATE feedback SET remarks=?, handled_by=?, handled=1 WHERE feedback_id= ?;";
+    
+              db.query(query, [remarks, handled_by, feedback_id], (err, result) => {
+                  if (err) throw err;
+                  else{
+                    transporter.sendMail(mailOptions, function (err, data) {
             
-            if (err) {
-                console.log(err);
-                res.json({
-                    status: "fail",
+                      if (err) {
+                          console.log(err);
+                          res.json({
+                              status: "fail",
+                            });
+                      } else {
+                        console.log("== Message Sent ==");
+                            res.json({
+                              status: "success",
+                            });
+                          
+                          
+                      }
+                     });
+                  }
+                  
                   });
-            } else {
-                console.log("== Message Sent ==");
-                res.json({
-                  status: "success",
-                });
-            }
-           });
      
     })
+
+    app.get("/viewFeedback", (req, res) => {
+      const query = "SELECT feedback_id, feedback.user_id, topic, description, date_time, fname, lname, email  FROM feedback LEFT JOIN user ON feedback.user_id=user.user_id  ;";
+
+      db.query(query, (err, result) => {
+          if (err) throw err;
+          res.json(result)
+      })
+  })
 };

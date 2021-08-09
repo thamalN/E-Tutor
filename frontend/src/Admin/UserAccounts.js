@@ -70,7 +70,7 @@ const UserAccounts = () => {
             <Sidebar />
             <div className="homeContent">
                 <form className="searchForm">
-                    <h1 className="stuRegHeader">Search User</h1>
+                    <h1 className="stuRegHeader">Search Users</h1>
                     <div className="searchRow mb-4">
                         <select
                             id="user"
@@ -119,10 +119,10 @@ const UserAccounts = () => {
 
                     <div className="filterRow my-4">
                         <div>
-                            <h8>Filter by </h8>
+                            <h8>Filter by: </h8>
                             <Icon icon={filterIcon} />
                         </div>
-                        <button type="filter button dropdown-toggle" className="btn btn-outline-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="filter button dropdown-toggle" className="btn btn-outline-dark" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             <h6>Province</h6>
                             <Icon icon={dropdownIcon} />
                         </button>
@@ -208,7 +208,7 @@ const UserAccounts = () => {
                                 </div>
                             </li>
                         </ul>
-                        <button type="filter button dropdown-toggle" class="btn btn-outline-dark" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="filter button dropdown-toggle" class="btn btn-outline-dark" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                             <h6>Gender</h6>
                             <Icon icon={dropdownIcon} />
                         </button>
@@ -238,7 +238,7 @@ const UserAccounts = () => {
                                 </div>
                             </li>
                         </ul>
-                        <button type="button dropdown-toggle" class="btn btn-outline-dark" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button dropdown-toggle" class="btn btn-outline-dark" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                             <h6>Grade</h6>
                             <Icon icon={dropdownIcon} />
                         </button>
@@ -294,192 +294,13 @@ const UserAccounts = () => {
                             </li>
                         </ul>
                     </div>
-                    {/* <div className="addFilters">
-                        <h8>Add filters:</h8>
-                        <Icon icon={filterIcon} />
-                        <button type="button dropdown-toggle" className="btn-small" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <h6>Province</h6>
-                            <Icon icon={dropdownIcon} />
-                        </button>
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        All
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        Western
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        Central
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        Southern
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        Uva
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        Sabaragamuwa
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        North Western
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        North Central
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        Nothern
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        Eastern
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <button type="button dropdown-toggle" class="btn-small" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <h6>Gender</h6>
-                            <Icon icon={dropdownIcon} />
-                        </button>
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-                                    <label className="form-check-label" for="flexRadioDefault1">
-                                        All
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                                    <label className="form-check-label" for="flexRadioDefault2">
-                                        Male
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
-                                    <label className="form-check-label" for="flexRadioDefault3">
-                                        Female
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-
-                        <button type="button dropdown-toggle" class="btn-small" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
-                            <h6>Grade</h6>
-                            <Icon icon={dropdownIcon} />
-                        </button>
-
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        All
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        2021 O/Level
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        2022 O/Level
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        2021 A/Level
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        2022 A/Level
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        2023 A/Level
-                                    </label>
-                                </div>
-                            </li>
-                        </ul>
-
-
-                    </div> */}
 
                     <ul className="addFields my-4">
                         <li>
-                            <h5>Add Fields to Search</h5>
+                            <h5>Enhance Search</h5>
                         </li>
                         <li>
-                            <button onClick={(e) => handleClick(e)} value="" type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, user: 1 })} value="" type="button" class="btn btn-outline-dark">
                                 <h6>First Name</h6>
                                 <Icon icon={plusIcon} />
                             </button>
@@ -492,29 +313,12 @@ const UserAccounts = () => {
                                 <Icon icon={plusIcon} />
                             </button>
                         </li>
-                        <li>
-
-                            <button type="button" class="btn btn-outline-dark">
-                                <h6>School</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-                            <button type="button" class="btn btn-outline-dark">
-                                <h6>Grade</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-                            <button type="button" class="btn btn-outline-dark">
-                                <h6>Guardian's Contact</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-                        </li>
+                        
                         <li>
                             <button type="button" class="btn btn-outline-dark">
                                 <h6>Street No.</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-
-
-
                             <button type="button" class="btn btn-outline-dark">
                                 <h6>Street Name</h6>
                                 <Icon icon={plusIcon} />
@@ -538,73 +342,20 @@ const UserAccounts = () => {
                                 <Icon icon={plusIcon} />
                             </button>
                         </li>
-                    </ul>
-
-                    <ul className="enhSearch">
-
-                        <li>
-                            <h5>Enhance Search</h5>
-                        </li>
-                        <li>
-                            <button onClick={(e) => handleClick(e)} value="" type="button" class="btn btn-small">
-                                <h6>First Name</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-                            <button type="button" class="btn btn-small">
-                                <h6>Last Name</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-                            <button type="button" class="btn btn-small">
-                                <h6>Username</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-
-                            <button type="button" class="btn btn-small">
-                                <h6>Email</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-
-
-                            <button type="button" class="btn btn-small">
-                                <h6>Street No.</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-
-
-
-                            <button type="button" class="btn btn-small">
-                                <h6>Street</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-                            <button type="button" class="btn btn-small">
-                                <h6>City</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-                        </li>
                         <li>
 
-                            <button type="button" class="btn btn-small">
-                                <h6>Contact</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-                            <button type="button" class="btn btn-small">
-                                <h6>Birthday</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-                            <button type="button" id="guardian" class="btn btn-small">
-                                <h6>Guardian</h6>
-                                <Icon icon={plusIcon} />
-                            </button>
-                            <button type="button" id="school" class="btn btn-small">
+                            <button type="button" id="school" class="btn btn-outline-dark">
                                 <h6>School</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-
-                            <button type="button" id="nic" class="btn btn-small">
+                            <button type="button" id="guardian" class="btn btn-outline-dark">
+                                <h6>Guardian's Contact</h6>
+                                <Icon icon={plusIcon} />
+                            </button>
+                            <button type="button" id="nic" class="btn btn-outline-dark">
                                 <h6>NIC</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-
                         </li>
                     </ul>
 

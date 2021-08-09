@@ -1362,7 +1362,7 @@ ul.addFields li{
   color: #000000;
   border-radius: 0.2rem;
   cursor: pointer;
-  width:120px;
+  width:20%;
   height: 1.8rem;
 }
 
@@ -1370,4 +1370,3 @@ ul.addFields li{
   background: #000000;
   color: white;
 }
-

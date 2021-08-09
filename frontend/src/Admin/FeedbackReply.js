@@ -4,13 +4,16 @@ const FeedbackReply = () => {
     const history = useHistory()
 
     const user = JSON.parse(localStorage.getItem('user'));
+    const feed = JSON.parse(localStorage.getItem('feedback'));
 
     const [data, setData] = useState({
         name: "",
         subject: "",
-        email: "",
+        remarks:"",
+        email: feed.email,
         message: "",
-        user_id: user.user_id
+        handled_by: user.user_id,
+        feedback_id: feed.feedback_id
         }
     );
 
@@ -18,6 +21,7 @@ const FeedbackReply = () => {
         e.preventDefault();
 
         const url = "http://localhost:3001/feedbackReply"
+        console.log(data)
 
         fetch(url, {
             method: 'POST',
@@ -44,7 +48,7 @@ const FeedbackReply = () => {
         <h1 className="h3 mb-3 fw-normal">Reply to feedback</h1>
     <form onSubmit = { handleSubmit } className="row g-3"  encType="multipart/form-data" id="content-form">
             
-            <div className="col-12">
+            <div className="col-md-6">
                     <label htmlFor="name" className="mt-2">Name</label>
                     <input
                         type="text"
@@ -57,7 +61,7 @@ const FeedbackReply = () => {
                     />
                 </div>
 
-                <div className="col-12">
+                <div className="col-md-6">
                     <label htmlFor="subject" className="mt-2">Subject</label>
                     <input
                         type="text"
@@ -67,6 +71,18 @@ const FeedbackReply = () => {
                         value={data.subject}
                         onChange={(e) => setData({ ...data, subject: e.target.value })}
                         required
+                    />
+                </div>
+
+                <div className="col-12">
+                    <label htmlFor="remarks" className="mt-2">Remarks(for admin use)</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="remarks"
+                        name="remarks"
+                        value={data.remarks}
+                        onChange={(e) => setData({ ...data, remarks: e.target.value })}
                     />
                 </div>
 
@@ -91,6 +107,7 @@ const FeedbackReply = () => {
                         name="message"
                         value={data.message}
                         onChange={(e) => setData({ ...data, message: e.target.value })}
+                        required
                     />
                 </div>
 
