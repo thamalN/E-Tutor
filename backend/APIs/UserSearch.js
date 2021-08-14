@@ -1,7 +1,7 @@
 module.exports = function (app, db) {
     app.post("/searchUser", (req, res) => {
     var searchstring = req.body.searchstring;
-    const flag_user = req.body.user_type;
+    const flag_user = req.body.user;
 
     var arr = searchstring.split(/\s+/);
         

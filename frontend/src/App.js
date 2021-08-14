@@ -25,8 +25,8 @@ import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
 import StudentRegistrations from './SupportingStaff/StudentRegistrations';
 import StudentAccounts from './SupportingStaff/StudentAccounts';
 import SearchToUpdate from './SupportingStaff/SearchToUpdate';
-import ManagePayments from './SupportingStaff/ManagePayments';
-import PendingReceipts from './SupportingStaff/PendingReceipts';
+import ManagePayments from './ManagePayments';
+import PendingReceipts from './PendingReceipts';
 import AddContent from './Teacher/AddContent';
 import Announcements from './Admin/Announcements';
 import ViewPreviousAnnouncements from './Admin/ViewPreviousAnnouncements';
@@ -41,6 +41,7 @@ import TeacherQuiz from './Teacher/TeacherQuiz';
 import TeacherQuizEdit from './Teacher/TeacherQuizEdit';
 import AddNewCourse from './Admin/AddNewCourse';
 import RecentRegistrations from './Admin/RecentRegistrations';
+import VerifiedPayments from './VerifiedPayments'
 
 
 import StudentNotification from './Student/StudentNotification';
@@ -48,6 +49,7 @@ import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
 import FeedbackReply from './Admin/FeedbackReply';
 import Feedback from './Admin/Feedback';
+import RejectedPayments from './RejectedPayments';
 
 function App() {
 
@@ -160,12 +162,20 @@ function App() {
               <SearchToUpdate />
             </Route>
 
-            <Route exact path="/supportingStaffHome/managePayments">
+            <Route exact path="/managePayments">
               <ManagePayments />
             </Route>
 
             <Route exact path="/pendingReceipts">
               <PendingReceipts />
+            </Route>
+
+            <Route exact path="/verifiedPayments">
+              <VerifiedPayments />
+            </Route>
+
+            <Route exact path="/rejectedPayments">
+              <RejectedPayments />
             </Route>
 
             <Route exact path="/teacher/addContent">

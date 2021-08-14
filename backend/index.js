@@ -47,6 +47,7 @@ require('./APIs/Teachers')(app,db)
 require('dotenv').config()
 require('./APIs/StudentNotification')(app,db)
 require('./APIs/Feedback')(app,db)
+require('./APIs/Payments')(app,db)
 
 const server = http.createServer(app)
 
