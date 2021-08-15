@@ -14,10 +14,6 @@ const UserAccounts = () => {
 
     const [id, setId] = useState(null);
 
-    const [checkedState, setCheckedState] = useState(
-        new Array(10).fill(false)
-      );
-
     const [data, setData] = useState(
         {
             fname: false,
@@ -25,21 +21,21 @@ const UserAccounts = () => {
             street_no: false,
             street: false,
             city: false,
-            province: "",
+            province: [],
             email: false,
             contact: false,
             birthday: false,
             gender: "",
             username: false,
             school: false,
-            grade: "",
+            grade: [],
             guardian_contact: false,
             nic: false,
             user: 1,
             search_string:""
         }
     );
-
+    var ch = document.querySelectorAll('input[type=checkbox][name=prov]')
     useEffect(() => {
         if (document.getElementById("user").value == 4) {
             document.getElementById("dropdownMenuButton3").style.display = "block";
@@ -67,17 +63,30 @@ const UserAccounts = () => {
         }
     })
 
-    // const handleOnChange = (position) => {
-    //     const updatedCheckedState = checkedState.map((item, index) =>
-    //       index === position ? !item : item
-    //     );
-
-    //     setCheckedState(updatedCheckedState);
-    // var x=document.getElementById("province").querySelector("input");
-    // console.log(x);
+    var province_array = []
+    var grade_array = []
+        
     console.log(data.gender);
+
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        var checkboxes1 = document.querySelectorAll('input[type=checkbox][name=prov]:checked')
+        var checkboxes2 = document.querySelectorAll('input[type=checkbox][name=grd]:checked')
+        for (var i = 0; i < checkboxes1.length; i++) {
+            province_array.push(checkboxes1[i].value)
+        }
+
+       
+        for (var i = 0; i < checkboxes2.length; i++) {
+            grade_array.push(checkboxes2[i].value)
+        }
+        var variable = {...data}
+        variable.province = [...province_array]
+        variable.grade = [...grade_array]
+        setData(variable)
+        console.log(data.province);
+        console.log(data.grade);
 
 
         const url = "http://localhost:3001/searchUser"
@@ -85,7 +94,7 @@ const UserAccounts = () => {
         fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
+            body: JSON.stringify(variable)
         })
             .then(res => {
                 return res.json();
@@ -159,15 +168,7 @@ const UserAccounts = () => {
                         <ul className="dropdown-menu" id="province" aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="all" id="flexCheckDefault"/>
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        All
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="western" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="Western" name="prov" id="western" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         Western
                                     </label>
@@ -175,7 +176,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="central" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="Central" name="prov" id="central" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         Central
                                     </label>
@@ -183,7 +184,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="southern" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="Southern" name="prov" id="southern" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         Southern
                                     </label>
@@ -191,7 +192,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="uva" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="Uva" name="prov" id="uva" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         Uva
                                     </label>
@@ -199,7 +200,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="sabaragamuwa" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="Sabaragamuwa" name="prov" id="sabaragamuwa" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         Sabaragamuwa
                                     </label>
@@ -207,7 +208,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="northwestern" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="North Western" name="prov" id="northwestern" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         North Western
                                     </label>
@@ -215,7 +216,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="northcentral" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="North Central" name="prov" id="northcentral" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         North Central
                                     </label>
@@ -223,7 +224,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="nothern" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="Nothern" name="prov" id="nothern" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         Nothern
                                     </label>
@@ -231,7 +232,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="eastern" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="Eastern" name="prov" id="eastern" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         Eastern
                                     </label>
@@ -276,15 +277,7 @@ const UserAccounts = () => {
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton3">
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                    <label className="form-check-label" for="flexCheckDefault">
-                                        All
-                                    </label>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="2021 O/Level" name="grd" id="flexCheckDefault" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         2021 O/Level
                                     </label>
@@ -292,7 +285,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="2022 O/Level" name="grd" id="flexCheckDefault" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         2022 O/Level
                                     </label>
@@ -300,7 +293,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="2021 A/Level" name="grd" id="flexCheckDefault" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         2021 A/Level
                                     </label>
@@ -308,7 +301,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="2022 A/Level" name="grd" id="flexCheckDefault" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         2022 A/Level
                                     </label>
@@ -316,7 +309,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                                    <input className="form-check-input" type="checkbox" value="2023 A/Level" name="grd" id="flexCheckDefault" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         2023 A/Level
                                     </label>
