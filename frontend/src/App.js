@@ -50,6 +50,8 @@ import StudentPayslip from './Student/StudentPayslip';
 import FeedbackReply from './Admin/FeedbackReply';
 import Feedback from './Admin/Feedback';
 import RejectedPayments from './RejectedPayments';
+import AddDiscussion from './Teacher/AddDiscussion';
+import Discussion from './Teacher/Discussion';
 
 function App() {
 
@@ -85,10 +87,6 @@ function App() {
               <CreateSupStaffAcc />
             </Route>
 
-            <Route exact path="/teacher/teacherHome">
-              <TeacherHome setLoggedIn = { setLoggedIn }/>
-            </Route>
-
             <Route exact path="/adminHome/createAnnouncement">
               <CreateAnnouncement />
             </Route>
@@ -97,15 +95,6 @@ function App() {
               <Registrations />
             </Route>
             
-
-            <Route exact path="/teacher/courses">
-              <Courses />
-            </Route>
-
-            <Route exact path="/teacher/courses/:id">
-              <CourseDetails />
-            </Route>
-
             <Route exact path="/adminHome/courses">
               <AdCourses />
             </Route>
@@ -176,6 +165,18 @@ function App() {
 
             <Route exact path="/rejectedPayments">
               <RejectedPayments />
+              </Route>
+              
+            <Route exact path="/teacher/teacherHome">
+              <TeacherHome setLoggedIn = { setLoggedIn }/>
+            </Route>
+
+            <Route exact path="/teacher/courses">
+              <Courses />
+            </Route>
+
+            <Route exact path="/teacher/courses/:id">
+              <CourseDetails />
             </Route>
 
             <Route exact path="/teacher/addContent">
@@ -192,6 +193,14 @@ function App() {
             
             <Route exact path="/teacher/courses/quiz/:id/edit">
               <TeacherQuizEdit />
+            </Route>
+
+            <Route exact path="/teacher/addDiscussion">
+              <AddDiscussion />
+            </Route>
+
+            <Route exact path="/teacher/courses/discussion/:id">
+              <Discussion />
             </Route>
 
             <Route exact path="/studentHome">
