@@ -83,9 +83,20 @@ module.exports = function (app, db, upload) {
                     }
 
                     res.json(values)
-                    
+
                 })
             })
+        })
+    })
+
+    app.get("/teacherCourses/discussion/:id", (req, res) => {
+        const courseId = req.params.id;
+        const query = "SELECT discussion.discussion_id, discussion.course_id, discussion.topic, discussion.post, discussion.date_time AS post_datetime, user.fname AS post_fname, user.lname AS post_lname, user.user_id AS post_user_id, reply.reply_id, reply.user_id AS reply_user_id, reply.reply, reply.date_time AS reply_date_time, reply.parent_reply FROM discussion INNER JOIN user ON discussion.user_id = user.user_id LEFT JOIN reply ON reply.discussion_id = discussion.discussion_id WHERE course_id = ?;";
+
+        db.query(query, courseId, (err, result) => {
+            if (err) throw err;
+
+            res.json(result)
         })
     })
 
@@ -174,17 +185,12 @@ module.exports = function (app, db, upload) {
                     let answers = []
 
                     var k = 0
-
-                    //true == 1 mysql?
-
                     for (var i = 0; i < quiz.questions.length; i++) {
                         for (var j = 0; j < quiz.questions[i].answers.length; j++) {
                             answers[k] = [result[i].question_id, quiz.questions[i].answers[j].answer, quiz.questions[i].answers[j].correct]
                             k++
                         }
                     }
-
-                    console.log(answers)
 
                     const query4 = "INSERT INTO answer (question_id, answer, correct) VALUES ?;";
 
@@ -199,6 +205,98 @@ module.exports = function (app, db, upload) {
 
 
     })
+
+    app.post("/teacherCourses/editQuiz", (req, res) => {
+        const quiz_id = req.body.quiz_id
+        const quiz_name = req.body.quiz_name
+        const questions = req.body.questions
+
+        const query1 = "UPDATE quiz SET quiz_name = ? WHERE quiz_id = ?;";
+
+        db.query(query1, [quiz_name, quiz_id], (err, result) => {
+            if (err) throw err;
+
+            var queries = '';
+            for (var i = 0; i < questions.length; i++) {
+                if (questions[i].question_id === undefined)
+                    queries += "INSERT INTO question (quiz_id, question) VALUES (" + quiz_id + ", \"" + questions[i].question + "\");"
+                else if (questions[i].deleted !== undefined)
+                    queries += "DELETE FROM question WHERE question_id = " + questions[i].question_id + " AND quiz_id = " + quiz_id + ";"
+                else
+                    queries += "UPDATE question SET question = \"" + questions[i].question + "\" WHERE question_id = " + questions[i].question_id + " AND quiz_id = " + quiz_id + ";"
+            }
+
+            console.log(queries)
+
+            db.query(queries, (err, result) => {
+                if (err) throw err;
+                
+                if (result.length > 0) {
+                    var insertedQuestion = result.filter((item) => item.insertId !== 0)
+                }
+                var k = 0;
+                queries = '';
+                for (i = 0; i < questions.length; i++) {
+                    for (var j = 0; j < questions[i].answers.length; j++) {
+                        if (questions[i].answers[j].answer_id === undefined) {
+                            if (questions[i].question_id === undefined) {
+                                queries += "INSERT INTO answer (question_id, answer, correct) VALUES (" + insertedQuestion[k].insertId + ", \"" + questions[i].answers[j].answer + "\", " + questions[i].answers[j].correct + ");"
+                            } else
+                                queries += "INSERT INTO answer (question_id, answer, correct) VALUES (" + questions[i].question_id + ", \"" + questions[i].answers[j].answer + "\", " + questions[i].answers[j].correct + ");"
+                        } else if (questions[i].answers[j].deleted !== undefined)
+                            queries += "DELETE FROM answer WHERE answer_id = " + questions[i].answers[j].answer_id + " AND question_id = " + questions[i].question_id + ";"
+                        else
+                            queries += "UPDATE answer SET answer = \"" + questions[i].answers[j].answer + "\", correct = " + questions[i].answers[j].correct + " WHERE answer_id = " + questions[i].answers[j].answer_id + " AND question_id = " + questions[i].question_id + ";"
+                    }
+                    if(questions[i].question_id === undefined)
+                        k++
+                }
+
+                console.log(queries)
+
+                db.query(queries, (err, result) => {
+                    if (err) throw err;
+                })
+            })
+        })
+
+        res.send("ok")
+    })
+
+    app.post("/teacherCourses/addDiscussion", (req, res) => {
+        console.log(req.body)
+        const course_id = req.body.course_id
+        const user_id = req.body.user_id
+        const topic = req.body.topic
+        const post = req.body.post
+        const date_time = req.body.date_time
+        const query = "INSERT INTO discussion (course_id, user_id, topic, post, date_time) VALUES (?,?,?,?,?);";
+
+        db.query(query, [course_id, user_id, topic, post, date_time], (err, result) => {
+            if (err) throw err;
+            console.log(result)
+        })
+        res.send("ok")
+    })
+
+    app.post("/teacherCourses/addReply", (req, res) => {
+        console.log(req.body)
+
+        const discussion_id = req.body.discussion_id
+        const user_id = req.body.replied_by
+        const reply = req.body.reply
+        const date_time = req.body.reply_datetime
+        const parent_reply = req.body.parent_reply
+        const query = "INSERT INTO reply (discussion_id, user_id, reply, date_time, parent_reply) VALUES (?,?,?,?,?);";
+
+        db.query(query, [discussion_id, user_id, reply, date_time, parent_reply], (err, result) => {
+            if (err) throw err;
+            console.log(result)
+        })
+
+        res.send("ok")
+    })
+
     app.post("/addNewCourse", (req, res) => {
         console.log(req.body.teacher);
         const course_name = req.body.course_name;
@@ -208,14 +306,14 @@ module.exports = function (app, db, upload) {
         const description = req.body.description;
         const price = req.body.price;
         console.log(teacher);
-        
+
         const query = "INSERT INTO course (course_name, added_by, teacher_id, year, description, price) VALUES (?,?,?,?,?,?);";
-       
-           db.query(query, [course_name, user_id, teacher, year, description, price], (err, result) => {
-               if (err) throw err;
-               res.json(result)
-               console.log(result.insertId)
-           })
-       })
+
+        db.query(query, [course_name, user_id, teacher, year, description, price], (err, result) => {
+            if (err) throw err;
+            res.json(result)
+            console.log(result.insertId)
+        })
+    })
 
 };
