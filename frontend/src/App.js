@@ -33,6 +33,7 @@ import ViewPreviousAnnouncements from './Admin/ViewPreviousAnnouncements';
 import StudentHome from './Student/StudentHome';
 import ViewCourses from './Student/ViewCourses';
 import MyCourses from './Student/MyCourses';
+import StudentAddAssigment from './Student/StudentAddAssigment';
 import HomeNew from './HomeNew';
 import Footer from './Footer.js';
 import MyCourseDetails from './Student/MyCourseDetails';
@@ -52,6 +53,7 @@ import Feedback from './Admin/Feedback';
 import RejectedPayments from './RejectedPayments';
 import AddDiscussion from './Teacher/AddDiscussion';
 import Discussion from './Teacher/Discussion';
+import StudentAddContent from './Student/StudentAddAssigment';
 
 function App() {
 
@@ -229,6 +231,14 @@ function App() {
 
             <Route exact path="/studentHome/payments/payslip">
             <StudentPayslip/>
+            </Route>
+
+            <Route exact path="/studentHome/StudentAddAssigment">
+            <StudentAddAssigment/>
+            </Route>
+
+            <Route exact path="/studentHome/StudentAddAssigment">
+            <StudentAddAssigment/>
             </Route>
             
           </Switch>
