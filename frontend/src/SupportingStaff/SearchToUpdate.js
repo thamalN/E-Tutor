@@ -6,7 +6,8 @@ import './staffhome.css';
 import { Icon, InlineIcon } from '@iconify/react';
 //import plusIcon from '@iconify-icons/akar-icons/plus';
 import searchOutlined from '@iconify-icons/ant-design/search-outlined';
-import dropdownIcon from '@iconify-icons/ls/dropdown';
+// import dropdownIcon from '@iconify-icons/ls/dropdown';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
 
 const SearchToUpdate = () => {
@@ -97,7 +98,7 @@ const SearchToUpdate = () => {
                         <li>
                             <button type="button dropdown-toggle" class="btn btn-outline-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <h6>Province</h6>
-                                <Icon icon={dropdownIcon} />
+                                <ArrowDropDownIcon />
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li>
@@ -197,7 +198,7 @@ const SearchToUpdate = () => {
                             </button>
                             <button type="button dropdown-toggle" class="btn btn-outline-dark" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                 <h6>Gender</h6>
-                                <Icon icon={dropdownIcon} />
+                                <ArrowDropDownIcon />
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                 <li>

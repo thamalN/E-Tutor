@@ -5,14 +5,17 @@ import { useHistory } from "react-router";
 import { Icon, InlineIcon } from '@iconify/react';
 import plusIcon from '@iconify-icons/akar-icons/plus';
 import searchOutlined from '@iconify-icons/ant-design/search-outlined';
-import dropdownIcon from '@iconify-icons/ls/dropdown';
+// import dropdownIcon from '@iconify-icons/ls/dropdown';
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import filterIcon from '@iconify-icons/codicon/filter';
+import SearchResults from "../SearchResults";
 
 
 const UserAccounts = () => {
     const history = useHistory()
 
-    const [id, setId] = useState(null);
+    const [searchRes, setSearchRes] = useState(null);
+    const [showResults, setShowResults] = useState(false);
 
     const [data, setData] = useState(
         {
@@ -100,8 +103,8 @@ const UserAccounts = () => {
                 return res.json();
             })
             .then(data => {
-                setId(data);
-                
+                setSearchRes(data);
+                setShowResults(true);
             })
     }
     return (
@@ -164,7 +167,7 @@ const UserAccounts = () => {
                         </div>
                         <button type="filter button dropdown-toggle" className="btn btn-outline-dark" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             <h6>Province</h6>
-                            <Icon icon={dropdownIcon} />
+                            <ArrowDropDownIcon />
                         </button>
                         <ul className="dropdown-menu" id="province" aria-labelledby="dropdownMenuButton1">
                             <li>
@@ -242,7 +245,7 @@ const UserAccounts = () => {
                         </ul>
                         <button type="filter button dropdown-toggle" class="btn btn-outline-dark" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                             <h6>Gender</h6>
-                            <Icon icon={dropdownIcon} />
+                            <ArrowDropDownIcon />
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2" onChange={(e) => setData({ ...data, gender: e.target.value })} >
                             <li>
@@ -272,7 +275,7 @@ const UserAccounts = () => {
                         </ul>
                         <button type="button dropdown-toggle" class="btn btn-outline-dark" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                             <h6>Grade</h6>
-                            <Icon icon={dropdownIcon} />
+                            <ArrowDropDownIcon />
                         </button>
 
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton3">
@@ -385,6 +388,7 @@ const UserAccounts = () => {
 
 
                 </form>
+               {showResults && <SearchResults results={searchRes}/>}
             </div>
         </div>
 
