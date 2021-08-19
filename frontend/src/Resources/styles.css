@@ -1572,3 +1572,19 @@ ul.addFields li{
   background: #000000;
   color: white;
 }
+
+.download_icons{
+  margin-left: auto; 
+margin-right: 0;
+
+}
+
+.download_icons .btnnew{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 10px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

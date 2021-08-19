@@ -54,6 +54,7 @@ import RejectedPayments from './RejectedPayments';
 import AddDiscussion from './Teacher/AddDiscussion';
 import Discussion from './Teacher/Discussion';
 import StudentAddContent from './Student/StudentAddAssigment';
+import TeacherPayments from './Admin/TeacherPayments';
 
 function App() {
 
@@ -115,6 +116,10 @@ function App() {
 
             <Route exact path="/adminHome/payments">
               <Payments/>
+            </Route>
+
+            <Route exact path="/adminHome/payments/teacherPayments">
+              <TeacherPayments/>
             </Route>
 
             <Route exact path="/adminHome/announcements">
