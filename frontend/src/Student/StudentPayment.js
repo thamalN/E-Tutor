@@ -19,7 +19,7 @@ const StudentPayment = () => {
                         </div>
                        </Link>
                             
-                        <Link to = "/">
+                        <Link to = "/studentHome/payments/PayOnline">
                         <div className="payment-card">
                                 Pay Online
                             </div>

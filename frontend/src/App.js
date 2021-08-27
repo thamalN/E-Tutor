@@ -47,6 +47,7 @@ import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
 import StudentDetails from './Student/StudentDetails';
+import PayCourses from './Student/PayCourses';
 
 function App() {
 
@@ -203,6 +204,10 @@ function App() {
             <StudentPayslip/>
             </Route>
             
+            <Route exact path="/studentHome/payments/payOnline">
+            <PayCourses/>
+            </Route>
+
             <Route exact path="/studentHome/StudentDetails/:id">
               <StudentDetails/>
             </Route>
