@@ -1,13 +1,11 @@
 import { useEffect } from "react";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import logo from './Resources/logo_icon_white.png';
 import PersonIcon from '@material-ui/icons/Person';
 import './Resources/styles.css';
 
 const Navbar = (props) => {
     let navbar;
-
-    const location = useLocation()
 
     const user = JSON.parse(localStorage.getItem('user'))
     //console.log(user);

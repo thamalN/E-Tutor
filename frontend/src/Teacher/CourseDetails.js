@@ -11,6 +11,7 @@ const CourseDetails = () => {
     const { id } = useParams()
     const [content, setContent] = useState([])
     const [quiz, setQuiz] = useState([])
+    const [discussion, setDiscussion] = useState([])
 
     const user = JSON.parse(localStorage.getItem('user'))
 
@@ -41,11 +42,29 @@ const CourseDetails = () => {
             .then((data => {
                 setQuiz(data)
             }))
-    }, [quizUrl])
+    },[quizUrl])
 
     if (quiz) {
         localStorage.setItem('quiz', JSON.stringify(quiz))
         console.log(quiz)
+    }
+
+    const discussionUrl = "http://localhost:3001/teacherCourses/discussion/" + id
+
+    useEffect(() => {
+        fetch(discussionUrl)
+            .then((res => {
+                return res.json()
+            }))
+            .then((data => {
+                setDiscussion(data)
+            }))
+    },[discussionUrl])
+
+    if (discussion) {
+        localStorage.setItem('discussion', JSON.stringify(discussion))
+        var uniqueDisc = [...new Map(discussion.map(item => [item['discussion_id'], item])).values()];
+        console.log(uniqueDisc)
     }
 
 
@@ -120,11 +139,31 @@ const CourseDetails = () => {
                     <div className="course-discn">
                         <div className="content-add">
                             <h4>Discussions</h4>
-                            <Link to="/teacher/addContent">
+                            <Link to="/teacher/addDiscussion">
                                 <button className="course-btn">
                                     <AddCircleOutlineIcon /> Add Discussion
                                 </button>
                             </Link>
+                        </div>
+
+                        <div className="quiz">
+                            {uniqueDisc.map((value, key) => (
+                                <div className="discn-name" key={key}>
+                                    <Link to={`/teacher/courses/discussion/${value.discussion_id}`}>
+                                        <ul>
+                                            <li key={value.discussion_id}>{value.topic}</li>
+                                        </ul>
+                                    </Link>
+                                    <span>
+                                        <sub>by </sub>
+                                        <b>{value.post_fname} {value.post_lname}</b>
+                                        <sub> on </sub>
+                                        <i>{value.post_datetime.slice(0, 16).replace(' ', ', ')}</i>
+                                    </span>
+                                    <EditIcon style={{ color: "green" }} /><DeleteIcon style={{ color: "red" }} />
+                                </div>
+                            ))}
+
                         </div>
                     </div>
 

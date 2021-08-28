@@ -346,7 +346,7 @@ html{height:100%}
   /* display: inline-block; */
   position: relative;
   left: 20vw; 
-  /* height: 100vh; */
+  min-height: 90vh;
   /* color: #25274d; */
 }
 
@@ -825,6 +825,33 @@ font-weight: bold;
   flex: 20%;
 }
 
+.quiz-details input {
+  border: none;
+  background-color: inherit;
+  border-bottom: 2px solid rgb(180, 180, 180);
+  transition: font-weight 0.3s;
+}
+
+.quiz-details input:focus {
+  outline: none;
+  font-weight: bold;
+}
+
+.quiz-header input {
+  font-size: 30px;
+}
+
+.quiz-header button {
+  border: none;
+  background-color: inherit;
+  color: #3ca730;
+  size: 50%;
+}
+
+.quiz-questions-input {
+  font-size: 20px;
+}
+
 .quiz-header {
   display: flex;
   align-items: center;
@@ -838,7 +865,7 @@ font-weight: bold;
 }
 
 .quiz-questions {
-  border: 2px solid black;
+  border: 4px solid black;
   border-radius: 10px;
   margin-bottom: 10px;
   padding: 10px;
@@ -855,9 +882,14 @@ font-weight: bold;
 }
 
 .quiz-icons {
-  flex: 10%;
   text-align: right;
+  margin:auto;
   margin-right: 10px;
+  transition: transform ease 0.3s;
+}
+
+.quiz-icons:hover {
+  transform: scale(1.3);
 }
 
 .quiz-answers {
@@ -865,11 +897,181 @@ font-weight: bold;
   flex: 70%;
 }
 
+.quiz-answers div {
+  margin-top: 5px;
+}
+
 .quiz-answers label {
   margin-left: 5px;
 }
 
+.quiz-answers input[type=text] {
+  margin-left: 5px;
+  width: 80%;
+}
 
+.delete-icon {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.quiz-icons-edit {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.quiz-icons-add {
+  margin-left: 10px;
+  text-align: right;
+  transition: transform ease 0.3s;
+}
+
+.quiz-icons-delete {
+  margin-left: 10px;
+  text-align: right;
+  transition: transform ease 0.3s;
+}
+
+.quiz-icons-add:hover, .quiz-icons-delete:hover, .quiz-icons-done:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
+.discussion-options {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border: 2px solid black;
+  border-radius: 5px;
+  border-bottom: none;
+  background-color: white;
+  margin-top: 10px;
+}
+
+.discussion-options svg:hover {
+  background-color: rgb(122, 122, 122);
+}
+
+#discussion-form textarea {
+  width: 100%;
+  height: 200px;
+}
+
+.discn-name {
+  display: flex;
+  align-items: center;
+}
+
+.discn-name a {
+  text-decoration: none;
+  flex: 50%;
+  color: #000000;
+  font-style: italic;
+}
+
+.discn-name span {
+  flex: 30%;
+}
+
+.discn-name a:hover {
+  font-weight: bold;
+}
+
+.discn-name svg {
+  margin-right: 10px;
+  transition: transform ease 0.3s;
+}
+
+.discn-name svg:hover {
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
+.replyBox {
+  width: 100%;
+  height: 150px;
+  margin-top: 10px;
+}
+
+.reply {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #dbdada;
+}
+
+.sub-reply {
+  display: flex;
+}
+
+.sub-reply p {
+  flex: 20%;
+  margin: auto;
+}
+
+.sub-reply small {
+  margin: auto;
+  margin-right: 10px;
+}
+
+.reply-parent {
+  display: flex;
+  flex-direction: column;
+}
+.reply-btn {
+  background-color: inherit;
+  color: rgb(0, 0, 0);
+  border: none;
+  font-weight: bold;
+  transition: transform ease 0.5s;
+}
+
+.reply-btn:hover{
+  color: black;
+  border: none;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.comment-btn {
+  align-self: flex-end;
+  width: 10%;
+  margin: auto;
+  margin: 10px;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #ffffff;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.comment-btn:hover{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 2px solid;
+  cursor: pointer;
+}
+
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+  0%    {opacity: 0; transform: translateY(-10px)}
+  100%  {opacity: 1; transform: translateY(0)}
+}
+
+.comment-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-box textarea{
+  width: 100%;
+  height: 150px;
+}
 
 #editmode {
   display: none;
@@ -1362,7 +1564,7 @@ ul.addFields li{
   color: #000000;
   border-radius: 0.2rem;
   cursor: pointer;
-  width:120px;
+  width:20%;
   height: 1.8rem;
 }
 
@@ -1371,3 +1573,18 @@ ul.addFields li{
   color: white;
 }
 
+.download_icons{
+  margin-left: auto; 
+margin-right: 0;
+
+}
+
+.download_icons .btnnew{
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 10px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}

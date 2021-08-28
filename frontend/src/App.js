@@ -25,14 +25,15 @@ import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
 import StudentRegistrations from './SupportingStaff/StudentRegistrations';
 import StudentAccounts from './SupportingStaff/StudentAccounts';
 import SearchToUpdate from './SupportingStaff/SearchToUpdate';
-import ManagePayments from './SupportingStaff/ManagePayments';
-import PendingReceipts from './SupportingStaff/PendingReceipts';
+import ManagePayments from './ManagePayments';
+import PendingReceipts from './PendingReceipts';
 import AddContent from './Teacher/AddContent';
 import Announcements from './Admin/Announcements';
 import ViewPreviousAnnouncements from './Admin/ViewPreviousAnnouncements';
 import StudentHome from './Student/StudentHome';
 import ViewCourses from './Student/ViewCourses';
 import MyCourses from './Student/MyCourses';
+import StudentAddAssigment from './Student/StudentAddAssigment';
 import HomeNew from './HomeNew';
 import Footer from './Footer.js';
 import MyCourseDetails from './Student/MyCourseDetails';
@@ -41,12 +42,20 @@ import TeacherQuiz from './Teacher/TeacherQuiz';
 import TeacherQuizEdit from './Teacher/TeacherQuizEdit';
 import AddNewCourse from './Admin/AddNewCourse';
 import RecentRegistrations from './Admin/RecentRegistrations';
+import VerifiedPayments from './VerifiedPayments'
 
 
 import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
 import StudentDetails from './Student/StudentDetails';
+import FeedbackReply from './Admin/FeedbackReply';
+import Feedback from './Admin/Feedback';
+import RejectedPayments from './RejectedPayments';
+import AddDiscussion from './Teacher/AddDiscussion';
+import Discussion from './Teacher/Discussion';
+import StudentAddContent from './Student/StudentAddAssigment';
+import TeacherPayments from './Admin/TeacherPayments';
 
 function App() {
 
@@ -82,10 +91,6 @@ function App() {
               <CreateSupStaffAcc />
             </Route>
 
-            <Route exact path="/teacher/teacherHome">
-              <TeacherHome setLoggedIn = { setLoggedIn }/>
-            </Route>
-
             <Route exact path="/adminHome/createAnnouncement">
               <CreateAnnouncement />
             </Route>
@@ -94,15 +99,6 @@ function App() {
               <Registrations />
             </Route>
             
-
-            <Route exact path="/teacher/courses">
-              <Courses />
-            </Route>
-
-            <Route exact path="/teacher/courses/:id">
-              <CourseDetails />
-            </Route>
-
             <Route exact path="/adminHome/courses">
               <AdCourses />
             </Route>
@@ -123,16 +119,28 @@ function App() {
               <Payments/>
             </Route>
 
+            <Route exact path="/adminHome/payments/teacherPayments">
+              <TeacherPayments/>
+            </Route>
+
             <Route exact path="/adminHome/announcements">
               <Announcements/>
             </Route>
 
-            <Route exact path="/adminHome/courses/recentRegistrations">
+            <Route exact path="/adminHome/registrations/recentRegistrations">
               <RecentRegistrations/>
             </Route>
 
             <Route exact path="/adminHome/announcements/viewPreviousAnnouncements">
               <ViewPreviousAnnouncements/>
+            </Route>
+
+            <Route exact path="/adminHome/viewFeedback">
+              <Feedback/>
+            </Route>
+
+            <Route exact path="/adminHome/feedback/reply/:feedback_id">
+              <FeedbackReply/>
             </Route>
 
             <Route exact path="/SupportingStaffHome">
@@ -151,12 +159,32 @@ function App() {
               <SearchToUpdate />
             </Route>
 
-            <Route exact path="/supportingStaffHome/managePayments">
+            <Route exact path="/managePayments">
               <ManagePayments />
             </Route>
 
             <Route exact path="/pendingReceipts">
               <PendingReceipts />
+            </Route>
+
+            <Route exact path="/verifiedPayments">
+              <VerifiedPayments />
+            </Route>
+
+            <Route exact path="/rejectedPayments">
+              <RejectedPayments />
+              </Route>
+              
+            <Route exact path="/teacher/teacherHome">
+              <TeacherHome setLoggedIn = { setLoggedIn }/>
+            </Route>
+
+            <Route exact path="/teacher/courses">
+              <Courses />
+            </Route>
+
+            <Route exact path="/teacher/courses/:id">
+              <CourseDetails />
             </Route>
 
             <Route exact path="/teacher/addContent">
@@ -173,6 +201,14 @@ function App() {
             
             <Route exact path="/teacher/courses/quiz/:id/edit">
               <TeacherQuizEdit />
+            </Route>
+
+            <Route exact path="/teacher/addDiscussion">
+              <AddDiscussion />
+            </Route>
+
+            <Route exact path="/teacher/courses/discussion/:id">
+              <Discussion />
             </Route>
 
             <Route exact path="/studentHome">
@@ -201,6 +237,14 @@ function App() {
 
             <Route exact path="/studentHome/payments/payslip">
             <StudentPayslip/>
+            </Route>
+
+            <Route exact path="/studentHome/StudentAddAssigment">
+            <StudentAddAssigment/>
+            </Route>
+
+            <Route exact path="/studentHome/StudentAddAssigment">
+            <StudentAddAssigment/>
             </Route>
             
             <Route exact path="/studentHome/StudentDetails/:id">
