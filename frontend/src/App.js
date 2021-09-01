@@ -56,6 +56,7 @@ import AddDiscussion from './Teacher/AddDiscussion';
 import Discussion from './Teacher/Discussion';
 import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
+import PayCourses from './Student/PayCourses';
 
 function App() {
 
@@ -247,6 +248,10 @@ function App() {
             <StudentAddAssigment/>
             </Route>
             
+            <Route exact path="/studentHome/payments/payOnline">
+            <PayCourses/>
+            </Route>
+
             <Route exact path="/studentHome/StudentDetails/:id">
               <StudentDetails/>
             </Route>
