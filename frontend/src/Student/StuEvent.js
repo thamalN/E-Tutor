@@ -7,27 +7,12 @@ const StuEvent= () => {
     const [id, setId] = useState(null);
 
     const [data, setData] = useState({
-        // firstname: "",
-        // lastname: "",
-        // street_no: "",
-        // street: "",
-        // city: "",
-        // province: "",
-        // email: "",
-        // contact: "",
-        // birthday: "",
-        // gender: "",
-        // nic: "",
-        // school: "",
-        // joined_date: "",
-        // qualifications: "",
+   
         username: "",
         coursename:"",
         topic:"",
         description:"",
 
-        // password: "",
-        // confirmPassword: ""
         }
     );
 
@@ -47,7 +32,7 @@ const StuEvent= () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        const url = "http://localhost:3001/createTeacherAcc"
+        const url = "http://localhost:3001/StuEvent"
 
         fetch(url, {
             method: 'POST',
@@ -60,11 +45,9 @@ const StuEvent= () => {
         .then(data => {
             setId(data);
             alert("Registration Successful!")
-            history.push("/adminHome/registrations")
+            history.push("/studentHome/myCourses")
         })
     }
-
-   
 
     return ( 
         
@@ -115,15 +98,13 @@ const StuEvent= () => {
         />
     </div>
 
-
-
     <div className="col-12">
         <label className="mt-2" htmlFor=" description">Description</label>
         <input
             type="text"
             className="form-control"
             id=" description"
-            value={data.email}
+            value={data.description}
             onChange={(e) => setData({ ...data,description: e.target.value })}
             required
         />
