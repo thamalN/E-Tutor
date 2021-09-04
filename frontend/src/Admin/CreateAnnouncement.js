@@ -11,7 +11,7 @@ const CreateAnnouncement = () => {
         file_name: "",
         attachment: "",
         user_id: user.user_id
-        }
+    }
     );
 
     const handleSubmit = (e) => {
@@ -36,11 +36,11 @@ const CreateAnnouncement = () => {
     }
 
     return (
-    <div className="form-signup">
-        <h1 className="h3 mb-3 fw-normal">Add New Announcement</h1>
-    <form onSubmit = { handleSubmit } className="row g-3"  encType="multipart/form-data" id="content-form">
-            
-            <div className="col-12">
+        <div className="form-signup">
+            <h1 className="h3 mb-3 fw-normal">Add New Announcement</h1>
+            <form onSubmit={handleSubmit} className="row g-3" encType="multipart/form-data" id="content-form">
+
+                <div className="col-12">
                     <label htmlFor="topic" className="mt-2">Topic</label>
                     <input
                         type="text"
@@ -86,15 +86,15 @@ const CreateAnnouncement = () => {
                         value={data.attachment}
                         onChange={(e) => setData({ ...data, attachment: e.target.value })}
                         name="file"
-                        
+
                     />
                 </div>
 
-            <div className="col-12 mt-4">
-        <input type="submit" className="btn btn-dark" value="Add Announcement"/>
-        </div>
-    </form>
-</div>  );
+                <div className="col-12 mt-4">
+                    <input type="submit" className="btn btn-dark" value="Add Announcement" />
+                </div>
+            </form>
+        </div>);
 }
- 
+
 export default CreateAnnouncement;

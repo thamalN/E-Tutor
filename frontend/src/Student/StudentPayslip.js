@@ -2,6 +2,20 @@ import Sidebar from "../Sidebar"
 import payslip from '../Resources/paySlip.jpg';
 
 const StudentPayslip = () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     return ( 
         <div>
         <Sidebar></Sidebar>

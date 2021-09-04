@@ -5,15 +5,15 @@ import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
 import LinkIcon from '@material-ui/icons/Link';
-import {Editor, EditorState} from 'draft-js';
+// import {Editor, EditorState} from 'draft-js';
 
 const AddDiscussion = () => {
 
     const history = useHistory()
 
-    const [editorState, setEditorState] = useState(
-        () => EditorState.createEmpty(),
-      );
+    // const [editorState, setEditorState] = useState(
+    //     () => EditorState.createEmpty(),
+    //   );
 
     const [data, setData] = useState({
         topic: "",
@@ -74,15 +74,15 @@ const AddDiscussion = () => {
                                     <FormatUnderlinedIcon />
                                     <LinkIcon />
                                 </div> */}
-                                <Editor editorState={editorState} onChange={setEditorState} />
-                                {/* <textarea
+                                {/* <Editor editorState={editorState} onChange={setEditorState} /> */}
+                                <textarea
                                     name="body"
                                     required
                                     value={data.post}
                                     onChange={(e) => setData({ ...data, post: e.target.value })}
                                 >
 
-                                </textarea> */}
+                                </textarea>
                             </div>
 
                         </div>
