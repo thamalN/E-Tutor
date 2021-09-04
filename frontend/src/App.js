@@ -10,7 +10,9 @@ import CreateSupStaffAcc from './Admin/CreateSupStaffAcc';
 import Registrations from './Admin/Registrations';
 import AdCourses from './Admin/AdCourses';
 import TeacherHome from './Teacher/TeacherHome';
+// import StuEvent from './'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import React, { useState } from 'react';
 
 
@@ -57,6 +59,8 @@ import Discussion from './Teacher/Discussion';
 import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
 import PayCourses from './Student/PayCourses';
+import StuEvent from './Student/StuEvent';
+import StuAddQuiz from './Student/StuAddQuiz';
 
 function App() {
 
@@ -255,6 +259,14 @@ function App() {
             <Route exact path="/studentHome/StudentDetails/:id">
               <StudentDetails/>
             </Route>
+
+            <Route exact path="/studentHome/StuEvent">
+              <StuEvent/>
+            </Route>
+
+            <Route exact path="/student/StuaddQuiz">
+            <StuAddQuiz />
+          </Route>
             
           </Switch>
         </div>
