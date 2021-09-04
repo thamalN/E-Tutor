@@ -1588,3 +1588,7 @@ margin-right: 0;
 	cursor: pointer;
 	outline: inherit;
 }
+
+.newbutton{
+  background-color: darkgray;
+}

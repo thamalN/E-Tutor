@@ -10,7 +10,6 @@ const Payments = () => {
             <div className="reg_buttons">
             <Link to="/managePayments"><button >Student Payments</button></Link>
             <Link to="/adminHome/payments/teacherPayments"><button >Teacher Payments</button></Link>
-            <Link to="/adminHome"><button >Pending Payments</button></Link>
         </div>
         </div>
         </div>

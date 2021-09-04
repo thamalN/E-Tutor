@@ -34,10 +34,10 @@ const FeedbackReply = () => {
             .then((data => {
                 if (data.status === "success") {
                     alert("Message Sent");
-                    history.push("/adminHome");
+                    history.push("/adminHome/dashboard");
                   } else if (data.status === "fail") {
                     alert("Message failed to send");
-                    history.push("/adminHome");
+                    history.push("/adminHome/dashboard");
                   }
                 
             }))

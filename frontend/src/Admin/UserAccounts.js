@@ -66,6 +66,12 @@ const UserAccounts = () => {
         }
     })
 
+    useEffect(() => {
+        if (document.getElementById("user").value == 4) {
+
+        }
+    })
+
     var province_array = []
     var grade_array = []
         
@@ -103,8 +109,13 @@ const UserAccounts = () => {
                 return res.json();
             })
             .then(data => {
+                if(data.length===0){
+                    alert("Sorry no match found for your search!")
+                }
+                else{
                 setSearchRes(data);
                 setShowResults(true);
+                }
             })
     }
     return (
@@ -327,59 +338,59 @@ const UserAccounts = () => {
                             <h5>Enhance Search</h5>
                         </li>
                         <li>
-                            <button onClick={(e) => setData({ ...data, fname: !data.fname })} value="" type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, fname: !data.fname })} value="" type="button" class= {data.fname===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>First Name</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-                            <button onClick={(e) => setData({ ...data, lname: !data.lname })}type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, lname: !data.lname })}type="button" class={data.lname===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>Last Name</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-                            <button onClick={(e) => setData({ ...data, username: !data.username })} type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, username: !data.username })} type="button" class={data.username===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>Username</h6>
                                 <Icon icon={plusIcon} />
                             </button>
                         </li>
                         
                         <li>
-                            <button onClick={(e) => setData({ ...data, street_no: !data.street_no })} type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, street_no: !data.street_no })} type="button" class={data.street_no===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>Street No.</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-                            <button onClick={(e) => setData({ ...data, street: !data.street })} type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, street: !data.street })} type="button" class={data.street===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>Street Name</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-                            <button onClick={(e) => setData({ ...data, city: !data.city })} type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, city: !data.city })} type="button" class={data.city===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>City</h6>
                                 <Icon icon={plusIcon} />
                             </button>
                         </li>
                         <li>
-                            <button onClick={(e) => setData({ ...data, email: !data.email })} type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, email: !data.email })} type="button" class={data.email===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>Email</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-                            <button onClick={(e) => setData({ ...data, contact: !data.contact })} type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, contact: !data.contact })} type="button" class={data.contact===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>Contact</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-                            <button onClick={(e) => setData({ ...data, birthday: !data.birthday })} type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, birthday: !data.birthday })} type="button" class={data.birthday===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>Birthday</h6>
                                 <Icon icon={plusIcon} />
                             </button>
                         </li>
                         <li>
 
-                            <button onClick={(e) => setData({ ...data, school: !data.school })} type="button" id="school" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, school: !data.school })} type="button" id="school" class={data.school===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>School</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-                            <button onClick={(e) => setData({ ...data, guardian: !data.guardian })} type="button" id="guardian" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, guardian: !data.guardian })} type="button" id="guardian" class={data.guardian===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>Guardian's Contact</h6>
                                 <Icon icon={plusIcon} />
                             </button>
-                            <button onClick={(e) => setData({ ...data, nic: !data.nic })} type="button" id="nic" class="btn btn-outline-dark">
+                            <button onClick={(e) => setData({ ...data, nic: !data.nic })} type="button" id="nic" class={data.nic===true ? "btn btn-outline-dark newbutton":"btn btn-outline-dark"}>
                                 <h6>NIC</h6>
                                 <Icon icon={plusIcon} />
                             </button>

@@ -58,6 +58,7 @@ import AddDiscussion from './Teacher/AddDiscussion';
 import Discussion from './Teacher/Discussion';
 import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
+import EditAnnouncement from './Admin/EditAnnouncement';
 import PayCourses from './Student/PayCourses';
 import StuEvent from './Student/StuEvent';
 import StuAddQuiz from './Student/StuAddQuiz';
@@ -84,7 +85,7 @@ function App() {
               <SignUp />
             </Route>
 
-            <Route exact path="/adminHome">
+            <Route exact path="/adminHome/dashboard">
               <AdminHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
@@ -108,11 +109,11 @@ function App() {
               <AdCourses />
             </Route>
 
-            <Route exact path="/adminHome/allCourses">
+            <Route exact path="/adminHome/courses/allCourses">
               <AllCourses />
             </Route>
 
-            <Route exact path="/adminHome/addNewCourse">
+            <Route exact path="/adminHome/courses/addNewCourse">
               <AddNewCourse />
             </Route>
 
@@ -138,6 +139,10 @@ function App() {
 
             <Route exact path="/adminHome/announcements/viewPreviousAnnouncements">
               <ViewPreviousAnnouncements/>
+            </Route>
+
+            <Route exact path="/adminHome/announcements/editAnnouncement">
+              <EditAnnouncement/>
             </Route>
 
             <Route exact path="/adminHome/viewFeedback">
