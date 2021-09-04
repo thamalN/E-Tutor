@@ -53,6 +53,8 @@ require('./APIs/Feedback')(app,db)
 require('./APIs/Payments')(app,db)
 require('./APIs/UserSearch')(app,db)
 require('./APIs/PaymentStudent')(app,db,stripe,uuid)
+require('./APIs/StuEvent')(app,db)
+require('./APIs/StudentAnnouncement')(app,db)
 
 const server = http.createServer(app)
 
