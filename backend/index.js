@@ -11,6 +11,8 @@ const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 const { getMaxListeners } = require('./db_connection')
 const StudentCourses = require('./APIs/StudentCourses')
+const stripe = require("stripe")("sk_test_51JLxqKI3zG84BVe3Opq0QSdnV7uhVuLKDHlHSTQwK0hYFB0dIntf89apQBZzwHI2TXf1ZKUxWfphazVg94iza5hj0089mYihwi");
+const { uuid } = require('uuidv4');
 
 
 var storage = multer.diskStorage({
@@ -46,9 +48,11 @@ require('./APIs/StudentCourses')(app,db)
 require('./APIs/Teachers')(app,db)
 require('dotenv').config()
 require('./APIs/StudentNotification')(app,db)
+require('./APIs/StudentDetails')(app,db)
 require('./APIs/Feedback')(app,db)
 require('./APIs/Payments')(app,db)
 require('./APIs/UserSearch')(app,db)
+require('./APIs/PaymentStudent')(app,db,stripe,uuid)
 
 const server = http.createServer(app)
 
