@@ -32,7 +32,7 @@ const PendingReceipts = () => {
                 
                 
             }))
-    }, [url])
+    }, [paymentdata])
     
     
     const handleVerify = (e) => {

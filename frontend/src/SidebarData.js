@@ -18,7 +18,7 @@ export default function SidebarData() {
 
     if (flag === 1) {
         return [
-        { title: "Home", icon: <HomeIcon />, link: "/adminHome" },
+        { title: "Home", icon: <HomeIcon />, link: "/adminHome/dashboard" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/adminHome/registrations" },
         { title: "Courses", icon: <MenuBookIcon />, link: "/adminHome/courses" },
         { title: "User Accounts", icon: <PeopleIcon />, link: "/adminHome/userAccounts" },

@@ -1,32 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router";
-const CreateAnnouncement = () => {
+const EditAnnouncement = () => {
     const history = useHistory()
 
     const user = JSON.parse(localStorage.getItem('user'));
-
+    const results = JSON.parse(localStorage.getItem('announce'));
     const [data, setData] = useState({
-        topic: "",
-        description: "",
-        file_name: "",
-        attachment: "",
+        topic: results.topic,
+        description: results.description,
+        file_name: results.file_name,
+        attachment: results.attachment,
         user_id: user.user_id
         }
     );
 
-    useEffect(() => {
-        if(data.file_name !== ""){
-            document.getElementById("attachment").required = true
-        }
-        else{
-            document.getElementById("attachment").required = false
-        }
-    })
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:3001/createAnnouncement"
+        const url = "http://localhost:3001/editAnnouncement"
 
         const formData = new FormData(document.getElementById("content-form"))
         formData.append("user_id", data.user_id)
@@ -39,14 +30,14 @@ const CreateAnnouncement = () => {
                 return res.json()
             })
             .then((data => {
-                alert("New Announcement added Successfully!")
+                alert("Announcement edited Successfully!")
                 history.push("/adminHome/announcements")
             }))
     }
 
     return (
     <div className="form-signup">
-        <h1 className="h3 mb-3 fw-normal">Add New Announcement</h1>
+        <h1 className="h3 mb-3 fw-normal">Edit Announcement</h1>
     <form onSubmit = { handleSubmit } className="row g-3"  encType="multipart/form-data" id="content-form">
             
             <div className="col-12">
@@ -92,11 +83,15 @@ const CreateAnnouncement = () => {
                         type="file"
                         className="form-control"
                         id="attachment"
-                        value={data.attachment}
                         onChange={(e) => setData({ ...data, attachment: e.target.value })}
                         name="file"
                         
                     />
+                    <a href={data.attachment} target="_blank" rel="noreferrer">
+                                    
+                                    {data.attachment && <div>{data.file_name}</div>}
+                                        
+                                        </a>
                 </div>
 
             <div className="col-12 mt-4">
@@ -106,4 +101,4 @@ const CreateAnnouncement = () => {
 </div>  );
 }
  
-export default CreateAnnouncement;
+export default EditAnnouncement;
