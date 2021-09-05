@@ -1,6 +1,6 @@
 module.exports = function (app, db) {
     
-    app.post("StuEvent", (req, res) => {
+    app.post("/stuFeedback", (req, res) => {
        
         const username = req.body.username;
         const coursename = req.body.coursename;

@@ -59,7 +59,7 @@ export default function SidebarData() {
         { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
         { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         { title: "Notifications", icon: <NotificationsIcon />, link: "/studentHome/notifications" },
-        { title: "Events", icon: <DescriptionIcon />, link: "/studentHome/StuEvent" }
+        { title: "feedback", icon: <DescriptionIcon />, link: "/studentHome/StuFeedback" }
         ]
     }
 }
