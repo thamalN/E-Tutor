@@ -57,6 +57,8 @@ import Discussion from './Teacher/Discussion';
 import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
 import PayCourses from './Student/PayCourses';
+import AllPayments from './Student/AllPayments';
+import PaymentMethod from './Student/paymentMethod';
 
 function App() {
 
@@ -236,7 +238,15 @@ function App() {
               <StudentPayment/>
             </Route>
 
+            <Route exact path="/studentHome/payments/newPayment/paymentMethod/:id">
+              <PaymentMethod/>
+            </Route>
+
             <Route exact path="/studentHome/payments/payslip">
+            <StudentPayslip/>
+            </Route>
+
+            <Route exact path="/studentHome/payments/newPayment/paymentMethod/payOnline">
             <StudentPayslip/>
             </Route>
 
@@ -248,13 +258,18 @@ function App() {
             <StudentAddAssigment/>
             </Route>
             
-            <Route exact path="/studentHome/payments/payOnline">
+            <Route exact path="/studentHome/payments/newPayment">
             <PayCourses/>
             </Route>
 
             <Route exact path="/studentHome/StudentDetails/:id">
               <StudentDetails/>
             </Route>
+
+            <Route exact path="/studentHome/payments/allPayments">
+              <AllPayments/>
+            </Route>
+            
             
           </Switch>
         </div>

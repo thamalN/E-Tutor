@@ -22,7 +22,7 @@ const MyCourses = () => {
             })
             .then(data => {
                 setData(data)
-                console.log(data)
+                // console.log(data)
             })
 
     }, [url])
