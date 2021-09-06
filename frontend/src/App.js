@@ -60,6 +60,8 @@ import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
 import EditAnnouncement from './Admin/EditAnnouncement';
 import PayCourses from './Student/PayCourses';
+// import StuEvent from './Student/StuEvent';
+// import StuAddQuiz from './Student/StuAddQuiz';
 import StuFeedback from './Student/StuFeedback';
 // import StuAddQuiz from './Student/StuAddQuiz';
 

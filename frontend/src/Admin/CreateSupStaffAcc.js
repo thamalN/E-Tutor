@@ -25,6 +25,20 @@ const CreateSupStaffAcc = () => {
     );
 
     useEffect(() => {
+        if (data.username.length !== 0) {
+        if (usernames.some(i =>i.username === data.username)) {
+            document.getElementById('usern').innerHTML = '(Username is already taken!)';
+            document.getElementById('usern').style.color = "red";
+                  
+        }
+        else{
+            document.getElementById('usern').innerHTML = '(Username is available!)';
+            document.getElementById('usern').style.color = "green";
+        }
+    }
+    })
+
+    useEffect(() => {
         if (data.password.length !== 0) {
             if (data.password === data.confirmPassword) {
                 document.getElementById('pass').innerHTML = '(Passwords match!)';
@@ -93,6 +107,7 @@ const CreateSupStaffAcc = () => {
 
     <div className="col-md-4">
         <label htmlFor="userName" className="mt-2">Username</label>
+        <span id="usern" style={{ "marginLeft": 50, fontSize:12 }}></span>
         <input
             type="text"
             className="form-control"

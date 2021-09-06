@@ -1,4 +1,6 @@
 const bcrypt = require('bcrypt')
+const nodemailer = require("nodemailer")
+
 module.exports = function (app, db) {
     
     app.post("/createTeacherAcc", (req, res) => {
@@ -19,6 +21,32 @@ module.exports = function (app, db) {
         const username = req.body.username;
         const password = req.body.password;
 
+        const msg = "Your Etutor teacher account has been created successfully. Your account username is " + username + " and password is " + password + ".";
+
+        let transporter = nodemailer.createTransport({
+            service: "gmail",
+            
+            auth: {
+              type: 'OAuth2',
+              user: process.env.EMAIL,
+              pass: process.env.PASS,
+              clientId: process.env.OAUTH_CLIENTID,
+              clientSecret: process.env.OAUTH_CLIENT_SECRET,
+              refreshToken: process.env.OAUTH_REFRESH_TOKEN
+              
+              
+            }
+          })
+          console.log(msg)
+          let mailOptions = {
+            from: process.env.EMAIL,
+            to: email,
+            subject: "Registration in ETutor",
+            text: msg
+           };
+
+        
+
         bcrypt.hash(password, 10).then((hash) => {
     
          const query = "INSERT INTO user (fname, lname, street_no, street, city, province, email, contact, birthday, gender, username, password, user_flag, regDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,3,now());";
@@ -32,7 +60,25 @@ module.exports = function (app, db) {
                 
     
                 db.query(query2, [user_id, nic, school, qualifications, joined_date], (err, result) => {
-                    res.json(result.insertId);
+                    if (err) throw err;
+                    else{
+                        transporter.sendMail(mailOptions, function (err, data) {
+                
+                          if (err) {
+                              console.log(err);
+                              res.json({
+                                  status: "fail",
+                                });
+                          } else {
+                            console.log("== Message Sent ==");
+                                res.json({
+                                  status: "success",
+                                });
+                              
+                              
+                          }
+                         });
+                      }
                     
                 });
             });
@@ -56,6 +102,32 @@ module.exports = function (app, db) {
         const username = req.body.username;
         const password = req.body.password;
 
+        const msg = "Your Etutor staff account has been created successfully. Your account username is " + username + " and password is " + password + ".";
+
+        let transporter = nodemailer.createTransport({
+            service: "gmail",
+            
+            auth: {
+              type: 'OAuth2',
+              user: process.env.EMAIL,
+              pass: process.env.PASS,
+              clientId: process.env.OAUTH_CLIENTID,
+              clientSecret: process.env.OAUTH_CLIENT_SECRET,
+              refreshToken: process.env.OAUTH_REFRESH_TOKEN
+              
+              
+            }
+          })
+          console.log(msg)
+          let mailOptions = {
+            from: process.env.EMAIL,
+            to: email,
+            subject: "Registration in ETutor",
+            text: msg
+           };
+
+
+
         bcrypt.hash(password, 10).then((hash) => {
     
          const query = "INSERT INTO user (fname, lname, street_no, street, city, province, email, contact, birthday, gender, username, password, user_flag, regDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,2,now());";
@@ -68,7 +140,25 @@ module.exports = function (app, db) {
                 
     
                 db.query(query2, [user_id, nic, joined_date], (err, result) => {
-                    res.json(result.insertId);
+                    if (err) throw err;
+                    else{
+                        transporter.sendMail(mailOptions, function (err, data) {
+                
+                          if (err) {
+                              console.log(err);
+                              res.json({
+                                  status: "fail",
+                                });
+                          } else {
+                            console.log("== Message Sent ==");
+                                res.json({
+                                  status: "success",
+                                });
+                              
+                              
+                          }
+                         });
+                      }
                     
                 });
             });
