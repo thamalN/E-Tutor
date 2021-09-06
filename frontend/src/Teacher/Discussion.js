@@ -22,7 +22,8 @@ const Discussion = () => {
     //console.log(discussion)
 
     discussion.map((item) => {
-        disc.replies.push({ reply_id: item.reply_id, reply: item.reply, replied_by: item.reply_user_id, reply_datetime: item.reply_date_time, parent_reply: item.parent_reply, replies: [] })
+        if(item.reply_id !== null)
+            disc.replies.push({ reply_id: item.reply_id, reply: item.reply, replied_by: item.reply_user_id, reply_datetime: item.reply_date_time, parent_reply: item.parent_reply, replies: [] })
     })
 
     var tmp
