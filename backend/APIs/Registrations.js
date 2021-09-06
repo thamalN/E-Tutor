@@ -84,5 +84,15 @@ module.exports = function (app, db) {
                res.json(result)
            })
        })
+
+    app.get("/recentStaffRegistrations", (req, res) => {
+    
+    const query = "SELECT * FROM user where regDate BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW();";
+    
+        db.query(query, (err, result) => {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
 };
 

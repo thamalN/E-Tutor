@@ -45,8 +45,8 @@ import TeacherQuizEdit from './Teacher/TeacherQuizEdit';
 import AddNewCourse from './Admin/AddNewCourse';
 import RecentRegistrations from './Admin/RecentRegistrations';
 import VerifiedPayments from './VerifiedPayments'
-
-
+import RecentStaffRegistrations from './SupportingStaff/RecentStaffRegistrations';
+import StaffManagePayments from './SupportingStaff/StaffManagePayments';
 import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
@@ -61,7 +61,7 @@ import TeacherPayments from './Admin/TeacherPayments';
 import EditAnnouncement from './Admin/EditAnnouncement';
 import PayCourses from './Student/PayCourses';
 import StuFeedback from './Student/StuFeedback';
-import StuAddQuiz from './Student/StuAddQuiz';
+// import StuAddQuiz from './Student/StuAddQuiz';
 
 function App() {
 
@@ -169,6 +169,14 @@ function App() {
               <SearchToUpdate />
             </Route>
 
+            <Route exact path="/supportingStaffHome/registrations/recentStaffRegistrations">
+              <RecentStaffRegistrations/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/ManagePayments">
+              <StaffManagePayments/>
+            </Route>
+
             <Route exact path="/managePayments">
               <ManagePayments />
             </Route>
@@ -269,9 +277,9 @@ function App() {
               <StuFeedback/>
             </Route>
 
-            <Route exact path="/student/StuaddQuiz">
+            {/* <Route exact path="/student/StuaddQuiz">
             <StuAddQuiz />
-          </Route>
+          </Route> */}
             
           </Switch>
         </div>
