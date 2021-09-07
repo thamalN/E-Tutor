@@ -7,23 +7,24 @@ const EditAnnouncement = () => {
     const results = JSON.parse(localStorage.getItem('announce'));
     const [data, setData] = useState({
         opt: "",
+        announcement_id: results.announcement_id,
         topic: results.topic,
         description: results.description,
         file_name: results.file_name,
         attachment: results.attachment,
-        user_id: user.user_id,
-        attach: "new"
+        user_id: user.user_id
         }
     );
-
+        console.log(data.announcement_id)
     useEffect(() => {
         if (results.attachment === "") {
-            setData({ ...data, attach: "" })
+            setData({ ...data, opt: "empty" })
             document.getElementById("opt").required = false
             document.getElementById("opt").style.display = "none"
+            document.getElementById("file_link").style.display = "none"
             
         }
-    })
+    },[])
 
     useEffect(() => {
         if (data.opt === "exist") {
@@ -45,6 +46,8 @@ const EditAnnouncement = () => {
 
         const formData = new FormData(document.getElementById("content-form"))
         formData.append("user_id", data.user_id)
+        formData.append("announcement_id", data.announcement_id)
+        formData.append("opt", data.opt)
 
         fetch(url, {
             method: 'POST',
@@ -90,9 +93,9 @@ const EditAnnouncement = () => {
                     />
                 </div>
 
-                <a href={data.attachment} target="_blank" rel="noreferrer">
+                <a href={data.attachment} id="file_link" target="_blank" rel="noreferrer">
                                     
-                                    {data.attachment && <div id="file_link">{data.file_name}</div>}
+                                    {data.attachment && <div >{data.file_name}</div>}
                                         
                                         </a>
 
