@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const PendingReceipts = () => {
 
     const [data, setData] = useState([])
+    const [verify, setVerify] = useState([])
     const [paymentdata, setPaymentdata] = useState({
         payment_id: "",
         verifyflag: "",
@@ -33,7 +34,7 @@ const PendingReceipts = () => {
                 
                 
             }))
-    }, [paymentdata])
+    }, [verify])
     
     
     const handleVerify = (e) => {
@@ -63,7 +64,7 @@ const PendingReceipts = () => {
                 return res.json()
             })
             .then((data => {
-
+                setVerify(data)
                 if (data.status === "verified") {
                     alert("Payment Verified Successfully!");
                     history.push("/pendingReceipts");
