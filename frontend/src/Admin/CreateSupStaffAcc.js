@@ -4,6 +4,7 @@ const CreateSupStaffAcc = () => {
     const history = useHistory()
 
     const [id, setId] = useState(null);
+    const [usernames, setUsernames] = useState([]);
 
     const [data, setData] = useState({
         firstname: "",
@@ -23,6 +24,22 @@ const CreateSupStaffAcc = () => {
         confirmPassword: ""
         }
     );
+
+    const url = "http://localhost:3001/getAllUsernames"
+    useEffect(() => {
+
+        fetch(url, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setUsernames(data)
+            })
+
+    }, [url])
 
     useEffect(() => {
         if (data.username.length !== 0) {

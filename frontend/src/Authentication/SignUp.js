@@ -63,7 +63,7 @@ const SignUp = () => {
             })
 
     }, [url])
-    console.log()
+
 
     useEffect(() => {
         if (data.username.length !== 0) {

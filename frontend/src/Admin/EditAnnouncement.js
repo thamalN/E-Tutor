@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 const EditAnnouncement = () => {
     const history = useHistory()
@@ -6,13 +6,37 @@ const EditAnnouncement = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const results = JSON.parse(localStorage.getItem('announce'));
     const [data, setData] = useState({
+        opt: "",
         topic: results.topic,
         description: results.description,
         file_name: results.file_name,
         attachment: results.attachment,
-        user_id: user.user_id
+        user_id: user.user_id,
+        attach: "new"
         }
     );
+
+    useEffect(() => {
+        if (results.attachment === "") {
+            setData({ ...data, attach: "" })
+            document.getElementById("opt").required = false
+            document.getElementById("opt").style.display = "none"
+            
+        }
+    })
+
+    useEffect(() => {
+        if (data.opt === "exist") {
+            document.getElementById("attachment").required = false
+            document.getElementById("attachment").style.display = "none"
+            document.getElementById("file_link").style.display = "block"
+            
+        } else if(data.opt === "new"){
+            document.getElementById("attachment").required = true
+            document.getElementById("attachment").style.display = "block"
+            document.getElementById("file_link").style.display = "none"
+        }
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -65,6 +89,22 @@ const EditAnnouncement = () => {
                         required
                     />
                 </div>
+
+                <a href={data.attachment} target="_blank" rel="noreferrer">
+                                    
+                                    {data.attachment && <div id="file_link">{data.file_name}</div>}
+                                        
+                                        </a>
+
+                <select name="opt" id="opt"
+                                        value={data.opt}
+                                        onChange={(e) => {
+                                            setData({ ...data, opt: e.target.value})
+                                        }} required>
+                    <option value="" hidden selected> -- Select an option -- </option>                        
+                    <option value="exist">Keep existing file</option>
+                    <option value="new">Add new file</option>
+                                    </select>
                 <div className="col-12">
                     <label htmlFor="file_name" className="mt-2">File Name</label>
                     <input
@@ -87,11 +127,7 @@ const EditAnnouncement = () => {
                         name="file"
                         
                     />
-                    <a href={data.attachment} target="_blank" rel="noreferrer">
-                                    
-                                    {data.attachment && <div>{data.file_name}</div>}
-                                        
-                                        </a>
+                    
                 </div>
 
             <div className="col-12 mt-4">
