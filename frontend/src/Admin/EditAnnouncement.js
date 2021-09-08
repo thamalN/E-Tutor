@@ -32,8 +32,10 @@ const EditAnnouncement = () => {
             document.getElementById("attachment").style.display = "none"
             document.getElementById("file_link").style.display = "block"
             
-        } else if(data.opt === "new"){
-            document.getElementById("attachment").required = true
+        } else if(data.opt === "remove"){
+            setData({ ...data, file_name: "" })
+            document.getElementById("attachment").required = false
+            document.getElementById("file_name").required = false
             document.getElementById("attachment").style.display = "block"
             document.getElementById("file_link").style.display = "none"
         }
@@ -47,7 +49,7 @@ const EditAnnouncement = () => {
         const formData = new FormData(document.getElementById("content-form"))
         formData.append("user_id", data.user_id)
         formData.append("announcement_id", data.announcement_id)
-        formData.append("opt", data.opt)
+        formData.set("opt", data.opt)
 
         fetch(url, {
             method: 'POST',
@@ -106,7 +108,7 @@ const EditAnnouncement = () => {
                                         }} required>
                     <option value="" hidden selected> -- Select an option -- </option>                        
                     <option value="exist">Keep existing file</option>
-                    <option value="new">Add new file</option>
+                    <option value="remove">Remove existing file</option>
                                     </select>
                 <div className="col-12">
                     <label htmlFor="file_name" className="mt-2">File Name</label>

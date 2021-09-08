@@ -40,7 +40,6 @@ module.exports = function (app, db, upload) {
 
     app.post("/editAnnouncement", upload.any(), (req, res) => {
         console.log(req.body)
-        console.log(req.files)
         const announcement_id = req.body.announcement_id;
         const opt = req.body.opt;
         const user_id = req.body.user_id;
@@ -53,12 +52,22 @@ module.exports = function (app, db, upload) {
             console.log("empty")
         }
 
-        else if(req.files.length===0){
+        else if(req.files.length===0 && opt ==="exist"){
             content_path = req.body.attachment
             console.log("existing file")
         }
+
+        else if(req.files.length===0 && opt ==="remove"){
+            content_path = ""
+            console.log("remove file")
+        }
+        else if(opt ==="empty"){
+            content_path = "http://127.0.0.1:8887/" + req.files[0].path;
+            console.log("new file")
+        }
         else{
             content_path = "http://127.0.0.1:8887/" + req.files[0].path;
+            console.log("remove and add new file")
         }
         console.log(announcement_id)
         console.log(req.files[0])
