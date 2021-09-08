@@ -10,9 +10,22 @@ const SignUp = () => {
     const history = useHistory()
 
     const [id, setId] = useState(null);
+    const [usernames, setUsernames] = useState([]);
+    const user = JSON.parse(localStorage.getItem('user'));
+    let flag;
+    let heading;
+    if(user===null){
+        flag =0
+        heading="Sign Up"
+    }
+    else{
+        flag =1
+        heading="Create Student Account"
+    }
 
     const [data, setData] = useState(
-        {
+        {   
+            user_type: flag,
             firstname: "",
             lastname: "",
             street_no: "",
@@ -31,8 +44,40 @@ const SignUp = () => {
             guardian_contact: ""
         }
     );
+    console.log(data.user_type)
+    
+    
+
+    const url = "http://localhost:3001/getAllUsernames"
+    useEffect(() => {
+
+        fetch(url, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setUsernames(data)
+            })
+
+    }, [url])
 
 
+    useEffect(() => {
+        if (data.username.length !== 0) {
+        if (usernames.some(i =>i.username === data.username)) {
+            document.getElementById('usern').innerHTML = '(Username is already taken!)';
+            document.getElementById('usern').style.color = "red";
+                  
+        }
+        else{
+            document.getElementById('usern').innerHTML = '(Username is available!)';
+            document.getElementById('usern').style.color = "green";
+        }
+    }
+    })
 
     useEffect(() => {
         if (data.password.length !== 0) {
@@ -63,8 +108,14 @@ const SignUp = () => {
             })
             .then(data => {
                 setId(data);
-                alert("Registration Successful!")
-                history.push("/signIn")
+                if(flag===0){
+                    alert("Registration Successful!")
+                    history.push("/signIn")
+                }
+                else{
+                    alert("Successfully created the Student Account and emailed the user credentials!")
+                    history.push("/adminHome/registrations")
+                }
             })
     }
 
@@ -73,7 +124,7 @@ const SignUp = () => {
         <main className="form-signup">
 
             {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
-            <h1 className="h3 mb-3 fw-normal">Sign Up</h1>
+            <h1 className="h3 mb-3 fw-normal">{heading}</h1>
             <form onSubmit={handleSubmit} className="row g-3 authForm">
 
 
@@ -103,6 +154,7 @@ const SignUp = () => {
 
                 <div className="col-md-4">
                     <label htmlFor="userName" className="mt-2">Username</label>
+                    <span id="usern" style={{ "marginLeft": 50, fontSize:12 }}></span>
                     <input
                         type="text"
                         className="form-control"

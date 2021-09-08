@@ -27,7 +27,7 @@ module.exports = function (app, db) {
     query1 = "SELECT * FROM user";
      let inserts = []
         if(flag_user != 1){
-            const tab = (flag_user===2 ? "staff" : (flag_user===3 ? "teacher" : "student"))
+            const tab = (flag_user==2 ? "staff" : (flag_user==3 ? "teacher" : "student"))
             query1 += " INNER JOIN " + tab + " ON user.user_id=" + tab + "." + tab + "_id"
             query1 += " WHERE user_flag=" + flag_user + " AND"
 
@@ -40,7 +40,7 @@ module.exports = function (app, db) {
                 query1 += " province IN (?) AND"
                 inserts.push(province)
             }
-            if (gender != "") {
+            if (gender != "" && gender != "all" ) {
                 query1 += " gender IN (?) AND"
                 inserts.push(gender)
             }

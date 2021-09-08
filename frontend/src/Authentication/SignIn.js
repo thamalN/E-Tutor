@@ -38,7 +38,7 @@ const SignIn = (props) => {
                 localStorage.setItem('user', JSON.stringify(data))
                 props.setLoggedIn(true)
                 if (flag === 1)
-                    history.push("/adminHome")
+                    history.push("/adminHome/dashboard")
                 else if (flag === 2) 
                     history.push("/SupportingStaffHome")
                 else if (flag === 3) 

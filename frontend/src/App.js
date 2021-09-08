@@ -10,7 +10,9 @@ import CreateSupStaffAcc from './Admin/CreateSupStaffAcc';
 import Registrations from './Admin/Registrations';
 import AdCourses from './Admin/AdCourses';
 import TeacherHome from './Teacher/TeacherHome';
+// import StuEvent from './'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 import React, { useState } from 'react';
 
 
@@ -56,8 +58,13 @@ import AddDiscussion from './Teacher/AddDiscussion';
 import Discussion from './Teacher/Discussion';
 import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
+import EditAnnouncement from './Admin/EditAnnouncement';
 import PayCourses from './Student/PayCourses';
 import Meeting from './Teacher/Meeting';
+// import StuEvent from './Student/StuEvent';
+// import StuAddQuiz from './Student/StuAddQuiz';
+import StuFeedback from './Student/StuFeedback';
+// import StuAddQuiz from './Student/StuAddQuiz';
 
 function App() {
 
@@ -81,7 +88,7 @@ function App() {
               <SignUp />
             </Route>
 
-            <Route exact path="/adminHome">
+            <Route exact path="/adminHome/dashboard">
               <AdminHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
@@ -105,11 +112,11 @@ function App() {
               <AdCourses />
             </Route>
 
-            <Route exact path="/adminHome/allCourses">
+            <Route exact path="/adminHome/courses/allCourses">
               <AllCourses />
             </Route>
 
-            <Route exact path="/adminHome/addNewCourse">
+            <Route exact path="/adminHome/courses/addNewCourse">
               <AddNewCourse />
             </Route>
 
@@ -135,6 +142,10 @@ function App() {
 
             <Route exact path="/adminHome/announcements/viewPreviousAnnouncements">
               <ViewPreviousAnnouncements/>
+            </Route>
+
+            <Route exact path="/adminHome/announcements/editAnnouncement">
+              <EditAnnouncement/>
             </Route>
 
             <Route exact path="/adminHome/viewFeedback">
@@ -260,6 +271,14 @@ function App() {
             <Route exact path="/studentHome/StudentDetails/:id">
               <StudentDetails/>
             </Route>
+
+            <Route exact path="/studentHome/StuFeedback">
+              <StuFeedback/>
+            </Route>
+
+            {/* <Route exact path="/student/StuaddQuiz">
+            <StuAddQuiz />
+          </Route> */}
             
           </Switch>
         </div>

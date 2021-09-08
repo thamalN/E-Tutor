@@ -18,7 +18,7 @@ export default function SidebarData() {
 
     if (flag === 1) {
         return [
-        { title: "Home", icon: <HomeIcon />, link: "/adminHome" },
+        { title: "Home", icon: <HomeIcon />, link: "/adminHome/dashboard" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/adminHome/registrations" },
         { title: "Courses", icon: <MenuBookIcon />, link: "/adminHome/courses" },
         { title: "User Accounts", icon: <PeopleIcon />, link: "/adminHome/userAccounts" },
@@ -59,7 +59,7 @@ export default function SidebarData() {
         { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
         { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         { title: "Notifications", icon: <NotificationsIcon />, link: "/studentHome/notifications" },
-        { title: "Events", icon: <DescriptionIcon />, link: "/reports" }
+        { title: "feedback", icon: <DescriptionIcon />, link: "/studentHome/StuFeedback" }
         ]
     }
 }

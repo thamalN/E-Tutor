@@ -1,10 +1,14 @@
-import { useHistory} from "react-router-dom";
 import Sidebar from "../Sidebar";
-import { useEffect } from "react";
-// import Calendar from "../Calendar";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
+import { Link, Route } from 'react-router-dom';
+// import EditIcon from '@material-ui/icons/Edit';
+// import DeleteIcon from '@material-ui/icons/Delete';
 
-const StudentHome = (props) => {
+const StudentHome = () => {
 
+    const [data, setData] = useState([])
+    const [del, setDel] = useState([])
     const history = useHistory()
 
     const user = JSON.parse(localStorage.getItem('user'))
@@ -25,39 +29,92 @@ const StudentHome = (props) => {
         })
     })
 
-    const logOut = () => {
-        props.setLoggedIn(false)
-        localStorage.clear();
-        history.replace("/")
-    };
+    const url = "http://localhost:3001/studentAnnouncements"
 
+    useEffect(() => {
+        fetch(url)
+            .then((res => {
+                return res.json()
+            }))
+            .then((data => {
+                setData(data)
+            }))
+    }, [del])
+
+//     const handleEdit = (announcement) =>{
+//         console.log(announcement.attachment)
+//         localStorage.setItem('announce', JSON.stringify(announcement))
+//         history.push("/studentHome/announcements/editAnnouncement")
+
+// }
+
+// const handleDelete = (key) => {
+//     if (window.confirm("Are you sure you want to delete announcement id " + key + "?")) {
+//         const id = { id: key }
+//     const url3 = "http://localhost:3001/deleteAnnouncement"
+
+//         fetch(url3, {
+//             method: 'POST',
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify(id)
+//     })
+//             .then((res => {
+//                 return res.json()
+//             }))
+//             .then((data => {
+
+//                 if (data.status === "ok") {
+//                     setDel(data)
+//                     alert("Announcement deleted Successfully!")
+//                     history.push("/studentHome/studentAnnouncements")
+                    
+//                   } 
+//                   else {
+//                     alert("Sorry the task couldn't be completed");
+//                     history.push("/studentHome/studentAnnouncements")
+                    
+//                   }
+                
+//             }))
+//         }
+        
+    
+// }
     return (
-
-        <div className="dashboard">
-
-            <Sidebar />
-
+        <div>
+            <Sidebar/>
             <div className="homeContent">
-                <h1>Recently Accessed Courses</h1>
-                <div className="course-card-container">
-                    
-                            <div className="course-card">
-                                
-                                    <h1>Chemistry 2023</h1>
-                                    <p>A level Chemistry studies  the material world, and through chemistry we can describe and explain questions such as: "what happens when sugar dissolves in tea?"; "why is mercury a liquid at room temperature?"; "how do we make plastics?"; "what can we do about global warming?"; "how and why will I be affected if oil runs out?".</p>
-                                
-
+            <h1>Announcements</h1>
+            <div className="courses">
+                    {data.map(announcement => (
+                        <div key={announcement.announcement_id} className="display-card" >
+                            <div className="display-card-container">
+                                <div className="n-card-container">
+                                <div  className="download_icons">
+                           
                             </div>
-                    
+                                
+                                    <h1>{announcement.topic}</h1>
+                                    <h6> By {announcement.fname} {announcement.lname} {announcement.date_time}</h6>
+                                    <div><p>{announcement.description}</p></div>
+                                    
+                                    <a href={announcement.attachment} target="_blank" rel="noreferrer">
+                                    
+                                    {announcement.attachment && <div>{announcement.file_name}</div>}
+                                        
+                                        </a>
+                                        
+                                </div>
+                            </div>
+
+                        </div>
+                    ))}
                 </div>
             
-            {/* <div ><Calendar /></div> */}
-
-            </div>
-
         </div>
-
-    );
+        </div>
+        
+      );
 }
-
+ 
 export default StudentHome;
