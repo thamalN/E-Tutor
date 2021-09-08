@@ -362,18 +362,20 @@ html{height:100%}
 
 .content-name {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 
-.content-name a {
+.name-sub {
   text-decoration: none;
   flex: 80%;
   color: #000000;
   font-style: italic;
 }
 
-.content-name a:hover {
+.name-sub:hover {
   font-weight: bold;
+  text-decoration: none;
+  color: #000000;
 }
 
 .content-name svg {
@@ -479,12 +481,33 @@ font-weight: bold;
   cursor: pointer;
 }
 
+.course-edit-btn {
+  margin: 10px;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #ffffff;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.course-edit-btn:hover{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 2px solid;
+  cursor: pointer;
+}
+
 .course-details h1 {
   font-weight: bold;
 }
 
 .course-details h5 {
   font-style: italic;
+}
+
+.edit-btn {
+  background-color: inherit;
+  border: none;
 }
 
 .course-content h4 {
@@ -648,6 +671,10 @@ font-weight: bold;
   justify-content: center;
 }
 
+#adminCard a {
+  text-decoration: none;
+}
+
 .addContent {
   padding: 10px;
   margin: 5% auto;
@@ -735,6 +762,11 @@ font-weight: bold;
 .lesson>a:hover {
   color: #000000;
   font-weight: bold;
+}
+
+.lesson button {
+  border: none;
+  background-color: inherit;
 }
 
 .quiz-form {
@@ -1035,6 +1067,21 @@ font-weight: bold;
   transform: scale(1.1);
 }
 
+.edit-reply-btn {
+  background-color: inherit;
+  color: rgb(0, 0, 0);
+  border: none;
+  font-weight: bold;
+  transition: transform ease 0.5s;
+}
+
+.edit-reply-btn:hover{
+  color: black;
+  border: none;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .comment-btn {
   align-self: flex-end;
   width: 10%;
@@ -1073,6 +1120,27 @@ details[open] summary ~ * {
   height: 150px;
 }
 
+.meeting-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 100px;
+  margin: 10px;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #000000;
+  color: white;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+.meeting-toggle:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.meeting-toggle:hover .meeting-icon {
+  fill: black;
+}
+
 #editmode {
   display: none;
 }
@@ -1085,6 +1153,7 @@ details[open] summary ~ * {
   margin: auto;
   margin-top: 0.5rem;
 }
+
 .card{
   /* width: 20%;
   overflow: hidden;

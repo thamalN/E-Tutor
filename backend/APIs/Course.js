@@ -1,4 +1,4 @@
-module.exports = function (app, db, upload) {
+module.exports = function (app, db, upload, fs) {
 
     app.post("/teacherCourses", (req, res) => {
         const teacherId = req.body.id;
@@ -8,6 +8,20 @@ module.exports = function (app, db, upload) {
         db.query(query, teacherId, (err, result) => {
             if (err) throw err;
             res.json(result)
+        })
+    })
+
+    app.post("/teacherCourses/editCourseDetails", (req, res) => {
+        const course_id = req.body.course_id
+        const course_name = req.body.course_name
+        const year = req.body.year
+        const description = req.body.description
+
+        const query = "UPDATE course SET course_name = ?, year = ?, description = ? WHERE course_id=?;";
+
+        db.query(query, [course_name, year, description, course_id], (err, result) => {
+            if (err) throw err;
+            res.send("ok")
         })
     })
 
@@ -91,7 +105,7 @@ module.exports = function (app, db, upload) {
 
     app.get("/teacherCourses/discussion/:id", (req, res) => {
         const courseId = req.params.id;
-        const query = "SELECT discussion.discussion_id, discussion.course_id, discussion.topic, discussion.post, discussion.date_time AS post_datetime, user.fname AS post_fname, user.lname AS post_lname, user.user_id AS post_user_id, reply.reply_id, reply.user_id AS reply_user_id, reply.reply, reply.date_time AS reply_date_time, reply.parent_reply FROM discussion INNER JOIN user ON discussion.user_id = user.user_id LEFT JOIN reply ON reply.discussion_id = discussion.discussion_id WHERE course_id = ?;";
+        const query = "SELECT discussion.discussion_id, discussion.course_id, discussion.topic, discussion.post, discussion.date_time AS post_datetime, user.fname AS post_fname, user.lname AS post_lname, user.user_id AS post_user_id, reply.reply_id, reply.user_id AS reply_user_id, reply_user.fname AS reply_fname, reply_user.lname AS reply_lname, reply.reply, reply.date_time AS reply_date_time, reply.parent_reply FROM discussion INNER JOIN user ON discussion.user_id = user.user_id LEFT JOIN reply ON reply.discussion_id = discussion.discussion_id LEFT JOIN user as reply_user ON reply.user_id = reply_user.user_id WHERE course_id = ?;";
 
         db.query(query, courseId, (err, result) => {
             if (err) throw err;
@@ -151,6 +165,32 @@ module.exports = function (app, db, upload) {
 
         }
 
+    })
+
+    app.post("/teacherCourses/editContent", (req, res) => {
+        console.log(req.body)
+    })
+
+    app.post("/teacherCourses/deleteContent/", (req, res) => {
+        const contentId = req.body.content_id
+        const contentPath = req.body.content_path
+
+        console.log(req.body)
+
+        const query = "DELETE FROM content WHERE content_id=?"
+
+        db.query(query, contentId, (err, result) => {
+            if (err) throw err;
+        })
+
+        fs.unlink(contentPath, (err) => {
+            if (err) {
+                console.error(err)
+                return
+            }
+        })
+
+        res.send("ok")
     })
 
     app.post("/teacherCourses/addQuiz", (req, res) => {
@@ -230,7 +270,7 @@ module.exports = function (app, db, upload) {
 
             db.query(queries, (err, result) => {
                 if (err) throw err;
-                
+
                 if (result.length > 0) {
                     var insertedQuestion = result.filter((item) => item.insertId !== 0)
                 }
@@ -248,7 +288,7 @@ module.exports = function (app, db, upload) {
                         else
                             queries += "UPDATE answer SET answer = \"" + questions[i].answers[j].answer + "\", correct = " + questions[i].answers[j].correct + " WHERE answer_id = " + questions[i].answers[j].answer_id + " AND question_id = " + questions[i].question_id + ";"
                     }
-                    if(questions[i].question_id === undefined)
+                    if (questions[i].question_id === undefined)
                         k++
                 }
 
@@ -258,6 +298,18 @@ module.exports = function (app, db, upload) {
                     if (err) throw err;
                 })
             })
+        })
+
+        res.send("ok")
+    })
+
+    app.get("/teacherCourses/deleteQuiz/:id", (req, res) => {
+        const quizId = req.params.id
+
+        const query = "DELETE FROM quiz WHERE quiz_id=?"
+
+        db.query(query, quizId, (err, result) => {
+            if (err) throw err;
         })
 
         res.send("ok")
@@ -295,6 +347,33 @@ module.exports = function (app, db, upload) {
         })
 
         res.send("ok")
+    })
+
+    app.post("/teacherCourses/editDiscussion", (req, res) => {
+        const course_id = req.body.course_id
+        const discussion_id = req.body.discussion_id
+        const topic = req.body.topic
+        const post = req.body.post
+
+        const query = "UPDATE discussion SET topic = ?, post = ? WHERE course_id=? AND discussion_id=?;";
+
+        db.query(query, [topic, post, course_id, discussion_id], (err, result) => {
+            if (err) throw err;
+            res.send("ok")
+        })
+    })
+
+    app.post("/teacherCourses/editReply", (req, res) => {
+        const reply_id = req.body.reply_id
+        const discussion_id = req.body.discussion_id
+        const reply = req.body.reply
+
+        const query = "UPDATE reply SET reply = ? WHERE reply_id=? AND discussion_id=?;";
+
+        db.query(query, [reply, reply_id, discussion_id], (err, result) => {
+            if (err) throw err;
+            res.send("ok")
+        })
     })
 
     app.post("/addNewCourse", (req, res) => {

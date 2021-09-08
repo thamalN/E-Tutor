@@ -12,7 +12,7 @@ const TeacherQuizEdit = () => {
     const history = useHistory()
 
     var quiz = JSON.parse(localStorage.getItem('quiz'))
-    console.log(quiz)
+    //console.log(quiz)
     const course_id = JSON.parse(localStorage.getItem('course'))[0].course_id
 
     const [data, setData] = useState(quiz[id])
@@ -118,100 +118,94 @@ const TeacherQuizEdit = () => {
         var valid = true
         var answerParent = document.getElementsByClassName("ansParent")
 
-        quiz[id] = data
+        // quiz[id] = data
 
-        //console.log(dataCopy)
+        // var quizAnswers = document.getElementsByClassName("quiz-answers")
 
-        var quizAnswers = document.getElementsByClassName("quiz-answers")
+        // for (var i = 0; i < quizAnswers.length; i++) {
+        //     var addedQuestion = quizAnswers[i].parentNode.querySelector("[name='question']")
 
-        for (var i = 0; i < quizAnswers.length; i++) {
-            var addedQuestion = quizAnswers[i].parentNode.querySelector("[name='question']")
+        //     if (quizAnswers[i].children.length === 0 && addedQuestion !== null) {
+        //         var dataCopy = { ...data }
+        //         dataCopy.questions[quizAnswers[i].id] = { question: addedQuestion.value, answers: [] }
+        //         setData(dataCopy)
+        //     }
+        // }
 
-            if (quizAnswers[i].children.length === 0 && addedQuestion !== null) {
-                var dataCopy = { ...data }
-                dataCopy.questions[quizAnswers[i].id] = { question: addedQuestion.value, answers: [] }
-                setData(dataCopy)
-                //console.log(dataCopy)
-            }
-        }
+        // //quiz[id] = data
 
-        //quiz[id] = data
-        //console.log(dataCopy)
+        // for (var i = 0; i < answerParent.length; i++) {
+        //     var answers = {}
 
-        for (var i = 0; i < answerParent.length; i++) {
-            var answers = {}
+        //     let addedAnswer = answerParent[i].querySelector("[name='addedAnswer']")
+        //     let addedCorrect = answerParent[i].querySelector("[name='addedCorrect']")
 
-            let addedAnswer = answerParent[i].querySelector("[name='addedAnswer']")
-            let addedCorrect = answerParent[i].querySelector("[name='addedCorrect']")
+        //     answers.answer = addedAnswer.value
+        //     answers.correct = (addedCorrect.checked) ? 1 : 0
 
-            answers.answer = addedAnswer.value
-            answers.correct = (addedCorrect.checked) ? 1 : 0
+        //     let inputs = document.querySelectorAll("[type='text']")
 
-            let inputs = document.querySelectorAll("[type='text']")
+        //     for (var j = 0; j < inputs.length; j++) {
+        //         if (!inputs[j].checkValidity()) {
+        //             valid = false
+        //             break
+        //         }
+        //     };
 
-            for (var j = 0; j < inputs.length; j++) {
-                if (!inputs[j].checkValidity()) {
-                    valid = false
-                    break
-                }
-            };
+        //     if (valid) {
+        //         var parentID = answerParent[i].parentNode.id
 
-            if (valid) {
-                var parentID = answerParent[i].parentNode.id
-                //console.log(dataCopy.questions[parentID])
+        //         if (data.questions[parentID] === undefined) {
+        //             var addedQuestion = document.getElementById("question" + parentID)
+        //             var dataCopy = { ...data }
+        //             dataCopy.questions[parentID] = { question: addedQuestion.querySelector("[name='question']").value, answers: [] }
+        //             setData(dataCopy)
 
-                if (data.questions[parentID] === undefined) {
-                    var addedQuestion = document.getElementById("question" + parentID)
-                    var dataCopy = { ...data }
-                    dataCopy.questions[parentID] = { question: addedQuestion.querySelector("[name='question']").value, answers: [] }
-                    setData(dataCopy)
-                    //question_id: parseInt(parentID) + 1,
+        //         } else if (data.questions[parentID].answers === undefined)
+        //             data.questions[parentID].answers = []
+        //         data.questions[parentID].answers.push(answers)
 
-                } else if (data.questions[parentID].answers === undefined)
-                    data.questions[parentID].answers = []
-                data.questions[parentID].answers.push(answers)
+        //     } else
+        //         break
 
-            } else
-                break
+        // }
 
-        }
+        // let inputs = document.querySelectorAll("[type='text']")
 
-       // console.log(dataCopy)
-
-        let inputs = document.querySelectorAll("[type='text']")
-
-        for (var j = 0; j < inputs.length; j++) {
-            if (!inputs[j].checkValidity()) {
-                alert("Please fill out all fields")
-                valid = false
-                break
-            }
-        };
+        // for (var j = 0; j < inputs.length; j++) {
+        //     if (!inputs[j].checkValidity()) {
+        //         alert("Please fill out all fields")
+        //         valid = false
+        //         break
+        //     }
+        // };
 
         if (valid) {
-            quiz[id] = data
-            //setData(dataCopy)
+           // quiz[id] = data
+            console.log(data)
             fetch('http://localhost:3001/teacherCourses/editQuiz/', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(quiz[id])
-            }).then(() => {
-                localStorage.setItem('quiz', JSON.stringify(quiz))
+                body: JSON.stringify(data)
+            }).then(data => {
+                //const updatedQuiz = JSON.parse(localStorage.getItem('quiz'))
+               // console.log(quiz)
+                //updatedQuiz[id] = quiz[id]
+                //console.log(updatedQuiz)
+               // localStorage.setItem('quiz', JSON.stringify(quiz))
                 history.replace("/teacher/courses/" + course_id)
+                
+                //history.goBack()
             })
 
         }
-
-
     }
 
     const deleteQuestion = (key) => {
         const questionNo = document.getElementById("question" + key)
         if (window.confirm("Confirm delete")) {
-            //quiz[id].questions.splice(key, 1)
             quiz[id].questions[key].deleted = true
             questionNo.remove()
-            console.log(quiz[id].questions)
             localStorage.setItem('quiz', JSON.stringify(quiz))
         }
 
@@ -221,7 +215,6 @@ const TeacherQuizEdit = () => {
         var parent = (i.target !== undefined) ? i.target.parentNode.parentNode.parentNode : undefined
 
         const questionNo = document.getElementById(key)
-        console.log(questionNo.childNodes)
 
         if (window.confirm("Confirm delete")) {
             if (parent !== undefined) {
@@ -230,13 +223,10 @@ const TeacherQuizEdit = () => {
                 parent.remove()
             } else {
                 questionNo.childNodes[i].remove()
-                //console.log(i)
-                //quiz[id].questions[key].answers.splice(i, 1)
                 quiz[id].questions[key].answers[i].deleted = true
             }
         }
 
-        console.log(quiz[id].questions[key].answers)
         localStorage.setItem('quiz', JSON.stringify(quiz))
     }
 
@@ -357,7 +347,6 @@ const TeacherQuizEdit = () => {
                                 </div>
                             </div>
                         ))}
-
 
                         <button className="course-btn" onClick={addQuestion} type="button">
                             <AddCircleOutlineIcon /> Add Question

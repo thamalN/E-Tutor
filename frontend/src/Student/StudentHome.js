@@ -1,12 +1,29 @@
 import { useHistory} from "react-router-dom";
 import Sidebar from "../Sidebar";
+import { useEffect } from "react";
 // import Calendar from "../Calendar";
 
 const StudentHome = (props) => {
 
     const history = useHistory()
 
-    //const user = JSON.parse(localStorage.getItem('user'))
+    const user = JSON.parse(localStorage.getItem('user'))
+    const id = { id: user.user_id };
+
+    const url = "http://localhost:3001/StudentNotification"
+
+    useEffect(() => {
+        fetch(url, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(id)
+        }).then(res =>  {
+            return res.json()
+        }).then((data) => {
+            console.log(data)
+            localStorage.setItem('notifications', JSON.stringify(data))
+        })
+    })
 
     const logOut = () => {
         props.setLoggedIn(false)

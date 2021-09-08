@@ -57,6 +57,7 @@ import Discussion from './Teacher/Discussion';
 import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
 import PayCourses from './Student/PayCourses';
+import Meeting from './Teacher/Meeting';
 
 function App() {
 
@@ -210,6 +211,10 @@ function App() {
 
             <Route exact path="/teacher/courses/discussion/:id">
               <Discussion />
+            </Route>
+
+            <Route exact path="/teacher/meeting">
+              <Meeting />
             </Route>
 
             <Route exact path="/studentHome">
