@@ -53,12 +53,22 @@ module.exports = function (app, db, upload) {
             console.log("empty")
         }
 
-        else if(req.files.length===0){
+        else if(req.files.length===0 && opt ==="exist"){
             content_path = req.body.attachment
             console.log("existing file")
         }
+
+        else if(req.files.length===0 && opt ==="remove"){
+            content_path = ""
+            console.log("remove file")
+        }
+        else if(opt ==="empty"){
+            content_path = "http://127.0.0.1:8887/" + req.files[0].path;
+            console.log("new file")
+        }
         else{
             content_path = "http://127.0.0.1:8887/" + req.files[0].path;
+            console.log("remove and add new file")
         }
         console.log(announcement_id)
         console.log(req.files[0])
