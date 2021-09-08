@@ -40,7 +40,6 @@ module.exports = function (app, db, upload) {
 
     app.post("/editAnnouncement", upload.any(), (req, res) => {
         console.log(req.body)
-        console.log(req.files)
         const announcement_id = req.body.announcement_id;
         const opt = req.body.opt;
         const user_id = req.body.user_id;

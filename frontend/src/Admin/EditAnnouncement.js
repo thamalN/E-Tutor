@@ -49,7 +49,7 @@ const EditAnnouncement = () => {
         const formData = new FormData(document.getElementById("content-form"))
         formData.append("user_id", data.user_id)
         formData.append("announcement_id", data.announcement_id)
-        formData.append("opt", data.opt)
+        formData.set("opt", data.opt)
 
         fetch(url, {
             method: 'POST',
