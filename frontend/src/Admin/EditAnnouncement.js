@@ -7,23 +7,24 @@ const EditAnnouncement = () => {
     const results = JSON.parse(localStorage.getItem('announce'));
     const [data, setData] = useState({
         opt: "",
+        announcement_id: results.announcement_id,
         topic: results.topic,
         description: results.description,
         file_name: results.file_name,
         attachment: results.attachment,
-        user_id: user.user_id,
-        attach: "new"
+        user_id: user.user_id
         }
     );
-
+        console.log(data.announcement_id)
     useEffect(() => {
         if (results.attachment === "") {
-            setData({ ...data, attach: "" })
+            setData({ ...data, opt: "empty" })
             document.getElementById("opt").required = false
             document.getElementById("opt").style.display = "none"
+            document.getElementById("file_link").style.display = "none"
             
         }
-    })
+    },[])
 
     useEffect(() => {
         if (data.opt === "exist") {
@@ -31,8 +32,10 @@ const EditAnnouncement = () => {
             document.getElementById("attachment").style.display = "none"
             document.getElementById("file_link").style.display = "block"
             
-        } else if(data.opt === "new"){
-            document.getElementById("attachment").required = true
+        } else if(data.opt === "remove"){
+            setData({ ...data, file_name: "" })
+            document.getElementById("attachment").required = false
+            document.getElementById("file_name").required = false
             document.getElementById("attachment").style.display = "block"
             document.getElementById("file_link").style.display = "none"
         }
@@ -45,6 +48,8 @@ const EditAnnouncement = () => {
 
         const formData = new FormData(document.getElementById("content-form"))
         formData.append("user_id", data.user_id)
+        formData.append("announcement_id", data.announcement_id)
+        formData.set("opt", data.opt)
 
         fetch(url, {
             method: 'POST',
@@ -90,9 +95,9 @@ const EditAnnouncement = () => {
                     />
                 </div>
 
-                <a href={data.attachment} target="_blank" rel="noreferrer">
+                <a href={data.attachment} id="file_link" target="_blank" rel="noreferrer">
                                     
-                                    {data.attachment && <div id="file_link">{data.file_name}</div>}
+                                    {data.attachment && <div >{data.file_name}</div>}
                                         
                                         </a>
 
@@ -103,7 +108,7 @@ const EditAnnouncement = () => {
                                         }} required>
                     <option value="" hidden selected> -- Select an option -- </option>                        
                     <option value="exist">Keep existing file</option>
-                    <option value="new">Add new file</option>
+                    <option value="remove">Remove existing file</option>
                                     </select>
                 <div className="col-12">
                     <label htmlFor="file_name" className="mt-2">File Name</label>
