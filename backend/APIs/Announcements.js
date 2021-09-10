@@ -30,7 +30,7 @@ module.exports = function (app, db, upload) {
     })
 
     app.get("/viewPreviousAnnouncements", (req, res) => {
-        const query = "SELECT announcement_id, topic, description, file_name, attachment, date_time, modified_at, fname, lname  FROM announcement LEFT JOIN user on announcement.user_id=user.user_id  ORDER BY announcement.modified_at DESC;";
+        const query = "SELECT announcement_id, topic, description, file_name, attachment, date_time, modified_at, user.user_id AS added_by, fname, lname  FROM announcement LEFT JOIN user on announcement.user_id=user.user_id  ORDER BY announcement.modified_at DESC;";
 
         db.query(query, (err, result) => {
             if (err) throw err;

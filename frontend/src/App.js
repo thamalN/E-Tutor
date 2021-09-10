@@ -65,6 +65,12 @@ import Meeting from './Teacher/Meeting';
 // import StuAddQuiz from './Student/StuAddQuiz';
 import StuFeedback from './Student/StuFeedback';
 // import StuAddQuiz from './Student/StuAddQuiz';
+import TeacherAnnonucements from './Teacher/TeacherAnnouncements';
+import CreateTeacherAnnouncement from './Teacher/CreateTeacherAnnouncement';
+import ViewTeacherAnnouncements from './Teacher/ViewTeacherAnnouncements';
+import EditTeacherAnnouncement from './Teacher/EditTeacherAnnouncement';
+import TeacherFeedback from './Teacher/TeacherFeedback';
+import Students from './Teacher/Students';
 
 function App() {
 
@@ -226,6 +232,30 @@ function App() {
 
             <Route exact path="/teacher/meeting">
               <Meeting />
+            </Route>
+
+            <Route exact path="/teacher/students">
+              <Students />
+            </Route>
+
+            <Route exact path="/teacher/announcements">
+              <TeacherAnnonucements />
+            </Route>
+
+            <Route exact path="/teacher/announcements/createAnnouncement">
+              <CreateTeacherAnnouncement />
+            </Route>
+
+            <Route exact path="/teacher/announcements/viewTeacherAnnouncements">
+              <ViewTeacherAnnouncements />
+            </Route>
+
+            <Route exact path="/teacher/announcements/editAnnouncement">
+              <EditTeacherAnnouncement />
+            </Route>
+
+            <Route exact path="/teacher/feedback">
+              <TeacherFeedback/>
             </Route>
 
             <Route exact path="/studentHome">

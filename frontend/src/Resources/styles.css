@@ -147,6 +147,12 @@ html{height:100%}
   vertical-align: middle;
 }
 
+.add-btn {
+  margin: 30px auto;
+  width: auto !important;
+}
+
+
 /* .authForm {
   padding: 10px;
   margin: 5% auto;
@@ -745,8 +751,9 @@ font-weight: bold;
  text-align: center;
 }
 
-.lesson>h5 {
+.lesson h5 {
   text-decoration: underline;
+  flex: 80%;
 }
 
 .lesson>h4 {
@@ -857,6 +864,34 @@ font-weight: bold;
   flex: 20%;
 }
 
+.add-quiz-inputs {
+  border: none;
+  background-color: inherit;
+  border-bottom: 2px solid rgb(180, 180, 180);
+}
+
+.add-quiz-inputs:focus {
+  outline: none;
+}
+
+.add-question-btn {
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #ffffff;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 20px;
+  width: auto !important;
+  align-self: flex-end;
+}
+
+.add-question-btn:hover{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 2px solid;
+  cursor: pointer;
+}
+
 .quiz-details input {
   border: none;
   background-color: inherit;
@@ -874,10 +909,10 @@ font-weight: bold;
 }
 
 .quiz-header button {
+  margin-top: 10px;
   border: none;
   background-color: inherit;
   color: #3ca730;
-  size: 50%;
 }
 
 .quiz-questions-input {
@@ -886,18 +921,28 @@ font-weight: bold;
 
 .quiz-header {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   margin-bottom: 30px;
+  flex-direction: column;
+}
+
+.quiz-header div {
+  display: flex;
+  gap: 10px;
 }
 
 
-.quiz-name {
+.quiz-name-1 {
   font-weight: bold;
-  flex: 80%;
+  flex: 0 0 40%;
+}
+
+.quiz-name-2 {
+  flex: 40%;
 }
 
 .quiz-questions {
-  border: 4px solid black;
+  border: 2px solid black;
   border-radius: 10px;
   margin-bottom: 10px;
   padding: 10px;
@@ -1145,6 +1190,14 @@ details[open] summary ~ * {
   display: none;
 }
 
+details summary::marker {
+  display:none;
+}
+
+ details summary{ 
+    list-style: none
+ }
+
 .adminHome body{
   background-color: rgb(23, 193, 199);
 }
@@ -1308,7 +1361,7 @@ color: #000000;
 }
 
 .stuRegHeader{
-  margin-left: 2vw;
+  /* margin-left: 2vw; */
   height: 10vh;
   min-width: 100%;
   box-sizing: border-box;
@@ -1569,6 +1622,7 @@ ul.addFields li{
   display: flex;
   box-sizing: border-box;
   margin-right: 2vw;
+  margin-top: 1vw;
 }
 
 .searchRow:hover{
