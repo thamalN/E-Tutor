@@ -2,15 +2,22 @@ import { useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import logo from './Resources/logo_icon_white.png';
 import PersonIcon from '@material-ui/icons/Person';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import { Badge } from '@material-ui/core';
+
 import './Resources/styles.css';
 
 const Navbar = (props) => {
     let navbar;
 
     const user = JSON.parse(localStorage.getItem('user'))
+    const notifications = JSON.parse(localStorage.getItem('notifications'))
+    let notifyLen;
+    if(notifications) {
+        notifyLen = notifications.payments.length 
+    }
     //console.log(user);
     const history = useHistory()
-
 
     useEffect(() => {
         const loggedUser = localStorage.getItem('user')
@@ -85,19 +92,42 @@ const Navbar = (props) => {
                 </button>
 
                 <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">
+
+                    {user.user_flag === 4 && (
+                        <ul className="navbar-nav">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <Badge badgeContent={notifyLen}>
+                                        <NotificationsIcon />
+                                    </Badge>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {notifications && notifications.payments.map((item) =>
+                                        <div>
+                                            <Link class="dropdown-item" to="#">Payment due on {item.course_name} {item.year}</Link>
+                                        </div>
+                                    )}
+                                    <div class="dropdown-divider"></div>
+
+                                </div>
+                            </li>
+                        </ul>
+                    )}
+
                     <ul className="navbar-nav">
                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <PersonIcon />{" " + user.fname + " " + user.lname}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link class="dropdown-item" to="#">Action</Link>
-                               { user.user_flag === 4 &&  <a class="dropdown-item" href= {`/StudentHome/StudentDetails/${user.user_id}`}>My Details</a> }
+                                <Link class="dropdown-item" to="#">My Details</Link>
+                                {user.user_flag === 4 && <a class="dropdown-item" href={`/StudentHome/StudentDetails/${user.user_id}`}>My Details</a>}
                                 <div class="dropdown-divider"></div>
                                 <Link class="dropdown-item" onClick={logOut}>Log Out</Link>
                             </div>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </nav>

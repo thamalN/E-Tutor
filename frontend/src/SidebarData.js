@@ -10,6 +10,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import DescriptionIcon from '@material-ui/icons/Description';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import FaceIcon from '@material-ui/icons/Face';
 
 export default function SidebarData() {
     const user = JSON.parse(localStorage.getItem('user'))
@@ -46,9 +47,9 @@ export default function SidebarData() {
         return [
         { title: "Home", icon: <HomeIcon />, link: "/teacher/teacherHome" },
         { title: "Courses", icon: <MenuBookIcon />, link: "/teacher/courses" },
-        { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
-        { title: "Announcements", icon: <AddAlertIcon />, link: "/announcements" },
-        { title: "Feedback", icon: <FeedbackIcon />, link: "/feedback" }
+        { title: "Students", icon: <FaceIcon />, link: "/teacher/students" },
+        { title: "Announcements", icon: <AddAlertIcon />, link: "/teacher/announcements" },
+        { title: "Feedback", icon: <FeedbackIcon />, link: "/teacher/feedback" }
         ]
     }
     else if (flag === 4) {
