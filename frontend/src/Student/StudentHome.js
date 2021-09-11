@@ -12,11 +12,27 @@ const StudentHome = () => {
     const history = useHistory()
 
     const user = JSON.parse(localStorage.getItem('user'))
+    const id = { id: user.user_id };
 
-    const url = "http://localhost:3001/studentAnnouncements"
+    const url = "http://localhost:3001/StudentNotification"
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(id)
+        }).then(res =>  {
+            return res.json()
+        }).then((data) => {
+            console.log(data)
+            localStorage.setItem('notifications', JSON.stringify(data))
+        })
+    })
+
+    const url2 = "http://localhost:3001/studentAnnouncements"
+
+    useEffect(() => {
+        fetch(url2)
             .then((res => {
                 return res.json()
             }))

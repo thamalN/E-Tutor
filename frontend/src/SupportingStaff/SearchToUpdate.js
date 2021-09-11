@@ -394,7 +394,7 @@ const SearchToUpdate = () => {
                             placeholder="Search"
                         />
                         <button>
-                            <Icon icon={searchOutlined} />
+                            {/* <Icon icon={searchOutlined} /> */}
                         </button>
                     </div>
                     {/* 

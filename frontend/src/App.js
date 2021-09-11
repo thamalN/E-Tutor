@@ -45,8 +45,8 @@ import TeacherQuizEdit from './Teacher/TeacherQuizEdit';
 import AddNewCourse from './Admin/AddNewCourse';
 import RecentRegistrations from './Admin/RecentRegistrations';
 import VerifiedPayments from './VerifiedPayments'
-
-
+import RecentStaffRegistrations from './SupportingStaff/RecentStaffRegistrations';
+import StaffManagePayments from './SupportingStaff/StaffManagePayments';
 import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
@@ -60,10 +60,18 @@ import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
 import EditAnnouncement from './Admin/EditAnnouncement';
 import PayCourses from './Student/PayCourses';
+import Meeting from './Teacher/Meeting';
 // import StuEvent from './Student/StuEvent';
 // import StuAddQuiz from './Student/StuAddQuiz';
 import StuFeedback from './Student/StuFeedback';
+import DetailedTeacherPayments from './Admin/DetailedTeacherPayments';
 // import StuAddQuiz from './Student/StuAddQuiz';
+import TeacherAnnonucements from './Teacher/TeacherAnnouncements';
+import CreateTeacherAnnouncement from './Teacher/CreateTeacherAnnouncement';
+import ViewTeacherAnnouncements from './Teacher/ViewTeacherAnnouncements';
+import EditTeacherAnnouncement from './Teacher/EditTeacherAnnouncement';
+import TeacherFeedback from './Teacher/TeacherFeedback';
+import Students from './Teacher/Students';
 
 function App() {
 
@@ -131,6 +139,10 @@ function App() {
               <TeacherPayments/>
             </Route>
 
+            <Route exact path="/adminHome/payments/teacherPayments/detailedTeacherPayments">
+              <DetailedTeacherPayments />
+            </Route>
+
             <Route exact path="/adminHome/announcements">
               <Announcements/>
             </Route>
@@ -169,6 +181,14 @@ function App() {
             
             <Route exact path="/supportingStaffHome/searchToUpdate">
               <SearchToUpdate />
+            </Route>
+
+            <Route exact path="/supportingStaffHome/registrations/recentStaffRegistrations">
+              <RecentStaffRegistrations/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/ManagePayments">
+              <StaffManagePayments/>
             </Route>
 
             <Route exact path="/managePayments">
@@ -221,6 +241,34 @@ function App() {
 
             <Route exact path="/teacher/courses/discussion/:id">
               <Discussion />
+            </Route>
+
+            <Route exact path="/teacher/meeting">
+              <Meeting />
+            </Route>
+
+            <Route exact path="/teacher/students">
+              <Students />
+            </Route>
+
+            <Route exact path="/teacher/announcements">
+              <TeacherAnnonucements />
+            </Route>
+
+            <Route exact path="/teacher/announcements/createAnnouncement">
+              <CreateTeacherAnnouncement />
+            </Route>
+
+            <Route exact path="/teacher/announcements/viewTeacherAnnouncements">
+              <ViewTeacherAnnouncements />
+            </Route>
+
+            <Route exact path="/teacher/announcements/editAnnouncement">
+              <EditTeacherAnnouncement />
+            </Route>
+
+            <Route exact path="/teacher/feedback">
+              <TeacherFeedback/>
             </Route>
 
             <Route exact path="/studentHome">

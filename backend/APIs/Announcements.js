@@ -30,7 +30,7 @@ module.exports = function (app, db, upload) {
     })
 
     app.get("/viewPreviousAnnouncements", (req, res) => {
-        const query = "SELECT announcement_id, topic, description, file_name, attachment, date_time, modified_at, fname, lname  FROM announcement LEFT JOIN user on announcement.user_id=user.user_id  ORDER BY announcement.modified_at DESC;";
+        const query = "SELECT announcement_id, topic, description, file_name, attachment, date_time, modified_at, user.user_id AS added_by, fname, lname  FROM announcement LEFT JOIN user on announcement.user_id=user.user_id  ORDER BY announcement.modified_at DESC;";
 
         db.query(query, (err, result) => {
             if (err) throw err;
@@ -40,23 +40,39 @@ module.exports = function (app, db, upload) {
 
     app.post("/editAnnouncement", upload.any(), (req, res) => {
         console.log(req.body)
-        console.log(req.files)
         const announcement_id = req.body.announcement_id;
+        const opt = req.body.opt;
         const user_id = req.body.user_id;
         const topic = req.body.topic;
         const description = req.body.description;
         const file_name = req.body.file_name;
         let content_path;
-        if(req.files.length===0){
+        if(req.files.length===0 && opt ==="empty"){
             content_path = ""
             console.log("empty")
         }
+
+        else if(req.files.length===0 && opt ==="exist"){
+            content_path = req.body.attachment
+            console.log("existing file")
+        }
+
+        else if(req.files.length===0 && opt ==="remove"){
+            content_path = ""
+            console.log("remove file")
+        }
+        else if(opt ==="empty"){
+            content_path = "http://127.0.0.1:8887/" + req.files[0].path;
+            console.log("new file")
+        }
         else{
             content_path = "http://127.0.0.1:8887/" + req.files[0].path;
+            console.log("remove and add new file")
         }
+        console.log(announcement_id)
         console.log(req.files[0])
     
-        const query = "UPDATE announcement SET topic=?, description=?, file_name=?, attachment=?, modified_by=?, modified_at=now()) WHERE announcement_id=?;";
+        const query = "UPDATE announcement SET topic=?, description=?, file_name=?, attachment=?, modified_by=?, modified_at=now() WHERE announcement_id=?;";
     
         db.query(query, [topic, description, file_name, content_path, user_id, announcement_id], (err, result) => {
             if (err) throw err;

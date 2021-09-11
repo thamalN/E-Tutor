@@ -147,6 +147,12 @@ html{height:100%}
   vertical-align: middle;
 }
 
+.add-btn {
+  margin: 30px auto;
+  width: auto !important;
+}
+
+
 /* .authForm {
   padding: 10px;
   margin: 5% auto;
@@ -362,18 +368,20 @@ html{height:100%}
 
 .content-name {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 
-.content-name a {
+.name-sub {
   text-decoration: none;
   flex: 80%;
   color: #000000;
   font-style: italic;
 }
 
-.content-name a:hover {
+.name-sub:hover {
   font-weight: bold;
+  text-decoration: none;
+  color: #000000;
 }
 
 .content-name svg {
@@ -479,12 +487,33 @@ font-weight: bold;
   cursor: pointer;
 }
 
+.course-edit-btn {
+  margin: 10px;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #ffffff;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.course-edit-btn:hover{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 2px solid;
+  cursor: pointer;
+}
+
 .course-details h1 {
   font-weight: bold;
 }
 
 .course-details h5 {
   font-style: italic;
+}
+
+.edit-btn {
+  background-color: inherit;
+  border: none;
 }
 
 .course-content h4 {
@@ -648,6 +677,10 @@ font-weight: bold;
   justify-content: center;
 }
 
+#adminCard a {
+  text-decoration: none;
+}
+
 .addContent {
   padding: 10px;
   margin: 5% auto;
@@ -718,8 +751,9 @@ font-weight: bold;
  text-align: center;
 }
 
-.lesson>h5 {
+.lesson h5 {
   text-decoration: underline;
+  flex: 80%;
 }
 
 .lesson>h4 {
@@ -735,6 +769,11 @@ font-weight: bold;
 .lesson>a:hover {
   color: #000000;
   font-weight: bold;
+}
+
+.lesson button {
+  border: none;
+  background-color: inherit;
 }
 
 .quiz-form {
@@ -825,6 +864,34 @@ font-weight: bold;
   flex: 20%;
 }
 
+.add-quiz-inputs {
+  border: none;
+  background-color: inherit;
+  border-bottom: 2px solid rgb(180, 180, 180);
+}
+
+.add-quiz-inputs:focus {
+  outline: none;
+}
+
+.add-question-btn {
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #ffffff;
+  color: white;
+  border-radius: 20px;
+  padding: 10px;
+  margin-top: 20px;
+  width: auto !important;
+  align-self: flex-end;
+}
+
+.add-question-btn:hover{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border: 2px solid;
+  cursor: pointer;
+}
+
 .quiz-details input {
   border: none;
   background-color: inherit;
@@ -842,10 +909,10 @@ font-weight: bold;
 }
 
 .quiz-header button {
+  margin-top: 10px;
   border: none;
   background-color: inherit;
   color: #3ca730;
-  size: 50%;
 }
 
 .quiz-questions-input {
@@ -854,18 +921,28 @@ font-weight: bold;
 
 .quiz-header {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   margin-bottom: 30px;
+  flex-direction: column;
+}
+
+.quiz-header div {
+  display: flex;
+  gap: 10px;
 }
 
 
-.quiz-name {
+.quiz-name-1 {
   font-weight: bold;
-  flex: 80%;
+  flex: 0 0 40%;
+}
+
+.quiz-name-2 {
+  flex: 40%;
 }
 
 .quiz-questions {
-  border: 4px solid black;
+  border: 2px solid black;
   border-radius: 10px;
   margin-bottom: 10px;
   padding: 10px;
@@ -1035,6 +1112,21 @@ font-weight: bold;
   transform: scale(1.1);
 }
 
+.edit-reply-btn {
+  background-color: inherit;
+  color: rgb(0, 0, 0);
+  border: none;
+  font-weight: bold;
+  transition: transform ease 0.5s;
+}
+
+.edit-reply-btn:hover{
+  color: black;
+  border: none;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .comment-btn {
   align-self: flex-end;
   width: 10%;
@@ -1073,9 +1165,38 @@ details[open] summary ~ * {
   height: 150px;
 }
 
+.meeting-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 100px;
+  margin: 10px;
+  background-color: rgb(0, 0, 0);
+  border: 2px solid #000000;
+  color: white;
+  border-radius: 50%;
+  padding: 20px;
+}
+
+.meeting-toggle:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.meeting-toggle:hover .meeting-icon {
+  fill: black;
+}
+
 #editmode {
   display: none;
 }
+
+details summary::marker {
+  display:none;
+}
+
+ details summary{ 
+    list-style: none
+ }
 
 .adminHome body{
   background-color: rgb(23, 193, 199);
@@ -1085,6 +1206,7 @@ details[open] summary ~ * {
   margin: auto;
   margin-top: 0.5rem;
 }
+
 .card{
   /* width: 20%;
   overflow: hidden;
@@ -1239,7 +1361,7 @@ color: #000000;
 }
 
 .stuRegHeader{
-  margin-left: 2vw;
+  /* margin-left: 2vw; */
   height: 10vh;
   min-width: 100%;
   box-sizing: border-box;
@@ -1500,6 +1622,7 @@ ul.addFields li{
   display: flex;
   box-sizing: border-box;
   margin-right: 2vw;
+  margin-top: 1vw;
 }
 
 .searchRow:hover{
@@ -1591,4 +1714,10 @@ margin-right: 0;
 
 .newbutton{
   background-color: darkgray;
+}
+
+.totalAmount{
+  padding: 30px;
+  text-align: right;
+  margin-right: 15%;
 }

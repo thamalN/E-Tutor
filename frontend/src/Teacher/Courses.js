@@ -42,7 +42,7 @@ const Courses = () => {
                                     <div className="card-info">
                                         <h1>{course.course_name} {course.year}</h1>
                                         <p>{course.description}</p>
-                                        <h3>{course.price}</h3>
+                                        <h3>RS. {course.price}</h3>
                                     </div>
 
                                     <img className="course_icon" src={PhysicsIcon} alt="physics_icon" />
