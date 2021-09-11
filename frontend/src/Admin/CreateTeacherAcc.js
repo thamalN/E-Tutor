@@ -28,6 +28,20 @@ const CreateTeacherAcc = () => {
     );
 
     useEffect(() => {
+        if (data.username.length !== 0) {
+        if (usernames.some(i =>i.username === data.username)) {
+            document.getElementById('usern').innerHTML = '(Username is already taken!)';
+            document.getElementById('usern').style.color = "red";
+                  
+        }
+        else{
+            document.getElementById('usern').innerHTML = '(Username is available!)';
+            document.getElementById('usern').style.color = "green";
+        }
+    }
+    })
+
+    useEffect(() => {
         if (data.password.length !== 0) {
             if (data.password === data.confirmPassword) {
                 document.getElementById('pass').innerHTML = '(Passwords match!)';
@@ -68,7 +82,7 @@ const CreateTeacherAcc = () => {
 <div className="form-signup">
 
 {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
-<h1 className="h3 mb-3 fw-normal">Register Teacher</h1>
+<h1 className="h3 mb-3 fw-normal">Create Teacher Account</h1>
 <form onSubmit={handleSubmit} className="row g-3">
 
 
@@ -98,6 +112,7 @@ const CreateTeacherAcc = () => {
 
     <div className="col-md-4">
         <label htmlFor="userName" className="mt-2">Username</label>
+        <span id="usern" style={{ "marginLeft": 50, fontSize:12 }}></span>
         <input
             type="text"
             className="form-control"

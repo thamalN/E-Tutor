@@ -60,8 +60,10 @@ import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
 import EditAnnouncement from './Admin/EditAnnouncement';
 import PayCourses from './Student/PayCourses';
+// import StuEvent from './Student/StuEvent';
+// import StuAddQuiz from './Student/StuAddQuiz';
 import StuFeedback from './Student/StuFeedback';
-import StuAddQuiz from './Student/StuAddQuiz';
+// import StuAddQuiz from './Student/StuAddQuiz';
 
 function App() {
 
@@ -269,9 +271,9 @@ function App() {
               <StuFeedback/>
             </Route>
 
-            <Route exact path="/student/StuaddQuiz">
+            {/* <Route exact path="/student/StuaddQuiz">
             <StuAddQuiz />
-          </Route>
+          </Route> */}
             
           </Switch>
         </div>

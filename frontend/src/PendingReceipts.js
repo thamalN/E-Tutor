@@ -13,7 +13,8 @@ const PendingReceipts = () => {
         verifyflag: "",
         student_id: "",
         course_id: "",
-        month: ""
+        month: "",
+        email: ""
         
     });
     const history = useHistory()
@@ -71,6 +72,10 @@ const PendingReceipts = () => {
                     alert("Payment rejected!");
                     history.push("/pendingReceipts");
                   }
+                  else if (data.status === "fail") {
+                    alert("Payment rejected successfully but unexpected error occurred in mailing the student!");
+                    history.push("/pendingReceipts");
+                  }
             }))
     }
     
@@ -106,7 +111,7 @@ const PendingReceipts = () => {
                                             <td>{payment.course_id}</td>
                                             <td>{payment.amount}</td>
                                             <td>{payment.month}</td>
-                                            <td><button className="btn btn-dark" onClick={(e) => setPaymentdata({ ...paymentdata, payment_id: payment.payment_id, student_id: payment.student_id, course_id: payment.course_id, month: payment.month}) } data-bs-toggle="modal" data-bs-target="#exampleModal1">View</button></td>
+                                            <td><button className="btn btn-dark" onClick={(e) => setPaymentdata({ ...paymentdata, payment_id: payment.payment_id, student_id: payment.student_id, course_id: payment.course_id, month: payment.month, email: payment.email}) } data-bs-toggle="modal" data-bs-target="#exampleModal1">View</button></td>
                                             </tr>
                                             <div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div className="modal-dialog modal-dialog-centered">
