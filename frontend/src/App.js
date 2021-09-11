@@ -64,6 +64,7 @@ import Meeting from './Teacher/Meeting';
 // import StuEvent from './Student/StuEvent';
 // import StuAddQuiz from './Student/StuAddQuiz';
 import StuFeedback from './Student/StuFeedback';
+import DetailedTeacherPayments from './Admin/DetailedTeacherPayments';
 // import StuAddQuiz from './Student/StuAddQuiz';
 
 function App() {
@@ -130,6 +131,10 @@ function App() {
 
             <Route exact path="/adminHome/payments/teacherPayments">
               <TeacherPayments/>
+            </Route>
+
+            <Route exact path="/adminHome/payments/teacherPayments/detailedTeacherPayments">
+              <DetailedTeacherPayments />
             </Route>
 
             <Route exact path="/adminHome/announcements">

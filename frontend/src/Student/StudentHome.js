@@ -29,10 +29,10 @@ const StudentHome = () => {
         })
     })
 
-    const url = "http://localhost:3001/studentAnnouncements"
+    const url2 = "http://localhost:3001/studentAnnouncements"
 
     useEffect(() => {
-        fetch(url)
+        fetch(url2)
             .then((res => {
                 return res.json()
             }))

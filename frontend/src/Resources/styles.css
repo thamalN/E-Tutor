@@ -1661,3 +1661,9 @@ margin-right: 0;
 .newbutton{
   background-color: darkgray;
 }
+
+.totalAmount{
+  padding: 30px;
+  text-align: right;
+  margin-right: 15%;
+}

@@ -105,7 +105,7 @@ const PendingReceipts = () => {
                                 </thead>
                                 <tbody>
                                 {data.map((payment, i) => (
-                                    <div>
+                                    <>
                                             <tr>
                                             <td scope="row">{payment.date_time}</td>
                                             <td align="left">{payment.fname} {payment.lname}</td>
@@ -137,7 +137,7 @@ const PendingReceipts = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
+                                        </>
                                         ))}
                                     
                                 </tbody>
