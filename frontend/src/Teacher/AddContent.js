@@ -6,6 +6,7 @@ const AddContent = () => {
 
     const history = useHistory()
 
+    const courseInfo = JSON.parse(localStorage.getItem('courseInfo'))
     const courses = JSON.parse(localStorage.getItem('course'))
 
     const [data, setData] = useState(
@@ -15,7 +16,7 @@ const AddContent = () => {
             content: "",
             fileName: "",
             lesson_id: "",
-            course_id: courses[0].course_id
+            course_id: courseInfo.course_id
         }
     );
 
@@ -50,7 +51,7 @@ const AddContent = () => {
         formData.append("lesson_id", data.lesson_id)
         formData.append("course_id", data.course_id)
 
-        console.log(formData)
+        //console.log(formData)
 
         fetch(url, {
             method: 'POST',
@@ -61,7 +62,7 @@ const AddContent = () => {
             })
             .then((data => {
                 console.log(data)
-                history.push("/teacher/courses/" + courses[0].course_id)
+                history.push("/teacher/courses/" + courseInfo.course_id)
             }))
     }
 
@@ -136,6 +137,12 @@ const AddContent = () => {
                                     onChange={(e) => setData({ ...data, content: e.target.value })}
                                     id="content"
                                     name="file"
+                                    accept="application/vnd.openxmlformats-officedocument.presentationml.presentation,
+                                    application/vnd.openxmlformats-officedocument.wordprocessingml.document,
+                                    application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,
+                                    application/pdf,
+                                    audio/*,
+                                    video/*"
                                     required
                                 />
                             </div>

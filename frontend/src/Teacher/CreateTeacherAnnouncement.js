@@ -71,7 +71,7 @@ const CreateAnnouncement = () => {
 
                         <div className="col-12">
                             <label htmlFor="description" className="mt-2">Description</label>
-                            <input
+                            <textarea
                                 type="text"
                                 className="form-control"
                                 id="description"
@@ -79,7 +79,9 @@ const CreateAnnouncement = () => {
                                 value={data.description}
                                 onChange={(e) => setData({ ...data, description: e.target.value })}
                                 required
-                            />
+                                style={{ width: "100%", height: "200px" }}
+                            >
+                            </textarea>
                         </div>
                         <div className="col-12">
                             <label htmlFor="file_name" className="mt-2">File Name</label>
@@ -106,9 +108,7 @@ const CreateAnnouncement = () => {
                             />
                         </div>
 
-                        <div className="col-12 mt-4">
-                            <input type="submit" className="w-50 btn btn-dark" value="Add Announcement" style={{margin: "auto"}}/>
-                        </div>
+                        <input type="submit" className="w-50 btn btn-dark add-btn" value="Add Announcement" />
                     </form>
                 </div>
             </div>
