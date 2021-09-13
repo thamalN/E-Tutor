@@ -1767,3 +1767,10 @@ margin-right: 0;
   text-align: right;
   margin-right: 15%;
 }
+
+th {
+  text-align: left;
+}
+td {
+  text-align: left;
+}

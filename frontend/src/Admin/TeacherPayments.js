@@ -67,8 +67,8 @@ const TeacherPayments = () => {
                            
                             </div>
                             <li>
-                                <table className="table">
-                                    <thead>
+                                <table className="table table2">
+                                    <thead className="thead-dark">
                                         <tr>
                                             <th scope="col">Teacher ID</th>
                                             <th scope="col">Name</th>

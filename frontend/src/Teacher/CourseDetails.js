@@ -17,10 +17,12 @@ const CourseDetails = () => {
     const [content, setContent] = useState([])
     const [quiz, setQuiz] = useState([])
     const [discussion, setDiscussion] = useState([])
+    const [delcourse, setDelCourse] = useState([])
 
     const user = JSON.parse(localStorage.getItem('user'))
     const courseInfo = JSON.parse(localStorage.getItem('courseInfo'))
     const id = courseInfo.course_id
+    const user_flag = user.user_flag
 
     const contentUrl = "http://localhost:3001/teacherCourses/content/" + id
 
@@ -32,6 +34,16 @@ const CourseDetails = () => {
             .then((data => {
                 setContent(data)
             }))
+    }, [])
+
+    useEffect(() => {
+        if (user_flag === 3) {
+            document.getElementById("delete_btn").style.display = "none";
+            
+
+        } else if (user_flag === 1) {
+            document.getElementById("delete_btn").style.display = "block";
+        }
     }, [])
 
     if (content) {
@@ -167,8 +179,13 @@ const CourseDetails = () => {
     }
 
     const editDetails = () => {
-
-        const details = document.querySelector(".course-details")
+        var details = document.querySelector(".course-details")
+        var headingInputName
+        var headingInputYear
+        var descriptionInput
+        var saveBtn
+        if (user_flag === 3) {
+            
         const editBtn = details.childNodes[1]
         editBtn.style.display = "none"
 
@@ -176,7 +193,7 @@ const CourseDetails = () => {
 
         const headingDetails = heading.textContent.toString().split(" - ")
 
-        const headingInputName = document.createElement("input");
+        headingInputName = document.createElement("input");
         headingInputName.setAttribute("value", headingDetails[0]);
         headingInputName.style.marginBottom = "5px"
         headingInputName.style.padding = "5px"
@@ -184,7 +201,7 @@ const CourseDetails = () => {
         headingInputName.style.fontWeight = "bold"
         headingInputName.style.fontSize = "25px"
 
-        const headingInputYear = document.createElement("input");
+        headingInputYear = document.createElement("input");
         headingInputYear.setAttribute("value", headingDetails[1]);
         headingInputYear.style.marginBottom = "5px"
         headingInputYear.style.padding = "5px"
@@ -200,17 +217,69 @@ const CourseDetails = () => {
 
         const description = details.childNodes[4]
 
-        const descriptionInput = document.createElement("textarea");
+        descriptionInput = document.createElement("textarea");
         descriptionInput.innerHTML = description.textContent;
         description.replaceWith(descriptionInput);
         descriptionInput.style.width = "100%"
         descriptionInput.rows = 5
 
-        const saveBtn = document.createElement("button");
+        saveBtn = document.createElement("button");
         saveBtn.setAttribute("class", "course-edit-btn")
         saveBtn.innerHTML = "Save Changes"
 
         descriptionInput.insertAdjacentElement('afterend', saveBtn)
+            
+
+        } else if (user_flag === 1) {
+            
+        const editBtn = details.childNodes[1]
+        editBtn.style.display = "none"
+
+        const dltBtn = details.childNodes[2]
+        dltBtn.style.display = "none"
+
+        const heading = details.childNodes[0]
+
+        const headingDetails = heading.textContent.toString().split(" - ")
+
+        headingInputName = document.createElement("input");
+        headingInputName.setAttribute("value", headingDetails[0]);
+        headingInputName.style.marginBottom = "5px"
+        headingInputName.style.padding = "5px"
+        headingInputName.style.width = "100%"
+        headingInputName.style.fontWeight = "bold"
+        headingInputName.style.fontSize = "25px"
+
+        headingInputYear = document.createElement("input");
+        headingInputYear.setAttribute("value", headingDetails[1]);
+        headingInputYear.style.marginBottom = "5px"
+        headingInputYear.style.padding = "5px"
+        headingInputYear.style.width = "100%"
+        headingInputYear.style.fontWeight = "bold"
+        headingInputYear.style.fontSize = "25px"
+
+        const container = document.createElement("div")
+        container.insertAdjacentElement("afterbegin", headingInputName)
+        headingInputName.insertAdjacentElement("afterend", headingInputYear)
+
+        heading.replaceWith(container);
+
+        const description = details.childNodes[5]
+
+        descriptionInput = document.createElement("textarea");
+        descriptionInput.innerHTML = description.textContent;
+        description.replaceWith(descriptionInput);
+        descriptionInput.style.width = "100%"
+        descriptionInput.rows = 5
+
+        saveBtn = document.createElement("button");
+        saveBtn.setAttribute("class", "course-edit-btn")
+        saveBtn.innerHTML = "Save Changes"
+
+        descriptionInput.insertAdjacentElement('afterend', saveBtn)
+        }
+
+        
 
 
         const save = function () {
@@ -242,6 +311,39 @@ const CourseDetails = () => {
         }
     }
 
+    const handleDelete = (key) => {
+        if (window.confirm("Are you sure you want to delete the course with course id " + key + "?")) {
+            const id = { id: key }
+        const url3 = "http://localhost:3001/deleteCourse"
+    
+            fetch(url3, {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(id)
+        })
+                .then((res => {
+                    return res.json()
+                }))
+                .then((data => {
+    
+                    if (data.status === "ok") {
+                        setDelCourse(data)
+                        alert("Course deleted Successfully!")
+                        history.push("/adminHome/courses/allCourses")
+                        
+                      } 
+                      else {
+                        alert("Sorry the task couldn't be completed");
+                        history.push("/adminHome/courses/allCourses")
+                        
+                      }
+                    
+                }))
+            }
+            
+        
+    }
+
     return (
         <div>
 
@@ -250,9 +352,15 @@ const CourseDetails = () => {
                 <div className="homeContent">
                     <div className="course-details">
                         <h1 style={{ display: "inline" }}>{courseInfo.course_name} - {courseInfo.year}</h1>
+                        
                         <button className="edit-btn" style={{ float: "right" }} onClick={editDetails}>
                             <EditIcon style={{ color: "#3ca730" }} fontSize="large" />
+                            
                         </button>
+                        <button className="edit-btn" id="delete_btn" style={{ float: "right" }} onClick={() => handleDelete(courseInfo.course_id)}>
+                        <DeleteIcon style={{ color: "red" }} fontSize="large"/>
+                        </button>
+                        
                         <h5>Conducted by: {courseInfo.fname} {courseInfo.lname}</h5>
                         <h5>Contact: {courseInfo.contact}</h5>
                         <p>{courseInfo.description}</p>

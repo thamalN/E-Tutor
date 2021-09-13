@@ -34,8 +34,8 @@ const RecentRegistrations = () => {
                                 <h3>Recent Registrations</h3>
                             </li>
                             <li>
-                                <table className="table">
-                                    <thead>
+                                <table className="table table2">
+                                    <thead className="thead-dark">
                                         <tr>
                                             <th scope="col">User ID</th>
                                             <th scope="col">Registered Date</th>

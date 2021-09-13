@@ -85,8 +85,8 @@ const RejectedPayments = () => {
                             <h1 className="stuRegHeader">Rejected Receipts</h1>
                         </li>
                         <li className="reg_table">
-                            <table className="table text-center">
-                                <thead>
+                            <table className="table table2 text-center">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">Payment Date&Time</th>
                                         <th scope="col">Student Name</th>

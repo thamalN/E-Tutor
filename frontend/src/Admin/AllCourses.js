@@ -6,9 +6,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 const AllCourses = () => {
     const [data, setData] = useState([])
-    const [delcourse, setDelCourse] = useState([])
     const history = useHistory()
     const url = "http://localhost:3001/AllCourses"
+    const [course, setCourse] = useState({})
 
 
 
@@ -25,39 +25,19 @@ const AllCourses = () => {
                 console.log(data)
             })
 
-        }, [delcourse])
+        }, [])
 
-        const handleDelete = (key) => {
-            if (window.confirm("Are you sure you want to delete the course with course id " + key + "?")) {
-                const id = { id: key }
-            const url3 = "http://localhost:3001/deleteCourse"
-        
-                fetch(url3, {
-                    method: 'POST',
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(id)
-            })
-                    .then((res => {
-                        return res.json()
-                    }))
-                    .then((data => {
-        
-                        if (data.status === "ok") {
-                            setDelCourse(data)
-                            alert("Course deleted Successfully!")
-                            history.push("/adminHome/allCourses")
-                            
-                          } 
-                          else {
-                            alert("Sorry the task couldn't be completed");
-                            history.push("/adminHome/allCourses")
-                            
-                          }
-                        
-                    }))
-                }
-                
-            
+
+        const getCourse = (id) => {
+            fetch("http://localhost:3001/teacherCourses/" + id)
+                .then(res => {
+                    return res.json();
+                })
+                .then(data => {
+                    setCourse(data)
+                    localStorage.setItem('courseInfo', JSON.stringify(data[0]))
+                    history.push("/teacher/courses/" + id)
+                })
         }
 
 
@@ -68,19 +48,18 @@ const AllCourses = () => {
             <div className="homeContent">
                 <div className="courses">
                     {data.map(course => (
-                        <div key={course.course_id} className="course-card" >
+                        <div key={course.course_id} className="course-card" onClick={() => getCourse(course.course_id)}>
                             
-                            <Link to={`/teacher/courses/${course.course_id}`} className="course-card-container">
+                            {/* <Link to={`/teacher/courses/${course.course_id}`} className="course-card-container"> */}
                                 <div className="card-container">
-                                
+                                <div className="card-info">
                                 <h1>{course.course_name} {course.year}</h1>
                                     <p>{course.description}</p>
+                                    <h3>RS. {course.price}</h3>
                                     
                                 </div>
-                            </Link>
-                            <div  className="download_icons">
-                                <button className="btnnew"   onClick={() => handleDelete(course.course_id)}> Delete<DeleteIcon style={{ color: "red" }}/></button>
                                 </div>
+                            {/* </Link> */}
                         </div>
                     ))}
                 </div>
