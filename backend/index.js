@@ -23,12 +23,28 @@ var storage = multer.diskStorage({
     cb(null, 'Content/')
   },
   filename: function (req, file, cb) {
-    const name = file.originalname
+    const name = Date.now() + "-" + file.originalname
     cb(null, name)
   }
 })
 
-var upload = multer({ storage: storage, preservePath: true })
+var upload = multer({ 
+  storage: storage,
+  preservePath: true,
+  fileFilter: function(req, file, cb) {
+
+    console.log(!file.mimetype.toString().includes("video/"))
+    if( file.mimetype !== "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    && file.mimetype !== "application/vnd.openxmlformats-officedocument.wordprocessingml.presentation"
+    && file.mimetype !== "application/vnd.openxmlformats-officedocument.spreadsheetml.presentation"
+    && file.mimetype !== "application/pdf"
+    && !file.mimetype.toString().includes("video/")
+    && !file.mimetype.toString().includes("audio/")) {
+      return cb(new Error("Unsupported file format"))
+    }
+    cb(null, true)
+  }
+ })
 
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
@@ -60,6 +76,7 @@ require('./APIs/PaymentStudent')(app, db, stripe, uuid)
 require('./APIs/TeacherHome')(app, db)
 require('./APIs/stuFeedback')(app,db)
 require('./APIs/StudentAnnouncement')(app,db)
+require('./APIs/ViewProfile')(app,db)
 
 const server = http.createServer(app)
 

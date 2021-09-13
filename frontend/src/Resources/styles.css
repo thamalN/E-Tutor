@@ -393,6 +393,52 @@ html{height:100%}
   transform: scale(1.3);
   cursor: pointer;
 }
+
+#replace-file {
+  margin: 10px;
+  width: 15px;
+  height: 15px;
+}
+
+.hide-change-password {
+  opacity: 0;
+  overflow: hidden;
+  height: 0px;
+  transition: all 0.3s ease-in-out;
+}
+
+.show-change-password {
+  /* display: flex;
+  justify-content: space-between */
+  opacity: 1;
+  overflow: auto;
+  height: 40vh;
+  transition: all 0.3s ease-in-out;
+}
+
+#change-password div{
+  height: auto;
+}
+
+.valid{
+  margin-left: 5px;
+  color: green;
+}
+
+.invalid{
+  margin-left: 5px;
+  color: red;
+}
+
+/* .valid-hide{
+  margin-left: 5px;
+  color: green;
+}
+
+.invalid-hide{
+  margin-left: 5px;
+  color: red;
+} */
   
 .course-card {
   border: 2px solid black;
