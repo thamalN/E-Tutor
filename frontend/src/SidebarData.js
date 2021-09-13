@@ -26,7 +26,7 @@ export default function SidebarData() {
         { title: "Payments", icon: <PaymentIcon />, link: "/adminHome/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/adminHome/announcements" },
         { title: "Feedback", icon: <FeedbackIcon />, link: "/adminHome/viewFeedback" },
-        { title: "Reports", icon: <DescriptionIcon />, link: "/reports" }
+        { title: "Reports", icon: <DescriptionIcon />, link: "/adminHome/reports" }
         
         ]
 
@@ -39,7 +39,7 @@ export default function SidebarData() {
         { title: "Payments", icon: <PaymentIcon />, link: "/supportingStaffHome/managePayments" },
         { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         { title: "Notifications", icon: <NotificationsIcon />, link: "/notifications" },
-        { title: "Reports", icon: <DescriptionIcon />, link: "/reports" }
+        { title: "Reports", icon: <DescriptionIcon />, link: "/adminHome/reports" }
         ]
     }
     

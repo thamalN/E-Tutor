@@ -3,7 +3,11 @@ import { green } from "@material-ui/core/colors";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 // import { useForm } from "react-hook-form";
+<<<<<<< HEAD
+// import{ yupResolver } from "@hookform/resolvers/yup";
+=======
 // import { yupResolver } from "@hookform/resolvers/yup";
+>>>>>>> 5e5db8299eecaa8e8e94b36a548366eaac5f3d50
 // import * as yup from "yup";
 
 import '../Resources/signUp.css'

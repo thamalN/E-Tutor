@@ -10,7 +10,7 @@ const AdCourses = () => {
             <div className="reg_buttons">
             <Link to="/adminHome/courses/allCourses"><button >View All Courses</button></Link>
             <Link to="/adminHome/courses/addNewCourse"><button >Add a new Course</button></Link>
-            <Link to="/adminHome"><button >Back to Dashboard</button></Link>
+            <Link to="/adminHome/dashboard"><button >Back to Dashboard</button></Link>
         </div>
         </div>
         </div>
