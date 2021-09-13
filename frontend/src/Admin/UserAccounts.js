@@ -115,6 +115,7 @@ const UserAccounts = () => {
                 else{
                 setSearchRes(data);
                 setShowResults(true);
+                document.getElementById("search-results").scrollIntoView()
                 }
             })
     }
@@ -124,6 +125,7 @@ const UserAccounts = () => {
             <div className="homeContent">
                 <form onSubmit= {handleSubmit} className="searchForm">
                     <h1 className="stuRegHeader">Search Users</h1>
+                    <span>Search multiple keywords separated by |</span>
                     <div className="searchRow mb-4">
                         <select
                             id="user"
@@ -145,7 +147,7 @@ const UserAccounts = () => {
                             onChange={(e) => setData({ ...data, search_string: e.target.value })}
                         />
                         <button type="submit">
-                            {/* <Icon icon={searchOutlined} /> */}
+                            <Icon icon={searchOutlined} />
                         </button>
                     </div>
                     {/* <div className="searchBar">
