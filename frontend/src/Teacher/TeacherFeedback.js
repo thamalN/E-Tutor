@@ -56,7 +56,7 @@ const StuFeedback = () => {
                 <div className="form-signup">
 
                     {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
-                    <h1 className="h3 mb-3 fw-normal">FeedBack</h1>
+                    <h1 className="h3 mb-3 fw-normal">Feedback</h1>
                     <form onSubmit={handleSubmit} className="row g-3">
                         <div className="col-md-6">
                             <label htmlFor="username" className="mt-2">
@@ -103,19 +103,18 @@ const StuFeedback = () => {
                             <label className="mt-2" htmlFor=" description">
                                 Description
                             </label>
-                            <input
-                                type="text"
+                            <textarea
                                 className="form-control"
                                 id=" description"
                                 value={data.description}
                                 onChange={(e) => setData({ ...data, description: e.target.value })}
                                 required
-                            />
+                                style={{width: "100%", height: "200px" }}
+                            >
+                            </textarea>
                         </div>
 
-                        <div className="col-12 mt-4">
-                            <input type="submit" className="w-50 btn btn-dark" value="Send Feedback" />
-                        </div>
+                        <input type="submit" className="w-50 btn btn-dark add-btn" value="Send Feedback" />
                     </form>
                 </div>
             </div>

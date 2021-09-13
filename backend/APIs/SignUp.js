@@ -110,5 +110,17 @@ module.exports = function (app, db) {
             res.json(result)
         })
     })
+
+    app.get("/getOtherUsernames/:id", (req, res) =>{
+
+        const user_id = req.params.id
+
+        const query = "SELECT username FROM user WHERE user_id != ?";
+
+        db.query(query, user_id, (err, result) => {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
 };
 

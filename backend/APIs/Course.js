@@ -11,6 +11,17 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
+    app.get("/teacherCourses/:id", (req, res) => {
+        const course_id = req.params.id
+
+        const query = "SELECT course.course_id, course.teacher_id, course.course_name, course.year, course.description, user.fname, user.lname, user.contact FROM course INNER JOIN user ON course.teacher_id = user.user_id WHERE course.course_id=?"
+
+        db.query(query, course_id, (err, result) => {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
+
     app.post("/teacherCourses/editCourseDetails", (req, res) => {
         const course_id = req.body.course_id
         const course_name = req.body.course_name
@@ -56,52 +67,60 @@ module.exports = function (app, db, upload, fs) {
                 values.map((value, key) => {
                     questions[key] = value.quiz_id
                 })
-            }
 
-            db.query(query2, [questions], (err, result) => {
-                if (err) throw err;
 
-                questions = JSON.parse(JSON.stringify(result))
-
-                const query3 = "select * from answer where question_id IN (?)"
-
-                let answers = []
-
-                questions.map((value, key) => {
-                    answers[key] = value.question_id
-                })
-
-                db.query(query3, [answers], (err, result) => {
+                db.query(query2, [questions], (err, result) => {
                     if (err) throw err;
 
-                    answers = JSON.parse(JSON.stringify(result))
+                    questions = JSON.parse(JSON.stringify(result))
 
-                    for (var i = 0; i < questions.length; i++) {
-                        for (var j = 0; j < answers.length; j++) {
-                            if (questions[i].question_id === answers[j].question_id) {
-                                if (questions[i].answers == undefined)
-                                    questions[i].answers = [{ answer_id: answers[j].answer_id, answer: answers[j].answer, correct: answers[j].correct }]
-                                else
-                                    questions[i].answers.push({ answer_id: answers[j].answer_id, answer: answers[j].answer, correct: answers[j].correct })
+                    const query3 = "select * from answer where question_id IN (?)"
+
+                    let answers = []
+
+                    if (questions.length !== 0) {
+
+                        questions.map((value, key) => {
+                            answers[key] = value.question_id
+                        })
+
+                        db.query(query3, [answers], (err, result) => {
+                            if (err) throw err;
+
+                            answers = JSON.parse(JSON.stringify(result))
+
+                            for (var i = 0; i < questions.length; i++) {
+                                for (var j = 0; j < answers.length; j++) {
+                                    if (questions[i].question_id === answers[j].question_id) {
+                                        if (questions[i].answers == undefined)
+                                            questions[i].answers = [{ answer_id: answers[j].answer_id, answer: answers[j].answer, correct: answers[j].correct }]
+                                        else
+                                            questions[i].answers.push({ answer_id: answers[j].answer_id, answer: answers[j].answer, correct: answers[j].correct })
+                                    }
+                                }
                             }
-                        }
-                    }
 
-                    for (var i = 0; i < values.length; i++) {
-                        for (var j = 0; j < questions.length; j++) {
-                            if (values[i].quiz_id === questions[j].quiz_id) {
-                                if (values[i].questions == undefined)
-                                    values[i].questions = [{ question_id: questions[j].question_id, question: questions[j].question, answers: questions[j].answers }]
-                                else
-                                    values[i].questions.push({ question_id: questions[j].question_id, question: questions[j].question, answers: questions[j].answers })
+                            for (var i = 0; i < values.length; i++) {
+                                for (var j = 0; j < questions.length; j++) {
+                                    if (values[i].quiz_id === questions[j].quiz_id) {
+                                        if (values[i].questions == undefined)
+                                            values[i].questions = [{ question_id: questions[j].question_id, question: questions[j].question, answers: questions[j].answers }]
+                                        else
+                                            values[i].questions.push({ question_id: questions[j].question_id, question: questions[j].question, answers: questions[j].answers })
+                                    }
+                                }
                             }
-                        }
-                    }
 
-                    res.json(values)
+                            res.json(values)
+
+                        })
+                    } else
+                        res.json(values)
 
                 })
-            })
+            } else
+                res.json(values)
+
         })
     })
 
@@ -116,10 +135,7 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
-    app.post("/teacherCourses/addContent", upload.any(), (req, res) => {
-
-        console.log(req.body)
-        console.log(req.files)
+    app.post("/teacherCourses/addContent", upload.single('file'), (req, res) => {
 
         var topic = req.body.topic;
         var lesson_id = parseInt(req.body.lesson_id)
@@ -128,7 +144,6 @@ module.exports = function (app, db, upload, fs) {
         let query1 = "INSERT INTO lesson (course_id,topic) VALUES (?,?);"
 
         if (!req.body.topic.localeCompare("new")) {
-            console.log("new")
 
             topic = req.body.name;
 
@@ -136,10 +151,10 @@ module.exports = function (app, db, upload, fs) {
                 if (err) throw err;
                 lesson_id = result.insertId
 
-                if (req.files.length !== 0) {
+                if (req.file !== undefined) {
 
                     const content_name = req.body.fileName
-                    const content_path = "http://127.0.0.1:8887/" + req.files[0].path
+                    const content_path = "http://127.0.0.1:8887/" + req.file.path
                     const query2 = "INSERT INTO content (lesson_id, content_name, content) VALUES (?,?,?);";
 
                     db.query(query2, [lesson_id, content_name, content_path], (err, result) => {
@@ -153,10 +168,8 @@ module.exports = function (app, db, upload, fs) {
             })
 
         } else {
-            console.log("old")
-
             const content_name = req.body.fileName
-            const content_path = "http://127.0.0.1:8887/" + req.files[0].path
+            const content_path = "http://127.0.0.1:8887/" + req.file.path
 
             const query2 = "INSERT INTO content (lesson_id, content_name, content) VALUES (?,?,?);";
 
@@ -196,16 +209,47 @@ module.exports = function (app, db, upload, fs) {
 
     })
 
-    app.post("/teacherCourses/editContent", (req, res) => {
+    app.post("/teacherCourses/editContent", upload.single('file'), (req, res) => {
+
+        const lesson_id = req.body.lesson_id
+        const content_id = req.body.content_id
+        const file_name = req.body.file_name
+
         console.log(req.body)
+        console.log(req.file)
+
+        if (req.file !== undefined) {
+            const new_path = "http://127.0.0.1:8887/" + req.file.path
+            const old_path = req.body.old_path
+
+            const query1 = "UPDATE content SET content_name = ?, content = ? WHERE lesson_id = ? AND content_id = ?"
+
+            db.query(query1, [file_name, new_path, lesson_id, content_id], (err, result) => {
+                if (err) throw err;
+            })
+
+            fs.unlink(old_path, (err) => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+            })
+
+        } else {
+            const query2 = "UPDATE content SET content_name = ? WHERE lesson_id = ? AND content_id = ?"
+
+            db.query(query2, [file_name, lesson_id, content_id], (err, result) => {
+                if (err) throw err;
+            })
+        }
+
+        res.send("ok")
     })
 
     app.post("/teacherCourses/deleteContent/", (req, res) => {
         const lessonId = req.body.lesson_id
         const contentId = req.body.content_id
         const contentPath = req.body.content_path
-
-        console.log(req.body)
 
         const query = "DELETE FROM content WHERE lesson_id=? AND content_id=?"
 

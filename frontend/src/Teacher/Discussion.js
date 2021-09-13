@@ -7,8 +7,8 @@ const Discussion = () => {
     const { id } = useParams()
     const history = useHistory()
 
-
     const discussion = JSON.parse(localStorage.getItem('discussion')).filter((item) => item.discussion_id === parseInt(id))
+
     const disc = {
         discussion_id: discussion[0].discussion_id,
         topic: discussion[0].topic,
@@ -128,7 +128,7 @@ const Discussion = () => {
         topicInput.style.fontSize = "25px"
         topic.replaceWith(topicInput);
 
-        const post = details.childNodes[4]
+        const post = details.childNodes[5]
 
         const postInput = document.createElement("textarea");
         postInput.innerHTML = post.textContent;
@@ -188,7 +188,7 @@ const Discussion = () => {
                 }).then(data => {
                     //history.goBack()
                     //history.go(0)
-                    history.replace("/teacher/courses/" + discussion[0].course_id)
+                    history.push("/teacher/courses/" + discussion[0].course_id)
 
                 }
                 )
@@ -253,6 +253,8 @@ const Discussion = () => {
                         </button>
                         <h5>{disc.fname} {disc.lname}</h5>
                         <h6><i>{disc.date_time.slice(0, 16).replace(' ', ', ')}</i></h6>
+
+                        <hr />
                         <p>{disc.post}</p>
                     </div>
 

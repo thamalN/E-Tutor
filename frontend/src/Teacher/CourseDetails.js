@@ -13,14 +13,14 @@ const CourseDetails = () => {
 
     const history = useHistory()
 
-    const { id } = useParams()
+    //const { id } = useParams()
     const [content, setContent] = useState([])
     const [quiz, setQuiz] = useState([])
     const [discussion, setDiscussion] = useState([])
 
-    const [edited, setEdited] = useState(0)
-
     const user = JSON.parse(localStorage.getItem('user'))
+    const courseInfo = JSON.parse(localStorage.getItem('courseInfo'))
+    const id = courseInfo.course_id
 
     const contentUrl = "http://localhost:3001/teacherCourses/content/" + id
 
@@ -32,7 +32,7 @@ const CourseDetails = () => {
             .then((data => {
                 setContent(data)
             }))
-    }, [contentUrl])
+    }, [])
 
     if (content) {
         var unique = [...new Map(content.map(item => [item['lesson_id'], item])).values()];
@@ -50,7 +50,7 @@ const CourseDetails = () => {
                 //console.log(data)
                 setQuiz(data)
             })
-    }, [quizUrl])
+    }, [])
 
     if (quiz) {
         //console.log(quiz)
@@ -69,7 +69,7 @@ const CourseDetails = () => {
                 // console.log(data)
                 setDiscussion(data)
             })
-    }, [discussionUrl])
+    }, [])
 
     if (discussion) {
         localStorage.setItem('discussion', JSON.stringify(discussion))
@@ -198,7 +198,7 @@ const CourseDetails = () => {
 
         heading.replaceWith(container);
 
-        const description = details.childNodes[3]
+        const description = details.childNodes[4]
 
         const descriptionInput = document.createElement("textarea");
         descriptionInput.innerHTML = description.textContent;
@@ -223,9 +223,10 @@ const CourseDetails = () => {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(edited)
-            }).then(data => {
-                history.go(0)
-            })
+            }).then(
+                history.go()
+            )
+
         };
 
         saveBtn.onclick = save
@@ -245,15 +246,16 @@ const CourseDetails = () => {
         <div>
 
             <Sidebar />
-            {content[0] && (
+            {courseInfo && (
                 <div className="homeContent">
                     <div className="course-details">
-                        <h1 style={{ display: "inline" }}>{content[0].course_name} - {content[0].year}</h1>
+                        <h1 style={{ display: "inline" }}>{courseInfo.course_name} - {courseInfo.year}</h1>
                         <button className="edit-btn" style={{ float: "right" }} onClick={editDetails}>
                             <EditIcon style={{ color: "#3ca730" }} fontSize="large" />
                         </button>
-                        <h5>Conducted by: {user.fname} {user.lname}</h5>
-                        <p>{content[0].description}</p>
+                        <h5>Conducted by: {courseInfo.fname} {courseInfo.lname}</h5>
+                        <h5>Contact: {courseInfo.contact}</h5>
+                        <p>{courseInfo.description}</p>
                     </div>
                     <hr />
                     <div className="course-content">
@@ -285,16 +287,20 @@ const CourseDetails = () => {
                                                 <li key={filtered.course_id}>{filtered.content_name}</li>
                                             </ul>
                                         </a>
-                                        {/* <button onClick={() => editContent(filtered.content_id)} type="button" title="Edit Content"> */}
-                                        <EditIcon style={{ color: "green" }} />
-                                        {/* </button> */}
-                                        <form encType="multipart/form-data" id="edit-content-form" hidden>
-                                            <input
-                                                type="file"
-                                                id="edit-content"
-                                                name="file"
-                                            />
-                                        </form>
+
+                                        <Link to = {{
+                                                pathname: "/teacher/editContent",
+                                                state: {
+                                                    lessonId: lesson.lesson_id,
+                                                    contentId: filtered.content_id,
+                                                    contentName: filtered.content_name,
+                                                    contentPath: filtered.content
+                                                }
+                                            }}>
+
+                                            <EditIcon style={{ color: "green" }} />
+                                        </Link>
+
                                         <Link to="#" onClick={() => deleteContent(lesson.lesson_id, filtered.content_id, filtered.content)} className="delete-quiz">
                                             <DeleteIcon style={{ color: "red" }} />
                                         </Link>
