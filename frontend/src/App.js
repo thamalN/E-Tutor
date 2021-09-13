@@ -51,6 +51,8 @@ import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
 import StudentDetails from './Student/StudentDetails';
+import ViewStuCourses from './Student/ViewStuCourses';
+import StuQuiz from './Student/StuQuiz';
 import FeedbackReply from './Admin/FeedbackReply';
 import Feedback from './Admin/Feedback';
 import RejectedPayments from './RejectedPayments';
@@ -318,6 +320,15 @@ function App() {
             <Route exact path="/studentHome/StuFeedback">
               <StuFeedback/>
             </Route>
+
+            <Route exact path="/Student/StuQuiz">
+              <StuQuiz />
+            </Route>
+
+            <Route exact path="/studentHome/ViewStuCourses">
+              <ViewStuCourses/>
+            </Route>
+
 
             {/* <Route exact path="/student/StuaddQuiz">
             <StuAddQuiz />
