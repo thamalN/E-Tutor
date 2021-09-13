@@ -3,11 +3,7 @@ import { green } from "@material-ui/core/colors";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 // import { useForm } from "react-hook-form";
-<<<<<<< HEAD
 // import{ yupResolver } from "@hookform/resolvers/yup";
-=======
-// import { yupResolver } from "@hookform/resolvers/yup";
->>>>>>> 5e5db8299eecaa8e8e94b36a548366eaac5f3d50
 // import * as yup from "yup";
 
 import '../Resources/signUp.css'
@@ -113,9 +109,9 @@ const SignUp = () => {
             RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.street_no) &&
             RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.street) &&
             RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.city) &&
-            RegExp(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/).test(data.email) &&
+            RegExp(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})(\.[a-z]{2,8})(\.[a-z]{2,8})?$/).test(data.email) &&
             RegExp(/^\d{10}$/).test(data.contact) &&
-            RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/).test(data.password) &&
+            RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/).test(data.password) &&
             RegExp(/^[a-z 0-9,.'-]+$/i).test(data.school) &&
             RegExp(/^\d{10}$/).test(data.guardian_contact)) {
             document.getElementById('button').disabled = false;
