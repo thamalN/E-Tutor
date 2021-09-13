@@ -54,13 +54,13 @@ const PaymentMethod = () => {
                         <div>
                             <Link to="/studentHome/payments/payslip" >
                                 <div className="payment-card">
-                                    Opload your payslip
+                                   Opload your payslip
                                 </div>
                             </Link>
 
 
                             <div className="payment-card">
-                                Pay Online
+                               Pay Online
                                 <StripeCheckout
                                     stripeKey="pk_test_51JLxqKI3zG84BVe3rKggoFC6pHAF8RyEU6qv54suSBnG7utaxiiJKDZVDo1OIaL46Kg7D37G8DRowLH0Qo2wxSWR00gJRHx9a0"
                                     token={handleToken}
