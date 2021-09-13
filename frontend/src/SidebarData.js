@@ -55,12 +55,12 @@ export default function SidebarData() {
     else if (flag === 4) {
         return [
         { title: "Home", icon: <HomeIcon />, link: "/studentHome" },
-        { title: "Courses", icon: <SchoolIcon />, link: "/studentHome/viewCourses" },
+        { title: "Courses", icon: <SchoolIcon />, link: "/studentHome/viewStuCourses" },
         { title: "My Courses", icon: <SchoolIcon />, link: "/studentHome/myCourses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
-        { title: "Emails", icon: <EmailIcon />, link: "/emails" },
+        // { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         { title: "Notifications", icon: <NotificationsIcon />, link: "/studentHome/notifications" },
-        { title: "feedback", icon: <DescriptionIcon />, link: "/studentHome/StuFeedback" }
+        { title: "Feedback", icon: <DescriptionIcon />, link: "/studentHome/StuFeedback" }
         ]
     }
 }
