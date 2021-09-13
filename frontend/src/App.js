@@ -74,6 +74,9 @@ import ViewTeacherAnnouncements from './Teacher/ViewTeacherAnnouncements';
 import EditTeacherAnnouncement from './Teacher/EditTeacherAnnouncement';
 import TeacherFeedback from './Teacher/TeacherFeedback';
 import Students from './Teacher/Students';
+import EditContent from './Teacher/EditContent';
+import ViewProfile from './ViewProfile';
+import EditProfile from './EditProfile';
 
 function App() {
 
@@ -95,6 +98,14 @@ function App() {
 
             <Route exact path="/signUp">
               <SignUp />
+            </Route>
+
+            <Route exact path="/viewProfile/">
+              <ViewProfile />
+            </Route>
+
+            <Route exact path="/editProfile/">
+              <EditProfile />
             </Route>
 
             <Route exact path="/adminHome/dashboard">
@@ -223,6 +234,10 @@ function App() {
 
             <Route exact path="/teacher/addContent">
               <AddContent />
+            </Route>
+
+            <Route exact path="/teacher/editContent">
+              <EditContent />
             </Route>
 
             <Route exact path="/teacher/addQuiz">
