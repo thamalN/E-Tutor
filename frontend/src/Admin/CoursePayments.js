@@ -5,11 +5,11 @@ import '../SupportingStaff/staffhome.css';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
-const RecentRegistrations = () => {
+const CoursePayments = () => {
 
     const [data, setData] = useState([])
 
-    const url = "http://localhost:3001/recentRegistrations"
+    const url = "http://localhost:3001/totalPayments"
     useEffect(() => {
 
         fetch(url, {
@@ -28,12 +28,13 @@ const RecentRegistrations = () => {
     const doc = new jsPDF()
 
     const handleClick = (e) => {
-        doc.text('Recent Registrations', 14, 10);
+        
 
-        doc.autoTable({ html: '#reg-table' });
+        // doc.autoTable({ html: '#reg-table' });
     };
 
     useEffect(() => {
+        doc.text('Total Payments Of The Month'+data.map((regData, i) => (regData.month)) , 14, 10);
         doc.autoTable({ html: document.getElementById('reg_table') });
         // if (data.password.length !== 0) {
         //     if (data.password === data.confirmPassword) {
@@ -52,51 +53,43 @@ const RecentRegistrations = () => {
             <Sidebar />
             <div className="homeContent">
                 <div className="b2">
-
                     <ul>
                         <li className="reg_title">
-                            <h3>Recent Registrations</h3>
+                            <h3>Total Payments Of The Month {data.map((regData, i) => (regData.month))}</h3>
                         </li>
                         <li>
                             <table className="table" id="reg_table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">User ID</th>
-                                        <th scope="col">Registered Date</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Contact</th>
+                                        <th scope="col">Course ID</th>
+                                        <th scope="col">Course Name</th>
+                                        <th scope="col">Course Year</th>
+                                        <th scope="col">Conducted By</th>
+                                        <th scope="col">Total Payments</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     {data.map((regData, i) => (
                                         <tr>
-                                            <td>{regData.user_id}</td>
-                                            <td>{regData.regDate}</td>
+                                            <td>{regData.course_id}</td>
+                                            <td>{regData.course_name}</td>
+                                            <td>{regData.year}</td>
                                             <td>{regData.fname} {regData.lname}</td>
-                                            <td>{regData.email}</td>
-                                            <td>{regData.contact}</td>
+                                            <td>{regData.sum}</td>
                                         </tr>
                                     ))}
-
                                 </tbody>
                             </table>
                         </li>
                         <div>
-                            <Link to="/adminHome/reports"><button >Reports</button></Link>
-                            <button onClick={(e) => { handleClick(e); doc.save('table.pdf') }}>Download pdf</button>
+                            <Link to="/adminHome/reports"><button >Back</button></Link>
+                            <button onClick={(e) => { handleClick(e); doc.save('All Teachers.pdf') }}>Download pdf</button>
                         </div>
                     </ul>
-
-
-
                 </div>
-
             </div>
         </div>
-
     );
 }
 
-export default RecentRegistrations;
+export default CoursePayments;

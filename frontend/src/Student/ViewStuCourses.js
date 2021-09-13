@@ -34,8 +34,13 @@ const ViewStuCourses = () => {
                         <div key={course.course_id} className="course-card" >
                             
                                 <div className="card-container">
+                                <div className="card-info">
                                     <h1>{course.course_name} {course.year}</h1>
                                     <p>{course.description}</p>
+                                        <h3>{course.price}</h3>
+                                        <button className="btn btn-dark">Entroll</button>
+                                      
+                                    </div>
                                 </div>
 
                         </div>

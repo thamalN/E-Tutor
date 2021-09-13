@@ -35,15 +35,7 @@ const StudentNotification = () => {
         <div>
             <Sidebar></Sidebar>
             <div className="homeContent">
-                {notifications.map((value, key) => (
-                    <a href={value.content} target="_blank" rel="noreferrer">
-                        <div className="course-card" key={key} >
-                            <p>Notification</p>
-                            {value.event === "content" && <h2>New content has been added on {value.course_name} {value.year}</h2>}
-                        </div>
-                    </a>
-                ))}
-
+            
 
             </div>
         </div>

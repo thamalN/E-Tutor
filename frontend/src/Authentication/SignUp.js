@@ -3,7 +3,7 @@ import { green } from "@material-ui/core/colors";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 // import { useForm } from "react-hook-form";
-// import { yupResolver } from "@hookform/resolvers/yup";
+// import{ yupResolver } from "@hookform/resolvers/yup";
 // import * as yup from "yup";
 
 import '../Resources/signUp.css'
@@ -109,9 +109,9 @@ const SignUp = () => {
             RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.street_no) &&
             RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.street) &&
             RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.city) &&
-            RegExp(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/).test(data.email) &&
+            RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(data.email) &&
             RegExp(/^\d{10}$/).test(data.contact) &&
-            RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/).test(data.password) &&
+            RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/).test(data.password) &&
             RegExp(/^[a-z 0-9,.'-]+$/i).test(data.school) &&
             RegExp(/^\d{10}$/).test(data.guardian_contact)) {
             document.getElementById('button').disabled = false;
@@ -127,7 +127,7 @@ const SignUp = () => {
         streetName: /^[a-z 0-9,.'-\/]+$/i,
         city: /^[a-z 0-9,.'-\/]+$/i,
         // province: ,
-        email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
+        email: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         contact: /^\d{10}$/,
         // birthday: ,
         // gender: ,

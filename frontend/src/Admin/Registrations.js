@@ -12,7 +12,7 @@ const Registrations = () => {
             <Link to="/adminHome/createTeacherAcc"><button >Teacher Registration</button></Link>
             <Link to="/adminHome/createSupStaffAcc"><button >Supporting Staff Registration</button></Link>
             <Link to="/adminHome/registrations/recentRegistrations"><button >View Recent Registrations</button></Link>
-            <Link to="/adminHome"><button >Back to Dashboard</button></Link>
+            <Link to="/adminHome/dashboard"><button >Back to Dashboard</button></Link>
         </div>
         </div>
         </div>
