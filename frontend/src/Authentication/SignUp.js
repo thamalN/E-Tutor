@@ -2,9 +2,9 @@ import { Hidden } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { useForm } from "react-hook-form";
-import{ yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+// import { useForm } from "react-hook-form";
+// import{ yupResolver } from "@hookform/resolvers/yup";
+// import * as yup from "yup";
 
 import '../Resources/signUp.css'
 

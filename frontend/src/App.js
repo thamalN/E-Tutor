@@ -59,6 +59,12 @@ import Discussion from './Teacher/Discussion';
 import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
 import EditAnnouncement from './Admin/EditAnnouncement';
+import Reports from './Admin/Reports';
+import AllStudents from './Admin/AllStudents';
+import AllTeachers from './Admin/AllTeachers';
+import AllStaff from './Admin/AllStaff';
+import AllCoursesList from './Admin/AllCoursesList';
+import CoursePayments from './Admin/CoursePayments';
 import PayCourses from './Student/PayCourses';
 import Meeting from './Teacher/Meeting';
 // import StuEvent from './Student/StuEvent';
@@ -165,6 +171,30 @@ function App() {
 
             <Route exact path="/adminHome/feedback/reply/:feedback_id">
               <FeedbackReply/>
+            </Route>
+            
+            <Route exact path="/adminHome/reports">
+              <Reports/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/allStudents">
+              <AllStudents/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/allTeachers">
+              <AllTeachers/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/allStaff">
+              <AllStaff/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/allCoursesList">
+              <AllCoursesList/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/coursePayments">
+              <CoursePayments/>
             </Route>
 
             <Route exact path="/SupportingStaffHome">
