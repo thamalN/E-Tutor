@@ -15,7 +15,6 @@ const Reports = () => {
             <Link to="/adminHome/reports/allCoursesList"><button >All Courses List</button></Link>
             <Link to="/adminHome/reports/coursePayments"><button >Total Payments Of The Month</button></Link>
             
-            <Link to="/adminHome/dashboard"><button >Back to Dashboard</button></Link>
         </div>
         </div>
         </div>

@@ -12,7 +12,7 @@ module.exports = function (app, db) {
 
   app.get("/verifiedPayments", (req, res) => {
 
-    const query = "SELECT payment.payment_id, payment.payment_method, payment.student_id, payment.course_id, payment.date_time, payment.amount, payment.month, payment.verified, payment.payment_slip, user.fname, user.lname, user.email, user.contact FROM payment INNER JOIN user ON payment.student_id=user.user_id WHERE payment.verified=1 AND PAYMENT.month=MONTHNAME(NOW());";
+    const query = "SELECT payment.payment_id, payment.payment_method, payment.student_id, payment.course_id, payment.date_time, payment.amount, payment.month, payment.verified, payment.payment_slip, user.fname, user.lname, user.email, user.contact FROM payment INNER JOIN user ON payment.student_id=user.user_id WHERE payment.verified=1 AND payment.month=MONTHNAME(NOW());";
 
     db.query(query, (err, result) => {
       if (err) throw err;

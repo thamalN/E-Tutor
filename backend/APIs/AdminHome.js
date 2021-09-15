@@ -23,4 +23,16 @@ module.exports = function (app, db) {
         })
     })
 
+    app.get("/adminHome/totalStudents", (req, res) => {
+        const teacherId = req.body.id;
+
+        const query = "SELECT COUNT(student_id) AS studentCount from student;";
+
+        db.query(query, (err, result) => {
+            if (err) throw err;
+            console.log(result)
+            res.json(result[0].studentCount)
+        })
+    })
+
 }

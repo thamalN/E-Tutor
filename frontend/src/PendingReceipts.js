@@ -91,7 +91,7 @@ const PendingReceipts = () => {
                         <li className="reg_title">
                             <h1 className="stuRegHeader">Pending Receipts</h1>
                         </li>
-                        <li className="reg_table">
+                        <li>
                             <table className="table table2 text-center">
                                 <thead className="thead-dark">
                                     <tr>

@@ -34,9 +34,9 @@ const PendingReceipts = () => {
                         <li className="reg_title">
                             <h1 className="stuRegHeader">Verified Payments</h1>
                         </li>
-                        <li className="reg_table">
-                            <table className="table text-center">
-                                <thead>
+                        <li>
+                            <table className="table table2">
+                            <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">Payment Date&Time</th>
                                         <th scope="col">Student Name</th>
@@ -48,7 +48,7 @@ const PendingReceipts = () => {
                                 </thead>
                                 <tbody>
                                 {data.map((payment, i) => (
-                                    <div>
+                                    <>
                                             <tr>
                                             <td scope="row">{payment.date_time}</td>
                                             <td align="left">{payment.fname} {payment.lname}</td>
@@ -78,7 +78,7 @@ const PendingReceipts = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
+                                        </>
                                         ))}
                                     
                                 </tbody>

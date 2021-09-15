@@ -1,5 +1,6 @@
+const { validateToken } = require('./JWT')
 module.exports = function (app, db) {
-    app.get("/allCourses", (req, res) => {
+    app.get("/allCourses", validateToken, (req, res) => {
         
      const query = "SELECT * FROM course;";
     

@@ -11,6 +11,7 @@ const AdminHome = (props) => {
 
     const [unenrolledCourses, setUenrolledCourses] = useState()
     const [receipts, setReceipts] = useState()
+    const [studentCount, setStudentCount] = useState()
 
     const logOut = () => {
         props.setLoggedIn(false)
@@ -46,6 +47,20 @@ const AdminHome = (props) => {
 
     }, [url2])
 
+    const url3 = "http://localhost:3001/adminHome/totalStudents"
+
+    useEffect(() => {
+
+        fetch(url3)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setStudentCount(data)
+            })
+
+    }, [url3])
+
     return ( 
         
 
@@ -58,7 +73,7 @@ const AdminHome = (props) => {
 
 
         <div className="wrapper">
-            <Card title="Users Online" description="456" button="View"></Card>
+            <Card title="Registered Students" description={studentCount} button="View"></Card>
             <Card title="Unenrolled Courses" description={unenrolledCourses} button="View"></Card>
             <Card title="Incomplete Courses" description="10" button="View"></Card>
             <Card title="Pending Receipts" description={receipts} button="View"></Card>

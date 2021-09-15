@@ -23,6 +23,7 @@ const TeacherPayments = () => {
             })
             .then(data => {
                 setAllPayments(data)
+                console.log(data)
                 // localStorage.setItem('teacherPayDetails', JSON.stringify(data))
                 const payments = data.map(pay => {
                     let amount = pay.details.reduce(function(acc, obj){

@@ -83,7 +83,7 @@ const CreateSupStaffAcc = () => {
         })
         .then(data => {
             setId(data);
-            alert("Registration Successful!")
+            alert("Successfully created the Staff Account and emailed the user credentials!!")
             history.push("/adminHome/registrations")
         })
     }

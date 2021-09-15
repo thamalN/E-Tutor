@@ -136,7 +136,7 @@ const EditAnnouncement = () => {
                 </div>
 
             <div className="col-12 mt-4">
-        <input type="submit" className="btn btn-dark" value="Add Announcement"/>
+        <input type="submit" className="btn btn-dark" value="Edit Announcement"/>
         </div>
     </form>
 </div>  );

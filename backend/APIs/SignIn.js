@@ -24,9 +24,8 @@ module.exports = function (app, db) {
                 bcrypt.compare(password, result[0].password, (error, response) => {
                     console.log(response)
                     if (response) {
-                        const accessToken = createTokens(result[0])
-
-                        res.cookie("access-token", accessToken, {
+                        const Tokens = createTokens(result[0])
+                        res.cookie("tokens", Tokens, {
                             maxAge: 60 * 60 * 24 * 1000,
                             // httpOnly: true
                         });

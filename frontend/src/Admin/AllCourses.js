@@ -15,7 +15,8 @@ const AllCourses = () => {
     useEffect(() => {
         fetch(url, {
             method: 'GET',
-            headers: { "Content-Type": "application/json" },
+            credentials: 'include',
+            headers: { "Content-Type": "application/json" }
         })
             .then(res => {
                 return res.json();
