@@ -11,7 +11,7 @@ const StudentAccounts = () => {
                     <Link className="linkbutton" to="/signUp"><button>Create Student Accounts</button></Link>
                     <Link className="linkbutton" to="/supportingStaffHome/searchToUpdate"><button>Update Student Accounts</button></Link>
                     <Link className="linkbutton" to="/deleteStudentAccs"><button>Delete Student Account</button></Link>
-                    <Link className="linkbutton" to="/supportingStaffHome"><button>Back to Dashboard</button></Link>
+                    <Link className="linkbutton" to="/supportingStaffHome/dashboard"><button>Back to Dashboard</button></Link>
                 </div>
             </div>
         </div>

@@ -64,11 +64,15 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    list-style-type: square;
+    list-style-type: none;
 }
 
 .calendarsection ul li ul li{
     margin-bottom: 5vh;
+}
+
+.calendarsection ul li ul li .btn{
+    width: 20vw;
 }
 
 .linkbutton{
@@ -127,24 +131,26 @@
     padding-inline-start: 0;
 }
 
-/* .b2 ul li.reg_title{
-     display: flex;
+.b2 ul li.reg_title{
+    display: flex;
     justify-content: space-between;
     align-items: flex-end;
-} */
+} 
 
 .b2 ul li .viewAll{
+    text-align: right;
     text-decoration: none;
     color: black;
 }
 
 .b2 ul li h3{
-    /* margin-left: 6vw; */
-    text-align: center;
+    margin-left: 6vw;
+    text-align: left;
 
 }
 
 .b2 ul li h6{
+    
     margin-right: 3vw;
 }
 

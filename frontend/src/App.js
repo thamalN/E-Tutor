@@ -23,10 +23,6 @@ import CourseDetails from './Teacher/CourseDetails';
 import AllCourses from './Admin/AllCourses';
 import UserAccounts from './Admin/UserAccounts';
 import Payments from './Admin/Payments';
-import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
-import StudentRegistrations from './SupportingStaff/StudentRegistrations';
-import StudentAccounts from './SupportingStaff/StudentAccounts';
-import SearchToUpdate from './SupportingStaff/SearchToUpdate';
 import ManagePayments from './ManagePayments';
 import PendingReceipts from './PendingReceipts';
 import AddContent from './Teacher/AddContent';
@@ -45,8 +41,6 @@ import TeacherQuizEdit from './Teacher/TeacherQuizEdit';
 import AddNewCourse from './Admin/AddNewCourse';
 import RecentRegistrations from './Admin/RecentRegistrations';
 import VerifiedPayments from './VerifiedPayments'
-import RecentStaffRegistrations from './SupportingStaff/RecentStaffRegistrations';
-import StaffManagePayments from './SupportingStaff/StaffManagePayments';
 import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
@@ -83,6 +77,16 @@ import Students from './Teacher/Students';
 import EditContent from './Teacher/EditContent';
 import ViewProfile from './ViewProfile';
 import EditProfile from './EditProfile';
+import RecentStaffRegistrations from './SupportingStaff/RecentStaffRegistrations';
+import StaffManagePayments from './SupportingStaff/StaffManagePayments';
+import StaffReports from './SupportingStaff/StaffReports';
+import StaffAllStudents from './SupportingStaff/StaffAllstudents';
+import StaffAllTeachers from './SupportingStaff/StaffAllTeachers';
+import StaffAllCourses from './SupportingStaff/StaffAllCourses';
+import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
+import StudentRegistrations from './SupportingStaff/StudentRegistrations';
+import StudentAccounts from './SupportingStaff/StudentAccounts';
+import SearchToUpdate from './SupportingStaff/SearchToUpdate';
 
 function App() {
 
@@ -210,7 +214,7 @@ function App() {
               <CoursePayments/>
             </Route>
 
-            <Route exact path="/SupportingStaffHome">
+            <Route exact path="/supportingStaffHome/dashboard">
               <SupportingStaffHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
@@ -232,6 +236,22 @@ function App() {
 
             <Route exact path="/supportingStaffHome/ManagePayments">
               <StaffManagePayments/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/reports">
+              <StaffReports/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/reports/allStudents">
+              <StaffAllStudents/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/reports/allTeachers">
+              <StaffAllTeachers/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/reports/allCoursesList">
+              <StaffAllCourses/>
             </Route>
 
             <Route exact path="/managePayments">
