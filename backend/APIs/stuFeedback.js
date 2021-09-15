@@ -2,7 +2,7 @@ module.exports = function (app, db,upload) {
     
     app.post("/CreateStuFeedback",(req, res) => {
         console.log(req.body)
-        console.log(req.files)
+        // console.log(req.files)
         const user_id = req.body.user_id;
         const topic = req.body.topic;
         const description = req.body.description;
@@ -28,6 +28,9 @@ module.exports = function (app, db,upload) {
 
     
     app.get("/PreviousFeedback", (req, res) => {
+        // console.log(req.body.id)
+        // const StudentId= req.body.id;
+        // const query = "SELECT topic, description, date_time From feedback WHERE  StudentId=?;";
         const query = "SELECT topic, description, date_time From feedback WHERE  user_id=4;";
 
         db.query(query, (err, result) => {

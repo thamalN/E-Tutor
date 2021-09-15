@@ -40,6 +40,7 @@ const CreateStuFeekback = () => {
 
     return (
     <div className="form-signup">
+        
         <h1 className="h3 mb-3 fw-normal">Add New Feedback</h1>
     <form onSubmit = { handleSubmit } className="row g-3"  encType="multipart/form-data" id="content-form">
             
