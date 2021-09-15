@@ -1,20 +1,23 @@
-module.exports = function (app, db) {
+module.exports = function (app, db,upload) {
     
-    app.post("/CreateStuFeedback", (req, res) => {
+    app.post("/CreateStuFeedback",(req, res) => {
         console.log(req.body)
-        // console.log(req.files)
+        console.log(req.files)
         const user_id = req.body.user_id;
         const topic = req.body.topic;
         const description = req.body.description;
         // const file_name = req.body.file_name;
+        // console.log(req.fil)
+        let content_path;
+        
+        
     
-        const query = "INSERT INTO stuEvent ( topic, description) VALUES  (?,?);";
+        const query = "INSERT INTO feedback (user_id, topic, description) VALUES  (4,'topic','description');";
     
-        db.query(query, [topic, description], (err, result) => {
+        db.query(query, [user_id, topic, description], (err, result) => {
             if (err) throw err;
             res.json(result.insertId)
             console.log(result.insertId)
-            console.log(user_id)
             
             });
 
