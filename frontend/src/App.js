@@ -40,12 +40,13 @@ import TeacherQuiz from './Teacher/TeacherQuiz';
 import TeacherQuizEdit from './Teacher/TeacherQuizEdit';
 import AddNewCourse from './Admin/AddNewCourse';
 import RecentRegistrations from './Admin/RecentRegistrations';
-import VerifiedPayments from './VerifiedPayments'
+import VerifiedPayments from './VerifiedPayments';
 import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
 import StudentDetails from './Student/StudentDetails';
 import ViewStuCourses from './Student/ViewStuCourses';
+import PreviousFeedback from './Student/PreviousFeedback';
 // import StuQuiz from './Student/StuQuiz';
 import FeedbackReply from './Admin/FeedbackReply';
 import Feedback from './Admin/Feedback';
@@ -385,6 +386,13 @@ function App() {
             <Route exact path="/studentHome/StuFeedback">
               <StuFeedback/>
             </Route>
+
+
+            <Route exact path="/studentHome/PreviousFeedback">
+            <PreviousFeedback/>
+          </Route>
+
+            
 
             {/* <Route exact path="/Student/StuQuiz">
               <StuQuiz />
