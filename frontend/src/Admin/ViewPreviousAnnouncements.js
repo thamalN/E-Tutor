@@ -32,9 +32,10 @@ const PreviousAnnouncements = () => {
 
 }
 
-const handleDelete = (key) => {
+const handleDelete = (key, attachment) => {
     if (window.confirm("Are you sure you want to delete announcement id " + key + "?")) {
-        const id = { id: key }
+        const relativePath = decodeURI(attachment).toString().split("/").pop()
+        const id = { id: key, content_path: relativePath}
     const url3 = "http://localhost:3001/deleteAnnouncement"
 
         fetch(url3, {
@@ -76,7 +77,7 @@ const handleDelete = (key) => {
                                 <div className="n-card-container">
                                 <div  className="download_icons">
                                 <button className="btnnew"  onClick={() => handleEdit(announcement)}> Edit<EditIcon style={{ color: "green" }}/></button>
-                                <button className="btnnew"   onClick={() => handleDelete(announcement.announcement_id)}> Delete<DeleteIcon style={{ color: "red" }}/></button>
+                                <button className="btnnew"   onClick={() => handleDelete(announcement.announcement_id, announcement.attachment)}> Delete<DeleteIcon style={{ color: "red" }}/></button>
                            
                             </div>
                                 
