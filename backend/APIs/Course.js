@@ -462,6 +462,18 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
+    app.get("/teacherCourses/deleteDiscussion/:id", (req, res) => {
+        const quizId = req.params.id
+
+        const query = "DELETE FROM discussion WHERE discussion_id=?"
+
+        db.query(query, quizId, (err, result) => {
+            if (err) throw err;
+        })
+
+        res.send("ok")
+    })
+
     app.post("/addNewCourse", (req, res) => {
         console.log(req.body.teacher);
         const course_name = req.body.course_name;

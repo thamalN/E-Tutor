@@ -430,15 +430,14 @@ html{height:100%}
   color: red;
 }
 
-/* .valid-hide{
-  margin-left: 5px;
-  color: green;
+.passToggle {
+  display: flex;
+  align-items: center;
 }
 
-.invalid-hide{
+.passToggle svg {
   margin-left: 5px;
-  color: red;
-} */
+}
   
 .course-card {
   border: 2px solid black;

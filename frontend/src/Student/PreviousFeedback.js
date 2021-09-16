@@ -13,7 +13,7 @@ const PreviousFeedback = () => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const url = "http://localhost:3001/PreviousFeedback"
+    const url = "http://localhost:3001/PreviousFeedback/" + user.user_id
 
     useEffect(() => {
         fetch(url)
@@ -22,50 +22,45 @@ const PreviousFeedback = () => {
             }))
             .then((data => {
                 setData(data)
+                console.log(data)
             }))
-    }, [del])
+    }, [])
 
-//     const handleEdit = (feedback) =>{
-//         console.log(feedback.attachment)
-//         localStorage.setItem('announce', JSON.stringify(announcement))
-//         history.push("/studentHome/editFeedback")
+    //     const handleEdit = (feedback) =>{
+    //         console.log(feedback.attachment)
+    //         localStorage.setItem('announce', JSON.stringify(announcement))
+    //         history.push("/studentHome/editFeedback")
 
-// }
+    // }
 
     return (
         <div>
-            <Sidebar/>
+            <Sidebar />
             <div className="homeContent">
-            <h1>Previous Feedbacks</h1>
-            <div className="courses">
-                    {data.map(announcement => (
-                        <div key={announcement.announcement_id} className="display-card" >
+                <h1>Previous Feedbacks</h1>
+                <div className="courses">
+                    {data.map(feedback => (
+                        <div key={feedback.feedback_id} className="display-card" >
                             <div className="display-card-container">
                                 <div className="n-card-container">
-                                <div  className="download_icons">                           
-                            </div>
-                                
-                                    <h1>{announcement.topic}</h1>
-                                    <h6> Created date {announcement.fname} {announcement.lname} {announcement.date_time}</h6>
-                                    <div><p>{announcement.description}</p></div>
-                                    
-                                    <a href={announcement.attachment} target="_blank" rel="noreferrer">
-                                    
-                                    {announcement.attachment && <div>{announcement.file_name}</div>}
-                                        
-                                        </a>
-                                        
+                                    <div className="download_icons">
+                                    </div>
+
+                                    <h1>{feedback.topic}</h1>
+                                    <h6> Created date: {feedback.date_time}</h6>
+                                    <div><p>{feedback.description}</p></div>
+
                                 </div>
                             </div>
 
                         </div>
                     ))}
                 </div>
-            
+
+            </div>
         </div>
-        </div>
-        
-      );
+
+    );
 }
- 
+
 export default PreviousFeedback;
