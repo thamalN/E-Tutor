@@ -18,7 +18,7 @@ module.exports = function (app, db,upload) {
     app.get("/PreviousFeedback/:id", (req, res) => {
          const StudentId= req.params.id;
 
-         const query = "SELECT topic, description, date_time From feedback WHERE user_id=?;";
+         const query = "SELECT topic, description, date_time From feedback WHERE user_id=4;";
 
         db.query(query, StudentId, (err, result) => {
             if (err) throw err;
