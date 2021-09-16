@@ -26,6 +26,10 @@ const CourseDetails = () => {
 
     const contentUrl = "http://localhost:3001/teacherCourses/content/" + id
 
+    const quizUrl = "http://localhost:3001/teacherCourses/quiz/" + id
+
+    const discussionUrl = "http://localhost:3001/teacherCourses/discussion/" + id
+
     useEffect(() => {
         fetch(contentUrl)
             .then((res => {
@@ -34,16 +38,22 @@ const CourseDetails = () => {
             .then((data => {
                 setContent(data)
             }))
-    }, [])
 
-    useEffect(() => {
-        if (user_flag === 3) {
-            document.getElementById("delete_btn").style.display = "none";
-            
+        fetch(quizUrl)
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                setQuiz(data)
+            })
 
-        } else if (user_flag === 1) {
-            document.getElementById("delete_btn").style.display = "block";
-        }
+        fetch(discussionUrl)
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                setDiscussion(data)
+            })
     }, [])
 
     if (content) {
@@ -51,42 +61,25 @@ const CourseDetails = () => {
         localStorage.setItem('course', JSON.stringify(unique))
     }
 
-    const quizUrl = "http://localhost:3001/teacherCourses/quiz/" + id
-
-    useEffect(() => {
-        fetch(quizUrl)
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                //console.log(data)
-                setQuiz(data)
-            })
-    }, [])
-
-    if (quiz) {
-        //console.log(quiz)
-        localStorage.setItem('quiz', JSON.stringify(quiz))
-        var quizDetails = [...new Map(quiz.map(item => [item['quiz_id'], item])).values()];
-    }
-
-    const discussionUrl = "http://localhost:3001/teacherCourses/discussion/" + id
-
-    useEffect(() => {
-        fetch(discussionUrl)
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                // console.log(data)
-                setDiscussion(data)
-            })
-    }, [])
-
     if (discussion) {
         localStorage.setItem('discussion', JSON.stringify(discussion))
         var uniqueDisc = [...new Map(discussion.map(item => [item['discussion_id'], item])).values()];
     }
+
+    if (quiz) {
+        localStorage.setItem('quiz', JSON.stringify(quiz))
+        var quizDetails = [...new Map(quiz.map(item => [item['quiz_id'], item])).values()];
+    }
+
+    useEffect(() => {
+        if (user_flag === 3) {
+            document.getElementById("delete_btn").style.display = "none";
+
+
+        } else if (user_flag === 1) {
+            document.getElementById("delete_btn").style.display = "block";
+        }
+    }, [])
 
     const editLesson = (e, lessonId) => {
 
@@ -140,26 +133,6 @@ const CourseDetails = () => {
         }
     }
 
-    const editContent = (id) => {
-        const updatedFile = document.getElementById("edit-content")
-        updatedFile.click()
-
-        console.log(updatedFile)
-
-        if (updatedFile.value !== "") {
-            const formData = new FormData(document.getElementById("edit-content-form"))
-            formData.append("content_id", id)
-
-            if (window.confirm("Confirm update")) {
-                console.log(formData)
-                fetch("http://localhost:3001/teacherCourses/editContent", {
-                    method: 'POST',
-                    body: formData
-                }).then(data => console.log(data))
-            }
-        }
-    }
-
     const deleteContent = (lessonId, contentId, path) => {
 
         const relativePath = path.toString().split("/").pop()
@@ -185,102 +158,99 @@ const CourseDetails = () => {
         var descriptionInput
         var saveBtn
         if (user_flag === 3) {
-            
-        const editBtn = details.childNodes[1]
-        editBtn.style.display = "none"
 
-        const heading = details.childNodes[0]
+            const editBtn = details.childNodes[1]
+            editBtn.style.display = "none"
 
-        const headingDetails = heading.textContent.toString().split(" - ")
+            const heading = details.childNodes[0]
 
-        headingInputName = document.createElement("input");
-        headingInputName.setAttribute("value", headingDetails[0]);
-        headingInputName.style.marginBottom = "5px"
-        headingInputName.style.padding = "5px"
-        headingInputName.style.width = "100%"
-        headingInputName.style.fontWeight = "bold"
-        headingInputName.style.fontSize = "25px"
+            const headingDetails = heading.textContent.toString().split(" - ")
 
-        headingInputYear = document.createElement("input");
-        headingInputYear.setAttribute("value", headingDetails[1]);
-        headingInputYear.style.marginBottom = "5px"
-        headingInputYear.style.padding = "5px"
-        headingInputYear.style.width = "100%"
-        headingInputYear.style.fontWeight = "bold"
-        headingInputYear.style.fontSize = "25px"
+            headingInputName = document.createElement("input");
+            headingInputName.setAttribute("value", headingDetails[0]);
+            headingInputName.style.marginBottom = "5px"
+            headingInputName.style.padding = "5px"
+            headingInputName.style.width = "100%"
+            headingInputName.style.fontWeight = "bold"
+            headingInputName.style.fontSize = "25px"
 
-        const container = document.createElement("div")
-        container.insertAdjacentElement("afterbegin", headingInputName)
-        headingInputName.insertAdjacentElement("afterend", headingInputYear)
+            headingInputYear = document.createElement("input");
+            headingInputYear.setAttribute("value", headingDetails[1]);
+            headingInputYear.style.marginBottom = "5px"
+            headingInputYear.style.padding = "5px"
+            headingInputYear.style.width = "100%"
+            headingInputYear.style.fontWeight = "bold"
+            headingInputYear.style.fontSize = "25px"
 
-        heading.replaceWith(container);
+            const container = document.createElement("div")
+            container.insertAdjacentElement("afterbegin", headingInputName)
+            headingInputName.insertAdjacentElement("afterend", headingInputYear)
 
-        const description = details.childNodes[4]
+            heading.replaceWith(container);
 
-        descriptionInput = document.createElement("textarea");
-        descriptionInput.innerHTML = description.textContent;
-        description.replaceWith(descriptionInput);
-        descriptionInput.style.width = "100%"
-        descriptionInput.rows = 5
+            const description = details.childNodes[4]
 
-        saveBtn = document.createElement("button");
-        saveBtn.setAttribute("class", "course-edit-btn")
-        saveBtn.innerHTML = "Save Changes"
+            descriptionInput = document.createElement("textarea");
+            descriptionInput.innerHTML = description.textContent;
+            description.replaceWith(descriptionInput);
+            descriptionInput.style.width = "100%"
+            descriptionInput.rows = 5
 
-        descriptionInput.insertAdjacentElement('afterend', saveBtn)
-            
+            saveBtn = document.createElement("button");
+            saveBtn.setAttribute("class", "course-edit-btn")
+            saveBtn.innerHTML = "Save Changes"
+
+            descriptionInput.insertAdjacentElement('afterend', saveBtn)
+
 
         } else if (user_flag === 1) {
-            
-        const editBtn = details.childNodes[1]
-        editBtn.style.display = "none"
 
-        const dltBtn = details.childNodes[2]
-        dltBtn.style.display = "none"
+            const editBtn = details.childNodes[1]
+            editBtn.style.display = "none"
 
-        const heading = details.childNodes[0]
+            const dltBtn = details.childNodes[2]
+            dltBtn.style.display = "none"
 
-        const headingDetails = heading.textContent.toString().split(" - ")
+            const heading = details.childNodes[0]
 
-        headingInputName = document.createElement("input");
-        headingInputName.setAttribute("value", headingDetails[0]);
-        headingInputName.style.marginBottom = "5px"
-        headingInputName.style.padding = "5px"
-        headingInputName.style.width = "100%"
-        headingInputName.style.fontWeight = "bold"
-        headingInputName.style.fontSize = "25px"
+            const headingDetails = heading.textContent.toString().split(" - ")
 
-        headingInputYear = document.createElement("input");
-        headingInputYear.setAttribute("value", headingDetails[1]);
-        headingInputYear.style.marginBottom = "5px"
-        headingInputYear.style.padding = "5px"
-        headingInputYear.style.width = "100%"
-        headingInputYear.style.fontWeight = "bold"
-        headingInputYear.style.fontSize = "25px"
+            headingInputName = document.createElement("input");
+            headingInputName.setAttribute("value", headingDetails[0]);
+            headingInputName.style.marginBottom = "5px"
+            headingInputName.style.padding = "5px"
+            headingInputName.style.width = "100%"
+            headingInputName.style.fontWeight = "bold"
+            headingInputName.style.fontSize = "25px"
 
-        const container = document.createElement("div")
-        container.insertAdjacentElement("afterbegin", headingInputName)
-        headingInputName.insertAdjacentElement("afterend", headingInputYear)
+            headingInputYear = document.createElement("input");
+            headingInputYear.setAttribute("value", headingDetails[1]);
+            headingInputYear.style.marginBottom = "5px"
+            headingInputYear.style.padding = "5px"
+            headingInputYear.style.width = "100%"
+            headingInputYear.style.fontWeight = "bold"
+            headingInputYear.style.fontSize = "25px"
 
-        heading.replaceWith(container);
+            const container = document.createElement("div")
+            container.insertAdjacentElement("afterbegin", headingInputName)
+            headingInputName.insertAdjacentElement("afterend", headingInputYear)
 
-        const description = details.childNodes[5]
+            heading.replaceWith(container);
 
-        descriptionInput = document.createElement("textarea");
-        descriptionInput.innerHTML = description.textContent;
-        description.replaceWith(descriptionInput);
-        descriptionInput.style.width = "100%"
-        descriptionInput.rows = 5
+            const description = details.childNodes[5]
 
-        saveBtn = document.createElement("button");
-        saveBtn.setAttribute("class", "course-edit-btn")
-        saveBtn.innerHTML = "Save Changes"
+            descriptionInput = document.createElement("textarea");
+            descriptionInput.innerHTML = description.textContent;
+            description.replaceWith(descriptionInput);
+            descriptionInput.style.width = "100%"
+            descriptionInput.rows = 5
 
-        descriptionInput.insertAdjacentElement('afterend', saveBtn)
+            saveBtn = document.createElement("button");
+            saveBtn.setAttribute("class", "course-edit-btn")
+            saveBtn.innerHTML = "Save Changes"
+
+            descriptionInput.insertAdjacentElement('afterend', saveBtn)
         }
-
-        
-
 
         const save = function () {
             let courseName = headingInputName.value.toString()
@@ -314,34 +284,42 @@ const CourseDetails = () => {
     const handleDelete = (key) => {
         if (window.confirm("Are you sure you want to delete the course with course id " + key + "?")) {
             const id = { id: key }
-        const url3 = "http://localhost:3001/deleteCourse"
-    
+            const url3 = "http://localhost:3001/deleteCourse"
+
             fetch(url3, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(id)
-        })
+            })
                 .then((res => {
                     return res.json()
                 }))
                 .then((data => {
-    
+
                     if (data.status === "ok") {
                         setDelCourse(data)
                         alert("Course deleted Successfully!")
                         history.push("/adminHome/courses/allCourses")
-                        
-                      } 
-                      else {
+
+                    }
+                    else {
                         alert("Sorry the task couldn't be completed");
                         history.push("/adminHome/courses/allCourses")
-                        
-                      }
-                    
+
+                    }
+
                 }))
-            }
-            
-        
+        }
+    }
+
+
+    const deleteDiscussion = (id) => {
+        if (window.confirm("Confirm Delete")) {
+            fetch("http://localhost:3001/teacherCourses/deleteDiscussion/" + id)
+                .then((data) => {
+                    history.go(0)
+                })
+        }
     }
 
     return (
@@ -352,15 +330,15 @@ const CourseDetails = () => {
                 <div className="homeContent">
                     <div className="course-details">
                         <h1 style={{ display: "inline" }}>{courseInfo.course_name} - {courseInfo.year}</h1>
-                        
+
                         <button className="edit-btn" style={{ float: "right" }} onClick={editDetails}>
                             <EditIcon style={{ color: "#3ca730" }} fontSize="large" />
-                            
+
                         </button>
                         <button className="edit-btn" id="delete_btn" style={{ float: "right" }} onClick={() => handleDelete(courseInfo.course_id)}>
-                        <DeleteIcon style={{ color: "red" }} fontSize="large"/>
+                            <DeleteIcon style={{ color: "red" }} fontSize="large" />
                         </button>
-                        
+
                         <h5>Conducted by: {courseInfo.fname} {courseInfo.lname}</h5>
                         <h5>Contact: {courseInfo.contact}</h5>
                         <p>{courseInfo.description}</p>
@@ -396,15 +374,15 @@ const CourseDetails = () => {
                                             </ul>
                                         </a>
 
-                                        <Link to = {{
-                                                pathname: "/teacher/editContent",
-                                                state: {
-                                                    lessonId: lesson.lesson_id,
-                                                    contentId: filtered.content_id,
-                                                    contentName: filtered.content_name,
-                                                    contentPath: filtered.content
-                                                }
-                                            }}>
+                                        <Link to={{
+                                            pathname: "/teacher/editContent",
+                                            state: {
+                                                lessonId: lesson.lesson_id,
+                                                contentId: filtered.content_id,
+                                                contentName: filtered.content_name,
+                                                contentPath: filtered.content
+                                            }
+                                        }}>
 
                                             <EditIcon style={{ color: "green" }} />
                                         </Link>
@@ -476,7 +454,11 @@ const CourseDetails = () => {
                                         <sub> on </sub>
                                         <i>{value.post_datetime.slice(0, 16).replace(' ', ', ')}</i>
                                     </span>
-                                    <EditIcon style={{ color: "green" }} /><DeleteIcon style={{ color: "red" }} />
+
+                                    <EditIcon style={{ color: "green" }} />
+                                    {/* <Link to="#" onClick={() => deleteDiscussion(value.discussion_id)}> */}
+                                    <DeleteIcon style={{ color: "red" }} />
+                                    {/* </Link> */}
                                 </div>
                             ))}
 

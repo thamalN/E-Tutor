@@ -8,10 +8,7 @@ const ViewStuCourses = () => {
 
 
     useEffect(() => {
-        fetch(url, {
-            method: 'GET',
-            headers: { "Content-Type": "application/json" },
-        })
+        fetch(url)
             .then(res => {
                 return res.json();
             })
@@ -19,7 +16,7 @@ const ViewStuCourses = () => {
                 setData(data)
             })
 
-        }, [url])
+        }, [])
 
 
     return (

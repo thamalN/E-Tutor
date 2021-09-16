@@ -33,13 +33,13 @@ export default function SidebarData() {
     } 
     else if (flag === 2) {
         return [
-        { title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome" },
+        { title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome/dashboard" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/supportingStaffHome/registrations" },
         { title: "Student Accounts", icon: <PeopleIcon />, link: "/supportingStaffHome/studentAccounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/supportingStaffHome/managePayments" },
         { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         { title: "Notifications", icon: <NotificationsIcon />, link: "/notifications" },
-        { title: "Reports", icon: <DescriptionIcon />, link: "/adminHome/reports" }
+        { title: "Reports", icon: <DescriptionIcon />, link: "/supportingStaffHome/reports" }
         ]
     }
     

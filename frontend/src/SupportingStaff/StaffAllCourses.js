@@ -5,11 +5,11 @@ import '../SupportingStaff/staffhome.css';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
-const RecentStaffRegistrations = () => {
+const StaffAllCourses = () => {
 
     const [data, setData] = useState([])
 
-    const url = "http://localhost:3001/recentStaffRegistrations"
+    const url = "http://localhost:3001/allCoursesList"
     useEffect(() => {
 
         fetch(url, {
@@ -28,11 +28,23 @@ const RecentStaffRegistrations = () => {
     const doc = new jsPDF()
 
     const handleClick = (e) => {
-        doc.text('Recent Registrations', 14, 10);
+        doc.text('All Courses With Students Enrolled', 14, 10);
+
+        // doc.autoTable({ html: '#reg-table' });
     };
 
     useEffect(() => {
         doc.autoTable({ html: document.getElementById('reg_table') });
+        // if (data.password.length !== 0) {
+        //     if (data.password === data.confirmPassword) {
+        //         document.getElementById('pass').innerHTML = '(Passwords match!)';
+        //         document.getElementById('pass').style.color = "green";
+        //     } else {
+        //         document.getElementById('pass').innerHTML = '(Passwords do not match!)';
+        //         document.getElementById('pass').style.color = "red";
+
+        //     }
+        // }
     })
 
     return (
@@ -40,52 +52,44 @@ const RecentStaffRegistrations = () => {
             <Sidebar />
             <div className="homeContent">
                 <div className="b2">
-
                     <ul>
                         <li className="reg_title">
-                            <h3>Recent Registrations</h3>
+                            <h3>All Courses With Students Enrolled</h3>
                         </li>
                         <li>
                             <table className="table" id="reg_table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">User ID</th>
-                                        <th scope="col">Registered Date</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Contact</th>
+                                        <th scope="col">Course ID</th>
+                                        <th scope="col">Course Name</th>
+                                        <th scope="col">Course Year</th>
+                                        <th scope="col">Conducted By</th>
+                                        <th scope="col">Number of Students</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {data.map((regData, i) => (
                                         <tr>
-                                            <td>{regData.user_id}</td>
-                                            <td>{regData.regDate}</td>
+                                            <td>{regData.course_id}</td>
+                                            <td>{regData.course_name}</td>
+                                            <td>{regData.year}</td>
                                             <td>{regData.fname} {regData.lname}</td>
-                                            <td>{regData.email}</td>
-                                            <td>{regData.contact}</td>
+                                            <td>{regData.count}</td>
                                         </tr>
                                     ))}
                                 </tbody>
                             </table>
                         </li>
-
+                        <div>
+                            <Link to="/supportingStaffHome/reports"><button >Back</button></Link>
+                            <button onClick={(e) => { handleClick(e); doc.save('All Courses.pdf') }}>Download pdf</button>
+                        </div>
                     </ul>
-                    <div>
-                        <Link to="/supportingStaffHome/dashboard"><button className="btn btn-outline-dark">Back to Dashboard</button></Link>
-                        <button className="btn btn-outline-dark ms-1" onClick={(e) => { handleClick(e); doc.save('Recent Registrations.pdf') }}>Download pdf</button>
-                    </div>
-
-
-
-
-
                 </div>
-
             </div>
         </div>
-
     );
 }
 
-export default RecentStaffRegistrations;
+export default StaffAllCourses;

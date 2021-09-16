@@ -1,3 +1,81 @@
+.card{
+  min-height: 50vh;
+}
+
+.card-body {
+  margin: auto;
+  margin-top: 0.5rem;
+}
+
+.card{
+  /* width: 20%;
+  overflow: hidden;
+  box-shadow: 0 2px 20px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+  align-items: center; */
+  width: 16.5vw;
+  display: inline-block;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.473);
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  position: relative;
+  /* margin-bottom: 50px; */
+  text-align: center;
+  transition: all .2s ease-in-out;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  transition: transform ease 0.5s;
+  box-sizing: border-box;
+  background-image: url(./card.jpg);
+}
+ 
+.card h2 {
+  font-weight: bold;
+}
+
+.card:hover {
+ transform: scale(1.03); 
+ cursor: pointer;
+}
+
+.card_title{
+  padding: 68px;
+  vertical-align: center;
+}
+
+.card_description{
+  color: rgb(0, 0, 0);
+  font-size:70px ;
+  
+}
+
+.card_body .card_btn {
+  padding: 1rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 1rem;
+  border: 2px solid #000000;
+  background: transparent;
+  color: #000000;
+  border-radius: 0.2rem;
+  transition: background 200ms ease-in, color 200ms ease-in;
+  cursor: pointer;
+  width:150px
+}
+
+.card_body .card_btn:hover {
+  background: #000000;
+  color: white;
+}
+
 .card2{
   /* width: 20%;
   overflow: hidden;

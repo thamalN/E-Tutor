@@ -185,6 +185,16 @@ module.exports = function (app, db) {
     })
   })
 
+  app.get("/mostRecentStaffRegistrations", (req, res) => {
+
+    const query = "SELECT * FROM user where regDate BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW();";
+
+    db.query(query, (err, result) => {
+      if (err) throw err;
+      res.json(result)
+    })
+  })
+
   app.get("/allStudents", (req, res) => {
 
     const query = "SELECT * FROM student AS s INNER JOIN user AS u ON u.user_id = s.student_id;";

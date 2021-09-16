@@ -11,7 +11,7 @@ const StaffManagePayments = () => {
                     <Link className="linkbutton" to="/pendingReceipts"><button>View Pending List</button></Link>
                     <Link className="linkbutton" to="/verifiedPayments"><button>View Verified List</button></Link>
                     <Link className="linkbutton" to="/rejectedPayments"><button>View Rejected List</button></Link>
-                    <Link className="linkbutton" to="/supportingStaffHome"><button>Back to Dashboard</button></Link>
+                    <Link className="linkbutton" to="/supportingStaffHome/dashboard"><button>Back to Dashboard</button></Link>
                 </div>
             </div>
         </div>
