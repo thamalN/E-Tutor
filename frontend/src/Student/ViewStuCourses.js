@@ -8,7 +8,12 @@ const ViewStuCourses = () => {
 
 
     useEffect(() => {
-        fetch(url)
+        fetch(url,{
+            method:'GET',
+            credentials: 'include',
+            headers: { "Content-Type": "application/json" }
+
+        })
             .then(res => {
                 return res.json();
             })
