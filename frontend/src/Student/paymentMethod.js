@@ -52,7 +52,8 @@ const PaymentMethod = () => {
                     <div className="payment-card-content">
                         <h2>Select Your payment Method</h2>
                         <div>
-                            <Link to="/studentHome/payments/payslip" >
+                            {/* <Link to="/studentHome/payments/payslip" > */}
+                            <Link to={`/studentHome/payments/payslip/${data.course_id}`} >   
                                 <div className="payment-card">
                                    Opload your payslip
                                 </div>

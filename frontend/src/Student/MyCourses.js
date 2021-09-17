@@ -23,9 +23,11 @@ const MyCourses = () => {
             .then(data => {
                 setData(data)
                 // console.log(data)
+                // localStorage.setItem('courseData', JSON.stringify(data))
             })
 
     }, [url])
+
 
 
     return (

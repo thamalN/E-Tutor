@@ -242,7 +242,7 @@ function App() {
               <PaymentMethod/>
             </Route>
 
-            <Route exact path="/studentHome/payments/payslip">
+            <Route exact path="/studentHome/payments/payslip/:id">
             <StudentPayslip/>
             </Route>
 
