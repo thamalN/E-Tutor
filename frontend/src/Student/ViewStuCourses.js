@@ -4,7 +4,7 @@ import Sidebar from "../Sidebar"
 
 const ViewStuCourses = () => {
     const [data, setData] = useState([])
-    const url = "http://localhost:3001/AllCourses"
+    const url = "http://localhost:3001/StudentAllCourses"
 
 
     useEffect(() => {
