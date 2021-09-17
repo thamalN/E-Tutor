@@ -47,11 +47,8 @@ import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
 import StudentDetails from './Student/StudentDetails';
 import ViewStuCourses from './Student/ViewStuCourses';
-<<<<<<< HEAD
-=======
 import PreviousFeedback from './Student/PreviousFeedback';
 import CreateStuFeedback from './Student/CreateStuFeedback';
->>>>>>> c75ef42490995182cf64143e40d43ba0e4a5e0fc
 // import StuQuiz from './Student/StuQuiz';
 import FeedbackReply from './Admin/FeedbackReply';
 import Feedback from './Admin/Feedback';
