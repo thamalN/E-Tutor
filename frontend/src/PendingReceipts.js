@@ -91,9 +91,9 @@ const PendingReceipts = () => {
                         <li className="reg_title">
                             <h1 className="stuRegHeader">Pending Receipts</h1>
                         </li>
-                        <li className="reg_table">
-                            <table className="table text-center">
-                                <thead>
+                        <li>
+                            <table className="table table2 text-center">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">Payment Date&Time</th>
                                         <th scope="col">Student Name</th>

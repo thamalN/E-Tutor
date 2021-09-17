@@ -59,7 +59,7 @@ const SearchResults = (props) => {
                                 <th scope="col">Email</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Address</th>
-                                <th scope="col">School</th>
+                                
 
                             </tr>
                         </thead>
@@ -71,7 +71,7 @@ const SearchResults = (props) => {
                                     <td>{searchData.email}</td>
                                     <td>{searchData.contact}</td>
                                     <td>{searchData.street_no}, {searchData.street}, {searchData.city}, {searchData.province}</td>
-                                    <td>{searchData.school}</td>
+                                    
                                 </tr>
                             ))}
 

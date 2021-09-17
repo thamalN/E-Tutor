@@ -15,31 +15,60 @@ const EditAnnouncement = () => {
         user_id: user.user_id
         }
     );
-        console.log(data.announcement_id)
+        
     useEffect(() => {
-        if (results.attachment === "") {
+        if (results.attachment === null) {
+            console.log("no file")
             setData({ ...data, opt: "empty" })
-            document.getElementById("opt").required = false
-            document.getElementById("opt").style.display = "none"
+            document.getElementById("replace-file").disabled = true
+            document.getElementById("replace-file").required = false
+            document.getElementById("check").style.display = "none"
             document.getElementById("file_link").style.display = "none"
             
         }
     },[])
 
+
     useEffect(() => {
-        if (data.opt === "exist") {
-            document.getElementById("attachment").required = false
-            document.getElementById("attachment").style.display = "none"
-            document.getElementById("file_link").style.display = "block"
-            
-        } else if(data.opt === "remove"){
+        const replace = document.getElementById("replace-file")
+        const file = document.getElementById("attachment")
+        const attach_div = document.getElementById("attach")
+        const link =  document.getElementById("file_link")
+        if (replace.checked) {
+            setData({ ...data, opt: "remove" })
             setData({ ...data, file_name: "" })
-            document.getElementById("attachment").required = false
-            document.getElementById("file_name").required = false
-            document.getElementById("attachment").style.display = "block"
-            document.getElementById("file_link").style.display = "none"
+            file.disabled = false
+            file.style.display = "block"
+            attach_div.style.display = "block"
+            link.style.display = "none"
+            console.log(data.opt)
+        } else if(results.attachment !== null){
+            setData({ ...data, opt: "exist" })
+            setData({ ...data, file_name: results.file_name })
+            file.disabled = true
+            file.required = false
+            file.style.display = "none"
+            attach_div.style.display = "none"
+            link.style.display = "block"
+            
+
         }
-    })
+        // if (data.opt === "exist") {
+        //     document.getElementById("attach").required = false
+        //     document.getElementById("attach").disabled = true
+        //     document.getElementById("attach").style.display = "none"
+        //     document.getElementById("file_link").style.display = "block"
+            
+        // } if(data.opt === "remove"){
+        //     setData({ ...data, file_name: "" })
+        //     document.getElementById("attach").required = false
+        //     document.getElementById("attach").disabled = false
+        //     document.getElementById("file_name").required = false
+        //     document.getElementById("attach").style.display = "block"
+        //     document.getElementById("file_link").style.display = "none"
+        // }
+        // console.log(data.file_name)
+    },[data.opt])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -50,6 +79,8 @@ const EditAnnouncement = () => {
         formData.append("user_id", data.user_id)
         formData.append("announcement_id", data.announcement_id)
         formData.set("opt", data.opt)
+        formData.set("old_file_link", results.attachment)
+        console.log(data.opt)
 
         fetch(url, {
             method: 'POST',
@@ -94,14 +125,23 @@ const EditAnnouncement = () => {
                         required
                     />
                 </div>
-
-                <a href={data.attachment} id="file_link" target="_blank" rel="noreferrer">
+                <div className="col-12" id="file_link">
+                <label htmlFor="existing_file" className="mt-2">Current File</label>
+                <a href={results.attachment} target="_blank" rel="noreferrer">
                                     
-                                    {data.attachment && <div >{data.file_name}</div>}
+                                    {<div >{results.file_name}</div>}
+                                    
                                         
                                         </a>
+                </div>
 
-                <select name="opt" id="opt"
+                <div id="check" onChange={(e) => setData({ ...data, opt: e.target.value })}>
+                            <label htmlFor="replace-file">Replace File</label>
+                            <input type="hidden" name="check[0]" value="exist" />
+                            <input type="checkbox" id="replace-file" value="remove"/>
+                        </div>                    
+
+                {/* <select name="opt" id="opt"
                                         value={data.opt}
                                         onChange={(e) => {
                                             setData({ ...data, opt: e.target.value})
@@ -109,7 +149,8 @@ const EditAnnouncement = () => {
                     <option value="" hidden selected> -- Select an option -- </option>                        
                     <option value="exist">Keep existing file</option>
                     <option value="remove">Remove existing file</option>
-                                    </select>
+                                    </select> */}
+                
                 <div className="col-12">
                     <label htmlFor="file_name" className="mt-2">File Name</label>
                     <input
@@ -122,7 +163,7 @@ const EditAnnouncement = () => {
                     />
                 </div>
 
-                <div className="col-12">
+                <div className="col-12" id="attach">
                     <label htmlFor="attachment" className="mt-2">Attachments</label>
                     <input
                         type="file"
@@ -136,7 +177,7 @@ const EditAnnouncement = () => {
                 </div>
 
             <div className="col-12 mt-4">
-        <input type="submit" className="btn btn-dark" value="Add Announcement"/>
+        <input type="submit" className="btn btn-dark" value="Edit Announcement"/>
         </div>
     </form>
 </div>  );

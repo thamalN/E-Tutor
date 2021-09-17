@@ -1,13 +1,31 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import Sidebar from "./Sidebar";
 import bcrypt from "bcryptjs"
 import Valid from '@material-ui/icons/CheckCircle';
 import Invalid from '@material-ui/icons/Cancel';
+import PassOn from '@material-ui/icons/Visibility';
+import PassOff from '@material-ui/icons/VisibilityOff';
 
 const EditProfile = () => {
+    const history = useHistory()
 
     const [data, setData] = useState(JSON.parse(localStorage.getItem("userInfo")))
     const [usernames, setUsernames] = useState([]);
+
+    const [valids, setValids] = useState({
+        FirstName: true,
+        LastName: true,
+        StreetNo: true,
+        StreetName: true,
+        City: true,
+        Email: true,
+        Contact: true,
+        Password: true,
+        School: true,
+        GuardianContact: true,
+        NIC: true,
+    })
 
     const usersUrl = "http://localhost:3001/getOtherUsernames/" + data.user_id
 
@@ -20,27 +38,28 @@ const EditProfile = () => {
             .then(data => {
                 setUsernames(data)
             })
-
     }, [])
 
     var username = new RegExp(/^[a-z\d]{5,12}$/i);
+    var pass = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
 
-    var usernameValid, newpassValid, oldpassValid
+    var usernameValid, newpassValid = true
 
     useEffect(() => {
         if (data.username && data.username.length !== 0) {
             if (usernames.some(i => i.username === data.username)) {
                 document.getElementById('usern').innerHTML = '(Username is already taken!)';
                 document.getElementById('usern').style.color = "red";
-                usernameValid = false;
+                usernameValid = false
             } else if (!RegExp(username).test(data.username)) {
                 document.getElementById('usern').innerHTML = '(Username can only contain letters & digits and must contain 5 - 12 characters)';
                 document.getElementById('usern').style.color = "red";
-                usernameValid = false;
+                usernameValid = false
             } else {
                 document.getElementById('usern').innerHTML = '(Username is available!)';
                 document.getElementById('usern').style.color = "green";
-                usernameValid = true;            }
+                usernameValid = true
+            }
         }
     })
 
@@ -49,11 +68,18 @@ const EditProfile = () => {
             if (data.newPassword === data.confirmPassword) {
                 document.getElementById('new_password').innerHTML = '(Passwords match!)';
                 document.getElementById('new_password').style.color = "green";
-                newpassValid = true; 
+
+                if(!RegExp(pass).test(data.newPassword)) {
+                    document.getElementById("new_password").innerHTML = 'Password must contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character!';
+                    document.getElementById("new_password").style.color = "red";
+                } else {
+                    newpassValid = true
+                }
+
             } else {
                 document.getElementById('new_password').innerHTML = '(Passwords do not match!)';
                 document.getElementById('new_password').style.color = "red";
-                newpassValid = false; 
+                newpassValid = false
             }
         }
     })
@@ -72,28 +98,39 @@ const EditProfile = () => {
                 }
             })
         }
-
     })
 
-    useEffect(() => { 
+    useEffect(() => {
+        const passwords = document.getElementById("change-password")
+        const changePass = passwords.classList.contains("show-change-password")
+        
+        const allValid = Object.values(valids).every(i => i)
 
-        if (RegExp(/^[a-z ,.'-]+$/i).test(data.fname) && RegExp(/^[a-z ,.'-]+$/i).test(data.lname) &&
-            RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.street_no) && RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.street) &&
-            RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.city) && RegExp(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/).test(data.email) &&
-            RegExp(/^\d{10}$/).test(data.contact) && usernameValid && newpassValid) {
-
-            if ((data.user_flag === 1 && RegExp(/^\d{10}$/).test(data.nic)) ||
-                (data.user_flag === 2 && RegExp(/^\d{10}$/).test(data.nic)) ||
-                (data.user_flag === 3 && RegExp(/^\d{10}[V]$/).test(data.nic) && RegExp(/^[a-z 0-9,.'-]+$/i).test(data.school)) ||
-                (data.user_flag === 4 && RegExp(/^\d{10}$/).test(data.guardian_contact) && RegExp(/^[a-z 0-9,.'-]+$/i).test(data.school))) {
-                document.getElementById('button').disabled = false;
-            } else {
-                document.getElementById('button').disabled = true;
-            }
-        } else {
+        if (allValid && usernameValid && newpassValid)
+            document.getElementById('button').disabled = false;
+        else
             document.getElementById('button').disabled = true;
-        }
     })
+
+    // useEffect(() => {
+
+    //     if (RegExp(/^[a-z ,.'-]+$/i).test(data.fname) && RegExp(/^[a-z ,.'-]+$/i).test(data.lname) &&
+    //         RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.street_no) && RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.street) &&
+    //         RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.city) && RegExp(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/).test(data.email) &&
+    //         RegExp(/^\d{10}$/).test(data.contact) && usernameValid) {
+
+    //         if ((data.user_flag === 1 && RegExp(/^\d{10}$/).test(data.nic)) ||
+    //             (data.user_flag === 2 && RegExp(/^\d{10}$/).test(data.nic)) ||
+    //             (data.user_flag === 3 && RegExp(/^\d{10}[V]$/).test(data.nic) && RegExp(/^[a-z 0-9,.'-]+$/i).test(data.school)) ||
+    //             (data.user_flag === 4 && RegExp(/^\d{10}$/).test(data.guardian_contact) && RegExp(/^[a-z 0-9,.'-]+$/i).test(data.school))) {
+    //             document.getElementById('button').disabled = false;
+    //         } else {
+    //             document.getElementById('button').disabled = true;
+    //         }
+    //     } else {
+    //         document.getElementById('button').disabled = true;
+    //     }
+    // })
 
     const patterns = {
         FirstName: /^[a-z ,.'-]+$/i,
@@ -113,25 +150,21 @@ const EditProfile = () => {
         const valid = document.getElementById(field.id + "-valid")
         const invalid = document.getElementById(field.id + "-invalid")
 
+        const fieldName = Object.keys(valids).find(i => i === field.name)
+
         if (RegExp(regex).test(field.value)) {
             valid.style.display = "inline"
             invalid.style.display = "none"
-            document.getElementById('button').disabled = false;
 
-        // } else if (RegExp(/^$/).test(field.value)) {
-        //     document.getElementById(field.id).innerHTML = 'Required';
-        //     document.getElementById(field.id).style.color = "red";
-        // } else if (field.name == "password") {
-        //     document.getElementById(field.id).innerHTML = 'Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character!';
-        //     document.getElementById(field.id).style.color = "red";
+            setValids({ ...valids, [fieldName]: true })
 
         } else {
             valid.style.display = "none"
             invalid.style.display = "inline"
-            document.getElementById('button').disabled = true;
+
+            setValids({ ...valids, [fieldName]: false })
         }
     }
-
 
     const handleChange = (e) => {
         validate(e.target, patterns[e.target.attributes.name.value]);
@@ -140,7 +173,40 @@ const EditProfile = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:3001/signUp"
+        console.log(data)
+
+        const url = "http://localhost:3001/editProfile/"
+
+        const values = {
+            user_id: data.user_id,
+            user_flag: data.user_flag,
+            fname: data.fname,
+            lname: data.lname,
+            street_no: data.street_no,
+            street: data.street,
+            city: data.city,
+            province: data.province,
+            email: data.email,
+            contact: data.contact,
+            birthday: data.birthday,
+            gender: data.gender,
+            username: data.username,
+            password: data.newPassword,
+
+            nic: data.nic,
+            school: data.school,
+            qualifications: data.qualifications,
+        }
+
+       // console.log(values)
+
+        fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(values)
+        }).then(
+            history.goBack()
+        )
     }
 
     const togglePassword = () => {
@@ -148,15 +214,22 @@ const EditProfile = () => {
         passwords.classList.toggle("show-change-password")
         passwords.classList.toggle("hide-change-password")
 
+        const inputs = passwords.querySelectorAll("input")
+
         if (passwords.classList.contains("hide-change-password")) {
-            document.getElementById('button').disabled = false;
-            const inputs = passwords.querySelectorAll("input")
             inputs.forEach(input => {
                 input.required = false
             })
         } else {
-            document.getElementById('button').disabled = true;
+            inputs.forEach(input => {
+                input.required = true
+            })
         }
+
+    }
+
+    const togglePass = (e) => {
+        console.log(e.target)
     }
 
 
@@ -536,7 +609,7 @@ const EditProfile = () => {
 
                         <div className="col-12">
 
-                        <input type="button" className="btn btn-dark add-btn" value="Change Password" onClick={togglePassword} />
+                            <input type="button" className="btn btn-dark add-btn" value="Change Password" onClick={togglePassword} />
 
                         </div>
 
@@ -544,15 +617,20 @@ const EditProfile = () => {
                             <div style={{ flex: "0 0 30%" }}>
                                 <label htmlFor="oldPassword" className="mt-2">Old Password</label>
                                 <span id="old_password" style={{ "marginLeft": 50, fontSize: 12 }}></span>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    name="oldPassword"
-                                    id="old_password"
-                                    value={data.oldPassowrd}
-                                    onChange={(e) => setData({ ...data, oldPassword: e.target.value })}
-                                    required
-                                />
+
+                                <div className="passToggle">
+                                    <input
+                                        type="password"
+                                        className="form-control"
+                                        name="oldPassword"
+                                        id="old_password"
+                                        value={data.oldPassowrd}
+                                        onChange={(e) => setData({ ...data, oldPassword: e.target.value })}
+                                        
+                                    />
+                                    {/* <PassOn />
+                                    <PassOff /> */}
+                                </div>
                             </div>
 
                             <div style={{ flex: "0 0 30%" }}>
@@ -560,15 +638,20 @@ const EditProfile = () => {
                                 <Valid fontSize="small" className="valid" id="new_password-valid" style={{ display: "none" }} />
                                 <Invalid fontSize="small" className="invalid" id="new_password-invalid" style={{ display: "none" }} />
                                 <span id="new_password" style={{ "marginLeft": 50, fontSize: 12 }}></span>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    name="Password"
-                                    id="new_password"
-                                    value={data.newPassword}
-                                    onChange={(e) => { setData({ ...data, newPassword: e.target.value }); handleChange(e) }}
-                                    required
-                                />
+
+                                <div className="passToggle">
+                                    <input
+                                        type="password"
+                                        className="form-control"
+                                        name="Password"
+                                        id="new_password"
+                                        value={data.newPassword}
+                                        onChange={(e) => { setData({ ...data, newPassword: e.target.value }); handleChange(e) }}
+                                        
+                                    />
+                                    {/* <PassOn />
+                                    <PassOff /> */}
+                                </div>
                             </div>
 
                             <div style={{ flex: "0 0 30%" }}>
@@ -576,16 +659,20 @@ const EditProfile = () => {
                                 <Valid fontSize="small" className="valid" id="confirm_password-valid" style={{ display: "none" }} />
                                 <Invalid fontSize="small" className="invalid" id="confirm_password-invalid" style={{ display: "none" }} />
                                 <span id="confirm_password" style={{ "marginLeft": 50, fontSize: 12 }}></span>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    name="Password"
-                                    id="confirm_password"
-                                    value={data.confirmPassword}
-                                    onChange={(e) => { setData({ ...data, confirmPassword: e.target.value }); handleChange(e) }}
-                                    required
-                                />
 
+                                <div className="passToggle">
+                                    <input
+                                        type="password"
+                                        className="form-control"
+                                        name="Password"
+                                        id="confirm_password"
+                                        value={data.confirmPassword}
+                                        onChange={(e) => { setData({ ...data, confirmPassword: e.target.value }); handleChange(e) }}
+                                        
+                                    />
+                                    {/* <PassOn />
+                                    <PassOff /> */}
+                                </div>
                             </div>
                         </div>
 

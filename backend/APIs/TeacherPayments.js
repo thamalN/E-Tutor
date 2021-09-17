@@ -36,9 +36,9 @@ module.exports = function (app, db, MySQLEvents, schedule) {
     //     }, {})
     //   }
 
-    const job = schedule.scheduleJob("53 20 11 * *", function () {
+    const job = schedule.scheduleJob("22 11 14 * *", function () {
 
-        const query = "SELECT course.*, teacher.*, user.fname, user.lname, user.email, user.contact, user.street_no, user.street, user.city, user.province, SUM(payment.amount)*0.6 AS amount_payable FROM course RIGHT JOIN teacher ON teacher.teacher_id=course.teacher_id  LEFT JOIN user ON user.user_id=teacher.teacher_id LEFT JOIN payment ON payment.course_id=course.course_id AND payment.verified=1 AND payment.month='August' GROUP BY course.course_id HAVING course.course_id IS NOT NULL;"
+        const query = "SELECT course.*, teacher.*, user.fname, user.lname, user.email, user.contact, user.street_no, user.street, user.city, user.province, SUM(payment.amount)*0.6 AS amount_payable FROM course RIGHT JOIN teacher ON teacher.teacher_id=course.teacher_id  LEFT JOIN user ON user.user_id=teacher.teacher_id LEFT JOIN payment ON payment.course_id=course.course_id AND payment.verified=1 AND payment.month=MONTHNAME(NOW()) GROUP BY course.course_id HAVING course.course_id IS NOT NULL;"
 
         let transporter = nodemailer.createTransport({
           service: "gmail",

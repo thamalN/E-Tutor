@@ -166,8 +166,8 @@ const TeacherQuizEdit = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(values)
             }).then(data => {
-                //history.replace("/teacher/courses/" + course_id)
-                history.goBack()
+                history.push("/teacher/courses/" + course_id)
+                //history.goBack()
             })
 
         }

@@ -38,8 +38,8 @@ const DetailedTeacherPayments = () => {
                             </li>
                             
                             <li>
-                                <table className="table">
-                                    <thead>
+                                <table className="table table2">
+                                <thead className="thead-dark">
                                         <tr>
                                             <th scope="col">Course ID</th>
                                             <th scope="col">Course</th>

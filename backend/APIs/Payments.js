@@ -12,7 +12,17 @@ module.exports = function (app, db) {
 
   app.get("/verifiedPayments", (req, res) => {
 
-    const query = "SELECT payment.payment_id, payment.payment_method, payment.student_id, payment.course_id, payment.date_time, payment.amount, payment.month, payment.verified, payment.payment_slip, user.fname, user.lname, user.email, user.contact FROM payment INNER JOIN user ON payment.student_id=user.user_id WHERE payment.verified=1 AND PAYMENT.month=MONTHNAME(NOW());";
+    const query = "SELECT payment.payment_id, payment.payment_method, payment.student_id, payment.course_id, payment.date_time, payment.amount, payment.month, payment.verified, payment.payment_slip, user.fname, user.lname, user.email, user.contact FROM payment INNER JOIN user ON payment.student_id=user.user_id WHERE payment.verified=1 AND payment.month=MONTHNAME(NOW());";
+
+    db.query(query, (err, result) => {
+      if (err) throw err;
+      res.json(result)
+    })
+  })
+
+  app.get("/totalPayments", (req, res) => {
+
+    const query = "SELECT p.course_id, SUM(p.amount) AS sum, p.month, c.course_name, c.year, u.fname, u.lname FROM payment AS p INNER JOIN course AS c INNER JOIN user AS u ON p.course_id = c.course_id AND c.teacher_id = u.user_id WHERE p.verified=1 AND p.month=MONTHNAME(NOW()) GROUP BY course_id ORDER BY course_id;";
 
     db.query(query, (err, result) => {
       if (err) throw err;

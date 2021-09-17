@@ -4,10 +4,12 @@ import logo from './Resources/logo_icon_white.png';
 import PersonIcon from '@material-ui/icons/Person';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { Badge } from '@material-ui/core';
+import { Cookies } from 'react-cookie';
 
 import './Resources/styles.css';
 
 const Navbar = (props) => {
+    const cookies = new Cookies();
     let navbar;
 
     const user = JSON.parse(localStorage.getItem('user'))
@@ -27,6 +29,9 @@ const Navbar = (props) => {
 
     const logOut = () => {
         props.setLoggedIn(false)
+        document.cookie = "tokens=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        // cookies.remove("tokens");
+        // console.log(cookies)
         localStorage.clear();
         history.replace("/")
     };

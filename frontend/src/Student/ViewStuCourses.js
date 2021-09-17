@@ -4,13 +4,15 @@ import Sidebar from "../Sidebar"
 
 const ViewStuCourses = () => {
     const [data, setData] = useState([])
-    const url = "http://localhost:3001/AllCourses"
+    const url = "http://localhost:3001/StudentAllCourses"
 
 
     useEffect(() => {
-        fetch(url, {
-            method: 'GET',
-            headers: { "Content-Type": "application/json" },
+        fetch(url,{
+            method:'GET',
+            credentials: 'include',
+            headers: { "Content-Type": "application/json" }
+
         })
             .then(res => {
                 return res.json();
@@ -19,7 +21,7 @@ const ViewStuCourses = () => {
                 setData(data)
             })
 
-        }, [url])
+        }, [])
 
 
     return (
@@ -34,8 +36,13 @@ const ViewStuCourses = () => {
                         <div key={course.course_id} className="course-card" >
                             
                                 <div className="card-container">
+                                <div className="card-info">
                                     <h1>{course.course_name} {course.year}</h1>
                                     <p>{course.description}</p>
+                                        <h3>{course.price}</h3>
+                                        <button className="btn btn-dark">Entroll</button>
+                                      
+                                    </div>
                                 </div>
 
                         </div>

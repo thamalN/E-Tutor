@@ -86,7 +86,7 @@ const CreateTeacherAcc = () => {
         })
         .then(data => {
             setId(data);
-            alert("Registration Successful!")
+            alert("Successfully created the Student Account and emailed the user credentials!!")
             history.push("/adminHome/registrations")
         })
     }

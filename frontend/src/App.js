@@ -1,7 +1,7 @@
 import Navbar from './Navbar';
 import SignIn from './Authentication/SignIn';
 import SignUp from './Authentication/SignUp';
-
+import StuDiscussion from './Student/StuDiscussion';
 import AdminHome from './Admin/AdminHome';
 import Home from './Home';
 import CreateAnnouncement from './Admin/CreateAnnouncement';
@@ -23,10 +23,6 @@ import CourseDetails from './Teacher/CourseDetails';
 import AllCourses from './Admin/AllCourses';
 import UserAccounts from './Admin/UserAccounts';
 import Payments from './Admin/Payments';
-import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
-import StudentRegistrations from './SupportingStaff/StudentRegistrations';
-import StudentAccounts from './SupportingStaff/StudentAccounts';
-import SearchToUpdate from './SupportingStaff/SearchToUpdate';
 import ManagePayments from './ManagePayments';
 import PendingReceipts from './PendingReceipts';
 import AddContent from './Teacher/AddContent';
@@ -35,6 +31,7 @@ import ViewPreviousAnnouncements from './Admin/ViewPreviousAnnouncements';
 import StudentHome from './Student/StudentHome';
 import ViewCourses from './Student/ViewCourses';
 import MyCourses from './Student/MyCourses';
+// import StudentDiscussion from './Student/StudentDiscussion';
 import StudentAddAssigment from './Student/StudentAddAssigment';
 import HomeNew from './HomeNew';
 import Footer from './Footer.js';
@@ -44,14 +41,17 @@ import TeacherQuiz from './Teacher/TeacherQuiz';
 import TeacherQuizEdit from './Teacher/TeacherQuizEdit';
 import AddNewCourse from './Admin/AddNewCourse';
 import RecentRegistrations from './Admin/RecentRegistrations';
-import VerifiedPayments from './VerifiedPayments'
-import RecentStaffRegistrations from './SupportingStaff/RecentStaffRegistrations';
-import StaffManagePayments from './SupportingStaff/StaffManagePayments';
+import VerifiedPayments from './VerifiedPayments';
 import StudentNotification from './Student/StudentNotification';
 import StudentPayment from './Student/StudentPayment';
 import StudentPayslip from './Student/StudentPayslip';
 import StudentDetails from './Student/StudentDetails';
 import ViewStuCourses from './Student/ViewStuCourses';
+<<<<<<< HEAD
+=======
+import PreviousFeedback from './Student/PreviousFeedback';
+import CreateStuFeedback from './Student/CreateStuFeedback';
+>>>>>>> c75ef42490995182cf64143e40d43ba0e4a5e0fc
 // import StuQuiz from './Student/StuQuiz';
 import FeedbackReply from './Admin/FeedbackReply';
 import Feedback from './Admin/Feedback';
@@ -61,6 +61,12 @@ import Discussion from './Teacher/Discussion';
 import StudentAddContent from './Student/StudentAddAssigment';
 import TeacherPayments from './Admin/TeacherPayments';
 import EditAnnouncement from './Admin/EditAnnouncement';
+import Reports from './Admin/Reports';
+import AllStudents from './Admin/AllStudents';
+import AllTeachers from './Admin/AllTeachers';
+import AllStaff from './Admin/AllStaff';
+import AllCoursesList from './Admin/AllCoursesList';
+import CoursePayments from './Admin/CoursePayments';
 import PayCourses from './Student/PayCourses';
 import Meeting from './Teacher/Meeting';
 // import StuEvent from './Student/StuEvent';
@@ -77,6 +83,16 @@ import Students from './Teacher/Students';
 import EditContent from './Teacher/EditContent';
 import ViewProfile from './ViewProfile';
 import EditProfile from './EditProfile';
+import RecentStaffRegistrations from './SupportingStaff/RecentStaffRegistrations';
+import StaffManagePayments from './SupportingStaff/StaffManagePayments';
+import StaffReports from './SupportingStaff/StaffReports';
+import StaffAllStudents from './SupportingStaff/StaffAllstudents';
+import StaffAllTeachers from './SupportingStaff/StaffAllTeachers';
+import StaffAllCourses from './SupportingStaff/StaffAllCourses';
+import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
+import StudentRegistrations from './SupportingStaff/StudentRegistrations';
+import StudentAccounts from './SupportingStaff/StudentAccounts';
+import SearchToUpdate from './SupportingStaff/SearchToUpdate';
 
 function App() {
 
@@ -179,8 +195,32 @@ function App() {
             <Route exact path="/adminHome/feedback/reply/:feedback_id">
               <FeedbackReply/>
             </Route>
+            
+            <Route exact path="/adminHome/reports">
+              <Reports/>
+            </Route>
 
-            <Route exact path="/SupportingStaffHome">
+            <Route exact path="/adminHome/reports/allStudents">
+              <AllStudents/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/allTeachers">
+              <AllTeachers/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/allStaff">
+              <AllStaff/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/allCoursesList">
+              <AllCoursesList/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/coursePayments">
+              <CoursePayments/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/dashboard">
               <SupportingStaffHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
@@ -202,6 +242,22 @@ function App() {
 
             <Route exact path="/supportingStaffHome/ManagePayments">
               <StaffManagePayments/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/reports">
+              <StaffReports/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/reports/allStudents">
+              <StaffAllStudents/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/reports/allTeachers">
+              <StaffAllTeachers/>
+            </Route>
+
+            <Route exact path="/supportingStaffHome/reports/allCoursesList">
+              <StaffAllCourses/>
             </Route>
 
             <Route exact path="/managePayments">
@@ -340,9 +396,29 @@ function App() {
               <StuQuiz />
             </Route> */}
 
+            <Route exact path="/studentHome/PreviousFeedback">
+              <PreviousFeedback/>
+            </Route>
+
+            <Route exact path="/studentHome/CreateStuFeedback">
+            <CreateStuFeedback/>
+          </Route>
+
+            
+
+            {/* <Route exact path="/Student/StuQuiz">
+              <StuQuiz />
+            </Route> */}
+
             <Route exact path="/studentHome/ViewStuCourses">
               <ViewStuCourses/>
             </Route>
+
+            <Route exact path="/studentHome/StuDiscussion">
+              <StuDiscussion/>
+            </Route>
+
+          
 
 
             {/* <Route exact path="/student/StuaddQuiz">

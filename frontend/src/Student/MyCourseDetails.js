@@ -10,6 +10,7 @@ const MyCourseDetails = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
   const [discussion, setDiscussion] = useState([])
+  const [quiz, setQuiz] = useState([])
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -31,6 +32,25 @@ const MyCourseDetails = () => {
     ];
     localStorage.setItem("course", JSON.stringify(unique));
     console.log(unique);
+  }
+
+  const quizUrl = "http://localhost:3001/teacherCourses/quiz/" + id
+
+  useEffect(() => {
+      fetch(quizUrl)
+          .then(res => {
+              return res.json()
+          })
+          .then(data => {
+              //console.log(data)
+              setQuiz(data)
+          })
+  }, [quizUrl])
+
+  if (quiz) {
+      //console.log(quiz)
+      localStorage.setItem('quiz', JSON.stringify(quiz))
+      var quizDetails = [...new Map(quiz.map(item => [item['quiz_id'], item])).values()];
   }
 
   const discussionUrl = "http://localhost:3001/teacherCourses/discussion/" + id
@@ -99,8 +119,27 @@ const MyCourseDetails = () => {
 
           <hr />
           <div className="course-quiz">
-            <h4>Quizzes</h4>
+          <div className="content-add">
+              <h4>Quizzes</h4>
+              
           </div>
+
+          <div className="quiz">
+              {quizDetails.map((value, key) => (
+                  <div className="content-name" key={key}>
+                      <Link to={`/teacher/courses/quiz/${value.quiz_id}`} className="name-sub">
+                          <ul>
+                              <li key={value.quiz_id}>{value.quiz_name}</li>
+                          </ul>
+                      </Link>
+                     
+                     
+                  </div>
+              ))}
+
+          </div>
+      </div>
+
 
           <hr />
           <div className="course-discn">
@@ -127,7 +166,7 @@ const MyCourseDetails = () => {
                               <sub> on </sub>
                               <i>{value.post_datetime.slice(0, 16).replace(' ', ', ')}</i>
                           </span>
-                          <EditIcon style={{ color: "green" }} /><DeleteIcon style={{ color: "red" }} />
+
                       </div>
                   ))}
 

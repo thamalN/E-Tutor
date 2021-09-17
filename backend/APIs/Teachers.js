@@ -14,7 +14,7 @@ module.exports = function (app, db) {
         let teacherPayments = []
         let paymentArray = []
 
-        const query = "SELECT course.*, teacher.*, user.fname, user.lname, user.email, user.contact, user.street_no, user.street, user.city, user.province, SUM(payment.amount)*0.6 AS amount_payable FROM course RIGHT JOIN teacher ON teacher.teacher_id=course.teacher_id  LEFT JOIN user ON user.user_id=teacher.teacher_id LEFT JOIN payment ON payment.course_id=course.course_id AND payment.verified=1 AND payment.month='August' GROUP BY course.course_id HAVING course.course_id IS NOT NULL;"
+        const query = "SELECT course.*, teacher.*, user.fname, user.lname, user.email, user.contact, user.street_no, user.street, user.city, user.province, SUM(payment.amount)*0.6 AS amount_payable FROM course RIGHT JOIN teacher ON teacher.teacher_id=course.teacher_id  LEFT JOIN user ON user.user_id=teacher.teacher_id LEFT JOIN payment ON payment.course_id=course.course_id AND payment.verified=1 AND payment.month=MONTHNAME(NOW()) GROUP BY course.course_id HAVING course.course_id IS NOT NULL;"
         
         // function groupBy(objectArray, property) {
         //     return objectArray.reduce(function (acc, obj) {

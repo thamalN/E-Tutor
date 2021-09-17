@@ -7,9 +7,14 @@ module.exports = function (app, db) {
         const grade = req.body.grade;
 
         let criteria = []
+        let criterias = []
         for (var key in req.body) {
             if (req.body[key] === true) {
                 criteria.push(key)
+                criterias.push(key)
+            }
+            else if(req.body[key] === false) {
+                criterias.push(key)
             }
 
 
@@ -20,41 +25,71 @@ module.exports = function (app, db) {
         console.log(grade)
         console.log(searchstring)
 
-        const str = searchstring.split(/\s+/);
-        var search_str = str.join("','") + "'";
-        console.log(str)
+        const str = searchstring.toString().split(/["|"]/);
+        
+
+        const splitSearch = str.map(element => {
+            return element.trimEnd().trimStart()
+        });
+        
+
+        var search_str = splitSearch.join("','") + "'";
+        console.log(search_str)
 
         query1 = "SELECT * FROM user";
         let inserts = []
         if (flag_user != 1) {
             const tab = (flag_user == 2 ? "staff" : (flag_user == 3 ? "teacher" : "student"))
+            criterias = (flag_user == 2 ? ["fname", "lname", "username", "street", "street_no", "city", "province", "email", "contact", "birthday", "nic"] : (flag_user == 3 ? ["fname", "lname", "username", "street", "street_no", "city", "province", "email", "contact", "birthday", "nic", "school"] : ["fname", "lname", "username", "street", "street_no", "city", "province", "email", "contact", "birthday","school", "guardian_contact"]))
             query1 += " INNER JOIN " + tab + " ON user.user_id=" + tab + "." + tab + "_id"
             query1 += " WHERE user_flag=" + flag_user + " AND"
 
         }
         else {
             query1 += " WHERE";
+            criterias=["fname", "lname", "username", "street", "street_no", "city", "province", "email", "contact", "birthday"]
         }
 
         if (province.length != 0) {
             query1 += " province IN (?) AND"
             inserts.push(province)
         }
+        else {
+            criterias.push("province")
+        }
         if (gender != "" && gender != "all") {
             query1 += " gender IN (?) AND"
             inserts.push(gender)
+        }
+        else {
+            criterias.push("gender")
         }
         if (grade.length != 0) {
             query1 += " grade IN (?) AND"
             inserts.push(grade)
         }
+        
+
         if (criteria.length != 0) {
-
             for (i = 0; i < criteria.length; i++) {
-                query1 += " " + criteria[i] + " IN ('" + search_str + ") AND"
+                if(i === 0) query1 += " ("
+                query1 += " " +  criteria[i] + " IN ('" + search_str + ") OR"
+                if(i === criteria.length-1) {
+                    query1 = query1.substring(0, query1.lastIndexOf(" "));
+                    query1 += ") "
+                }
             }
-
+        } else {
+            for (i = 0; i < criterias.length; i++) {
+                if(i === 0) query1 += " ("
+                query1 += " " +  criterias[i] + " IN ('" + search_str + ") OR"
+                if(i === criterias.length-1) {
+                    query1 = query1.substring(0, query1.lastIndexOf(" "));
+                    query1 += ") "
+                }
+            }
         }
+
         query1 = query1.substring(0, query1.lastIndexOf(" "));
         query1 += ";"
 

@@ -10,6 +10,7 @@ const CreateAnnouncement = () => {
         description: "",
         file_name: "",
         attachment: "",
+        ann_type: "",
         user_id: user.user_id
         }
     );
@@ -74,6 +75,29 @@ const CreateAnnouncement = () => {
                         required
                     />
                 </div>
+
+                {/* <div className="col-md-4">
+                    <label className="mt-2" htmlFor="ann_type">Announcement For</label>
+                    <select
+                        className="form-control"
+                        id="ann_type"
+                        name="ann_type"
+                        placeholder="Choose..."
+                        value={data.ann_type}
+                        // {...register("province")}
+                        onChange={(e) => setData({ ...data, ann_type: e.target.value })}
+                        required
+                    >
+                        <option value="">Choose...</option>
+                        <option>All</option>
+                        <option>All Students</option>
+                        <option>All Teachers</option>
+                        <option>All Supporting Staff</option>
+                        <option>All staff</option>
+                        <option>All students and Teachers</option>
+                    </select>
+                </div> */}
+
                 <div className="col-12">
                     <label htmlFor="file_name" className="mt-2">File Name</label>
                     <input
