@@ -29,7 +29,7 @@ const Navbar = (props) => {
 
     const logOut = () => {
         props.setLoggedIn(false)
-        document.cookie = "tokens=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         // cookies.remove("tokens");
         // console.log(cookies)
         localStorage.clear();
