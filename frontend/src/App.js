@@ -49,7 +49,7 @@ import StudentDetails from './Student/StudentDetails';
 import ViewStuCourses from './Student/ViewStuCourses';
 import PreviousFeedback from './Student/PreviousFeedback';
 import CreateStuFeedback from './Student/CreateStuFeedback';
-// import StuQuiz from './Student/StuQuiz';
+import StuQuiz from './Student/StuQuiz';
 import FeedbackReply from './Admin/FeedbackReply';
 import Feedback from './Admin/Feedback';
 import RejectedPayments from './RejectedPayments';
@@ -345,6 +345,7 @@ function App() {
               <StudentHome setLoggedIn = { setLoggedIn }/>
             </Route>
 
+
             <Route exact path="/studentHome/viewCourses">
               <ViewCourses />
             </Route>
@@ -375,6 +376,10 @@ function App() {
 
             <Route exact path="/studentHome/StudentAddAssigment">
             <StudentAddAssigment/>
+            </Route>
+ 
+            <Route exact path="/studentHome/StuQuiz/:id">
+            <StuQuiz/>
             </Route>
             
             <Route exact path="/studentHome/payments/payOnline">

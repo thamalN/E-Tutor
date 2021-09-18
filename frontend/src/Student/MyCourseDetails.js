@@ -91,9 +91,7 @@ const MyCourseDetails = () => {
             <div className="content-add">
               <h4>Course Content</h4>
               <Link to="/studentHome/StudentAddAssigment">
-                <button className="course-btn">
-                  <AddCircleOutlineIcon /> Add Content
-                </button>
+                
               </Link>
             </div>
 
@@ -127,7 +125,7 @@ const MyCourseDetails = () => {
           <div className="quiz">
               {quizDetails.map((value, key) => (
                   <div className="content-name" key={key}>
-                      <Link to={`/teacher/courses/quiz/${value.quiz_id}`} className="name-sub">
+                      <Link to={`/studentHome/StuQuiz/${value.quiz_id}`} className="name-sub">
                           <ul>
                               <li key={value.quiz_id}>{value.quiz_name}</li>
                           </ul>
