@@ -1,10 +1,8 @@
-module.exports = function (app, db,upload) {
+module.exports = function (app, db) {
     
     app.post("/CreateStuFeedback",(req, res) => {
-        // console.log(req.body.user_id);
-        // const StudentId= req.params.id;
-        console.log(req.params.id);
-        const user_id = 4;
+
+        const user_id = req.body.user_id
         const topic = req.body.topic;
         const description = req.body.description;
     

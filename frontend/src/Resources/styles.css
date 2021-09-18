@@ -954,7 +954,7 @@ font-weight: bold;
 }
 
 .quiz-header button {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   border: none;
   background-color: inherit;
   color: #3ca730;
@@ -1087,14 +1087,14 @@ font-weight: bold;
 
 .discn-name a {
   text-decoration: none;
-  flex: 50%;
+  flex: 70%;
   color: #000000;
   font-style: italic;
 }
 
-.discn-name span {
-  flex: 30%;
-}
+/* .discn-name span {
+  flex: 0 0 30%;
+} */
 
 .discn-name a:hover {
   font-weight: bold;
