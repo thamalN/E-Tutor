@@ -88,10 +88,10 @@ const AdminHome = (props) => {
 
 
         <div className="wrapper">
-            <Link to="/adminHome/reports/allStudents" ><Card title="Registered Students" description={studentCount}></Card></Link>
-            <Link to="/adminHome/reports/unenrolledCourses" ><Card title="Unenrolled Courses" description={unenrolledCourses}></Card></Link>
-            <Link to="/adminHome/reports/unassignedTeachers" ><Card title="Unassigned Teachers" description={unassignedTeachers}></Card></Link>
-            <Link to="/payments/pendingReceipts" ><Card title="Pending Receipts" description={receipts}></Card></Link>
+            <Link to="/adminHome/reports/allStudents" style={{ textDecoration: 'none' }}><Card title="Registered Students" description={studentCount}></Card></Link>
+            <Link to="/adminHome/reports/unenrolledCourses" style={{ textDecoration: 'none' }}><Card title="Unenrolled Courses" description={unenrolledCourses}></Card></Link>
+            <Link to="/adminHome/reports/unassignedTeachers" style={{ textDecoration: 'none' }}><Card title="Unassigned Teachers" description={unassignedTeachers}></Card></Link>
+            <Link to="/payments/pendingReceipts" style={{ textDecoration: 'none' }}><Card title="Pending Receipts" description={receipts}></Card></Link>
             </div>
             </div>
             </div>

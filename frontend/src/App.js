@@ -116,6 +116,10 @@ function App() {
             <SignUp />
           </Route>
 
+          <Route exact path="/termsAndConditions">
+              <TermsAndConditions />
+            </Route>
+
           <Route exact path="/viewProfile/">
             <ViewProfile />
           </Route>
@@ -219,6 +223,14 @@ function App() {
           <Route exact path="/adminHome/reports/coursePayments">
             <CoursePayments />
           </Route>
+
+          <Route exact path="/adminHome/reports/unassignedTeachers">
+              <UnassignedTeachers/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/unenrolledCourses">
+              <UnenrolledCourses/>
+            </Route>
 
           <Route exact path="/supportingStaffHome/dashboard">
             <SupportingStaffHome setLoggedIn={setLoggedIn} />

@@ -8,11 +8,11 @@ const Registrations = () => {
             <div className="homeContent">
             <h1>Registrations</h1>
             <div className="reg_buttons">
-            <Link to="/signUp"><button >Student Registration</button></Link>
-            <Link to="/adminHome/createTeacherAcc"><button >Teacher Registration</button></Link>
-            <Link to="/adminHome/createSupStaffAcc"><button >Supporting Staff Registration</button></Link>
-            <Link to="/adminHome/registrations/recentRegistrations"><button >View Recent Registrations</button></Link>
-            <Link to="/adminHome/dashboard"><button >Back to Dashboard</button></Link>
+            <Link to="/signUp">Student Registration</Link>
+            <Link to="/adminHome/createTeacherAcc">Teacher Registration</Link>
+            <Link to="/adminHome/createSupStaffAcc">Supporting Staff Registration</Link>
+            <Link to="/adminHome/registrations/recentRegistrations">View Recent Registrations</Link>
+            <Link to="/adminHome/dashboard">Back to Dashboard</Link>
         </div>
         </div>
         </div>
