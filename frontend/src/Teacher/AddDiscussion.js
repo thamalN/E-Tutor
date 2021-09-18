@@ -51,13 +51,17 @@ const AddDiscussion = () => {
         <div>
             <Sidebar />
             <div className="homeContent">
-                <div className="addContent">
-                    <form onSubmit={handleSubmit} id="discussion-form">
-                        <div className="nameRow">
+                <div className="form-signup">
+                <h1 className="h3 mb-3 fw-normal">Add Discussion</h1>
 
-                            <div id="newTopic" className="Row">
-                                <label>Discussion Topic</label>
+
+                    <form onSubmit={handleSubmit} id="discussion-form" className="row g-3">
+                        
+
+                            <div id="newTopic" className="Row col-12">
+                                <label className="mt-2">Discussion Topic</label>
                                 <input
+                                    className="form-control"
                                     name="name"
                                     type="text"
                                     value={data.topic}
@@ -66,16 +70,11 @@ const AddDiscussion = () => {
                                 />
                             </div>
 
-                            <div id="newTopic" className="Row">
-                                <label>Discussion Body</label>
-                                {/* <div className="discussion-options">
-                                    <FormatBoldIcon onClick = {changeText}/>
-                                    <FormatItalicIcon />
-                                    <FormatUnderlinedIcon />
-                                    <LinkIcon />
-                                </div> */}
-                                {/* <Editor editorState={editorState} onChange={setEditorState} /> */}
+                            <div id="newTopic" className="Row col-12">
+                                <label className="mt-2">Discussion Body</label>
+                                
                                 <textarea
+                                    className="form-control"
                                     name="body"
                                     required
                                     value={data.post}
@@ -85,9 +84,9 @@ const AddDiscussion = () => {
                                 </textarea>
                             </div>
 
-                        </div>
+                        
 
-                        <input type="submit" value="Add Discussion" />
+                        <input type="submit" value="Add Discussion" className="btn btn-dark add-btn"/>
                     </form>
                 </div>
             </div>

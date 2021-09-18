@@ -5,6 +5,7 @@ const CreateTeacherAcc = () => {
     const history = useHistory()
 
     const [id, setId] = useState(null);
+    const [usernames, setUsernames] = useState([]);
 
     const [data, setData] = useState({
         firstname: "",
@@ -26,6 +27,36 @@ const CreateTeacherAcc = () => {
         confirmPassword: ""
         }
     );
+
+    const url = "http://localhost:3001/getAllUsernames"
+    useEffect(() => {
+
+        fetch(url, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setUsernames(data)
+            })
+
+    }, [url])
+
+    useEffect(() => {
+        if (data.username.length !== 0) {
+        if (usernames.some(i =>i.username === data.username)) {
+            document.getElementById('usern').innerHTML = '(Username is already taken!)';
+            document.getElementById('usern').style.color = "red";
+                  
+        }
+        else{
+            document.getElementById('usern').innerHTML = '(Username is available!)';
+            document.getElementById('usern').style.color = "green";
+        }
+    }
+    })
 
     useEffect(() => {
         if (data.password.length !== 0) {
@@ -55,7 +86,7 @@ const CreateTeacherAcc = () => {
         })
         .then(data => {
             setId(data);
-            alert("Registration Successful!")
+            alert("Successfully created the Student Account and emailed the user credentials!!")
             history.push("/adminHome/registrations")
         })
     }
@@ -68,7 +99,7 @@ const CreateTeacherAcc = () => {
 <div className="form-signup">
 
 {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
-<h1 className="h3 mb-3 fw-normal">Register Teacher</h1>
+<h1 className="h3 mb-3 fw-normal">Create Teacher Account</h1>
 <form onSubmit={handleSubmit} className="row g-3">
 
 
@@ -98,6 +129,7 @@ const CreateTeacherAcc = () => {
 
     <div className="col-md-4">
         <label htmlFor="userName" className="mt-2">Username</label>
+        <span id="usern" style={{ "marginLeft": 50, fontSize:12 }}></span>
         <input
             type="text"
             className="form-control"

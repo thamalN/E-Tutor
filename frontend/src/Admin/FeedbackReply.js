@@ -33,11 +33,11 @@ const FeedbackReply = () => {
             })
             .then((data => {
                 if (data.status === "success") {
-                    alert("Message Sent");
-                    history.push("/adminHome");
+                    alert("Successfully sent the reply to the user and marked the feedback as handled!");
+                    history.push("/adminHome/viewFeedback");
                   } else if (data.status === "fail") {
-                    alert("Message failed to send");
-                    history.push("/adminHome");
+                    alert("Sorry the task couldn't be completed");
+                    history.push("/adminHome/viewFeedback");
                   }
                 
             }))

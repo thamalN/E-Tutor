@@ -10,6 +10,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import DescriptionIcon from '@material-ui/icons/Description';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import FaceIcon from '@material-ui/icons/Face';
 
 export default function SidebarData() {
     const user = JSON.parse(localStorage.getItem('user'))
@@ -18,27 +19,27 @@ export default function SidebarData() {
 
     if (flag === 1) {
         return [
-        { title: "Home", icon: <HomeIcon />, link: "/adminHome" },
+        { title: "Home", icon: <HomeIcon />, link: "/adminHome/dashboard" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/adminHome/registrations" },
         { title: "Courses", icon: <MenuBookIcon />, link: "/adminHome/courses" },
         { title: "User Accounts", icon: <PeopleIcon />, link: "/adminHome/userAccounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/adminHome/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/adminHome/announcements" },
         { title: "Feedback", icon: <FeedbackIcon />, link: "/adminHome/viewFeedback" },
-        { title: "Reports", icon: <DescriptionIcon />, link: "/reports" }
+        { title: "Reports", icon: <DescriptionIcon />, link: "/adminHome/reports" }
         
         ]
 
     } 
     else if (flag === 2) {
         return [
-        { title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome" },
+        { title: "Home", icon: <HomeIcon />, link: "/supportingStaffHome/dashboard" },
         { title: "Registrations", icon: <GroupAddIcon />, link: "/supportingStaffHome/registrations" },
         { title: "Student Accounts", icon: <PeopleIcon />, link: "/supportingStaffHome/studentAccounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/supportingStaffHome/managePayments" },
         { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         { title: "Notifications", icon: <NotificationsIcon />, link: "/notifications" },
-        { title: "Reports", icon: <DescriptionIcon />, link: "/reports" }
+        { title: "Reports", icon: <DescriptionIcon />, link: "/supportingStaffHome/reports" }
         ]
     }
     
@@ -46,20 +47,20 @@ export default function SidebarData() {
         return [
         { title: "Home", icon: <HomeIcon />, link: "/teacher/teacherHome" },
         { title: "Courses", icon: <MenuBookIcon />, link: "/teacher/courses" },
-        { title: "Payments", icon: <PaymentIcon />, link: "/payments" },
-        { title: "Announcements", icon: <AddAlertIcon />, link: "/announcements" },
-        { title: "Feedback", icon: <FeedbackIcon />, link: "/feedback" }
+        { title: "Students", icon: <FaceIcon />, link: "/teacher/students" },
+        { title: "Announcements", icon: <AddAlertIcon />, link: "/teacher/announcements" },
+        { title: "Feedback", icon: <FeedbackIcon />, link: "/teacher/feedback" }
         ]
     }
     else if (flag === 4) {
         return [
         { title: "Home", icon: <HomeIcon />, link: "/studentHome" },
-        { title: "Courses", icon: <SchoolIcon />, link: "/studentHome/viewCourses" },
+        { title: "Courses", icon: <SchoolIcon />, link: "/studentHome/viewStuCourses" },
         { title: "My Courses", icon: <SchoolIcon />, link: "/studentHome/myCourses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
-        { title: "Emails", icon: <EmailIcon />, link: "/emails" },
+        // { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         { title: "Notifications", icon: <NotificationsIcon />, link: "/studentHome/notifications" },
-        { title: "Events", icon: <DescriptionIcon />, link: "/reports" }
+        { title: "Feedback", icon: <DescriptionIcon />, link: "/studentHome/StuFeedback" }
         ]
     }
 }

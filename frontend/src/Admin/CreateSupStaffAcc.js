@@ -4,6 +4,7 @@ const CreateSupStaffAcc = () => {
     const history = useHistory()
 
     const [id, setId] = useState(null);
+    const [usernames, setUsernames] = useState([]);
 
     const [data, setData] = useState({
         firstname: "",
@@ -23,6 +24,36 @@ const CreateSupStaffAcc = () => {
         confirmPassword: ""
         }
     );
+
+    const url = "http://localhost:3001/getAllUsernames"
+    useEffect(() => {
+
+        fetch(url, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" }
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setUsernames(data)
+            })
+
+    }, [url])
+
+    useEffect(() => {
+        if (data.username.length !== 0) {
+        if (usernames.some(i =>i.username === data.username)) {
+            document.getElementById('usern').innerHTML = '(Username is already taken!)';
+            document.getElementById('usern').style.color = "red";
+                  
+        }
+        else{
+            document.getElementById('usern').innerHTML = '(Username is available!)';
+            document.getElementById('usern').style.color = "green";
+        }
+    }
+    })
 
     useEffect(() => {
         if (data.password.length !== 0) {
@@ -52,7 +83,7 @@ const CreateSupStaffAcc = () => {
         })
         .then(data => {
             setId(data);
-            alert("Registration Successful!")
+            alert("Successfully created the Staff Account and emailed the user credentials!!")
             history.push("/adminHome/registrations")
         })
     }
@@ -93,6 +124,7 @@ const CreateSupStaffAcc = () => {
 
     <div className="col-md-4">
         <label htmlFor="userName" className="mt-2">Username</label>
+        <span id="usern" style={{ "marginLeft": 50, fontSize:12 }}></span>
         <input
             type="text"
             className="form-control"

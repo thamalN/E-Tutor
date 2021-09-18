@@ -84,9 +84,9 @@ const RejectedPayments = () => {
                         <li className="reg_title">
                             <h1 className="stuRegHeader">Rejected Receipts</h1>
                         </li>
-                        <li className="reg_table">
-                            <table className="table text-center">
-                                <thead>
+                        <li >
+                            <table className="table table2 text-center">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">Payment Date&Time</th>
                                         <th scope="col">Student Name</th>
@@ -98,7 +98,7 @@ const RejectedPayments = () => {
                                 </thead>
                                 <tbody>
                                 {data.map((payment, i) => (
-                                    <div>
+                                    <>
                                             <tr>
                                             <td scope="row">{payment.date_time}</td>
                                             <td align="left">{payment.fname} {payment.lname}</td>
@@ -129,7 +129,7 @@ const RejectedPayments = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
+                                        </>
                                         ))}
                                     
                                 </tbody>

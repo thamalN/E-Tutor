@@ -8,16 +8,16 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 const TeacherQuizEdit = () => {
     let { id } = useParams()
-    id = id - 1
+
     const history = useHistory()
 
     var quiz = JSON.parse(localStorage.getItem('quiz'))
-    console.log(quiz)
+
     const course_id = JSON.parse(localStorage.getItem('course'))[0].course_id
 
-    const [data, setData] = useState(quiz[id])
+    const [data, setData] = useState(quiz.filter((item) => item.quiz_id === parseInt(id))[0])
 
-    var radio, originalIcons, deleteIcon
+    var radio, originalIcons
 
     const answerType = (arr = []) => {
         let noCorrect = arr.filter((value, key) => (
@@ -80,6 +80,8 @@ const TeacherQuizEdit = () => {
         questionParent.insertAdjacentElement('afterbegin', newQuestion)
         newQuestion.insertAdjacentElement('afterend', newAnswers)
         newAnswers.insertAdjacentElement('afterend', icons)
+
+        questionParent.scrollIntoView()
     }
 
     const addAnswer = (key) => {
@@ -101,11 +103,10 @@ const TeacherQuizEdit = () => {
         const deleteAnswers = document.createElement("div");
         deleteAnswers.setAttribute("class", "delete-icon")
 
-        if (deleteIcon === undefined)
-            deleteIcon = document.getElementsByClassName("delete-icon")[0]
+        const deleteIcon = document.getElementById("remove-icon")
 
-        deleteAnswers.innerHTML = deleteIcon.innerHTML
-
+        deleteAnswers.innerHTML = deleteIcon.outerHTML
+        deleteAnswers.childNodes[0].removeAttribute("style")
         deleteAnswers.onclick = function (e) { deleteAnswer(key, e) }
 
         questionNo.insertAdjacentElement('beforeend', answerParent)
@@ -115,113 +116,81 @@ const TeacherQuizEdit = () => {
     }
 
     const saveChanges = () => {
-        var valid = true
-        var answerParent = document.getElementsByClassName("ansParent")
+        let valid = true
 
-        quiz[id] = data
-
-        //console.log(dataCopy)
-
-        var quizAnswers = document.getElementsByClassName("quiz-answers")
-
-        for (var i = 0; i < quizAnswers.length; i++) {
-            var addedQuestion = quizAnswers[i].parentNode.querySelector("[name='question']")
-
-            if (quizAnswers[i].children.length === 0 && addedQuestion !== null) {
-                var dataCopy = { ...data }
-                dataCopy.questions[quizAnswers[i].id] = { question: addedQuestion.value, answers: [] }
-                setData(dataCopy)
-                //console.log(dataCopy)
-            }
+        const values = {
+            course_id: course_id,
+            quiz_id: data.quiz_id,
+            quiz_name: data.quiz_name,
+            duration: data.duration,
+            max_attempts: data.max_attempts,
+            deadline: data.deadline,
+            questions: []
         }
 
-        //quiz[id] = data
-        //console.log(dataCopy)
+        let inputs = document.querySelectorAll("[type='text'], [type='date']")
 
-        for (var i = 0; i < answerParent.length; i++) {
-            var answers = {}
-
-            let addedAnswer = answerParent[i].querySelector("[name='addedAnswer']")
-            let addedCorrect = answerParent[i].querySelector("[name='addedCorrect']")
-
-            answers.answer = addedAnswer.value
-            answers.correct = (addedCorrect.checked) ? 1 : 0
-
-            let inputs = document.querySelectorAll("[type='text']")
-
-            for (var j = 0; j < inputs.length; j++) {
-                if (!inputs[j].checkValidity()) {
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].parentNode.style.display !== "none") {
+                if (!inputs[i].checkValidity()) {
+                    alert("Please fill out all fields")
                     valid = false
                     break
                 }
-            };
-
-            if (valid) {
-                var parentID = answerParent[i].parentNode.id
-                //console.log(dataCopy.questions[parentID])
-
-                if (data.questions[parentID] === undefined) {
-                    var addedQuestion = document.getElementById("question" + parentID)
-                    var dataCopy = { ...data }
-                    dataCopy.questions[parentID] = { question: addedQuestion.querySelector("[name='question']").value, answers: [] }
-                    setData(dataCopy)
-                    //question_id: parseInt(parentID) + 1,
-
-                } else if (data.questions[parentID].answers === undefined)
-                    data.questions[parentID].answers = []
-                data.questions[parentID].answers.push(answers)
-
-            } else
-                break
-
-        }
-
-       // console.log(dataCopy)
-
-        let inputs = document.querySelectorAll("[type='text']")
-
-        for (var j = 0; j < inputs.length; j++) {
-            if (!inputs[j].checkValidity()) {
-                alert("Please fill out all fields")
-                valid = false
-                break
             }
         };
 
         if (valid) {
-            quiz[id] = data
-            //setData(dataCopy)
+            const questions = document.querySelectorAll(".quiz-questions")
+
+            questions.forEach(question => {
+                    let questionName = question.childNodes[0].value
+
+                    let questionObj = { question_id: question.getAttribute("questionid"), question: questionName, deleted: question.getAttribute("deleted"), answers: [] }
+
+                    let answers = question.querySelectorAll(".ansParent")
+                    answers.forEach(answer => {
+                        let answerName = answer.childNodes[1].value
+                        let checked = (answer.childNodes[0].checked) ? 1 : 0
+                        questionObj.answers.push({ answer_id: answer.getAttribute("answerid"), answer: answerName, correct: checked, deleted: answer.getAttribute("deleted") })
+                    })
+
+                    values.questions.push(questionObj)
+                
+            })
+
+            console.log(values)
+
             fetch('http://localhost:3001/teacherCourses/editQuiz/', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(quiz[id])
-            }).then(() => {
-                localStorage.setItem('quiz', JSON.stringify(quiz))
-                history.replace("/teacher/courses/" + course_id)
+                body: JSON.stringify(values)
+            }).then(data => {
+                history.push("/teacher/courses/" + course_id)
+                //history.goBack()
             })
 
         }
-
 
     }
 
     const deleteQuestion = (key) => {
         const questionNo = document.getElementById("question" + key)
         if (window.confirm("Confirm delete")) {
-            //quiz[id].questions.splice(key, 1)
-            quiz[id].questions[key].deleted = true
-            questionNo.remove()
-            console.log(quiz[id].questions)
-            localStorage.setItem('quiz', JSON.stringify(quiz))
-        }
 
+            if (questionNo.getAttribute("deleted")) {
+                questionNo.setAttribute("deleted", 1)
+                questionNo.style.display = "none"
+            } else {
+                questionNo.remove()
+            }
+        }
     }
 
     const deleteAnswer = (key, i) => {
         var parent = (i.target !== undefined) ? i.target.parentNode.parentNode.parentNode : undefined
 
         const questionNo = document.getElementById(key)
-        console.log(questionNo.childNodes)
 
         if (window.confirm("Confirm delete")) {
             if (parent !== undefined) {
@@ -229,15 +198,10 @@ const TeacherQuizEdit = () => {
                     parent = i.target.parentNode.parentNode
                 parent.remove()
             } else {
-                questionNo.childNodes[i].remove()
-                //console.log(i)
-                //quiz[id].questions[key].answers.splice(i, 1)
-                quiz[id].questions[key].answers[i].deleted = true
+                questionNo.childNodes[i].setAttribute("deleted", 1)
+                questionNo.childNodes[i].style.display = "none"
             }
         }
-
-        console.log(quiz[id].questions[key].answers)
-        localStorage.setItem('quiz', JSON.stringify(quiz))
     }
 
     return (
@@ -246,13 +210,50 @@ const TeacherQuizEdit = () => {
             <div className="homeContent">
                 <form className="quiz-details">
                     <div className="quiz-header">
-                        <input
-                            type="text"
-                            className="quiz-name"
-                            value={data.quiz_name}
-                            onChange={(e) => setData({ ...data, quiz_name: e.target.value })}
-                            required
-                        />
+                        <div>
+                            <h3 className="quiz-name-1">Quiz Name</h3>
+                            <input
+                                type="text"
+                                className="quiz-name-2"
+                                value={data.quiz_name}
+                                onChange={(e) => setData({ ...data, quiz_name: e.target.value })}
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <h3 className="quiz-name-1">Duration</h3>
+                            <input
+                                type="text"
+                                className="quiz-name-2"
+                                value={data.duration}
+                                onChange={(e) => setData({ ...data, duration: e.target.value })}
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <h3 className="quiz-name-1">Max Attempts</h3>
+                            <input
+                                type="text"
+                                className="quiz-name-2"
+                                value={data.max_attempts}
+                                onChange={(e) => setData({ ...data, max_attempts: e.target.value })}
+                                required
+                            />
+                        </div>
+
+                        <div>
+                            <h3 className="quiz-name-1">Deadline</h3>
+                            <input
+                                type="date"
+                                className="quiz-name-2"
+                                value={data.deadline}
+                                onChange={(e) => setData({ ...data, deadline: e.target.value })}
+                                required
+                            />
+                        </div>
+
 
                         <button onClick={saveChanges} type="button" className="quiz-icons" title="Save Changes">
                             <CheckCircleIcon fontSize="large" />
@@ -262,13 +263,14 @@ const TeacherQuizEdit = () => {
 
 
 
-                    <div className="quiz-body" id="quiz-body">
+                    <div className="quiz-body" id="quiz-body" style={{ overflow: "auto" }}>
 
                         {data.questions && data.questions.map((value, key) => (
-                            <div className="quiz-questions" id={"question" + key} key={key}>
+                            <div className="quiz-questions" id={"question" + key} key={key} questionid={value.question_id} deleted="0">
                                 <input
                                     className="quiz-questions-input"
                                     type="text"
+                                    name="question"
                                     value={value.question}
                                     onChange={(e) => {
                                         let dataCopy = { ...data }
@@ -281,7 +283,7 @@ const TeacherQuizEdit = () => {
                                 {answerType(value.answers) ? (
                                     <div className="quiz-answers" id={key}>
                                         {value.answers && value.answers.map((value, i) => (
-                                            <div id="answerId" key={i}>
+                                            <div id="answerId" key={i} className="ansParent" answerid={value.answer_id} deleted="0">
                                                 <input
                                                     type="radio"
                                                     checked={value.correct}
@@ -314,7 +316,7 @@ const TeacherQuizEdit = () => {
                                 ) : (
                                     <div className="quiz-answers" id={key}>
                                         {value.answers && value.answers.map((value, i) => (
-                                            <div id="answerId" key={i}>
+                                            <div id="answerId" key={i} className="ansParent" answerid={value.answer_id} deleted="0">
                                                 <input
                                                     type="checkbox"
                                                     checked={value.correct}
@@ -358,14 +360,27 @@ const TeacherQuizEdit = () => {
                             </div>
                         ))}
 
-
-                        <button className="course-btn" onClick={addQuestion} type="button">
+                        <button className="course-btn" onClick={addQuestion} type="button" style={{ float: "right" }}>
                             <AddCircleOutlineIcon /> Add Question
                         </button>
 
                     </div>
                 </form>
             </div>
+
+            <div className="quiz-icons-edit" style={{ display: "none" }} id="edit-icons">
+
+                <div className="quiz-icons-add" title="Add Answer">
+                    <AddCircleOutlineIcon />
+                </div>
+                <div className="quiz-icons-delete" title="Delete Question">
+                    <DeleteIcon style={{ color: "red" }} />
+                </div>
+
+            </div>
+
+            <CancelOutlinedIcon id="remove-icon" style={{ display: "none" }} />
+
         </div>
     );
 }

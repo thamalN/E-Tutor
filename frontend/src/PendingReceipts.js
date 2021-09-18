@@ -8,12 +8,14 @@ import { useEffect, useState } from "react";
 const PendingReceipts = () => {
 
     const [data, setData] = useState([])
+    const [verify, setVerify] = useState([])
     const [paymentdata, setPaymentdata] = useState({
         payment_id: "",
         verifyflag: "",
         student_id: "",
         course_id: "",
-        month: ""
+        month: "",
+        email: ""
         
     });
     const history = useHistory()
@@ -32,7 +34,7 @@ const PendingReceipts = () => {
                 
                 
             }))
-    }, [url])
+    }, [verify])
     
     
     const handleVerify = (e) => {
@@ -62,13 +64,17 @@ const PendingReceipts = () => {
                 return res.json()
             })
             .then((data => {
-
+                setVerify(data)
                 if (data.status === "verified") {
                     alert("Payment Verified Successfully!");
                     history.push("/pendingReceipts");
                   } 
                   else if (data.status === "rejected") {
                     alert("Payment rejected!");
+                    history.push("/pendingReceipts");
+                  }
+                  else if (data.status === "fail") {
+                    alert("Payment rejected successfully but unexpected error occurred in mailing the student!");
                     history.push("/pendingReceipts");
                   }
             }))
@@ -85,9 +91,9 @@ const PendingReceipts = () => {
                         <li className="reg_title">
                             <h1 className="stuRegHeader">Pending Receipts</h1>
                         </li>
-                        <li className="reg_table">
-                            <table className="table text-center">
-                                <thead>
+                        <li>
+                            <table className="table table2 text-center">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">Payment Date&Time</th>
                                         <th scope="col">Student Name</th>
@@ -99,14 +105,14 @@ const PendingReceipts = () => {
                                 </thead>
                                 <tbody>
                                 {data.map((payment, i) => (
-                                    <div>
+                                    <>
                                             <tr>
                                             <td scope="row">{payment.date_time}</td>
                                             <td align="left">{payment.fname} {payment.lname}</td>
                                             <td>{payment.course_id}</td>
                                             <td>{payment.amount}</td>
                                             <td>{payment.month}</td>
-                                            <td><button className="btn btn-dark" onClick={(e) => setPaymentdata({ ...paymentdata, payment_id: payment.payment_id, student_id: payment.student_id, course_id: payment.course_id, month: payment.month}) } data-bs-toggle="modal" data-bs-target="#exampleModal1">View</button></td>
+                                            <td><button className="btn btn-dark" onClick={(e) => setPaymentdata({ ...paymentdata, payment_id: payment.payment_id, student_id: payment.student_id, course_id: payment.course_id, month: payment.month, email: payment.email}) } data-bs-toggle="modal" data-bs-target="#exampleModal1">View</button></td>
                                             </tr>
                                             <div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div className="modal-dialog modal-dialog-centered">
@@ -131,7 +137,7 @@ const PendingReceipts = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
+                                        </>
                                         ))}
                                     
                                 </tbody>
