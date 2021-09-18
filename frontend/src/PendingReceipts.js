@@ -67,15 +67,15 @@ const PendingReceipts = () => {
                 setVerify(data)
                 if (data.status === "verified") {
                     alert("Payment Verified Successfully!");
-                    history.push("/pendingReceipts");
+                    history.push("/payments/pendingReceipts");
                   } 
                   else if (data.status === "rejected") {
                     alert("Payment rejected!");
-                    history.push("/pendingReceipts");
+                    history.push("/payments/pendingReceipts");
                   }
                   else if (data.status === "fail") {
                     alert("Payment rejected successfully but unexpected error occurred in mailing the student!");
-                    history.push("/pendingReceipts");
+                    history.push("/payments/pendingReceipts");
                   }
             }))
     }
@@ -147,7 +147,7 @@ const PendingReceipts = () => {
                 </div>
 
                 <div className="reg_buttons">
-                    <Link className="linkbutton" to="/managePayments"><button>Back</button></Link>
+                    <Link className="linkbutton" to="/payments/studentPayments"><button>Back to Student Payments</button></Link>
                 </div>
             </div>
         </div>

@@ -257,19 +257,19 @@ function App() {
               <StaffAllCourses/>
             </Route>
 
-            <Route exact path="/managePayments">
+            <Route exact path="/payments/studentPayments">
               <ManagePayments />
             </Route>
 
-            <Route exact path="/pendingReceipts">
+            <Route exact path="/payments/pendingReceipts">
               <PendingReceipts />
             </Route>
 
-            <Route exact path="/verifiedPayments">
+            <Route exact path="/payments/verifiedPayments">
               <VerifiedPayments />
             </Route>
 
-            <Route exact path="/rejectedPayments">
+            <Route exact path="/payments/rejectedPayments">
               <RejectedPayments />
               </Route>
               
