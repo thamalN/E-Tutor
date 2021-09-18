@@ -16,7 +16,7 @@ const SignUp = () => {
     const history = useHistory()
 
     const [id, setId] = useState(null);
-    const [usernames, setUsernames] = useState([]);
+    const [userData, setUserData] = useState([]);
     const user = JSON.parse(localStorage.getItem('user'));
     let flag;
     let heading;
@@ -65,7 +65,8 @@ const SignUp = () => {
                 return res.json();
             })
             .then(data => {
-                setUsernames(data)
+                console.log(data)
+                setUserData(data)
             })
 
     }, [url])
@@ -73,10 +74,11 @@ const SignUp = () => {
     const [submitState, setsubmitState] = useState(true);
 
     var contact = new RegExp(/^[a-z\d]{5,12}$/i);
+    var mail = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
     useEffect(() => {
         if (data.username.length !== 0) {
-            if (usernames.some(i => i.username === data.username)) {
+            if (userData.some(i => i.username === data.username)) {
                 document.getElementById('usern').innerHTML = '(Username is already taken!)';
                 document.getElementById('usern').style.color = "red";
             }
@@ -86,6 +88,22 @@ const SignUp = () => {
             } else {
                 document.getElementById('usern').innerHTML = '(Username is available!)';
                 document.getElementById('usern').style.color = "green";
+            }
+        }
+    })
+
+    useEffect(() => {
+        if (data.email.length !== 0) {
+            if (userData.some(i => i.email === data.email)) {
+                document.getElementById('email').innerHTML = '(Email is already in use!)';
+                document.getElementById('email').style.color = "red";
+            }
+            else if (!RegExp(mail).test(data.email)) {
+                document.getElementById('usern').innerHTML = '(Email is not valid!)';
+                document.getElementById('usern').style.color = "red";
+            } else {
+                document.getElementById('email').innerHTML = '(Email is available!)';
+                document.getElementById('email').style.color = "green";
             }
         }
     })

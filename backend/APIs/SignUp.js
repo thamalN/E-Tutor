@@ -103,7 +103,7 @@ module.exports = function (app, db) {
 
     app.get("/getAllUsernames", (req, res) =>{
 
-        const query = "SELECT username FROM user";
+        const query = "SELECT username, email FROM user";
 
         db.query(query, (err, result) => {
             if (err) throw err;
