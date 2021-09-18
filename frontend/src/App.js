@@ -1,7 +1,7 @@
 import Navbar from './Navbar';
 import SignIn from './Authentication/SignIn';
 import SignUp from './Authentication/SignUp';
-
+import StuDiscussion from './Student/StuDiscussion';
 import AdminHome from './Admin/AdminHome';
 import Home from './Home';
 import CreateAnnouncement from './Admin/CreateAnnouncement';
@@ -31,6 +31,7 @@ import ViewPreviousAnnouncements from './Admin/ViewPreviousAnnouncements';
 import StudentHome from './Student/StudentHome';
 import ViewCourses from './Student/ViewCourses';
 import MyCourses from './Student/MyCourses';
+// import StudentDiscussion from './Student/StudentDiscussion';
 import StudentAddAssigment from './Student/StudentAddAssigment';
 import HomeNew from './HomeNew';
 import Footer from './Footer.js';
@@ -406,6 +407,12 @@ function App() {
             <Route exact path="/studentHome/ViewStuCourses">
               <ViewStuCourses/>
             </Route>
+
+            <Route exact path="/studentHome/StuDiscussion">
+              <StuDiscussion/>
+            </Route>
+
+          
 
 
             {/* <Route exact path="/student/StuaddQuiz">

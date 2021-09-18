@@ -9,7 +9,7 @@ const CreateStuFeekback = () => {
     const [data, setData] = useState({
         topic: "",
         description: "",
-        user_id: user.user_id
+        // user_id: user.user_id
     }
     );
 
