@@ -5,6 +5,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { Badge } from '@material-ui/core';
 import { Cookies } from 'react-cookie';
+import { HashLink } from 'react-router-hash-link';
 
 import './Resources/styles.css';
 
@@ -15,8 +16,8 @@ const Navbar = (props) => {
     const user = JSON.parse(localStorage.getItem('user'))
     const notifications = JSON.parse(localStorage.getItem('notifications'))
     let notifyLen;
-    if(notifications) {
-        notifyLen = notifications.payments.length 
+    if (notifications) {
+        notifyLen = notifications.payments.length
     }
     //console.log(user);
     const history = useHistory()
@@ -55,19 +56,23 @@ const Navbar = (props) => {
                 <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link className="nav-link " to="/">Home</Link>
+                            <Link className="nav-link " to="/#home">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/about">About</Link>
+                            <HashLink className="nav-link" to="/#about">About</HashLink>
+                            {/* <Link className="nav-link" to="/about">About</Link> */}
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/courses">Courses</Link>
+                            <HashLink className="nav-link" to="/#courses">Courses</HashLink>
+                            {/* <Link className="nav-link" to="/#courses">Courses</Link> */}
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/staff">Staff</Link>
+                            <HashLink className="nav-link" to="/#staff">Staff</HashLink>
+                            {/* <Link className="nav-link" to="/#staff">Staff</Link> */}
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/contact">Contact</Link>
+                            <HashLink className="nav-link" to="/#contact">Contact</HashLink>
+                            {/* <Link className="nav-link" to="/#contact">Contact</Link> */}
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/signIn">Sign In</Link>
@@ -126,13 +131,13 @@ const Navbar = (props) => {
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <Link class="dropdown-item" to={{
-                                                pathname: "/viewProfile",
-                                                state: {
-                                                    userId: user.user_id,
-                                                    userFlag: user.user_flag
-                                                }
-                                            }}>
-                                                My Details</Link>
+                                    pathname: "/viewProfile",
+                                    state: {
+                                        userId: user.user_id,
+                                        userFlag: user.user_flag
+                                    }
+                                }}>
+                                    My Details</Link>
                                 {user.user_flag === 4 && <a class="dropdown-item" href={`/StudentHome/StudentDetails/${user.user_id}`}>My Details</a>}
                                 <div class="dropdown-divider"></div>
                                 <Link class="dropdown-item" onClick={logOut}>Log Out</Link>

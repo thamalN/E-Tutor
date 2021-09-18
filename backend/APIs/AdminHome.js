@@ -11,6 +11,28 @@ module.exports = function (app, db) {
         })
     })
 
+    app.get("/adminHome/verifiedReceipts", (req, res) => {
+
+        const query = "SELECT COUNT(payment_id) AS verifiedReceipts FROM payment WHERE verified=1;";
+
+        db.query(query, (err, result) => {
+            if (err) throw err;
+            console.log(result)
+            res.json(result[0].verifiedReceipts)
+        })
+    })
+
+    app.get("/adminHome/rejectedReceipts", (req, res) => {
+
+        const query = "SELECT COUNT(payment_id) AS rejectedReceipts FROM payment WHERE verified=2;";
+
+        db.query(query, (err, result) => {
+            if (err) throw err;
+            console.log(result)
+            res.json(result[0].rejectedReceipts)
+        })
+    })
+    
     app.get("/adminHome/unenrolledCourses", (req, res) => {
 
         const query = "SELECT COUNT(course_id) AS unenrolled from course WHERE course_id NOT IN (SELECT course_id FROM enroll);";

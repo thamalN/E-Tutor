@@ -351,39 +351,51 @@ module.exports = function (app, db, upload, fs) {
                     queries += "UPDATE question SET question = \"" + questions[i].question + "\" WHERE question_id = " + questions[i].question_id + " AND quiz_id = " + quiz_id + ";"
             }
 
-            db.query(queries, (err, result) => {
-                if (err) throw err;
+            console.log(queries)
 
-                if (result.length > 0) {
-                    var insertedQuestion = result.filter((item) => item.insertId !== 0)
-                }
-                var k = 0;
-                queries = '';
-
-                for (i = 0; i < questions.length; i++) {
-                    if (questions[i].answers !== undefined) {
-                        for (var j = 0; j < questions[i].answers.length; j++) {
-                            if (questions[i].answers[j].answer_id === null) {
-                                if (questions[i].question_id === null) {
-                                    queries += "INSERT INTO answer (question_id, answer, correct) VALUES (" + insertedQuestion[k].insertId + ", \"" + questions[i].answers[j].answer + "\", " + questions[i].answers[j].correct + ");"
-                                } else
-                                    queries += "INSERT INTO answer (question_id, answer, correct) VALUES (" + questions[i].question_id + ", \"" + questions[i].answers[j].answer + "\", " + questions[i].answers[j].correct + ");"
-                            } else if (questions[i].answers[j].deleted === '1')
-                                queries += "DELETE FROM answer WHERE answer_id = " + questions[i].answers[j].answer_id + " AND question_id = " + questions[i].question_id + ";"
-                            else
-                                queries += "UPDATE answer SET answer = \"" + questions[i].answers[j].answer + "\", correct = " + questions[i].answers[j].correct + " WHERE answer_id = " + questions[i].answers[j].answer_id + " AND question_id = " + questions[i].question_id + ";"
-                        }
-                        if (questions[i].question_id === null)
-                            k++
-                    }
-                }
-
-                console.log(queries)
+            if (queries !== "") {
 
                 db.query(queries, (err, result) => {
                     if (err) throw err;
+
+                    var insertedQuestion = []
+
+                    if (result.length > 0) {
+                        insertedQuestion = result.filter((item) => item.insertId !== 0)
+                    } else if(result.insertId !== 0) {
+                        insertedQuestion.push(result)
+                    }
+
+                    var k = 0;
+                    queries = '';
+
+                    for (i = 0; i < questions.length; i++) {
+                        if (questions[i].answers !== undefined) {
+                            for (var j = 0; j < questions[i].answers.length; j++) {
+                                if (questions[i].answers[j].answer_id === null) {
+                                    if (questions[i].question_id === null) {
+                                        queries += "INSERT INTO answer (question_id, answer, correct) VALUES (" + insertedQuestion[k].insertId + ", \"" + questions[i].answers[j].answer + "\", " + questions[i].answers[j].correct + ");"
+                                    } else {
+                                        queries += "INSERT INTO answer (question_id, answer, correct) VALUES (" + questions[i].question_id + ", \"" + questions[i].answers[j].answer + "\", " + questions[i].answers[j].correct + ");"
+                                    }
+                                } else if (questions[i].answers[j].deleted === '1') {
+                                    queries += "DELETE FROM answer WHERE answer_id = " + questions[i].answers[j].answer_id + " AND question_id = " + questions[i].question_id + ";"
+                                } else {
+                                    queries += "UPDATE answer SET answer = \"" + questions[i].answers[j].answer + "\", correct = " + questions[i].answers[j].correct + " WHERE answer_id = " + questions[i].answers[j].answer_id + " AND question_id = " + questions[i].question_id + ";"
+                                }
+                            }
+                            if (questions[i].question_id === null)
+                                k++
+                        }
+                    }
+
+                    if (queries !== "") {
+                        db.query(queries, (err, result) => {
+                            if (err) throw err;
+                        })
+                    }
                 })
-            })
+            }
         })
 
         res.send("ok")

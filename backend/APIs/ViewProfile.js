@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt")
 
-module.exports = function (app, db) {
+module.exports = function (app, db, upload) {
 
     app.post("/viewProfile/", (req, res) => {
         const user_id = req.body.user_id
@@ -32,27 +32,27 @@ module.exports = function (app, db) {
 
     })
 
-    app.post("/editProfile/", (req, res) => {
+    app.post("/editProfile/", upload.none(),  (req, res) => {
 
         const user_id = req.body.user_id;
         const user_flag = req.body.user_flag;
-        const fname = req.body.fname;
-        const lname = req.body.lname;
-        const street_no = req.body.street_no;
-        const street = req.body.street;
-        const city = req.body.city;
-        const province = req.body.province;
-        const email = req.body.email;
-        const contact = req.body.contact;
-        const birthday = req.body.birthday;
-        const gender = req.body.gender;
-        const username = req.body.username;
-        const password = req.body.password;
+        const fname = req.body.FirstName;
+        const lname = req.body.LastName;
+        const street_no = req.body.StreetNo;
+        const street = req.body.StreetName;
+        const city = req.body.City;
+        const province = req.body.Province;
+        const email = req.body.Email;
+        const contact = req.body.Contact;
+        const birthday = req.body.Birthday;
+        const gender = req.body.Gender;
+        const username = req.body.userName;
+        const password = req.body.Password[0];
 
-        const nic = req.body.nic
-        const guardian_contact = req.body.guardian_contact;
-        const school = req.body.school;
-        const grade = req.body.grade;
+        const nic = req.body.NIC
+        const guardian_contact = req.body.GuardianContact;
+        const school = req.body.School;
+        const grade = req.body.Grade;
         const qualifications = req.body.qualifications
 
         bcrypt.hash(password, 10).then(hash => {
@@ -71,21 +71,21 @@ module.exports = function (app, db) {
         let inserts = {}
         let id
 
-        if (user_flag === 1) {
+        if (user_flag === '1') {
             table = "admin"
             inserts['nic'] = nic
             id = "admin_id"
-        } else if (user_flag === 2) {
+        } else if (user_flag === '2') {
             table = "staff"
             inserts['nic'] = nic
             id = "staff_id"
-        } else if (user_flag === 3) {
+        } else if (user_flag === '3') {
             table = "teacher"
             inserts['nic'] = nic
             inserts['school'] = school
             inserts['qualifications'] = qualifications
             id = "teacher_id"
-        } else if (user_flag === 4) {
+        } else if (user_flag === '4') {
             table = "student"
             inserts['school'] = school
             inserts['grade'] = grade

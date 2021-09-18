@@ -30,31 +30,28 @@ const CreateAnnouncement = () => {
 
         const url = "http://localhost:3001/createAnnouncement"
 
-        const formData = new FormData(document.getElementById("content-form"))
+        const formData = new FormData(document.getElementById("discussion-form"))
         formData.append("user_id", data.user_id)
 
         fetch(url, {
             method: 'POST',
             body: formData
         })
-            .then((res) => {
-                return res.json()
-            })
-            .then((data => {
+            .then(data => {
                 alert("New Announcement added Successfully!")
-                history.push("/adminHome/announcements")
-            }))
+                history.push("/teacher/announcements")
+            })
     }
+    
 
     return (
-
         <div>
             <Sidebar />
             <div className="homeContent">
 
                 <div className="form-signup">
                     <h1 className="h3 mb-3 fw-normal">Add New Announcement</h1>
-                    <form onSubmit={handleSubmit} className="row g-3" encType="multipart/form-data" id="content-form">
+                    <form onSubmit={handleSubmit} className="row g-3" encType="multipart/form-data" id="discussion-form">
 
                         <div className="col-12">
                             <label htmlFor="topic" className="mt-2">Topic</label>
@@ -72,17 +69,15 @@ const CreateAnnouncement = () => {
                         <div className="col-12">
                             <label htmlFor="description" className="mt-2">Description</label>
                             <textarea
-                                type="text"
                                 className="form-control"
                                 id="description"
                                 name="description"
                                 value={data.description}
                                 onChange={(e) => setData({ ...data, description: e.target.value })}
                                 required
-                                style={{ width: "100%", height: "200px" }}
-                            >
-                            </textarea>
+                            />
                         </div>
+
                         <div className="col-12">
                             <label htmlFor="file_name" className="mt-2">File Name</label>
                             <input
@@ -108,12 +103,13 @@ const CreateAnnouncement = () => {
                             />
                         </div>
 
-                        <input type="submit" className="w-50 btn btn-dark add-btn" value="Add Announcement" />
+                        <div className="col-12 mt-4">
+                            <input type="submit" className="btn btn-dark add-btn" value="Add Announcement" />
+                        </div>
                     </form>
                 </div>
             </div>
-        </div>
-    );
+        </div>);
 }
 
 export default CreateAnnouncement;

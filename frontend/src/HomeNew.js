@@ -17,7 +17,7 @@ import './Resources/HomeNew.css'
 const HomeNew = () => {
     return (
         <main>
-            <section className="banner">
+            <section className="banner" id="home">
                 <img src={slide1} alt="slide1" width="100%" />
                 <div className="modern">
                     <h1>Modern Day<br />Education</h1>
@@ -32,8 +32,8 @@ const HomeNew = () => {
                     </ul>
                 </div>
             </section>
-            <img src={slide2} alt="slide2" width="100%" />
-            <section className="banner">
+            <img src={slide2} alt="slide2" width="100%" id="staff" />
+            <section className="banner" >
                 <div className="best-panel">
                     <ul>
                         <li className="li33"><h2> <span>The Best</span> Panel</h2></li>
@@ -80,7 +80,7 @@ const HomeNew = () => {
                     <p>Here in E-Tutor, we offer a variety <br /> of non-academic activities to improve <br /> the educational environment of the students.</p>
                 </div>
             </section>
-            <section className="banner">
+            <section className="banner" id="courses">
                 <div className="top-courses">
                     <h2>Top Courses</h2>
                     <p>There are different varieties of courses available. Courses serve a multitude of <br /> purposes for different students: they are sometimes used to bridge the gap <br /> between different phases of academic study.</p>
@@ -96,10 +96,21 @@ const HomeNew = () => {
                     </ul>
                 </div>
             </section>
+            <section className="banner" id="about">
+                <div className="about">
+                    <h1>About Us</h1>
+                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Soluta quos dolorum ullam ipsam error consequatur corrupti, obcaecati cumque.<br /> Nemo non laborum est fugit! Natus quaerat est exercitationem accusamus eum corrupti!<br /> Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Soluta quos dolorum ullam ipsam error consequatur corrupti, obcaecati cumque.<br /> Nemo non laborum est fugit! Natus quaerat est exercitationem accusamus eum corrupti!<br />Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Soluta quos dolorum ullam ipsam error consequatur corrupti, obcaecati cumque.<br /> Nemo non laborum est fugit! Natus quaerat est exercitationem accusamus eum corrupti!<br /> </h6>
+                </div>
+            </section>
             <div className="quote">
                 <h2>“An investment in knowledge <br /> pays the best interest...” </h2>
                 <h6>-Benjamin Franklin - </h6>
             </div>
+            <section className="banner" id="contact">
+                <div className="contact">
+                    <h6>contact us @ 0123123123</h6>
+                </div>
+            </section>
         </main>
     );
 }

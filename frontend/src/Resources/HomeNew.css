@@ -275,6 +275,18 @@ div .counters-list-titles td {
     font-weight: 600;
 }
 
+.banner .about{
+    text-align: center;
+    padding: 20vh 0;
+    white-space: nowrap;
+}
+
+.banner .contact{
+    text-align: center;
+    padding: 5vh 0;
+    white-space: nowrap;
+}
+
 .quote{
     background-color: #212529;
 }
