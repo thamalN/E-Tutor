@@ -139,7 +139,7 @@ const RejectedPayments = () => {
                 </div>
 
                 <div className="reg_buttons">
-                    <Link className="linkbutton" to="/payments/studentPayments"><button>Back to Student Payments</button></Link>
+                    <Link className="linkbutton" to="/payments/studentPayments">Back to Student Payments</Link>
                 </div>
             </div>
         </div>
