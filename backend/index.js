@@ -77,7 +77,7 @@ require('./APIs/PaymentStudent')(app, db, stripe, uuid)
 require('./APIs/TeacherHome')(app, db)
 require('./APIs/stuFeedback')(app,db)
 require('./APIs/StudentAnnouncement')(app,db)
-require('./APIs/ViewProfile')(app,db)
+require('./APIs/ViewProfile')(app,db, upload)
 
 const server = http.createServer(app)
 
