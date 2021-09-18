@@ -93,6 +93,7 @@ import SearchToUpdate from './SupportingStaff/SearchToUpdate';
 import UnassignedTeachers from './Admin/UnassignedTeachers';
 import UnenrolledCourses from './Admin/UnenrolledCourses';
 import TermsAndConditions from './TermsAndConditions';
+import ViewUser from './ViewUser';
 
 function App() {
 
@@ -117,15 +118,19 @@ function App() {
           </Route>
 
           <Route exact path="/termsAndConditions">
-              <TermsAndConditions />
-            </Route>
+            <TermsAndConditions />
+          </Route>
 
           <Route exact path="/viewProfile/">
             <ViewProfile />
           </Route>
 
           <Route exact path="/editProfile/">
-            <EditProfile />
+            <EditProfile setLoggedIn={setLoggedIn} />
+          </Route>
+
+          <Route exact path="/viewUser/">
+            <ViewUser />
           </Route>
 
           <Route exact path="/adminHome/dashboard">
@@ -225,12 +230,12 @@ function App() {
           </Route>
 
           <Route exact path="/adminHome/reports/unassignedTeachers">
-              <UnassignedTeachers/>
-            </Route>
+            <UnassignedTeachers />
+          </Route>
 
-            <Route exact path="/adminHome/reports/unenrolledCourses">
-              <UnenrolledCourses/>
-            </Route>
+          <Route exact path="/adminHome/reports/unenrolledCourses">
+            <UnenrolledCourses />
+          </Route>
 
           <Route exact path="/supportingStaffHome/dashboard">
             <SupportingStaffHome setLoggedIn={setLoggedIn} />

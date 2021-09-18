@@ -26,13 +26,12 @@ module.exports = function (app, db, upload) {
 
         db.query(query, inserts, (err, result) => {
             if (err) throw err
-            console.log(result)
             res.json(result[0])
         })
 
     })
 
-    app.post("/editProfile/", upload.none(),  (req, res) => {
+    app.post("/editProfile/", upload.none(), (req, res) => {
 
         const user_id = req.body.user_id;
         const user_flag = req.body.user_flag;
@@ -47,7 +46,7 @@ module.exports = function (app, db, upload) {
         const birthday = req.body.Birthday;
         const gender = req.body.Gender;
         const username = req.body.userName;
-        const password = req.body.Password[0];
+        const password = req.body.Password;
 
         const nic = req.body.NIC
         const guardian_contact = req.body.GuardianContact;
@@ -55,17 +54,26 @@ module.exports = function (app, db, upload) {
         const grade = req.body.Grade;
         const qualifications = req.body.qualifications
 
-        bcrypt.hash(password, 10).then(hash => {
-            const query1 = "UPDATE user SET fname=?, lname=?, street_no=?, street=?, city=?, province=?, email=?, contact=?, birthday=?, gender=?, username=?, password=? WHERE user_id=?"
+        const query1 = "UPDATE user SET fname=?, lname=?, street_no=?, street=?, city=?, province=?, email=?, contact=?, birthday=?, gender=?, username=? WHERE user_id=?"
 
-            db.query(query1, [fname, lname, street_no, street, city, province, email, contact, birthday, gender, username, hash, user_id], (err, result) => {
-                if (err) throw err;
-            })
-        }).catch(err => {
-            console.log(err)
+        db.query(query1, [fname, lname, street_no, street, city, province, email, contact, birthday, gender, username, user_id], (err, result) => {
+            if (err) throw err;
         })
 
-        const query2 = "UPDATE ?? SET ? WHERE ?? = ?"
+        if(password) {
+            const query2 = "UPDATE user SET password=? WHERE user_id=?"
+
+            bcrypt.hash(password[0], 10).then(hash => {
+                db.query(query2, [hash, user_id], (err, result) => {
+                    if(err) throw err
+                })
+
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+
+        const query3 = "UPDATE ?? SET ? WHERE ?? = ?"
 
         let table
         let inserts = {}
@@ -93,7 +101,7 @@ module.exports = function (app, db, upload) {
             id = "student_id"
         }
 
-        db.query(query2, [table, inserts, id, user_id], (err, result) => {
+        db.query(query3, [table, inserts, id, user_id], (err, result) => {
             if (err) throw err
         })
 

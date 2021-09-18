@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 import Sidebar from "./Sidebar";
 
-const ViewProfile = () => {
+const ViewUser = () => {
 
     const [data, setData] = useState({})
     const location = useLocation()
@@ -22,7 +21,6 @@ const ViewProfile = () => {
             })
             .then(data => {
                 setData(data)
-                localStorage.setItem("userInfo", JSON.stringify(data))
             })
     }, [url])
 
@@ -31,7 +29,7 @@ const ViewProfile = () => {
             <Sidebar />
             <div className="homeContent">
                 <div className="form-signup">
-                    <h1 className="h3 mb-3 fw-normal">My Details</h1>
+                    <h1 className="h3 mb-3 fw-normal">User Details</h1>
                     <form className="row g-3 ">
 
 
@@ -316,13 +314,6 @@ const ViewProfile = () => {
                             />
                         </div>
 
-                        <div className="col-12">
-                            <Link to="/editProfile">
-                                <input type="button" className="btn btn-dark add-btn" value="Edit Details" />
-                            </Link>
-                        </div>
-
-
                     </form>
                 </div>
             </div>
@@ -330,4 +321,4 @@ const ViewProfile = () => {
     );
 }
 
-export default ViewProfile;
+export default ViewUser;

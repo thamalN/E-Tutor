@@ -7,7 +7,7 @@ import Invalid from '@material-ui/icons/Cancel';
 import PassOn from '@material-ui/icons/Visibility';
 import PassOff from '@material-ui/icons/VisibilityOff';
 
-const EditProfile = () => {
+const EditProfile = (props) => {
     const history = useHistory()
 
     const [data, setData] = useState(JSON.parse(localStorage.getItem("userInfo")))
@@ -195,13 +195,22 @@ const EditProfile = () => {
         const formData = new FormData(form)
         formData.append("user_id", data.user_id)
         formData.append("user_flag", data.user_flag)
+        
+        for (var [key, value] of formData.entries()) { 
+            console.log(key, value);
+          }
 
         fetch(url, {
             method: 'POST',
             body: formData
-        }).then(
+        }).then(data => {
+            const user = JSON.parse(localStorage.getItem("user"))
+            user.fname = formData.get("FirstName")
+            user.lname = formData.get("LastName")
+            localStorage.setItem("user", JSON.stringify(user))
+            props.setLoggedIn(true)
             history.goBack()
-        )
+        })
     }
 
     return (
