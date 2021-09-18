@@ -2,6 +2,7 @@ import { Hidden } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { Link } from 'react-router-dom';
 // import { useForm } from "react-hook-form";
 // import{ yupResolver } from "@hookform/resolvers/yup";
 // import * as yup from "yup";
@@ -409,7 +410,7 @@ const SignUp = () => {
                         onChange={(e) => setData({ ...data, province: e.target.value })}
                         required
                     >
-                        <option>Choose...</option>
+                        <option value="">Choose...</option>
                         <option>Western</option>
                         <option>Central</option>
                         <option>Southern</option>
@@ -479,7 +480,7 @@ const SignUp = () => {
                         // {...register("gender")}
                         onChange={(e) => setData({ ...data, gender: e.target.value })}
                     >
-                        <option>Choose...</option>
+                        <option value="">Choose...</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
@@ -497,7 +498,7 @@ const SignUp = () => {
                             required
                         />
                         <label className="form-check-label" htmlFor="gridCheck">
-                            I agree to the Terms and Conditions
+                            I agree to the <Link to="/termsAndConditions" target="_blank" rel="noopener noreferrer">Terms and Conditions</Link>
                         </label>
                     </div>
                 </div>

@@ -60,4 +60,14 @@ module.exports = function (app, db) {
         })
     })
 
+    app.get("/viewUnassignedTeachers", (req, res) => {
+        
+        const query = "SELECT teacher.*, user.fname, user.lname, user.email, user.contact from teacher INNER JOIN user ON teacher.teacher_id=user.user_id WHERE teacher_id NOT IN (SELECT teacher_id FROM course);";
+       
+           db.query(query, (err, result) => {
+               if (err) throw err;
+               res.json(result)
+           })
+       })
+
 };

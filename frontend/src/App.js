@@ -90,6 +90,9 @@ import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
 import StudentRegistrations from './SupportingStaff/StudentRegistrations';
 import StudentAccounts from './SupportingStaff/StudentAccounts';
 import SearchToUpdate from './SupportingStaff/SearchToUpdate';
+import UnassignedTeachers from './Admin/UnassignedTeachers';
+import UnenrolledCourses from './Admin/UnenrolledCourses';
+import TermsAndConditions from './TermsAndConditions';
 
 function App() {
 
@@ -111,6 +114,10 @@ function App() {
 
             <Route exact path="/signUp">
               <SignUp />
+            </Route>
+
+            <Route exact path="/termsAndConditions">
+              <TermsAndConditions />
             </Route>
 
             <Route exact path="/viewProfile/">
@@ -215,6 +222,14 @@ function App() {
 
             <Route exact path="/adminHome/reports/coursePayments">
               <CoursePayments/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/unassignedTeachers">
+              <UnassignedTeachers/>
+            </Route>
+
+            <Route exact path="/adminHome/reports/unenrolledCourses">
+              <UnenrolledCourses/>
             </Route>
 
             <Route exact path="/supportingStaffHome/dashboard">

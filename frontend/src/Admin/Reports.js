@@ -13,7 +13,7 @@ const Reports = () => {
             <Link to="/adminHome/reports/allTeachers"><button >All Teachers List</button></Link>
             <Link to="/adminHome/reports/allStaff"><button >All Staff List</button></Link>
             <Link to="/adminHome/reports/allCoursesList"><button >All Courses List</button></Link>
-            <Link to="/adminHome/reports/coursePayments"><button >Total Payments Of The Month</button></Link>
+            <Link to="/adminHome/reports/coursePayments"><button >Total Monthly Revenue</button></Link>
             
         </div>
         </div>
