@@ -1774,3 +1774,8 @@ th {
 td {
   text-align: left;
 }
+
+.pay_link:hover {
+  cursor: pointer;
+  background-color: gray;
+}

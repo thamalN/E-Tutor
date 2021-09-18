@@ -97,7 +97,7 @@ const doc = new jsPDF()
                                         {totalPayments.map((pay, i) => (  
                                             <tr>
                                                 
-                                            <td onClick={() => handleView(pay)}>{pay.teacher_id}</td>
+                                            <td className="pay_link" onClick={() => handleView(pay)}>{pay.teacher_id}</td>
                                             <td>{pay.fname} {pay.lname}</td>
                                             <td>{pay.email}</td>
                                             <td>{pay.contact}</td>
