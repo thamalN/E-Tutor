@@ -153,7 +153,7 @@ const MyCourseDetails = () => {
               <div className="quiz">
                   {uniqueDisc.map((value, key) => (
                       <div className="discn-name" key={key}>
-                          <Link to={`/teacher/courses/discussion/${value.discussion_id}`}>
+                          <Link to={`/studentHome/StuDiscussion/${value.discussion_id}`}>
                               <ul>
                                   <li key={value.discussion_id}>{value.topic}</li>
                               </ul>

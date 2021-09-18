@@ -413,7 +413,7 @@ function App() {
               <ViewStuCourses/>
             </Route>
 
-            <Route exact path="/studentHome/StuDiscussion">
+            <Route exact path="/studentHome/StuDiscussion/:id">
               <StuDiscussion/>
             </Route>
 
