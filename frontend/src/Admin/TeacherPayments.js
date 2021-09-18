@@ -2,8 +2,10 @@ import Sidebar from "../Sidebar";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import PrintIcon from '@material-ui/icons/Print';
+// import PrintIcon from '@material-ui/icons/Print';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 const TeacherPayments = () => {
     
@@ -50,6 +52,19 @@ const TeacherPayments = () => {
         history.push("/adminHome/payments/teacherPayments/detailedTeacherPayments")
 
 }
+
+const doc = new jsPDF()
+
+    const handleClick = (e) => {
+        doc.text('Teacher Payments', 14, 10);
+
+        doc.autoTable({ html: '#reg-table' });
+    };
+
+    useEffect(() => {
+        doc.autoTable({ html: document.getElementById('reg_table') });
+       
+    })
     
 
     return (
@@ -63,12 +78,11 @@ const TeacherPayments = () => {
                                 <h3>Teacher Payments</h3>
                             </li>
                             <div  className="download_icons">
-                            <button className="btnnew"> Print<PrintIcon/></button>
-                            <button className="btnnew"> Download <GetAppIcon/></button>
+                            <button onClick={(e) => { handleClick(e); doc.save('Teacher Payments.pdf') }} className="btnnew"> Download <GetAppIcon/></button>
                            
                             </div>
                             <li>
-                                <table className="table table2">
+                                <table className="table table2" id="reg_table">
                                     <thead className="thead-dark">
                                         <tr>
                                             <th scope="col">Teacher ID</th>
@@ -83,7 +97,7 @@ const TeacherPayments = () => {
                                         {totalPayments.map((pay, i) => (  
                                             <tr>
                                                 
-                                            <td onClick={() => handleView(pay)}>{pay.teacher_id}</td>
+                                            <td className="pay_link" onClick={() => handleView(pay)}>{pay.teacher_id}</td>
                                             <td>{pay.fname} {pay.lname}</td>
                                             <td>{pay.email}</td>
                                             <td>{pay.contact}</td>

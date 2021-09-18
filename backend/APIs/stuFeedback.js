@@ -1,4 +1,4 @@
-module.exports = function (app, db,upload) {
+module.exports = function (app, db) {
     
     app.post("/CreateStuFeedback",(req, res) => {
         // console.log(req.body.user_id);

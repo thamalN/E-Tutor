@@ -1,4 +1,4 @@
-import { useHistory} from "react-router-dom";
+import { useHistory, Link} from "react-router-dom";
 import { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import Card from "../Card";
@@ -9,9 +9,10 @@ const AdminHome = (props) => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const [unenrolledCourses, setUenrolledCourses] = useState()
+    const [unenrolledCourses, setUnenrolledCourses] = useState()
     const [receipts, setReceipts] = useState()
     const [studentCount, setStudentCount] = useState()
+    const [unassignedTeachers, setUnassignedTeachers] = useState()
 
     const logOut = () => {
         props.setLoggedIn(false)
@@ -42,7 +43,7 @@ const AdminHome = (props) => {
                 return res.json();
             })
             .then(data => {
-                setUenrolledCourses(data)
+                setUnenrolledCourses(data)
             })
 
     }, [url2])
@@ -61,6 +62,20 @@ const AdminHome = (props) => {
 
     }, [url3])
 
+    const url4 = "http://localhost:3001/adminHome/unassignedTeachers"
+
+    useEffect(() => {
+
+        fetch(url4)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setUnassignedTeachers(data)
+            })
+
+    }, [url4])
+
     return ( 
         
 
@@ -73,10 +88,10 @@ const AdminHome = (props) => {
 
 
         <div className="wrapper">
-            <Card title="Registered Students" description={studentCount} button="View"></Card>
-            <Card title="Unenrolled Courses" description={unenrolledCourses} button="View"></Card>
-            <Card title="Incomplete Courses" description="10" button="View"></Card>
-            <Card title="Pending Receipts" description={receipts} button="View"></Card>
+            <Link to="/adminHome/reports/allStudents" style={{ textDecoration: 'none' }}><Card title="Registered Students" description={studentCount}></Card></Link>
+            <Link to="/adminHome/reports/unenrolledCourses" style={{ textDecoration: 'none' }}><Card title="Unenrolled Courses" description={unenrolledCourses}></Card></Link>
+            <Link to="/adminHome/reports/unassignedTeachers" style={{ textDecoration: 'none' }}><Card title="Unassigned Teachers" description={unassignedTeachers}></Card></Link>
+            <Link to="/payments/pendingReceipts" style={{ textDecoration: 'none' }}><Card title="Pending Receipts" description={receipts}></Card></Link>
             </div>
             </div>
             </div>

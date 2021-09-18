@@ -1,9 +1,11 @@
 import { useParams, useHistory } from "react-router";
 import Sidebar from "../Sidebar";
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 import { Link } from "react-router-dom";
 
 const TeacherQuiz = () => {
+    const history = useHistory()
 
     let { id } = useParams()
     //id = id - 1
@@ -23,6 +25,15 @@ const TeacherQuiz = () => {
 
     const quiz = JSON.parse(localStorage.getItem('quiz')).find((item) => item.quiz_id === parseInt(id))
 
+    const deleteQuiz = (id) => {
+        if (window.confirm("Confirm Delete")) {
+            fetch("http://localhost:3001/teacherCourses/deleteQuiz/" + id)
+                .then((data) => {
+                    history.goBack()
+                })
+        }
+    }
+
     return (
         <div>
             <Sidebar />
@@ -35,6 +46,9 @@ const TeacherQuiz = () => {
                             <Link to={window.location.pathname + "/edit"} className="quiz-icons" title="Edit Quiz">
                                 <EditIcon style={{ color: "#3ca730" }} fontSize="large" />
                             </Link>
+                            <button onClick={() => deleteQuiz(quiz.quiz_id)} className="quiz-icons">
+                                <DeleteIcon style={{ color: "red" }} fontSize="large" />
+                            </button>
                         </div>
 
                         <div>

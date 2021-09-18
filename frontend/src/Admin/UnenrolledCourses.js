@@ -5,11 +5,11 @@ import '../SupportingStaff/staffhome.css';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
-const CoursePayments = () => {
+const UnenrolledCourses = () => {
 
     const [data, setData] = useState([])
 
-    const url = "http://localhost:3001/totalPayments"
+    const url = "http://localhost:3001/viewUnenrolledCourses"
     useEffect(() => {
 
         fetch(url, {
@@ -28,24 +28,14 @@ const CoursePayments = () => {
     const doc = new jsPDF()
 
     const handleClick = (e) => {
-        
+        doc.text('Unenrolled Courses', 14, 10);
 
-        // doc.autoTable({ html: '#reg-table' });
+        doc.autoTable({ html: '#reg-table' });
     };
 
     useEffect(() => {
-        doc.text('Total Monthly Revenue'+(new Date()).toLocaleString('default', { month: 'long' }) , 14, 10);
         doc.autoTable({ html: document.getElementById('reg_table') });
-        // if (data.password.length !== 0) {
-        //     if (data.password === data.confirmPassword) {
-        //         document.getElementById('pass').innerHTML = '(Passwords match!)';
-        //         document.getElementById('pass').style.color = "green";
-        //     } else {
-        //         document.getElementById('pass').innerHTML = '(Passwords do not match!)';
-        //         document.getElementById('pass').style.color = "red";
-
-        //     }
-        // }
+        
     })
 
     return (
@@ -55,7 +45,7 @@ const CoursePayments = () => {
                 <div className="b2">
                     <ul>
                         <li className="reg_title">
-                            <h3>Total Monthly Revenue For {(new Date()).toLocaleString('default', { month: 'long' })}</h3>
+                            <h3>Unenrolled Courses</h3>
                         </li>
                         <li>
                             <table className="table" id="reg_table">
@@ -65,17 +55,17 @@ const CoursePayments = () => {
                                         <th scope="col">Course Name</th>
                                         <th scope="col">Course Year</th>
                                         <th scope="col">Conducted By</th>
-                                        <th scope="col">Total Payments</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {data.map((regData, i) => (
+                                    {data.map((course, i) => (
                                         <tr>
-                                            <td>{regData.course_id}</td>
-                                            <td>{regData.course_name}</td>
-                                            <td>{regData.year}</td>
-                                            <td>{regData.fname} {regData.lname}</td>
-                                            <td>{regData.sum}</td>
+                                            <td>{course.teacher_id}</td>
+                                            <td>{course.course_name}</td>
+                                            <td>{course.year}</td>
+                                            <td>{course.fname} {course.lname}</td>
+                                            
                                         </tr>
                                     ))}
                                 </tbody>
@@ -83,7 +73,7 @@ const CoursePayments = () => {
                         </li>
                         <div>
                             <Link to="/adminHome/reports"><button >Back</button></Link>
-                            <button onClick={(e) => { handleClick(e); doc.save('Total Monthly Revenue') }}>Download pdf</button>
+                            <button onClick={(e) => { handleClick(e); doc.save('Unenrolled Courses.pdf') }}>Download pdf</button>
                         </div>
                     </ul>
                 </div>
@@ -92,4 +82,4 @@ const CoursePayments = () => {
     );
 }
 
-export default CoursePayments;
+export default UnenrolledCourses;

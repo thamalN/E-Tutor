@@ -7,11 +7,12 @@ import Invalid from '@material-ui/icons/Cancel';
 import PassOn from '@material-ui/icons/Visibility';
 import PassOff from '@material-ui/icons/VisibilityOff';
 
-const EditProfile = () => {
+const EditProfile = (props) => {
     const history = useHistory()
 
     const [data, setData] = useState(JSON.parse(localStorage.getItem("userInfo")))
     const [usernames, setUsernames] = useState([]);
+    const [toggled, setToggled] = useState(false)
 
     const [valids, setValids] = useState({
         FirstName: true,
@@ -43,94 +44,109 @@ const EditProfile = () => {
     var username = new RegExp(/^[a-z\d]{5,12}$/i);
     var pass = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
 
-    var usernameValid, newpassValid = true
+    var usernameValid, newpassValid, oldpassValid
 
-    useEffect(() => {
-        if (data.username && data.username.length !== 0) {
-            if (usernames.some(i => i.username === data.username)) {
-                document.getElementById('usern').innerHTML = '(Username is already taken!)';
-                document.getElementById('usern').style.color = "red";
-                usernameValid = false
-            } else if (!RegExp(username).test(data.username)) {
-                document.getElementById('usern').innerHTML = '(Username can only contain letters & digits and must contain 5 - 12 characters)';
-                document.getElementById('usern').style.color = "red";
-                usernameValid = false
-            } else {
-                document.getElementById('usern').innerHTML = '(Username is available!)';
-                document.getElementById('usern').style.color = "green";
-                usernameValid = true
-            }
+    const togglePassword = () => {
+        const passwords = document.getElementById("change-password")
+        const inputs = passwords.querySelectorAll("input")
+        const check = document.getElementById("check-change-pass")
+
+        if (check.checked) {
+            inputs.forEach(input => {
+                input.required = true
+                input.disabled = false
+            })
+            setToggled(true)
+        } else {
+            inputs.forEach(input => {
+                input.required = false
+                input.disabled = true
+            })
+            setToggled(false)
         }
-    })
+
+    }
 
     useEffect(() => {
-        if (data.newPassword && data.newPassword.length !== 0) {
-            if (data.newPassword === data.confirmPassword) {
-                document.getElementById('new_password').innerHTML = '(Passwords match!)';
-                document.getElementById('new_password').style.color = "green";
 
-                if(!RegExp(pass).test(data.newPassword)) {
-                    document.getElementById("new_password").innerHTML = 'Password must contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character!';
-                    document.getElementById("new_password").style.color = "red";
-                } else {
-                    newpassValid = true
-                }
+        bcrypt.compare(data.oldPassword, data.password, (error, response) => {
+            if (data.oldPassword && data.oldPassword.length !== 0) {
+                const valid = document.getElementById("oldPassword-valid")
+                const invalid = document.getElementById("oldPassword-invalid")
 
-            } else {
-                document.getElementById('new_password').innerHTML = '(Passwords do not match!)';
-                document.getElementById('new_password').style.color = "red";
-                newpassValid = false
-            }
-        }
-    })
-
-    useEffect(() => {
-        if (data.oldPassword && data.oldPassword.length !== 0) {
-
-            bcrypt.compare(data.oldPassword, data.password, (error, response) => {
                 if (response) {
                     document.getElementById('old_password').innerHTML = '(Correct Password!)';
                     document.getElementById('old_password').style.color = "green";
 
+                    valid.style.display = "inline"
+                    invalid.style.display = "none"
+                    oldpassValid = true
                 } else {
                     document.getElementById('old_password').innerHTML = '(Incorrect Password!)';
                     document.getElementById('old_password').style.color = "red";
+
+                    valid.style.display = "none"
+                    invalid.style.display = "inline"
+                    oldpassValid = false
                 }
-            })
-        }
-    })
+            }
 
-    useEffect(() => {
-        const passwords = document.getElementById("change-password")
-        const changePass = passwords.classList.contains("show-change-password")
-        
-        const allValid = Object.values(valids).every(i => i)
+            if (data.username && data.username.length !== 0) {
+                const valid = document.getElementById("userName-valid")
+                const invalid = document.getElementById("userName-invalid")
 
-        if (allValid && usernameValid && newpassValid)
-            document.getElementById('button').disabled = false;
-        else
-            document.getElementById('button').disabled = true;
-    })
+                if (usernames.some(i => i.username === data.username)) {
+                    document.getElementById('usern').innerHTML = '(Username is already taken!)';
+                    document.getElementById('usern').style.color = "red";
 
-    // useEffect(() => {
+                    valid.style.display = "none"
+                    invalid.style.display = "inline"
+                    usernameValid = false
+                } else if (!RegExp(username).test(data.username)) {
+                    document.getElementById('usern').innerHTML = '(Username can only contain letters & digits and must contain 5 - 12 characters)';
+                    document.getElementById('usern').style.color = "red";
 
-    //     if (RegExp(/^[a-z ,.'-]+$/i).test(data.fname) && RegExp(/^[a-z ,.'-]+$/i).test(data.lname) &&
-    //         RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.street_no) && RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.street) &&
-    //         RegExp(/^[a-z 0-9,.'-\/]+$/i).test(data.city) && RegExp(/^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/).test(data.email) &&
-    //         RegExp(/^\d{10}$/).test(data.contact) && usernameValid) {
+                    valid.style.display = "none"
+                    invalid.style.display = "inline"
+                    usernameValid = false
+                } else {
+                    document.getElementById('usern').innerHTML = '(Username is available!)';
+                    document.getElementById('usern').style.color = "green";
 
-    //         if ((data.user_flag === 1 && RegExp(/^\d{10}$/).test(data.nic)) ||
-    //             (data.user_flag === 2 && RegExp(/^\d{10}$/).test(data.nic)) ||
-    //             (data.user_flag === 3 && RegExp(/^\d{10}[V]$/).test(data.nic) && RegExp(/^[a-z 0-9,.'-]+$/i).test(data.school)) ||
-    //             (data.user_flag === 4 && RegExp(/^\d{10}$/).test(data.guardian_contact) && RegExp(/^[a-z 0-9,.'-]+$/i).test(data.school))) {
-    //             document.getElementById('button').disabled = false;
-    //         } else {
-    //             document.getElementById('button').disabled = true;
-    //         }
-    //     } else {
-    //         document.getElementById('button').disabled = true;
-    //     }
-    // })
+                    valid.style.display = "inline"
+                    invalid.style.display = "none"
+                    usernameValid = true
+                }
+            }
+
+            if (data.newPassword && data.newPassword.length !== 0) {
+                if (!RegExp(pass).test(data.newPassword)) {
+                    document.getElementById("new_password").innerHTML = 'Password must contain minimum 8 characters, at least 1 uppercase letter, 1 lowercase letter, 1 number and 1 special character!';
+                    document.getElementById("new_password").style.color = "red";
+                    newpassValid = false
+
+                } else {
+                    if (data.newPassword === data.confirmPassword) {
+                        document.getElementById('new_password').innerHTML = '(Passwords match!)';
+                        document.getElementById('new_password').style.color = "green";
+                        newpassValid = true
+                    } else {
+                        document.getElementById('new_password').innerHTML = '(Passwords do not match!)';
+                        document.getElementById('new_password').style.color = "red";
+                        newpassValid = false
+                    }
+                }
+            }
+
+            const allValid = Object.values(valids).every(i => i)
+
+            if ((allValid && usernameValid) && ((toggled) ? (newpassValid && oldpassValid) : true))
+                document.getElementById('button').disabled = false;
+            else
+                document.getElementById('button').disabled = true;
+        })
+
+    }, [toggled, data])
 
     const patterns = {
         FirstName: /^[a-z ,.'-]+$/i,
@@ -173,65 +189,29 @@ const EditProfile = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(data)
-
         const url = "http://localhost:3001/editProfile/"
 
-        const values = {
-            user_id: data.user_id,
-            user_flag: data.user_flag,
-            fname: data.fname,
-            lname: data.lname,
-            street_no: data.street_no,
-            street: data.street,
-            city: data.city,
-            province: data.province,
-            email: data.email,
-            contact: data.contact,
-            birthday: data.birthday,
-            gender: data.gender,
-            username: data.username,
-            password: data.newPassword,
-
-            nic: data.nic,
-            school: data.school,
-            qualifications: data.qualifications,
-        }
-
-       // console.log(values)
+        const form = document.getElementById("details-form")
+        const formData = new FormData(form)
+        formData.append("user_id", data.user_id)
+        formData.append("user_flag", data.user_flag)
+        
+        for (var [key, value] of formData.entries()) { 
+            console.log(key, value);
+          }
 
         fetch(url, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(values)
-        }).then(
+            body: formData
+        }).then(data => {
+            const user = JSON.parse(localStorage.getItem("user"))
+            user.fname = formData.get("FirstName")
+            user.lname = formData.get("LastName")
+            localStorage.setItem("user", JSON.stringify(user))
+            props.setLoggedIn(true)
             history.goBack()
-        )
+        })
     }
-
-    const togglePassword = () => {
-        const passwords = document.getElementById("change-password")
-        passwords.classList.toggle("show-change-password")
-        passwords.classList.toggle("hide-change-password")
-
-        const inputs = passwords.querySelectorAll("input")
-
-        if (passwords.classList.contains("hide-change-password")) {
-            inputs.forEach(input => {
-                input.required = false
-            })
-        } else {
-            inputs.forEach(input => {
-                input.required = true
-            })
-        }
-
-    }
-
-    const togglePass = (e) => {
-        console.log(e.target)
-    }
-
 
     return (
         <div>
@@ -239,14 +219,13 @@ const EditProfile = () => {
             <div className="homeContent">
                 <div className="form-signup">
                     <h1 className="h3 mb-3 fw-normal">Edit Details</h1>
-                    <form className="row g-3 " onSubmit={handleSubmit}>
+                    <form className="row g-3 " onSubmit={handleSubmit} onChange={togglePassword} id="details-form">
 
 
                         <div className="col-md-6">
                             <label htmlFor="firstName" className="mt-2">First Name</label>
                             <Valid fontSize="small" className="valid" id="firstName-valid" style={{ display: "none" }} />
                             <Invalid fontSize="small" className="invalid" id="firstName-invalid" style={{ display: "none" }} />
-                            {/* <span id="firstName" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                             <input
                                 type="text"
                                 className="form-control"
@@ -262,7 +241,6 @@ const EditProfile = () => {
                             <label htmlFor="lastName" className="mt-2">Last Name</label>
                             <Valid fontSize="small" className="valid" id="lastName-valid" style={{ display: "none" }} />
                             <Invalid fontSize="small" className="invalid" id="lastName-invalid" style={{ display: "none" }} />
-                            {/* <span id="lastName" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                             <input
                                 type="text"
                                 className="form-control"
@@ -278,7 +256,6 @@ const EditProfile = () => {
                             <label className="mt-2" htmlFor="streetNo">Street No</label>
                             <Valid fontSize="small" className="valid" id="streetNo-valid" style={{ display: "none" }} />
                             <Invalid fontSize="small" className="invalid" id="streetNo-invalid" style={{ display: "none" }} />
-                            {/* <span id="streetNo" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                             <input
                                 type="text"
                                 className="form-control"
@@ -294,7 +271,6 @@ const EditProfile = () => {
                             <label className="mt-2" htmlFor="streetName">Street</label>
                             <Valid fontSize="small" className="valid" id="streetName-valid" style={{ display: "none" }} />
                             <Invalid fontSize="small" className="invalid" id="streetName-invalid" style={{ display: "none" }} />
-                            {/* <span id="streetName" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                             <input
                                 type="text"
                                 className="form-control"
@@ -310,7 +286,6 @@ const EditProfile = () => {
                             <label className="mt-2" htmlFor="city">City</label>
                             <Valid fontSize="small" className="valid" id="city-valid" style={{ display: "none" }} />
                             <Invalid fontSize="small" className="invalid" id="city-invalid" style={{ display: "none" }} />
-                            {/* <span id="city" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                             <input
                                 type="text"
                                 className="form-control"
@@ -349,7 +324,6 @@ const EditProfile = () => {
                             <label className="mt-2" htmlFor="email">Email</label>
                             <Valid fontSize="small" className="valid" id="email-valid" style={{ display: "none" }} />
                             <Invalid fontSize="small" className="invalid" id="email-invalid" style={{ display: "none" }} />
-                            {/* <span id="email" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                             <input
                                 type="text"
                                 className="form-control"
@@ -365,7 +339,6 @@ const EditProfile = () => {
                             <label className="mt-2" htmlFor="contact">Contact</label>
                             <Valid fontSize="small" className="valid" id="contact-valid" style={{ display: "none" }} />
                             <Invalid fontSize="small" className="invalid" id="contact-invalid" style={{ display: "none" }} />
-                            {/* <span id="contact" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                             <input
                                 type="text"
                                 className="form-control"
@@ -422,7 +395,6 @@ const EditProfile = () => {
                                     <label className="mt-2" htmlFor="nic" >NIC</label>
                                     <Valid fontSize="small" className="valid" id="nic-valid" style={{ display: "none" }} />
                                     <Invalid fontSize="small" className="invalid" id="nic-invalid" style={{ display: "none" }} />
-                                    {/* <span id="firstName" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                                     <input
                                         type="text"
                                         className="form-control"
@@ -455,7 +427,6 @@ const EditProfile = () => {
                                     <label className="mt-2" htmlFor="nic" >NIC</label>
                                     <Valid fontSize="small" className="valid" id="nic-valid" style={{ display: "none" }} />
                                     <Invalid fontSize="small" className="invalid" id="nic-invalid" style={{ display: "none" }} />
-                                    {/* <span id="nic" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                                     <input
                                         type="text"
                                         className="form-control"
@@ -488,7 +459,6 @@ const EditProfile = () => {
                                     <label className="mt-2" htmlFor="nic" >NIC</label>
                                     <Valid fontSize="small" className="valid" id="nic-valid" style={{ display: "none" }} />
                                     <Invalid fontSize="small" className="invalid" id="nic-invalid" style={{ display: "none" }} />
-                                    {/* <span id="nic" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                                     <input
                                         type="text"
                                         className="form-control"
@@ -517,7 +487,6 @@ const EditProfile = () => {
                                     <label className="mt-2" htmlFor="school" >School</label>
                                     <Valid fontSize="small" className="valid" id="school-valid" style={{ display: "none" }} />
                                     <Invalid fontSize="small" className="invalid" id="school-invalid" style={{ display: "none" }} />
-                                    {/* <span id="school" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                                     <input
                                         type="text"
                                         className="form-control"
@@ -550,7 +519,6 @@ const EditProfile = () => {
                                     <label className="mt-2" htmlFor="school" >School</label>
                                     <Valid fontSize="small" className="valid" id="school-valid" style={{ display: "none" }} />
                                     <Invalid fontSize="small" className="invalid" id="school-invalid" style={{ display: "none" }} />
-                                    {/* <span id="school" style={{ "marginLeft": 50, fontSize: 12 }}></span> */}
                                     <input
                                         type="text"
                                         className="form-control"
@@ -595,6 +563,8 @@ const EditProfile = () => {
 
                         <div className="col-md-12">
                             <label htmlFor="userName" className="mt-2">Username</label>
+                            <Valid fontSize="small" className="valid" id="userName-valid" style={{ display: "none" }} />
+                            <Invalid fontSize="small" className="invalid" id="userName-invalid" style={{ display: "none" }} />
                             <span id="usern" style={{ "marginLeft": 50, fontSize: 12 }}></span>
                             <input
                                 type="text"
@@ -607,15 +577,20 @@ const EditProfile = () => {
                             />
                         </div>
 
+                        <hr />
+
                         <div className="col-12">
 
-                            <input type="button" className="btn btn-dark add-btn" value="Change Password" onClick={togglePassword} />
+                            <label htmlFor="">Change Password</label>
+                            <input type="checkbox" id="check-change-pass" style={{ marginLeft: "5px" }} />
 
                         </div>
 
-                        <div id="change-password" className="hide-change-password">
+                        <div id="change-password" >
                             <div style={{ flex: "0 0 30%" }}>
                                 <label htmlFor="oldPassword" className="mt-2">Old Password</label>
+                                <Valid fontSize="small" className="valid" id="oldPassword-valid" style={{ display: "none" }} />
+                                <Invalid fontSize="small" className="invalid" id="oldPassword-invalid" style={{ display: "none" }} />
                                 <span id="old_password" style={{ "marginLeft": 50, fontSize: 12 }}></span>
 
                                 <div className="passToggle">
@@ -626,7 +601,7 @@ const EditProfile = () => {
                                         id="old_password"
                                         value={data.oldPassowrd}
                                         onChange={(e) => setData({ ...data, oldPassword: e.target.value })}
-                                        
+                                        disabled
                                     />
                                     {/* <PassOn />
                                     <PassOff /> */}
@@ -646,8 +621,8 @@ const EditProfile = () => {
                                         name="Password"
                                         id="new_password"
                                         value={data.newPassword}
-                                        onChange={(e) => { setData({ ...data, newPassword: e.target.value }); handleChange(e) }}
-                                        
+                                        onChange={(e) => { setData({ ...data, newPassword: e.target.value }); handleChange(e); }}
+                                        disabled
                                     />
                                     {/* <PassOn />
                                     <PassOff /> */}
@@ -668,13 +643,15 @@ const EditProfile = () => {
                                         id="confirm_password"
                                         value={data.confirmPassword}
                                         onChange={(e) => { setData({ ...data, confirmPassword: e.target.value }); handleChange(e) }}
-                                        
+                                        disabled
                                     />
                                     {/* <PassOn />
                                     <PassOff /> */}
                                 </div>
                             </div>
                         </div>
+
+                        <hr />
 
                         <input id="button" type="submit" className="btn btn-dark add-btn col-12" value="Save" />
 

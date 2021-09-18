@@ -2,6 +2,7 @@ import { Hidden } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { Link } from 'react-router-dom';
 // import { useForm } from "react-hook-form";
 // import{ yupResolver } from "@hookform/resolvers/yup";
 // import * as yup from "yup";
@@ -15,7 +16,7 @@ const SignUp = () => {
     const history = useHistory()
 
     const [id, setId] = useState(null);
-    const [usernames, setUsernames] = useState([]);
+    const [userData, setUserData] = useState([]);
     const user = JSON.parse(localStorage.getItem('user'));
     let flag;
     let heading;
@@ -64,7 +65,8 @@ const SignUp = () => {
                 return res.json();
             })
             .then(data => {
-                setUsernames(data)
+                console.log(data)
+                setUserData(data)
             })
 
     }, [url])
@@ -72,10 +74,11 @@ const SignUp = () => {
     const [submitState, setsubmitState] = useState(true);
 
     var contact = new RegExp(/^[a-z\d]{5,12}$/i);
+    var mail = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
     useEffect(() => {
         if (data.username.length !== 0) {
-            if (usernames.some(i => i.username === data.username)) {
+            if (userData.some(i => i.username === data.username)) {
                 document.getElementById('usern').innerHTML = '(Username is already taken!)';
                 document.getElementById('usern').style.color = "red";
             }
@@ -85,6 +88,22 @@ const SignUp = () => {
             } else {
                 document.getElementById('usern').innerHTML = '(Username is available!)';
                 document.getElementById('usern').style.color = "green";
+            }
+        }
+    })
+
+    useEffect(() => {
+        if (data.email.length !== 0) {
+            if (userData.some(i => i.email === data.email)) {
+                document.getElementById('email').innerHTML = '(Email is already in use!)';
+                document.getElementById('email').style.color = "red";
+            }
+            else if (!RegExp(mail).test(data.email)) {
+                document.getElementById('usern').innerHTML = '(Email is not valid!)';
+                document.getElementById('usern').style.color = "red";
+            } else {
+                document.getElementById('email').innerHTML = '(Email is available!)';
+                document.getElementById('email').style.color = "green";
             }
         }
     })
@@ -409,7 +428,7 @@ const SignUp = () => {
                         onChange={(e) => setData({ ...data, province: e.target.value })}
                         required
                     >
-                        <option>Choose...</option>
+                        <option value="">Choose...</option>
                         <option>Western</option>
                         <option>Central</option>
                         <option>Southern</option>
@@ -479,7 +498,7 @@ const SignUp = () => {
                         // {...register("gender")}
                         onChange={(e) => setData({ ...data, gender: e.target.value })}
                     >
-                        <option>Choose...</option>
+                        <option value="">Choose...</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
@@ -497,7 +516,7 @@ const SignUp = () => {
                             required
                         />
                         <label className="form-check-label" htmlFor="gridCheck">
-                            I agree to the Terms and Conditions
+                            I agree to the <Link to="/termsAndConditions" target="_blank" rel="noopener noreferrer">Terms and Conditions</Link>
                         </label>
                     </div>
                 </div>

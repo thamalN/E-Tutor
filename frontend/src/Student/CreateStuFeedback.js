@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router";
 import Sidebar from "../Sidebar";
+
 const CreateStuFeekback = () => {
     const history = useHistory()
 
@@ -9,11 +10,9 @@ const CreateStuFeekback = () => {
     const [data, setData] = useState({
         topic: "",
         description: "",
-        // user_id: user.user_id
+        user_id: user.user_id
     }
     );
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
