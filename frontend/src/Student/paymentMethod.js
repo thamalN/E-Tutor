@@ -3,16 +3,16 @@ import { Link, Route, useParams } from 'react-router-dom';
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import data from "@iconify-icons/cil/clear-all";
 
-async function handleToken(token, addresses) {
-    fetch("http://localhost:3001/paymentStudent", {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(token)
-    }).then((res => {
-        console.log(res)
-    }))
-}
+
+// const student_id = req.body.student_id;
+// const course_id = req.body.course_id;
+// const amount = req.body.amount;
+// const payment_method = "Bank Slip";
+// const verified = 0;
+// const today = new Date();
+
 
 
 const PaymentMethod = () => {
@@ -22,6 +22,7 @@ const PaymentMethod = () => {
     const Id = { id: id }
 
     const [data, setData] = useState([]);
+    const user = JSON.parse(localStorage.getItem('user'))
 
     const url = "http://localhost:3001/courseDetails";
 
@@ -40,7 +41,26 @@ const PaymentMethod = () => {
 
     }, [url])
 
-
+    async function handleToken(token, addresses) {
+        console.log(token)
+        const passData = {
+            student_id: user.user_id,
+            course_id: data.course_id,
+            amount: data.price,
+            token: token
+         }
+    
+         console.log(passData)
+     
+        fetch("http://localhost:3001/paymentStudent", {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(passData)
+            
+        }).then((res => {
+            console.log(res)
+        }))
+    }
     return (
         <div>
             <Sidebar />

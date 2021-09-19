@@ -37,8 +37,6 @@ export default function SidebarData() {
         { title: "Registrations", icon: <GroupAddIcon />, link: "/supportingStaffHome/registrations" },
         { title: "Student Accounts", icon: <PeopleIcon />, link: "/supportingStaffHome/studentAccounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/supportingStaffHome/managePayments" },
-        { title: "Emails", icon: <EmailIcon />, link: "/emails" },
-        { title: "Notifications", icon: <NotificationsIcon />, link: "/notifications" },
         { title: "Reports", icon: <DescriptionIcon />, link: "/supportingStaffHome/reports" }
         ]
     }

@@ -8,9 +8,9 @@ const AdCourses = () => {
             <div className="homeContent">
             <h1>Courses</h1>
             <div className="reg_buttons">
-            <Link to="/adminHome/courses/allCourses"><button >View All Courses</button></Link>
-            <Link to="/adminHome/courses/addNewCourse"><button >Add a new Course</button></Link>
-            <Link to="/adminHome/dashboard"><button >Back to Dashboard</button></Link>
+            <Link to="/adminHome/courses/allCourses">View All Courses</Link>
+            <Link to="/adminHome/courses/addNewCourse">Add a new Course</Link>
+            <Link to="/adminHome/dashboard">Back to Dashboard</Link>
         </div>
         </div>
         </div>

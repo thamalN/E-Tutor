@@ -255,7 +255,7 @@ const TeacherQuizEdit = () => {
                         </div>
 
 
-                        <button onClick={saveChanges} type="button" className="quiz-icons" title="Save Changes">
+                        <button onClick={saveChanges} type="button" className="quiz-icons" title="Save Changes" style={{marginTop:"15px"}}>
                             <CheckCircleIcon fontSize="large" />
                         </button>
 

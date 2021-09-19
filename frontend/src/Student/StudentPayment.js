@@ -10,10 +10,10 @@ const StudentPayment = () => {
         <div className="homeContent">
         <h1>My Payments</h1>
         <div className="reg_buttons">
-        <Link to="/studentHome/payments/allPayments"><button >View All My Payments</button></Link>
-        <Link to="/studentHome/payments/newPayment"><button >Make A New Payment</button></Link>
+        <Link to="/studentHome/payments/allPayments">View All My Payments</Link>
+        <Link to="/studentHome/payments/newPayment">Make A New Payment</Link>
         {/* <Link to="/adminHome/createSupStaffAcc"><button >Back To Dashboard</button></Link> */}
-        <Link to="/studentHome"><button >Back to Dashboard</button></Link>
+        <Link to="/studentHome">Back to Dashboard</Link>
     </div>
     </div>
     </div>

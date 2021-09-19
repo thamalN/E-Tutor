@@ -47,7 +47,6 @@ const EditContent = () => {
             file.disabled = true
             file.required = false
         }
-
     }
 
     return (

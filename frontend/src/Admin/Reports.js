@@ -8,12 +8,12 @@ const Reports = () => {
             <div className="homeContent">
             <h1>Reports</h1>
             <div className="reg_buttons">
-            <Link to="/adminHome/registrations/recentRegistrations"><button >Recent Registrations List</button></Link>
-            <Link to="/adminHome/reports/allStudents"><button >All Students List</button></Link>
-            <Link to="/adminHome/reports/allTeachers"><button >All Teachers List</button></Link>
-            <Link to="/adminHome/reports/allStaff"><button >All Staff List</button></Link>
-            <Link to="/adminHome/reports/allCoursesList"><button >All Courses List</button></Link>
-            <Link to="/adminHome/reports/coursePayments"><button >Total Payments Of The Month</button></Link>
+            <Link to="/adminHome/registrations/recentRegistrations">Recent Registrations List</Link>
+            <Link to="/adminHome/reports/allStudents">All Students List</Link>
+            <Link to="/adminHome/reports/allTeachers">All Teachers List</Link>
+            <Link to="/adminHome/reports/allStaff">All Staff List</Link>
+            <Link to="/adminHome/reports/allCoursesList">All Courses List</Link>
+            <Link to="/adminHome/reports/coursePayments">Total Monthly Revenue</Link>
             
         </div>
         </div>

@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Sidebar from "../Sidebar";
 import Card from "../Card";
 
 
 const TeacherHome = () => {
+    const history = useHistory()
 
     const [courses, setCourses] = useState()
     const [students, setStudents] = useState()
+    const [quizzes, setQuizzes] = useState()
 
     const user = JSON.parse(localStorage.getItem('user'))
     const id = { id: user.user_id }
@@ -48,6 +50,25 @@ const TeacherHome = () => {
 
     }, [studentUrl])
 
+    const quizUrl = "http://localhost:3001/teacherHome/quizzes"
+
+    useEffect(() => {
+
+        fetch(quizUrl, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(id)
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setQuizzes(data)
+                console.log(data)
+            })
+
+    }, [quizUrl])
+
     return (
 
         <div className="dashboard">
@@ -55,14 +76,12 @@ const TeacherHome = () => {
             <Sidebar />
 
             <div className="homeContent">
-                
-                <div  id="adminCard">
-                    {/* <Link to="/teacher/courses"> */}
-                        <Card title="My Courses" description={courses} button="View"></Card>
-                        {/* </Link> */}
-                    <Card title="Total Students" description={students} button="View"></Card>
-                    <Card title="Upcoming Quizzes" description="10" button="View"></Card>
-                    <Card title="Pending Payments" description="2" button="View"></Card>
+
+                <div id="adminCard">
+                    <Card title="My Courses" description={courses} button="View" onclick={() => history.push("/teacher/courses")}></Card>
+                    <Card title="Total Students" description={students && students.length} button="View" onclick={() => history.push("/teacher/myStudents", {state: students})}></Card>
+                    <Card title="Upcoming Quizzes" description={quizzes && quizzes.length} button="View" onclick={() => history.push("/teacher/upcomingQuizzes", {state: quizzes})}></Card>
+                    {/* <Card title="Pending Payments" description="2" button="View"></Card> */}
                 </div>
             </div>
 

@@ -6,11 +6,14 @@ module.exports = function (app, db, stripe, uuid, upload) {
 
   app.post("/paymentStudent", async (req, res) => {
     console.log("Request:", req.body);
+    const student_id = req.body.student_id;
+      const course_id = req.body.course_id;
+      const amount = req.body.amount;
 
     let error;
     let status;
     try {
-      const token = req.body;
+      const token = req.body.token;
 
       const customer = await stripe.customers.create({
         email: token.email,
@@ -20,7 +23,7 @@ module.exports = function (app, db, stripe, uuid, upload) {
       const idempotency_key = uuid();
       const charge = await stripe.charges.create(
         {
-          //   amount: product.price * 100,
+          amount: amount * 100,
           currency: "usd",
           customer: customer.id,
           receipt_email: token.email,
@@ -42,13 +45,38 @@ module.exports = function (app, db, stripe, uuid, upload) {
       );
       console.log("Charge:", { charge });
       status = "success";
+      
+      console.log(amount)
+      const payment_method = "Card";
+      const verified = 1;
+      const today = new Date();
+      const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+
+      const month = monthNames[today.getMonth()];
+
+
+      const query = "INSERT INTO payment (student_id, course_id, payment_method, amount, month, date_time, verified) VALUES  (?,?,?,?,?,now(),?);";
+
+      db.query(query, [student_id, course_id, payment_method,  amount, month, verified], (err, result) => {
+          if (err) throw err;
+          res.json(result.insertId)
+          console.log(result.insertId)
+          
+          });
+      
     } catch (error) {
       console.error("Error:", error);
       status = "failure";
+      res.json({ error, status });
     }
 
-    res.json({ error, status });
+   
   });
+
+
+
+
+  
 
   app.post("/paymentUpdate", (req, res) => {
     console.log(req.body)

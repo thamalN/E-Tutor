@@ -34,7 +34,7 @@ const CoursePayments = () => {
     };
 
     useEffect(() => {
-        doc.text('Total Payments Of The Month'+data.map((regData, i) => (regData.month)) , 14, 10);
+        doc.text('Total Monthly Revenue'+(new Date()).toLocaleString('default', { month: 'long' }) , 14, 10);
         doc.autoTable({ html: document.getElementById('reg_table') });
         // if (data.password.length !== 0) {
         //     if (data.password === data.confirmPassword) {
@@ -55,7 +55,7 @@ const CoursePayments = () => {
                 <div className="b2">
                     <ul>
                         <li className="reg_title">
-                            <h3>Total Payments Of The Month {data.map((regData, i) => (regData.month))}</h3>
+                            <h3>Total Monthly Revenue For {(new Date()).toLocaleString('default', { month: 'long' })}</h3>
                         </li>
                         <li>
                             <table className="table" id="reg_table">
@@ -83,7 +83,7 @@ const CoursePayments = () => {
                         </li>
                         <div>
                             <Link to="/adminHome/reports"><button >Back</button></Link>
-                            <button onClick={(e) => { handleClick(e); doc.save('All Teachers.pdf') }}>Download pdf</button>
+                            <button onClick={(e) => { handleClick(e); doc.save('Total Monthly Revenue') }}>Download pdf</button>
                         </div>
                     </ul>
                 </div>

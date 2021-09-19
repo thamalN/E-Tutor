@@ -64,11 +64,11 @@ const RejectedPayments = () => {
 
                 if (data.status === "verified") {
                     alert("Payment Verified Successfully!");
-                    history.push("/pendingReceipts");
+                    history.push("/payments/rejectedPayments");
                   } 
                   else if (data.status === "rejected") {
                     alert("Payment rejected!");
-                    history.push("/managePayments");
+                    history.push("/payments/rejectedPayments");
                   }
             }))
     }
@@ -139,7 +139,7 @@ const RejectedPayments = () => {
                 </div>
 
                 <div className="reg_buttons">
-                    <Link className="linkbutton" to="/managePayments"><button>Back</button></Link>
+                    <Link className="linkbutton" to="/payments/studentPayments">Back to Student Payments</Link>
                 </div>
             </div>
         </div>

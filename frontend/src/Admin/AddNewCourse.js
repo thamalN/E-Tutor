@@ -54,7 +54,7 @@ const AddNewCourse = () => {
             .then(data => {
                 setId(data);
                 alert("Course Added Successfully!")
-                history.push("/adminHome/courses")
+                history.replace("/adminHome/courses")
             })
     }
 
@@ -64,7 +64,7 @@ const AddNewCourse = () => {
 
             {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
             <h1 className="h3 mb-3 fw-normal">Add new Course</h1>
-            <form onSubmit={handleSubmit} className="row g-3 authForm">
+            <form onSubmit={handleSubmit} className="row g-3">
 
 
                 <div className="col-md-6">
@@ -90,12 +90,12 @@ const AddNewCourse = () => {
                         onChange={(e) => setData({ ...data, year: e.target.value })}
                         required
                     >
-                        <option>Choose...</option>
-                        <option>2021 Ordinary Level</option>
-                        <option>2022 Ordinary Level</option>
-                        <option>2021 Advanced Level</option>
-                        <option>2022 Advanced Level</option>
-                        <option>2023 Advanced Level</option>
+                        <option value="">Choose...</option>
+                        <option>2021 O/Level</option>
+                        <option>2022 O/Level</option>
+                        <option>2021 A/Level</option>
+                        <option>2022 A/Level</option>
+                        <option>2023 A/Level</option>
                     </select>
                 </div>
 
@@ -109,7 +109,7 @@ const AddNewCourse = () => {
                         onChange={(e) => setData({ ...data, teacher: e.target.value })}
                         required
                     >
-                        <option>Choose...</option>
+                        <option value="">Choose...</option>
                         {teacherdata.map((teacherdt, i) => (
                                             <option>{teacherdt.teacher_id} {teacherdt.fname} {teacherdt.lname}</option>
                                         ))}
@@ -119,7 +119,7 @@ const AddNewCourse = () => {
 
                 <div className="col-12">
                     <label className="mt-2" htmlFor="description">Description</label>
-                    <input
+                    <textarea
                         type="text"
                         className="form-control"
                         id="description"

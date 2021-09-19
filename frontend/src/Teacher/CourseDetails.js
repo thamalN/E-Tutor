@@ -1,4 +1,4 @@
-import { createElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Chatroom from "../Chatroom";
 import Sidebar from "../Sidebar";
@@ -188,7 +188,7 @@ const CourseDetails = () => {
 
             heading.replaceWith(container);
 
-            const description = details.childNodes[4]
+            const description = details.childNodes[5]
 
             descriptionInput = document.createElement("textarea");
             descriptionInput.innerHTML = description.textContent;
@@ -272,15 +272,6 @@ const CourseDetails = () => {
 
     }
 
-    const deleteQuiz = (id) => {
-        if (window.confirm("Confirm Delete")) {
-            fetch("http://localhost:3001/teacherCourses/deleteQuiz/" + id)
-                .then((data) => {
-                    history.go(0)
-                })
-        }
-    }
-
     const handleDelete = (key) => {
         if (window.confirm("Are you sure you want to delete the course with course id " + key + "?")) {
             const id = { id: key }
@@ -299,26 +290,13 @@ const CourseDetails = () => {
                     if (data.status === "ok") {
                         setDelCourse(data)
                         alert("Course deleted Successfully!")
-                        history.push("/adminHome/courses/allCourses")
-
+                        history.replace("/adminHome/courses/allCourses")
                     }
                     else {
                         alert("Sorry the task couldn't be completed");
                         history.push("/adminHome/courses/allCourses")
-
                     }
-
                 }))
-        }
-    }
-
-
-    const deleteDiscussion = (id) => {
-        if (window.confirm("Confirm Delete")) {
-            fetch("http://localhost:3001/teacherCourses/deleteDiscussion/" + id)
-                .then((data) => {
-                    history.go(0)
-                })
         }
     }
 
@@ -417,12 +395,12 @@ const CourseDetails = () => {
                                             <li key={value.quiz_id}>{value.quiz_name}</li>
                                         </ul>
                                     </Link>
-                                    <Link to={window.location.pathname.replace(id, "quiz/" + value.quiz_id + "/edit")} className="edit-quiz">
+                                    {/* <Link to={window.location.pathname.replace(id, "quiz/" + value.quiz_id + "/edit")} className="edit-quiz">
                                         <EditIcon style={{ color: "green" }} />
-                                    </Link>
-                                    <Link to="#" onClick={() => deleteQuiz(value.quiz_id)} className="delete-quiz">
+                                    </Link> */}
+                                    {/* <Link to="#" onClick={() => deleteQuiz(value.quiz_id)} className="delete-quiz">
                                         <DeleteIcon style={{ color: "red" }} />
-                                    </Link>
+                                    </Link> */}
                                 </div>
                             ))}
 
@@ -449,16 +427,12 @@ const CourseDetails = () => {
                                         </ul>
                                     </Link>
                                     <span>
-                                        <sub>by </sub>
+                                        <small>by </small>
                                         <b>{value.post_fname} {value.post_lname}</b>
-                                        <sub> on </sub>
+                                        <small> on </small>
                                         <i>{value.post_datetime.slice(0, 16).replace(' ', ', ')}</i>
                                     </span>
 
-                                    <EditIcon style={{ color: "green" }} />
-                                    {/* <Link to="#" onClick={() => deleteDiscussion(value.discussion_id)}> */}
-                                    <DeleteIcon style={{ color: "red" }} />
-                                    {/* </Link> */}
                                 </div>
                             ))}
 

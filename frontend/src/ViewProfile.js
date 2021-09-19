@@ -26,8 +26,6 @@ const ViewProfile = () => {
             })
     }, [url])
 
-    console.log(data)
-
     return (
         <div>
             <Sidebar />
@@ -170,7 +168,7 @@ const ViewProfile = () => {
                         </div>
 
                         {data.user_flag === 1 && (
-                            <div>
+                            <>
                                 <div className="col-md-6">
                                     <label className="mt-2" htmlFor="nic" >NIC</label>
                                     <input
@@ -192,11 +190,11 @@ const ViewProfile = () => {
                                         disabled
                                     />
                                 </div>
-                            </div>
+                            </>
                         )}
 
                         {data.user_flag === 2 && (
-                            <div>
+                            <>
                                 <div className="col-md-6">
                                     <label className="mt-2" htmlFor="nic" >NIC</label>
                                     <input
@@ -218,7 +216,7 @@ const ViewProfile = () => {
                                         disabled
                                     />
                                 </div>
-                            </div>
+                            </>
                         )}
 
                         {data.user_flag == 3 && (
@@ -270,8 +268,8 @@ const ViewProfile = () => {
                         )}
 
                         {data.user_flag === 4 && (
-                            <div>
-                                <div className="col-md-8">
+                            <>
+                                <div className="col-md-12">
                                     <label className="mt-2" htmlFor="school" >School</label>
                                     <input
                                         type="text"
@@ -282,7 +280,7 @@ const ViewProfile = () => {
                                     />
                                 </div>
 
-                                <div className="col-md-4">
+                                <div className="col-md-6">
                                     <label className="mt-2" htmlFor="grade" >Grade</label>
                                     <input
                                         type="text"
@@ -293,7 +291,7 @@ const ViewProfile = () => {
                                     />
                                 </div>
 
-                                <div className="col-12">
+                                <div className="col-6">
                                     <label htmlFor="guardianContact" className="mt-2">Guardian's Contact</label>
                                     <input
                                         type="text"
@@ -303,7 +301,7 @@ const ViewProfile = () => {
                                         disabled
                                     />
                                 </div>
-                            </div>
+                            </>
                         )}
 
                         <div className="col-md-6">
@@ -323,6 +321,7 @@ const ViewProfile = () => {
                                 <input type="button" className="btn btn-dark add-btn" value="Edit Details" />
                             </Link>
                         </div>
+
 
                     </form>
                 </div>

@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-main{
+/* main{
     background-color: #E5E5E5;
-}
+} */
 
 h6 {
     display: inline-block;
@@ -273,6 +273,18 @@ div .counters-list-titles td {
 .courses-list li h4{
     padding-top: 20px;
     font-weight: 600;
+}
+
+.banner .about{
+    text-align: center;
+    padding: 20vh 0;
+    white-space: nowrap;
+}
+
+.banner .contact{
+    text-align: center;
+    padding: 5vh 0;
+    white-space: nowrap;
 }
 
 .quote{

@@ -1,15 +1,10 @@
 import Sidebar from "../Sidebar";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { Link, Route } from 'react-router-dom';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 const PreviousFeedback = () => {
 
     const [data, setData] = useState([])
-    const [del, setDel] = useState([])
-    const history = useHistory()
 
     const user = JSON.parse(localStorage.getItem('user'))
 
@@ -25,13 +20,6 @@ const PreviousFeedback = () => {
                 console.log(data)
             }))
     }, [])
-
-    //     const handleEdit = (feedback) =>{
-    //         console.log(feedback.attachment)
-    //         localStorage.setItem('announce', JSON.stringify(announcement))
-    //         history.push("/studentHome/editFeedback")
-
-    // }
 
     return (
         <div>
