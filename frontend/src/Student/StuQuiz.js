@@ -3,7 +3,7 @@ import Sidebar from "../Sidebar";
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from "react-router-dom";
 
-const StuQuiz = () => {
+const  StuQuiz = () => {
 
     let { id } = useParams()
     //id = id - 1
