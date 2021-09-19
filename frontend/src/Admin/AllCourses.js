@@ -55,10 +55,12 @@ const AllCourses = () => {
                                 <div className="card-container">
                                 <div className="card-info">
                                 <h1>{course.course_name} {course.year}</h1>
+                                <h3>By {course.fname} {course.lname}</h3>
                                     <p>{course.description}</p>
                                     <h3>RS. {course.price}</h3>
                                     
                                 </div>
+                                <img className="course_icon" src={course.image} alt="physics_icon"/>
                                 </div>
                             {/* </Link> */}
                         </div>

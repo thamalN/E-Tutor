@@ -486,19 +486,20 @@ module.exports = function (app, db, upload, fs) {
         res.send("ok")
     })
 
-    app.post("/addNewCourse", (req, res) => {
+    app.post("/addNewCourse", upload.single('file'), (req, res) => {
         console.log(req.body.teacher);
         const course_name = req.body.course_name;
-        const user_id = req.body.user_id;
-        const teacher = parseInt(req.body.teacher);
-        const year = req.body.year;
+        const user_id = parseInt(req.body.user_id);
+        const teacher = parseInt(req.body.teacher_id);
+        const year = req.body.course_year;
         const description = req.body.description;
         const price = req.body.price;
+        const content_path = "http://127.0.0.1:8887/" + req.file.path;
         console.log(teacher);
 
-        const query = "INSERT INTO course (course_name, added_by, teacher_id, year, description, price) VALUES (?,?,?,?,?,?);";
+        const query = "INSERT INTO course (course_name, added_by, teacher_id, year, description, price, image) VALUES (?,?,?,?,?,?,?);";
 
-        db.query(query, [course_name, user_id, teacher, year, description, price], (err, result) => {
+        db.query(query, [course_name, user_id, teacher, year, description, price, content_path], (err, result) => {
             if (err) throw err;
             res.json(result)
             console.log(result.insertId)
