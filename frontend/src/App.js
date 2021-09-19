@@ -119,6 +119,10 @@ function App() {
               <SignUp />
             </Route>
 
+            <Route exact path="/termsAndConditions">
+              <TermsAndConditions />
+            </Route>
+
             <Route exact path="/viewProfile/">
               <ViewProfile />
             </Route>
@@ -223,6 +227,14 @@ function App() {
               <CoursePayments/>
             </Route>
 
+            <Route exact path="/adminHome/reports/unassignedTeachers">
+              <UnassignedTeachers />
+            </Route>
+
+            <Route exact path="/adminHome/reports/unenrolledCourses">
+              <UnenrolledCourses />
+            </Route>
+
             <Route exact path="/supportingStaffHome/dashboard">
               <SupportingStaffHome setLoggedIn = { setLoggedIn }/>
             </Route>
@@ -263,164 +275,21 @@ function App() {
               <StaffAllCourses/>
             </Route>
 
-            <Route exact path="/managePayments">
+            <Route exact path="/payments/studentPayments">
               <ManagePayments />
             </Route>
 
-            <Route exact path="/pendingReceipts">
-              <PendingReceipts />
-            </Route>
-
-            <Route exact path="/verifiedPayments">
-              <VerifiedPayments />
-            </Route>
-
-            <Route exact path="/rejectedPayments">
-              <RejectedPayments />
-              </Route>
-              
-            <Route exact path="/teacher/teacherHome">
-              <TeacherHome setLoggedIn = { setLoggedIn }/>
-            </Route>
-
-            <Route exact path="/teacher/courses">
-              <Courses />
-            </Route>
-
-            <Route exact path="/teacher/courses/:id">
-              <CourseDetails />
-            </Route>
-
-            <Route exact path="/teacher/addContent">
-              <AddContent />
-            </Route>
-
-            <Route exact path="/teacher/editContent">
-              <EditContent />
-            </Route>
-
-            <Route exact path="/teacher/addQuiz">
-              <AddQuiz />
-            </Route>
-
-            <Route exact path="/teacher/courses/quiz/:id">
-              <TeacherQuiz />
-            </Route>
-            
-            <Route exact path="/teacher/courses/quiz/:id/edit">
-              <TeacherQuizEdit />
-            </Route>
-
-            <Route exact path="/teacher/addDiscussion">
-              <AddDiscussion />
-            </Route>
-
-            <Route exact path="/teacher/courses/discussion/:id">
-              <Discussion />
-            </Route>
-
-            <Route exact path="/teacher/meeting">
-              <Meeting />
-            </Route>
-
-            <Route exact path="/teacher/students">
-              <Students />
-            </Route>
-
-            <Route exact path="/teacher/announcements">
-              <TeacherAnnonucements />
-            </Route>
-
-            <Route exact path="/teacher/announcements/createAnnouncement">
-              <CreateTeacherAnnouncement />
-            </Route>
-
-            <Route exact path="/teacher/announcements/viewTeacherAnnouncements">
-              <ViewTeacherAnnouncements />
-            </Route>
-
-            <Route exact path="/teacher/announcements/editAnnouncement">
-              <EditTeacherAnnouncement />
-            </Route>
-
-            <Route exact path="/teacher/feedback">
-              <TeacherFeedback/>
-            </Route>
-
-            <Route exact path="/studentHome">
-              <StudentHome setLoggedIn = { setLoggedIn }/>
-            </Route>
-
-
-            <Route exact path="/studentHome/viewCourses">
-              <ViewCourses />
-            </Route>
-
-            <Route exact path="/studentHome/myCourses">
-              <MyCourses />
-            </Route>
-
-            <Route exact path="/studentHome/myCourses/:id">
-              <MyCourseDetails />
-            </Route>
-
-            <Route exact path="/studentHome/notifications">
-              <StudentNotification/>
-            </Route>
-
-            <Route exact path="/studentHome/payments">
-              <StudentPayment/>
-            </Route>
-
-            <Route exact path="/studentHome/payments/payslip">
-            <StudentPayslip/>
-            </Route>
-
-            <Route exact path="/studentHome/StudentAddAssigment">
-            <StudentAddAssigment/>
-            </Route>
-
-            <Route exact path="/studentHome/StudentAddAssigment">
-            <StudentAddAssigment/>
-            </Route>
- 
-            <Route exact path="/studentHome/StuQuiz/:id">
-            <StuQuiz/>
-            </Route>
-            
-            <Route exact path="/studentHome/payments/payOnline">
-            <PayCourses/>
-            </Route>
-
-            <Route exact path="/studentHome/StudentDetails/:id">
-              <StudentDetails/>
-            </Route>
-
-            <Route exact path="/studentHome/StuFeedback">
-              <StuFeedback/>
-            </Route>
-
-
-            <Route exact path="/studentHome/PreviousFeedback">
-              <PreviousFeedback/>
-            </Route>
-
-            <Route exact path="/studentHome/CreateStuFeedback">
-            <CreateStuFeedback/>
-          </Route>
-
-          
-          <Route exact path="/payments/pendingReceipts">
+            <Route exact path="/payments/pendingReceipts">
             <PendingReceipts />
-          </Route>
+            </Route>
 
-          <Route exact path="/payments/verifiedPayments">
+            <Route exact path="/payments/verifiedPayments">
             <VerifiedPayments />
-          </Route>
+            </Route>
 
-          <Route exact path="/payments/rejectedPayments">
+            <Route exact path="/payments/rejectedPayments">
             <RejectedPayments />
-          </Route>
+            </Route>
 
           <Route exact path="/teacher/teacherHome">
             <TeacherHome setLoggedIn={setLoggedIn} />
@@ -532,6 +401,10 @@ function App() {
 
           <Route exact path="/studentHome/StudentAddAssigment">
             <StudentAddAssigment />
+          </Route>
+
+          <Route exact path="/studentHome/StuQuiz/:id">
+            <StuQuiz/>
           </Route>
 
           <Route exact path="/studentHome/payments/payOnline">
