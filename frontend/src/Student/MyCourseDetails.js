@@ -13,6 +13,7 @@ const MyCourseDetails = () => {
   const [quiz, setQuiz] = useState([])
 
   const user = JSON.parse(localStorage.getItem("user"));
+  const ncourses = JSON.parse(localStorage.getItem("course"));
 
   const url = "http://localhost:3001/studentCourses/" + id;
 
@@ -51,6 +52,19 @@ const MyCourseDetails = () => {
       //console.log(quiz)
       localStorage.setItem('quiz', JSON.stringify(quiz))
       var quizDetails = [...new Map(quiz.map(item => [item['quiz_id'], item])).values()];
+  }
+
+  const message=(quiz_id)=>{
+    var x=window.confirm("You are going to attempt quiz.Are you sure?");
+    if (x==true){
+         window.location= `/studentHome/StuQuiz/${quiz_id}`;
+    }
+    if(x==false){
+      window.location=`/studentHome/myCourses/` +id;
+    
+    }
+            
+      
   }
 
   const discussionUrl = "http://localhost:3001/teacherCourses/discussion/" + id
@@ -124,10 +138,12 @@ const MyCourseDetails = () => {
 
           <div className="quiz">
               {quizDetails.map((value, key) => (
-                  <div className="content-name" key={key}>
-                      <Link to={`/studentHome/StuQuiz/${value.quiz_id}`} className="name-sub">
+                  <div className="content-name" key={key} onClick={()=>message(value.quiz_id)}>
+                      <Link to={`/studentHome/myCourses/`+id} className="name-sub">
+                      
                           <ul>
                               <li key={value.quiz_id}>{value.quiz_name}</li>
+
                           </ul>
                       </Link>
                      
