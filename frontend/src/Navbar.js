@@ -56,7 +56,8 @@ const Navbar = (props) => {
                 <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <Link className="nav-link " to="/#home">Home</Link>
+                        <HashLink className="nav-link" to="/#home">Home</HashLink>
+                            {/* <Link className="nav-link " to="/#home">Home</Link> */}
                         </li>
                         <li className="nav-item">
                             <HashLink className="nav-link" to="/#about">About</HashLink>

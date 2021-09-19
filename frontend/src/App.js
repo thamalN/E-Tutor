@@ -103,193 +103,193 @@ function App() {
 
   return (
     <BrowserRouter>
-        <Navbar loggedIn = { loggedIn } setLoggedIn = { setLoggedIn }/>
+      <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 
-        <div className="content">
-          <Switch> 
-            <Route exact path="/">
-              <HomeNew />
-            </Route>
+      <div className="content">
+        <Switch>
+          <Route exact path="/">
+            <HomeNew />
+          </Route>
 
-            <Route exact path="/signIn">
-              <SignIn setLoggedIn = { setLoggedIn }/>
-            </Route>
+          <Route exact path="/signIn">
+            <SignIn setLoggedIn={setLoggedIn} />
+          </Route>
 
-            <Route exact path="/signUp">
-              <SignUp />
-            </Route>
+          <Route exact path="/signUp">
+            <SignUp />
+          </Route>
 
-            <Route exact path="/termsAndConditions">
-              <TermsAndConditions />
-            </Route>
+          <Route exact path="/termsAndConditions">
+            <TermsAndConditions />
+          </Route>
 
-            <Route exact path="/viewProfile/">
-              <ViewProfile />
-            </Route>
+          <Route exact path="/viewProfile/">
+            <ViewProfile />
+          </Route>
 
-            <Route exact path="/editProfile/">
-              <EditProfile />
-            </Route>
+          <Route exact path="/editProfile/">
+            <EditProfile />
+          </Route>
 
-            <Route exact path="/adminHome/dashboard">
-              <AdminHome setLoggedIn = { setLoggedIn }/>
-            </Route>
+          <Route exact path="/adminHome/dashboard">
+            <AdminHome setLoggedIn={setLoggedIn} />
+          </Route>
 
-            <Route exact path="/adminHome/createTeacherAcc">
-              <CreateTeacherAcc />
-            </Route>
+          <Route exact path="/adminHome/createTeacherAcc">
+            <CreateTeacherAcc />
+          </Route>
 
-            <Route exact path="/adminHome/createSupStaffAcc">
-              <CreateSupStaffAcc />
-            </Route>
+          <Route exact path="/adminHome/createSupStaffAcc">
+            <CreateSupStaffAcc />
+          </Route>
 
-            <Route exact path="/adminHome/createAnnouncement">
-              <CreateAnnouncement />
-            </Route>
+          <Route exact path="/adminHome/createAnnouncement">
+            <CreateAnnouncement />
+          </Route>
 
-            <Route exact path="/adminHome/registrations">
-              <Registrations />
-            </Route>
-            
-            <Route exact path="/adminHome/courses">
-              <AdCourses />
-            </Route>
+          <Route exact path="/adminHome/registrations">
+            <Registrations />
+          </Route>
 
-            <Route exact path="/adminHome/courses/allCourses">
-              <AllCourses />
-            </Route>
+          <Route exact path="/adminHome/courses">
+            <AdCourses />
+          </Route>
 
-            <Route exact path="/adminHome/courses/addNewCourse">
-              <AddNewCourse />
-            </Route>
+          <Route exact path="/adminHome/courses/allCourses">
+            <AllCourses />
+          </Route>
 
-            <Route exact path="/adminHome/userAccounts">
-              <UserAccounts />
-            </Route>
+          <Route exact path="/adminHome/courses/addNewCourse">
+            <AddNewCourse />
+          </Route>
 
-            <Route exact path="/adminHome/payments">
-              <Payments/>
-            </Route>
+          <Route exact path="/adminHome/userAccounts">
+            <UserAccounts />
+          </Route>
 
-            <Route exact path="/adminHome/payments/teacherPayments">
-              <TeacherPayments/>
-            </Route>
+          <Route exact path="/adminHome/payments">
+            <Payments />
+          </Route>
 
-            <Route exact path="/adminHome/payments/teacherPayments/detailedTeacherPayments">
-              <DetailedTeacherPayments />
-            </Route>
+          <Route exact path="/adminHome/payments/teacherPayments">
+            <TeacherPayments />
+          </Route>
 
-            <Route exact path="/adminHome/announcements">
-              <Announcements/>
-            </Route>
+          <Route exact path="/adminHome/payments/teacherPayments/detailedTeacherPayments">
+            <DetailedTeacherPayments />
+          </Route>
 
-            <Route exact path="/adminHome/registrations/recentRegistrations">
-              <RecentRegistrations/>
-            </Route>
+          <Route exact path="/adminHome/announcements">
+            <Announcements />
+          </Route>
 
-            <Route exact path="/adminHome/announcements/viewPreviousAnnouncements">
-              <ViewPreviousAnnouncements/>
-            </Route>
+          <Route exact path="/adminHome/registrations/recentRegistrations">
+            <RecentRegistrations />
+          </Route>
 
-            <Route exact path="/adminHome/announcements/editAnnouncement">
-              <EditAnnouncement/>
-            </Route>
+          <Route exact path="/adminHome/announcements/viewPreviousAnnouncements">
+            <ViewPreviousAnnouncements />
+          </Route>
 
-            <Route exact path="/adminHome/viewFeedback">
-              <Feedback/>
-            </Route>
+          <Route exact path="/adminHome/announcements/editAnnouncement">
+            <EditAnnouncement />
+          </Route>
 
-            <Route exact path="/adminHome/feedback/reply/:feedback_id">
-              <FeedbackReply/>
-            </Route>
-            
-            <Route exact path="/adminHome/reports">
-              <Reports/>
-            </Route>
+          <Route exact path="/adminHome/viewFeedback">
+            <Feedback />
+          </Route>
 
-            <Route exact path="/adminHome/reports/allStudents">
-              <AllStudents/>
-            </Route>
+          <Route exact path="/adminHome/feedback/reply/:feedback_id">
+            <FeedbackReply />
+          </Route>
 
-            <Route exact path="/adminHome/reports/allTeachers">
-              <AllTeachers/>
-            </Route>
+          <Route exact path="/adminHome/reports">
+            <Reports />
+          </Route>
 
-            <Route exact path="/adminHome/reports/allStaff">
-              <AllStaff/>
-            </Route>
+          <Route exact path="/adminHome/reports/allStudents">
+            <AllStudents />
+          </Route>
 
-            <Route exact path="/adminHome/reports/allCoursesList">
-              <AllCoursesList/>
-            </Route>
+          <Route exact path="/adminHome/reports/allTeachers">
+            <AllTeachers />
+          </Route>
 
-            <Route exact path="/adminHome/reports/coursePayments">
-              <CoursePayments/>
-            </Route>
+          <Route exact path="/adminHome/reports/allStaff">
+            <AllStaff />
+          </Route>
 
-            <Route exact path="/adminHome/reports/unassignedTeachers">
-              <UnassignedTeachers />
-            </Route>
+          <Route exact path="/adminHome/reports/allCoursesList">
+            <AllCoursesList />
+          </Route>
 
-            <Route exact path="/adminHome/reports/unenrolledCourses">
-              <UnenrolledCourses />
-            </Route>
+          <Route exact path="/adminHome/reports/coursePayments">
+            <CoursePayments />
+          </Route>
 
-            <Route exact path="/supportingStaffHome/dashboard">
-              <SupportingStaffHome setLoggedIn = { setLoggedIn }/>
-            </Route>
+          <Route exact path="/adminHome/reports/unassignedTeachers">
+            <UnassignedTeachers />
+          </Route>
 
-            <Route exact path="/supportingStaffHome/registrations">
-              <StudentRegistrations/>
-            </Route>
+          <Route exact path="/adminHome/reports/unenrolledCourses">
+            <UnenrolledCourses />
+          </Route>
 
-            <Route exact path="/supportingStaffHome/studentAccounts">
-              <StudentAccounts />
-            </Route>
-            
-            <Route exact path="/supportingStaffHome/searchToUpdate">
-              <SearchToUpdate />
-            </Route>
+          <Route exact path="/supportingStaffHome/dashboard">
+            <SupportingStaffHome setLoggedIn={setLoggedIn} />
+          </Route>
 
-            <Route exact path="/supportingStaffHome/registrations/recentStaffRegistrations">
-              <RecentStaffRegistrations/>
-            </Route>
+          <Route exact path="/supportingStaffHome/registrations">
+            <StudentRegistrations />
+          </Route>
 
-            <Route exact path="/supportingStaffHome/ManagePayments">
-              <StaffManagePayments/>
-            </Route>
+          <Route exact path="/supportingStaffHome/studentAccounts">
+            <StudentAccounts />
+          </Route>
 
-            <Route exact path="/supportingStaffHome/reports">
-              <StaffReports/>
-            </Route>
+          <Route exact path="/supportingStaffHome/searchStudents">
+            <Students />
+          </Route>
 
-            <Route exact path="/supportingStaffHome/reports/allStudents">
-              <StaffAllStudents/>
-            </Route>
+          <Route exact path="/supportingStaffHome/registrations/recentStaffRegistrations">
+            <RecentStaffRegistrations />
+          </Route>
 
-            <Route exact path="/supportingStaffHome/reports/allTeachers">
-              <StaffAllTeachers/>
-            </Route>
+          <Route exact path="/supportingStaffHome/ManagePayments">
+            <StaffManagePayments />
+          </Route>
 
-            <Route exact path="/supportingStaffHome/reports/allCoursesList">
-              <StaffAllCourses/>
-            </Route>
+          <Route exact path="/supportingStaffHome/reports">
+            <StaffReports />
+          </Route>
 
-            <Route exact path="/payments/studentPayments">
-              <ManagePayments />
-            </Route>
+          <Route exact path="/supportingStaffHome/reports/allStudents">
+            <StaffAllStudents />
+          </Route>
 
-            <Route exact path="/payments/pendingReceipts">
+          <Route exact path="/supportingStaffHome/reports/allTeachers">
+            <StaffAllTeachers />
+          </Route>
+
+          <Route exact path="/supportingStaffHome/reports/allCoursesList">
+            <StaffAllCourses />
+          </Route>
+
+          <Route exact path="/payments/studentPayments">
+            <ManagePayments />
+          </Route>
+
+          <Route exact path="/payments/pendingReceipts">
             <PendingReceipts />
-            </Route>
+          </Route>
 
-            <Route exact path="/payments/verifiedPayments">
+          <Route exact path="/payments/verifiedPayments">
             <VerifiedPayments />
-            </Route>
+          </Route>
 
-            <Route exact path="/payments/rejectedPayments">
+          <Route exact path="/payments/rejectedPayments">
             <RejectedPayments />
-            </Route>
+          </Route>
 
           <Route exact path="/teacher/teacherHome">
             <TeacherHome setLoggedIn={setLoggedIn} />
@@ -404,7 +404,7 @@ function App() {
           </Route>
 
           <Route exact path="/studentHome/StuQuiz/:id">
-            <StuQuiz/>
+            <StuQuiz />
           </Route>
 
           <Route exact path="/studentHome/payments/payOnline">
@@ -434,24 +434,24 @@ function App() {
               <StuQuiz />
             </Route> */}
 
-            <Route exact path="/studentHome/ViewStuCourses">
-              <ViewStuCourses/>
-            </Route>
+          <Route exact path="/studentHome/ViewStuCourses">
+            <ViewStuCourses />
+          </Route>
 
-            <Route exact path="/studentHome/StuDiscussion/:id">
-              <StuDiscussion/>
-            </Route>
-
-          
+          <Route exact path="/studentHome/StuDiscussion/:id">
+            <StuDiscussion />
+          </Route>
 
 
-            {/* <Route exact path="/student/StuaddQuiz">
+
+
+          {/* <Route exact path="/student/StuaddQuiz">
             <StuAddQuiz />
           </Route> */}
-            
-          </Switch>
-        </div>
-        {/* <Footer/> */}
+
+        </Switch>
+      </div>
+      {/* <Footer/> */}
     </BrowserRouter>
   );
 }
