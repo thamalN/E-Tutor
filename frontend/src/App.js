@@ -90,6 +90,12 @@ import SupportingStaffHome from './SupportingStaff/SupportingStaffHome';
 import StudentRegistrations from './SupportingStaff/StudentRegistrations';
 import StudentAccounts from './SupportingStaff/StudentAccounts';
 import SearchToUpdate from './SupportingStaff/SearchToUpdate';
+import UnassignedTeachers from './Admin/UnassignedTeachers';
+import UnenrolledCourses from './Admin/UnenrolledCourses';
+import TermsAndConditions from './TermsAndConditions';
+import ViewUser from './ViewUser';
+import MyStudents from './Teacher/MyStudents';
+import UpcomingQuiz from './Teacher/UpcomingQuiz';
 
 function App() {
 
@@ -403,9 +409,155 @@ function App() {
             <CreateStuFeedback/>
           </Route>
 
-            
+          
+          <Route exact path="/payments/pendingReceipts">
+            <PendingReceipts />
+          </Route>
 
-            {/* <Route exact path="/Student/StuQuiz">
+          <Route exact path="/payments/verifiedPayments">
+            <VerifiedPayments />
+          </Route>
+
+          <Route exact path="/payments/rejectedPayments">
+            <RejectedPayments />
+          </Route>
+
+          <Route exact path="/teacher/teacherHome">
+            <TeacherHome setLoggedIn={setLoggedIn} />
+          </Route>
+
+          <Route exact path="/teacher/courses">
+            <Courses />
+          </Route>
+
+          <Route exact path="/teacher/courses/:id">
+            <CourseDetails />
+          </Route>
+
+          <Route exact path="/teacher/addContent">
+            <AddContent />
+          </Route>
+
+          <Route exact path="/teacher/editContent">
+            <EditContent />
+          </Route>
+
+          <Route exact path="/teacher/addQuiz">
+            <AddQuiz />
+          </Route>
+
+          <Route exact path="/teacher/courses/quiz/:id">
+            <TeacherQuiz />
+          </Route>
+
+          <Route exact path="/teacher/courses/quiz/:id/edit">
+            <TeacherQuizEdit />
+          </Route>
+
+          <Route exact path="/teacher/addDiscussion">
+            <AddDiscussion />
+          </Route>
+
+          <Route exact path="/teacher/courses/discussion/:id">
+            <Discussion />
+          </Route>
+
+          <Route exact path="/teacher/meeting">
+            <Meeting />
+          </Route>
+
+          <Route exact path="/teacher/students">
+            <Students />
+          </Route>
+
+          <Route exact path="/teacher/myStudents">
+            <MyStudents />
+          </Route>
+
+          <Route exact path="/teacher/upcomingQuizzes">
+            <UpcomingQuiz />
+          </Route>
+
+          <Route exact path="/teacher/announcements">
+            <TeacherAnnonucements />
+          </Route>
+
+          <Route exact path="/teacher/announcements/createAnnouncement">
+            <CreateTeacherAnnouncement />
+          </Route>
+
+          <Route exact path="/teacher/announcements/viewTeacherAnnouncements">
+            <ViewTeacherAnnouncements />
+          </Route>
+
+          <Route exact path="/teacher/announcements/editAnnouncement">
+            <EditTeacherAnnouncement />
+          </Route>
+
+          <Route exact path="/teacher/feedback">
+            <TeacherFeedback />
+          </Route>
+
+          <Route exact path="/studentHome">
+            <StudentHome setLoggedIn={setLoggedIn} />
+          </Route>
+
+          <Route exact path="/studentHome/viewCourses">
+            <ViewCourses />
+          </Route>
+
+          <Route exact path="/studentHome/myCourses">
+            <MyCourses />
+          </Route>
+
+          <Route exact path="/studentHome/myCourses/:id">
+            <MyCourseDetails />
+          </Route>
+
+          <Route exact path="/studentHome/notifications">
+            <StudentNotification />
+          </Route>
+
+          <Route exact path="/studentHome/payments">
+            <StudentPayment />
+          </Route>
+
+          <Route exact path="/studentHome/payments/payslip">
+            <StudentPayslip />
+          </Route>
+
+          <Route exact path="/studentHome/StudentAddAssigment">
+            <StudentAddAssigment />
+          </Route>
+
+          <Route exact path="/studentHome/StudentAddAssigment">
+            <StudentAddAssigment />
+          </Route>
+
+          <Route exact path="/studentHome/payments/payOnline">
+            <PayCourses />
+          </Route>
+
+          <Route exact path="/studentHome/StudentDetails/:id">
+            <StudentDetails />
+          </Route>
+
+          <Route exact path="/studentHome/StuFeedback">
+            <StuFeedback />
+          </Route>
+
+
+          <Route exact path="/studentHome/PreviousFeedback">
+            <PreviousFeedback />
+          </Route>
+
+          <Route exact path="/studentHome/CreateStuFeedback">
+            <CreateStuFeedback />
+          </Route>
+
+
+
+          {/* <Route exact path="/Student/StuQuiz">
               <StuQuiz />
             </Route> */}
 

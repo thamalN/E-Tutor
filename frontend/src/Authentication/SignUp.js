@@ -246,7 +246,7 @@ const SignUp = () => {
 
             {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
             <h1 className="h3 mb-3 fw-normal">{heading}</h1>
-            <form onSubmit={handleSubmit} className="row g-3">
+            <form onSubmit={handleSubmit} className="row g-3 ">
 
 
                 <div className="col-md-6">
@@ -530,7 +530,7 @@ const SignUp = () => {
                     </div>
                 </div>
                 <div className="col-12 mt-4">
-                    <button id="button" type="submit" className="w-100 btn btn-lg btn-dark">
+                    <button id="button" type="submit" className="btn btn-lg btn-dark add-btn">
                         Create Account
                     </button>
                 </div>

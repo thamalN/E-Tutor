@@ -1,8 +1,8 @@
-import { useHistory, Link} from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import Card from "../Card";
-        
+
 const AdminHome = (props) => {
 
     const history = useHistory()
@@ -76,26 +76,23 @@ const AdminHome = (props) => {
 
     }, [url4])
 
-    return ( 
-        
+    return (
 
-<div>
+        <div>
 
-<Sidebar />
+            <Sidebar />
 
-<div className="homeContent">
+            <div className="homeContent">
 
-
-
-        <div className="wrapper">
-            <Link className="homeText" to="/adminHome/reports/allStudents" style={{ textDecoration: 'none' }}><Card title="Registered Students" description={studentCount} ></Card></Link>
-            <Link className="homeText" to="/adminHome/reports/unenrolledCourses" style={{ textDecoration: 'none' }}><Card title="Unenrolled Courses" description={unenrolledCourses}></Card></Link>
-            <Link className="homeText" to="/adminHome/reports/unassignedTeachers" style={{ textDecoration: 'none' }}><Card title="Unassigned Teachers" description={unassignedTeachers}></Card></Link>
-            <Link className="homeText" to="/payments/pendingReceipts" style={{ textDecoration: 'none' }}><Card title="Pending Receipts" description={receipts}></Card></Link>
+                <div className="wrapper">
+                    <Card title="Registered Students" description={studentCount} button="View" onclick={() => history.push("/adminHome/reports/allStudents")}></Card>
+                    <Card title="Unenrolled Courses" description={unenrolledCourses} button="View" onclick={() => history.push("/adminHome/reports/unenrolledCourses")}></Card>
+                    <Card title="Unassigned Teachers" description={unassignedTeachers} button="View" onclick={() => history.push("/adminHome/reports/unassignedTeachers")}></Card>
+                    <Card title="Pending Receipts" description={receipts} button="View" onclick={() => history.push("/payments/pendingReceipts")}></Card>
+                </div>
             </div>
-            </div>
-            </div>
-        );
+        </div>
+    );
 }
- 
+
 export default AdminHome;

@@ -390,7 +390,7 @@ const EditProfile = (props) => {
                         </div>
 
                         {data.user_flag === 1 && (
-                            <div>
+                            <>
                                 <div className="col-md-6">
                                     <label className="mt-2" htmlFor="nic" >NIC</label>
                                     <Valid fontSize="small" className="valid" id="nic-valid" style={{ display: "none" }} />
@@ -418,11 +418,11 @@ const EditProfile = (props) => {
                                         disabled
                                     />
                                 </div>
-                            </div>
+                            </>
                         )}
 
                         {data.user_flag === 2 && (
-                            <div>
+                            <>
                                 <div className="col-md-6">
                                     <label className="mt-2" htmlFor="nic" >NIC</label>
                                     <Valid fontSize="small" className="valid" id="nic-valid" style={{ display: "none" }} />
@@ -450,7 +450,7 @@ const EditProfile = (props) => {
                                         disabled
                                     />
                                 </div>
-                            </div>
+                            </>
                         )}
 
                         {data.user_flag == 3 && (
@@ -514,7 +514,7 @@ const EditProfile = (props) => {
                         )}
 
                         {data.user_flag === 4 && (
-                            <div>
+                            <>
                                 <div className="col-md-8">
                                     <label className="mt-2" htmlFor="school" >School</label>
                                     <Valid fontSize="small" className="valid" id="school-valid" style={{ display: "none" }} />
@@ -558,7 +558,7 @@ const EditProfile = (props) => {
                                         required
                                     />
                                 </div>
-                            </div>
+                            </>
                         )}
 
                         <div className="col-md-12">

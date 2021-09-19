@@ -74,10 +74,6 @@ const SignIn = (props) => {
                         required
                     />
 
-                    <label className="mt-2">
-                        <input type="checkbox" value="remember-me" className="checkbox mb-3" /> Remember me
-                    </label>
-
                     <button className="w-100 btn btn-lg btn-dark" type="submit" >Sign In</button>
                 </form>
 
