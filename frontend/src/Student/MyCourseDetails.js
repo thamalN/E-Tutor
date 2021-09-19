@@ -18,7 +18,7 @@ const MyCourseDetails = () => {
   const ncourses = JSON.parse(localStorage.getItem("course"));
   // const quizdel = JSON.parse(localStorage.getItem("quiz"));
 
-
+  // const quizss=localStorage.getItem('quiz');
   const quizss = JSON.parse(localStorage.getItem('quiz')).find((item) => item.quiz_id === parseInt(id))
 
   const url = "http://localhost:3001/studentCourses/" + id;
