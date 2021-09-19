@@ -1,4 +1,4 @@
-module.exports = function (app, db, stripe, uuid) {
+module.exports = function (app, db, stripe, uuid, upload) {
 
   app.get("/paymentStudent", (req, res) => {
     res.send("Add your Stripe Secret Key to the .require('stripe') statement!");
@@ -81,6 +81,43 @@ app.post("/allPayments", (req, res) => {
   })
 })
 
+app.post("/uploadPayslip", upload.single('file'), (req, res) => {
+  console.log(req.body)
+  console.log(req.file)
+  const student_id = req.body.student_id;
+  const course_id = req.body.course_id;
+  const amount = req.body.amount;
+  const payment_method = "Bank Slip";
+  const verified = 0;
+  const today = new Date();
+  
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+const month = monthNames[today.getMonth()];
+  let content_path;
+  
+  if(req.file !== undefined){
+      content_path = "http://127.0.0.1:8887/" + req.file.path;
+
+  }
+  else{
+      content_path = null
+  }
+  
+  // const query = "INSERT INTO announcement (user_id, topic, description, file_name, attachment, date_time, modified_at) VALUES  (?,?,?,?,?,now(),now());";
+  const query = "INSERT INTO payment (student_id, course_id, payment_method, date_time, amount, month, verified, payment_slip) VALUES  (?,?,?,now(),?,?,?,?);";
+
+
+  db.query(query, [student_id, course_id, payment_method, amount, month , verified, content_path], (err, result) => {
+      if (err) throw err;
+      res.json(result.insertId)
+      console.log(result.insertId)
+      
+      });
+  
+})
 
 
 

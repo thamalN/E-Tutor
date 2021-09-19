@@ -39,7 +39,9 @@ var upload = multer({
     && file.mimetype !== "application/vnd.openxmlformats-officedocument.spreadsheetml.presentation"
     && file.mimetype !== "application/pdf"
     && !file.mimetype.toString().includes("video/")
-    && !file.mimetype.toString().includes("audio/")) {
+    && !file.mimetype.toString().includes("audio/")
+    && !file.mimetype.toString().includes("image/")
+    ) {
       return cb(new Error("Unsupported file format"))
     }
     cb(null, true)
@@ -73,7 +75,7 @@ require('./APIs/Feedback')(app, db)
 require('./APIs/Payments')(app, db)
 require('./APIs/UserSearch')(app, db)
 require('./APIs/AdminHome')(app, db)
-require('./APIs/PaymentStudent')(app, db, stripe, uuid)
+require('./APIs/PaymentStudent')(app, db, stripe, uuid, upload)
 require('./APIs/TeacherHome')(app, db)
 require('./APIs/stuFeedback')(app,db)
 require('./APIs/StudentAnnouncement')(app,db)

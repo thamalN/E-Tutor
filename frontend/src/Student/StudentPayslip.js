@@ -2,18 +2,17 @@ import Sidebar from "../Sidebar"
 import payslip from '../Resources/paySlip.jpg';
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-
+import { useHistory } from "react-router";
 
 const StudentPayslip = () => {
 
-// const courseData = JSON.parse(localStorage.getItem('courseData'));
-// console.log(courseData.amount);
-/////////////////////////////////////
+const history = useHistory()
+
 const { id } = useParams();
-// const id = { id: user.user_id }
+
 const Id = { id: id }
 
-const [data, setData] = useState([]);
+const [myData, setmyData] = useState([]);
 
 const url = "http://localhost:3001/courseDetails";
 
@@ -26,66 +25,40 @@ useEffect(() => {fetch(url, {
             return res.json();
         })
         .then(data => {
-            setData(data[0])
-            console.log(data);
+            setmyData(data[0])
+            // console.log(myData.price);
         })
 
 }, [url])
 
-// console.log(data.price)
-
 const user = JSON.parse(localStorage.getItem('user'))
 const StudentId =  user.user_id;
-const [newData, setnewData] = useState(
-    {
-        student_id: StudentId,
-        course_id: Id.id,
-        payment_method: "Bank Slip",
-        date_time: "",
-        amount: data.price,
-        month: "",
-        verified: 0,
-        payment_slip: "Link"
-    })
-    console.log(newData.price)
-/////////////////////////////////////
-
-
-
 
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
-        // const url = "http://localhost:3001/teacherCourses/addContent"
+        const url = "http://localhost:3001/uploadPayslip"
 
-        // const formData = new FormData(document.getElementById("content-form"))
-        // formData.append("lesson_id", data.lesson_id)
-        // formData.append("course_id", data.course_id)
+        const formData = new FormData(document.getElementById("content-form"))
+        formData.append("student_id", StudentId)
+        formData.append("course_id", Id.id)
+        // formData.append("payment_method", "Bank Slip")
+        formData.append("amount",  myData.price)
+        // formData.append("verified",  0)
 
-        // fetch(url, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        //     .then((res) => {
-        //         return res.json()
-        //     })
-        //     .then((data => {
-        //         console.log(data)
-        //         history.push("/teacher/courses/" + courses[0].course_id)
-        //     }))
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then((res) => {
+                return res.json()
+            })
+            .then((data => {
+                console.log(data)
+                history.push("/studentHome/payments/newPayment")
+            }))
     }
 
-
-
-
-
-
-
-
-
-
-
-    
     return ( 
         <div>
         <Sidebar></Sidebar>
@@ -93,11 +66,12 @@ const [newData, setnewData] = useState(
             <div className="payform">
             <h2>Upload your payslip here</h2>
             <img src={payslip} alt="image" className ="image" width = "50%"/>
-            <form onSubmit={handleSubmit} action="#" className="form1">
+            <form onSubmit={handleSubmit} action="#" className="form1" id="content-form" >
 
-                <input type="file" name="filename" className="button1"/>
-
-                <input type="submit" className="button"/>
+                <input type="file" name="file" className="form-control " accept="image/*" />
+                {/* button1 */}
+                <input type="submit" className="btn btn-dark add-btn"/>
+                {/* button */}
             </form>
             </div>  
            

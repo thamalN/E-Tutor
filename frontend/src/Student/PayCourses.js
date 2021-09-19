@@ -3,9 +3,9 @@ import { Link } from "react-router-dom"
 import Sidebar from "../Sidebar"
 
 import React from "react";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
-import StripeCheckout from "react-stripe-checkout";
+// import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 // import Course from "../../../backend/APIs/Course";
 
@@ -15,45 +15,45 @@ const PayCourses = () => {
     // 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    async function handleToken(token, addresses) {
-        const response = await axios.post(
-            "http://localhost:3001/paymentStudent",
-            { token, product }
-        );
-        const { status } = response.data;
-        console.log("Response:", response.data);
-        if (status === "success") {
-            //   toast("Success! Check email for details", { type: "success" });
-            const url = "http://localhost:3001/paymentUpdate"
+    // async function handleToken(token, addresses) {
+    //     const response = await axios.post(
+    //         "http://localhost:3001/paymentStudent",
+    //         { token, product }
+    //     );
+    //     const { status } = response.data;
+    //     console.log("Response:", response.data);
+    //     if (status === "success") {
+    //         //   toast("Success! Check email for details", { type: "success" });
+    //         const url = "http://localhost:3001/paymentUpdate"
 
-            // useEffect(() => {
+    //         // useEffect(() => {
 
-            fetch(url, {
-                method: 'POST',
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(product)
-            })
-                .then(res => {
-                    return res.json();
-                })
-                .then(data => {
+    //         fetch(url, {
+    //             method: 'POST',
+    //             headers: { "Content-Type": "application/json" },
+    //             body: JSON.stringify(product)
+    //         })
+    //             .then(res => {
+    //                 return res.json();
+    //             })
+    //             .then(data => {
 
-                })
+    //             })
 
-            // }, [url])
-            console.log('success');
-        } else {
-            //   toast("Something went wrong", { type: "error" });
-        }
+    //         // }, [url])
+    //         console.log('success');
+    //     } else {
+    //         //   toast("Something went wrong", { type: "error" });
+    //     }
 
-        fetch("http://localhost:3001/paymentStudent", {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(token)
-        }).then((res => {
-            console.log(res)
-        }))
-    }
+    //     fetch("http://localhost:3001/paymentStudent", {
+    //         method: 'POST',
+    //         headers: { "Content-Type": "application/json" },
+    //         body: JSON.stringify(token)
+    //     }).then((res => {
+    //         console.log(res)
+    //     }))
+    // }
 
 
     const [data, setData] = useState([])
