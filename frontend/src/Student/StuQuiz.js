@@ -3,8 +3,12 @@ import Sidebar from "../Sidebar";
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from "react-router-dom";
 
-const  StuQuiz = () => {
+const timer=()=>{
+    console.log("alert");
+}
 
+
+const  StuQuiz = () => {
     let { id } = useParams()
     //id = id - 1
 
@@ -25,7 +29,7 @@ const  StuQuiz = () => {
 
     return (
         <div>
-            <Sidebar />
+            <Sidebar />   
             <div className="homeContent">
                 <div className="quiz-details">
                     <div className="quiz-header">
