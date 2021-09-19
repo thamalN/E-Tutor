@@ -128,7 +128,7 @@ const SupportingStaffHome = (props) => {
                                     <ul>
                                         <li><Link className="btn btn-outline-dark mt-4" to="/signUp">Register a Student</Link></li>
                                         <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/registrations/recentStaffRegistrations">Recent Registrations</Link></li>
-                                        <li><Link className="btn btn-outline-dark" to="/pendingReceipts">Pending Receipts</Link></li>
+                                        <li><Link className="btn btn-outline-dark" to="/payments/pendingReceipts">Pending Receipts</Link></li>
                                         <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/studentAccounts">Search Students</Link></li>
                                         {/* <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/reports">Create Reports</Link></li> */}
                                     </ul>

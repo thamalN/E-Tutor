@@ -276,15 +276,15 @@ div .counters-list-titles td {
 }
 
 .banner .about{
-    text-align: center;
-    padding: 20vh 0;
+    text-align: left;
+    margin-left: 20vw;
+    padding: 10vh 0;
+    padding-top: 0;
     white-space: nowrap;
 }
 
-.banner .contact{
-    text-align: center;
-    padding: 5vh 0;
-    white-space: nowrap;
+.banner .about h1{
+    margin-bottom: 5vh;
 }
 
 .quote{
@@ -307,4 +307,12 @@ div .counters-list-titles td {
     padding-bottom: 8%;
     display: block;
     margin: 0;
+}
+
+.banner .contact{
+    background-color: #16191b;
+    color: white;
+    text-align: center;
+    padding: 5vh 0;
+    white-space: nowrap;
 }
