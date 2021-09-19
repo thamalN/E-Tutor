@@ -31,7 +31,7 @@
   align-items: center;
   border: 2px solid black;
   border-radius: 10px;
-  transition: transform ease 0.5s;
+  transition: transform ease-in 0.3s;
   box-sizing: border-box;
   background-image: url(./card.jpg);
 }
@@ -42,7 +42,7 @@
 
 .card:hover {
  transform: scale(1.03); 
- cursor: pointer;
+ /* cursor: pointer; */
 }
 
 .card_title{

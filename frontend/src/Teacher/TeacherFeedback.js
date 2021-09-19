@@ -38,7 +38,7 @@ const CreateStuFeekback = () => {
 
                 <div className="form-signup">
 
-                    <h1 className="h3 mb-3 fw-normal">Add New Feedback</h1>
+                    <h1 className="h3 mb-3 fw-normal">Add Feedback</h1>
                     <form onSubmit={handleSubmit} className="row g-3" id="discussion-form">
 
                         <div className="col-12">

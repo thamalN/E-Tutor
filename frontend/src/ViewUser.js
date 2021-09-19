@@ -302,7 +302,7 @@ const ViewUser = () => {
                             </>
                         )}
 
-                        <div className="col-md-6">
+                        {/* <div className="col-md-6">
                             <label htmlFor="userName" className="mt-2">Username</label>
                             <span id="usern" style={{ "marginLeft": 50, fontSize: 12 }}></span>
                             <input
@@ -312,7 +312,7 @@ const ViewUser = () => {
                                 value={data.username}
                                 disabled
                             />
-                        </div>
+                        </div> */}
 
                     </form>
                 </div>

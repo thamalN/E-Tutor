@@ -488,8 +488,8 @@ font-weight: bold;
 
  .card-container img {
    flex: 30%;
-   height: auto;
-   width: 30%;
+   height:400px;
+   max-width: 200px;
    margin: 5px;
  } 
 
@@ -1087,7 +1087,7 @@ font-weight: bold;
 
 .discn-name a {
   text-decoration: none;
-  flex: 70%;
+  flex: 60%;
   color: #000000;
   font-style: italic;
 }
@@ -1276,7 +1276,7 @@ details summary::marker {
   align-items: center;
   border: 2px solid black;
   border-radius: 10px;
-  transition: transform ease 0.5s;
+  transition: transform ease-in 0.3s;
   box-sizing: border-box;
   background-image: url(./card.jpg);
 }
@@ -1287,7 +1287,6 @@ details summary::marker {
 
 .card:hover {
  transform: scale(1.03); 
- cursor: pointer;
 }
 
 .card_title{
@@ -1459,7 +1458,7 @@ color: #000000;
   border-radius: 10px;
   background: transparent;
   color: #000000;
-  transition: background 200ms ease-in, color 200ms ease-in;
+  transition: background 200ms ease-in, color 200ms ease-in, transform 0.3s ease-in;
   cursor: pointer;
   display: block;
   width: 50%;

@@ -51,7 +51,6 @@ const Courses = () => {
             <div className="homeContent">
                 <div className="courses">
                     {data.map((course,i) => (
-                        //<Link to={`/teacher/courses/${course.course_id}`} className="course-card-container" key={i}>
                             <div key={course.course_id} className="course-card" onClick={() => getCourse(course.course_id)}>
 
                                 <div className="card-container">
@@ -61,7 +60,7 @@ const Courses = () => {
                                         <h3>RS. {course.price}</h3>
                                     </div>
 
-                                    {/* <img className="course_icon" src={PhysicsIcon} alt="physics_icon" /> */}
+                                    <img className="course_icon" src={course.image} alt="physics_icon"/>
                                 </div>
 
                             </div>
