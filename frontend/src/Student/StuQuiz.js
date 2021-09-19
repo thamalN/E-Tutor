@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 const timer=()=>{
     console.log("alert");
 }
+
+
 const  StuQuiz = () => {
     let { id } = useParams()
     //id = id - 1

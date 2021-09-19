@@ -6,6 +6,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
+// let { id } = useParams()
+const quizss=JSON.parse(localStorage.getItem("quiz"));
 const MyCourseDetails = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
@@ -14,6 +16,10 @@ const MyCourseDetails = () => {
 
   const user = JSON.parse(localStorage.getItem("user"));
   const ncourses = JSON.parse(localStorage.getItem("course"));
+  // const quizdel = JSON.parse(localStorage.getItem("quiz"));
+
+
+  const quizss = JSON.parse(localStorage.getItem('quiz')).find((item) => item.quiz_id === parseInt(id))
 
   const url = "http://localhost:3001/studentCourses/" + id;
 
@@ -49,21 +55,34 @@ const MyCourseDetails = () => {
   }, [quizUrl])
 
   if (quiz) {
-      //console.log(quiz)
+      // console.log()
       localStorage.setItem('quiz', JSON.stringify(quiz))
       var quizDetails = [...new Map(quiz.map(item => [item['quiz_id'], item])).values()];
   }
 
   const message=(quiz_id)=>{
-    var x=window.confirm("You are going to attempt quiz.Are you sure?");
-    if (x==true){
+    // console.log()
+    // if(quizss)
+    var max_attempt=quizss.max_attempts;
+    var ur_attempts=quizss.no_of_attempts;
+    if(max_attempt===ur_attempts){
+      var y=window.alert("you have used max attempts ");
+      
+    }else{
+    // console.log(quizdel.max_attempts);
+    var x=window.confirm("You are going to attempt quiz.Are you sure?\n current attempts:-"+quizss.no_of_attempts +"\n max attempts:-"+quizss.max_attempts);
+    if (x==true){   
+        var newattempts=parseInt(localStorage.getItem("quizss.no_of_attempts"))+1;
+        localStorage.setItem("quizss.no_of_attempts",newattempts);
+        // ur_attempts=ur_attempts+1;
          window.location= `/studentHome/StuQuiz/${quiz_id}`;
     }
     if(x==false){
       window.location=`/studentHome/myCourses/` +id;
     
     }
-            
+    
+  }     
       
   }
 
@@ -139,13 +158,15 @@ const MyCourseDetails = () => {
           <div className="quiz">
               {quizDetails.map((value, key) => (
                   <div className="content-name" key={key} onClick={()=>message(value.quiz_id)}>
+              
                       <Link to={`/studentHome/myCourses/`+id} className="name-sub">
                       
                           <ul>
-                              <li key={value.quiz_id}>{value.quiz_name}</li>
+                              <li key={value.quiz_id}>{value.quiz_name}  </li>
 
                           </ul>
                       </Link>
+                      <h6>deadline-{value.deadline}</h6>
                      
                      
                   </div>
