@@ -84,7 +84,7 @@ const RecentRegistrations = () => {
                             </table>
                         </li>
                         <div>
-                            <Link to="/adminHome/reports"><button >Reports</button></Link>
+                            
                             <button onClick={(e) => { handleClick(e); doc.save('table.pdf') }}>Download pdf</button>
                         </div>
                     </ul>

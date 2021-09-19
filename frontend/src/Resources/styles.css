@@ -1301,6 +1301,10 @@ details summary::marker {
   
 }
 
+.homeText{
+  color: rgb(0, 0, 0);
+}
+
 .card_body .card_btn {
   padding: 1rem;
   font-family: inherit;
