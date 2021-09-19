@@ -38,13 +38,13 @@ const SignIn = (props) => {
                 localStorage.setItem('user', JSON.stringify(data))
                 props.setLoggedIn(true)
                 if (flag === 1)
-                    history.push("/adminHome/dashboard")
+                    history.replace("/adminHome/dashboard")
                 else if (flag === 2) 
-                    history.push("/SupportingStaffHome/dashboard")
+                    history.replace("/SupportingStaffHome/dashboard")
                 else if (flag === 3) 
-                    history.push("/Teacher/teacherHome")
+                    history.replace("/Teacher/teacherHome")
                 else if (flag === 4) 
-                    history.push("/studentHome")
+                    history.replace("/studentHome")
             })
 
     }

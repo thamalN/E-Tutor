@@ -63,7 +63,7 @@ const EditAnnouncement = () => {
         })
             .then(data => {
                 alert("Announcement edited Successfully!")
-                history.push("/adminHome/announcements")
+                history.replace("/adminHome/announcements")
             })
     }
 

@@ -290,7 +290,7 @@ const CourseDetails = () => {
                     if (data.status === "ok") {
                         setDelCourse(data)
                         alert("Course deleted Successfully!")
-                        history.push("/adminHome/courses/allCourses")
+                        history.replace("/adminHome/courses/allCourses")
                     }
                     else {
                         alert("Sorry the task couldn't be completed");

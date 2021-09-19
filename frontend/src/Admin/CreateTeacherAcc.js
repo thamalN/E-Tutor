@@ -209,7 +209,7 @@ const CreateTeacherAcc = () => {
         .then(data => {
             setId(data);
             alert("Successfully created the Student Account and emailed the user credentials!!")
-            history.push("/adminHome/registrations")
+            history.replace("/adminHome/registrations")
         })
     }
 

@@ -39,7 +39,7 @@ const CreateAnnouncement = () => {
         })
             .then(data => {
                 alert("New Announcement added Successfully!")
-                history.push("/adminHome/announcements")
+                history.replace("/adminHome/announcements")
             })
     }
 

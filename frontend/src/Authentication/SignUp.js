@@ -227,11 +227,11 @@ const SignUp = () => {
                 setId(data);
                 if (flag === 0) {
                     alert("Registration Successful!")
-                    history.push("/signIn")
+                    history.replace("/signIn")
                 }
                 else {
                     alert("Successfully created the Student Account and emailed the user credentials!")
-                    history.push("/adminHome/registrations")
+                    history.replace("/adminHome/registrations")
                 }
             })
     }
@@ -246,7 +246,7 @@ const SignUp = () => {
 
             {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
             <h1 className="h3 mb-3 fw-normal">{heading}</h1>
-            <form onSubmit={handleSubmit} className="row g-3 authForm">
+            <form onSubmit={handleSubmit} className="row g-3">
 
 
                 <div className="col-md-6">
@@ -343,17 +343,26 @@ const SignUp = () => {
                 </div>
 
                 <div className="col-md-4">
-                    <label className="mt-2" htmlFor="grade" >Grade</label>
-                    <input
+                    <label className="mt-2" htmlFor="grade" >Exam Year</label>
+                    <select
                         type="text"
                         className="form-control"
                         id="grade"
                         name="grade"
+                        placeholder="Choose..."
                         value={data.grade}
                         // {...register("grade")}
                         onChange={(e) => setData({ ...data, grade: e.target.value })}
                         required
-                    />
+                    >
+                        <option value="">Choose...</option>
+                        <option>2021 O/Level</option>
+                        <option>2022 O/Level</option>
+                        <option>2021 A/Level</option>
+                        <option>2022 A/Level</option>
+                        <option>2023 A/Level</option>
+                    </select>
+
                 </div>
 
                 <div className="col-12">
