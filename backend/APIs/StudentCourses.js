@@ -3,7 +3,9 @@ module.exports = function (app, db, upload) {
     app.post("/studentCourses", (req, res) => {
         const studentId = req.body.id;
 
-        const query = "SELECT * FROM course WHERE course_id IN( SELECT course_id FROM enroll WHERE student_id=?);";
+        // const query = "SELECT * FROM course WHERE course_id IN( SELECT course_id FROM enroll WHERE student_id=?);";
+        const query = "SELECT * FROM course INNER JOIN enroll ON enroll.course_id = course.course_id WHERE student_id=?;";
+
 
         db.query(query, studentId, (err, result) => {
             if (err) throw err;
@@ -19,6 +21,19 @@ module.exports = function (app, db, upload) {
             if (err) throw err;
             res.json(result)
         })
+    })    
+    
+    app.get("/studentCourseDetails/:id", (req, res) => {
+        const course_id = req.params.id
+
+        const query = "SELECT course.course_id, course.teacher_id, course.course_name, course.year, course.description, user.fname, user.lname, user.contact FROM course INNER JOIN user ON course.teacher_id = user.user_id WHERE course.course_id=?"
+
+        db.query(query, course_id, (err, result) => {
+            if (err) throw err;
+            res.json(result)
+        })
     })
+
+
 
 };
