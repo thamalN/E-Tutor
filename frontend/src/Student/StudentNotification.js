@@ -1,6 +1,8 @@
 import Sidebar from "../Sidebar";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import data from "@iconify-icons/akar-icons/plus";
+import Notifications from "@material-ui/icons/Notifications";
 
 const StudentNotification = () => {
 
@@ -35,7 +37,11 @@ const StudentNotification = () => {
         <div>
             <Sidebar></Sidebar>
             <div className="homeContent">
-            
+                {/* {notifications.payments.map(course => (
+                    <div>
+                        <h1>{course.course_name} </h1>
+                    </div>
+                ))} */}
 
             </div>
         </div>

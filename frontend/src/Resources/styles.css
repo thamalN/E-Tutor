@@ -1782,3 +1782,31 @@ td {
   cursor: pointer;
   background-color: gray;
 }
+
+.stripe-button-el span
+{
+  background-image: none; 
+  font-family: 'Poppins', sans-serif; 
+  font-size: 1rem; 
+  position: relative; 
+  padding:.375rem .75rem; 
+  display: inline-block; 
+  line-height: 1.5; 
+  color: #212529; 
+  font-weight: 400; 
+  box-shadow: none; 
+  text-shadow: none; 
+  border-radius: .25rem;
+}
+
+.payslip{
+  width: 15vw;
+}
+
+.tablepayment{
+  max-width: 20vw;
+}
+
+.tablepayment tr{
+  height: 7vh;
+}

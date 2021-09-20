@@ -12,7 +12,7 @@ const MyCourses = () => {
     const user = JSON.parse(localStorage.getItem('user'))
     const id = { id: user.user_id }
 
-    const url = "http://localhost:3001/studentCourses"
+    const url = "http://localhost:3001/studentAllCourses"
 
     useEffect(() => {
 
