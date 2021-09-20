@@ -9,6 +9,7 @@ const Discussion = () => {
     const history = useHistory()
 
     const discussion = JSON.parse(localStorage.getItem('discussion')).filter((item) => item.discussion_id === parseInt(id))
+    const user = JSON.parse(localStorage.getItem("user"))
 
     const disc = {
         discussion_id: discussion[0].discussion_id,
@@ -221,7 +222,7 @@ const Discussion = () => {
                                 <div className="sub-reply">
                                     <p>{item.reply}</p>
                                     <small style={{ float: "right" }}> by <b>{item.replied_by}</b> on <i>{item.reply_datetime.slice(0, 16).replace(' ', ', ')}</i></small>
-                                    {disc.post_user_id === item.reply_user_id && ( <div> <button onClick={editReply} className="edit-reply-btn">Edit</button>| </div> )}
+                                    {user.user_id === item.reply_user_id && ( <div> <button onClick={editReply} className="edit-reply-btn">Edit</button>| </div> )}
                                     <button onClick={addReply} className="reply-btn">Reply</button>
                                 </div>
                                 {item.replies.length !== 0 && (<details>
@@ -238,7 +239,7 @@ const Discussion = () => {
                                 <div className="sub-reply">
                                     <p>{item.reply}</p>
                                     <small style={{ float: "right" }}> by <b>{item.replied_by}</b> on <i>{item.reply_datetime.slice(0, 16).replace(' ', ', ')}</i></small>
-                                    {disc.post_user_id === item.reply_user_id &&( <div> <button onClick={editReply} className="edit-reply-btn">Edit</button>| </div> )}
+                                    {user.user_id === item.reply_user_id &&( <div> <button onClick={editReply} className="edit-reply-btn">Edit</button>| </div> )}
                                     <button onClick={addReply} className="reply-btn">Reply</button>
                                 </div>
                                 {item.replies.length !== 0 && (<details>

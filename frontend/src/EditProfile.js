@@ -195,10 +195,6 @@ const EditProfile = (props) => {
         const formData = new FormData(form)
         formData.append("user_id", data.user_id)
         formData.append("user_flag", data.user_flag)
-        
-        for (var [key, value] of formData.entries()) { 
-            console.log(key, value);
-          }
 
         fetch(url, {
             method: 'POST',
@@ -530,7 +526,7 @@ const EditProfile = (props) => {
                                     />
                                 </div>
 
-                                <div className="col-md-4">
+                                {/* <div className="col-md-4">
                                     <label className="mt-2" htmlFor="grade" >Grade</label>
                                     <input
                                         type="text"
@@ -541,6 +537,28 @@ const EditProfile = (props) => {
                                         onChange={(e) => setData({ ...data, grade: e.target.value })}
                                         required
                                     />
+                                </div> */}
+
+                                <div className="col-md-4">
+                                    <label className="mt-2" htmlFor="grade" >Exam Year</label>
+                                    <select
+                                        type="text"
+                                        className="form-control"
+                                        id="grade"
+                                        name="grade"
+                                        placeholder="Choose..."
+                                        value={data.grade}
+                                        onChange={(e) => setData({ ...data, grade: e.target.value })}
+                                        required
+                                    >
+                                        <option value="">Choose...</option>
+                                        <option>2021 O/Level</option>
+                                        <option>2022 O/Level</option>
+                                        <option>2021 A/Level</option>
+                                        <option>2022 A/Level</option>
+                                        <option>2023 A/Level</option>
+                                    </select>
+
                                 </div>
 
                                 <div className="col-12">

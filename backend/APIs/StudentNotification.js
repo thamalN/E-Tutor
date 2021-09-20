@@ -38,7 +38,6 @@ module.exports = function (app, db, MySQLEvents, schedule) {
 
         db.query(query, (err, result) => {
             if (err) throw err;
-            console.log(result)
             dueStudents = JSON.parse(JSON.stringify(result))
         })
 

@@ -4,6 +4,11 @@ import slide3 from './Resources/slide3.jpg';
 import slide4 from './Resources/slide4.png';
 import slide5 from './Resources/slide5.png';
 import chemistry from './Resources/Chemistry.jpg';
+// import background from './Resources/Chemistry.jpg';
+import pencil1 from './Resources/pencil1.jpg';
+import pencil2 from './Resources/pencil2.jpg';
+import pencil3 from './Resources/pencil3.jpg';
+import pencil4 from './Resources/pencil4.jpg';
 import physics from './Resources/Physics.jpg';
 import mathematics from './Resources/Mathematics.jpg';
 import biology from './Resources/Biology.jpg';
@@ -13,8 +18,72 @@ import certificate24Regular from '@iconify-icons/fluent/certificate-24-regular';
 import payment16Regular from '@iconify-icons/fluent/payment-16-regular';
 import puzzleEditOutline from '@iconify-icons/mdi/puzzle-edit-outline';
 import './Resources/HomeNew.css'
+import './SupportingStaff/staffhome.css';
+import Card2 from "./Card2.js";
+import { useEffect, useState } from "react";
 
 const HomeNew = () => {
+
+    const [teachers, setTeachers] = useState()
+    const url1 = "http://localhost:3001/home/teachers"
+
+    useEffect(() => {
+
+        fetch(url1)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setTeachers(data)
+            })
+
+    }, [url1])
+
+    const [students, setStudents] = useState()
+    const url2 = "http://localhost:3001/adminHome/totalStudents"
+
+    useEffect(() => {
+
+        fetch(url2)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setStudents(data)
+            })
+
+    }, [url2])
+
+    const [courses, setCourses] = useState()
+    const url3 = "http://localhost:3001/home/courses"
+
+    useEffect(() => {
+
+        fetch(url3)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setCourses(data)
+            })
+
+    }, [url3])
+
+    const [lessons, setLessons] = useState()
+    const url4 = "http://localhost:3001/home/lessons"
+
+    useEffect(() => {
+
+        fetch(url4)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setLessons(data)
+            })
+
+    }, [url4])
+
     return (
         <main>
             <section className="banner" id="home">
@@ -58,7 +127,7 @@ const HomeNew = () => {
                 </div>
             </section>
             <div>
-                <table className="table1">
+                {/* <table className="table1">
                     <tr className="counters-list-numbers">
                         <th>77</th>
                         <th>2500</th>
@@ -71,7 +140,14 @@ const HomeNew = () => {
                         <td>Subjects</td>
                         <td>Courses</td>
                     </tr>
-                </table>
+                </table> */}
+                <div className="wrapper">
+                    <Card2 title="Teachers" description={teachers} image={pencil1}></Card2>
+                    <Card2 title="Students" description={students} image={pencil2}></Card2>
+                    <Card2 title="Courses" description={courses} image={pencil3}></Card2>
+                    <Card2 title="Lessons" description={lessons} image={pencil4}></Card2>
+
+                </div>
             </div>
             <section className="banner">
                 <img src={slide5} alt="slide5" width="100%" />
@@ -113,7 +189,7 @@ const HomeNew = () => {
             <div className="quote">
                 <h2>“An investment in knowledge <br /> pays the best interest...” </h2>
                 <h6>-Benjamin Franklin - </h6>
-            </div> 
+            </div>
             <section className="banner" >
                 <div className="contact">
                     <h6>©2021 | eTutor The Online Education Platform | All Rights Reserved</h6>

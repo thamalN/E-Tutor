@@ -53,7 +53,7 @@
 .card_description{
   color: rgb(0, 0, 0);
   font-size:70px ;
-  
+  padding: 68px;
 }
 
 .card_body .card_btn {
@@ -89,7 +89,7 @@
   width: 16.5vw;
   height: 50vh;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.473);
-  background: url(background1.jpg);
+  /* background: url(background1.jpg); */
   display: inline-block;
   background-size: cover;
   display: flex;
@@ -116,16 +116,19 @@
 }
 
 .card2:hover {
- transform: scale(1.01); 
+ transform: scale(1.02); 
  cursor: pointer;
 }
 
 .card2_title{
-  padding: 68px;
+  padding-top: 68px;
+  margin-bottom: 50px;
   vertical-align: center;
 }
 
 .card2_description{
+  margin-top: 50px;
+  padding-bottom: 68px;
   color: rgb(0, 0, 0);
   font-size:70px ;
   
