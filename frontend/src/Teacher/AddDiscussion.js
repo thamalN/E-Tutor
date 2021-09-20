@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Sidebar from "../Sidebar";
+import FormatBoldIcon from '@material-ui/icons/FormatBold';
+import FormatItalicIcon from '@material-ui/icons/FormatItalic';
+import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
+import LinkIcon from '@material-ui/icons/Link';
+// import {Editor, EditorState} from 'draft-js';
 
 const AddDiscussion = () => {
 
     const history = useHistory()
+
+    // const [editorState, setEditorState] = useState(
+    //     () => EditorState.createEmpty(),
+    //   );
 
     const [data, setData] = useState({
         topic: "",

@@ -46,7 +46,8 @@ const ViewStuCourses = () => {
                                             <h2><small>by </small>{course.fname} {course.lname}</h2>
                                             <div style={{display: "flex", alignItems: "flex-start"}}>
                                                 <h3 style={{flex: "0 0 90%"}}>RS. {course.price}</h3>
-                                                <Link to={`/studentHome/payments`}><button className="btn btn-dark add-btn" style={{margin:"0"}}>Enroll</button></Link>
+                                                {/* <Link to={`/studentHome/payments`}><button className="btn btn-dark add-btn" style={{margin:"0"}}>Enroll</button></Link> */}
+                                                <Link to={`/studentHome/payments/newPayment/paymentMethod/${course.course_id}`}><button className="btn btn-dark add-btn" style={{margin:"0"}}>Enroll</button></Link>
                                             </div>
                                         </div>
 

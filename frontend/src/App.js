@@ -65,6 +65,8 @@ import AllStaff from './Admin/AllStaff';
 import AllCoursesList from './Admin/AllCoursesList';
 import CoursePayments from './Admin/CoursePayments';
 import PayCourses from './Student/PayCourses';
+import AllPayments from './Student/AllPayments';
+import PaymentMethod from './Student/paymentMethod';
 import Meeting from './Teacher/Meeting';
 // import StuEvent from './Student/StuEvent';
 // import StuAddQuiz from './Student/StuAddQuiz';
@@ -96,6 +98,7 @@ import TermsAndConditions from './TermsAndConditions';
 import ViewUser from './ViewUser';
 import MyStudents from './Teacher/MyStudents';
 import UpcomingQuiz from './Teacher/UpcomingQuiz';
+import StudentQuizAttempts from './Student/StudentQuizAttempts';
 
 function App() {
 
@@ -127,8 +130,16 @@ function App() {
             <ViewProfile />
           </Route>
 
+          <Route exact path="/viewUser/">
+            <viewUser />
+          </Route>
+
           <Route exact path="/editProfile/">
             <EditProfile />
+          </Route>
+
+          <Route exact path="/viewUser/">
+            <ViewUser />
           </Route>
 
           <Route exact path="/adminHome/dashboard">
@@ -143,7 +154,7 @@ function App() {
             <CreateSupStaffAcc />
           </Route>
 
-          <Route exact path="/adminHome/createAnnouncement">
+          <Route exact path="/adminHome/announcements/createAnnouncement">
             <CreateAnnouncement />
           </Route>
 
@@ -175,6 +186,17 @@ function App() {
             <TeacherPayments />
           </Route>
 
+            <Route exact path="/studentHome/payments/newPayment/paymentMethod/:id">
+              <PaymentMethod/>
+            </Route>
+
+            <Route exact path="/studentHome/payments/payslip/:id">
+            <StudentPayslip/>
+            </Route>
+
+            <Route exact path="/studentHome/payments/newPayment/paymentMethod/payOnline">
+            <StudentPayslip/>
+            </Route>
           <Route exact path="/adminHome/payments/teacherPayments/detailedTeacherPayments">
             <DetailedTeacherPayments />
           </Route>
@@ -183,6 +205,13 @@ function App() {
             <Announcements />
           </Route>
 
+            <Route exact path="/studentHome/StudentAddAssigment">
+            <StudentAddAssigment/>
+            </Route>
+            
+            <Route exact path="/studentHome/payments/newPayment">
+            <PayCourses/>
+            </Route>
           <Route exact path="/adminHome/registrations/recentRegistrations">
             <RecentRegistrations />
           </Route>
@@ -191,6 +220,13 @@ function App() {
             <ViewPreviousAnnouncements />
           </Route>
 
+            <Route exact path="/studentHome/payments/allPayments">
+              <AllPayments/>
+            </Route>
+            
+            <Route exact path="/studentHome/StuFeedback">
+              <StuFeedback/>
+            </Route>
           <Route exact path="/adminHome/announcements/editAnnouncement">
             <EditAnnouncement />
           </Route>
@@ -399,12 +435,12 @@ function App() {
             <StudentAddAssigment />
           </Route>
 
-          <Route exact path="/studentHome/StudentAddAssigment">
-            <StudentAddAssigment />
-          </Route>
-
           <Route exact path="/studentHome/StuQuiz/:id">
             <StuQuiz />
+          </Route>
+
+          <Route exact path="/studentHome/studentQuizAttempts/:id">
+            <StudentQuizAttempts />
           </Route>
 
           <Route exact path="/studentHome/payments/payOnline">

@@ -58,8 +58,8 @@ const CoursePayments = () => {
                             <h3>Total Monthly Revenue For {(new Date()).toLocaleString('default', { month: 'long' })}</h3>
                         </li>
                         <li>
-                            <table className="table" id="reg_table">
-                                <thead>
+                            <table className="table table2" id="reg_table">
+                            <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">Course ID</th>
                                         <th scope="col">Course Name</th>
@@ -82,8 +82,8 @@ const CoursePayments = () => {
                             </table>
                         </li>
                         <div>
-                            <Link to="/adminHome/reports"><button >Back</button></Link>
-                            <button onClick={(e) => { handleClick(e); doc.save('Total Monthly Revenue') }}>Download pdf</button>
+                            
+                            <button  className="btn btn-dark add-btn" onClick={(e) => { handleClick(e); doc.save('Total Monthly Revenue') }}>Download pdf</button>
                         </div>
                     </ul>
                 </div>
