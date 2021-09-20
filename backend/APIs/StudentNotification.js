@@ -30,7 +30,7 @@ module.exports = function (app, db, MySQLEvents, schedule) {
 
     let dueStudents = []
 
-    const date = new Date(2021, 08, 04, 11, 02, 30);
+    const date = new Date(2021, 08, 20, 15, 39, 10);
 
     const job = schedule.scheduleJob(date, function () {
 
