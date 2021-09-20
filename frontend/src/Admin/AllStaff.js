@@ -54,11 +54,11 @@ const AllStaff = () => {
                 <div className="b2">
                     <ul>
                         <li className="reg_title">
-                            <h3>All Staff</h3>
+                            <h3>All Supporting Staff</h3>
                         </li>
                         <li>
-                            <table className="table" id="reg_table">
-                                <thead>
+                            <table className="table table2" id="reg_table">
+                            <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">User ID</th>
                                         <th scope="col">Registered Date</th>
@@ -81,8 +81,8 @@ const AllStaff = () => {
                             </table>
                         </li>
                         <div>
-                            <Link to="/adminHome/reports"><button >Back</button></Link>
-                            <button onClick={(e) => { handleClick(e); doc.save('All Staff.pdf') }}>Download pdf</button>
+                            
+                            <button className="btn btn-dark add-btn" onClick={(e) => { handleClick(e); doc.save('All Staff.pdf') }}>Download pdf</button>
                         </div>
                     </ul>
                 </div>

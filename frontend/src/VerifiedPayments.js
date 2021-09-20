@@ -88,7 +88,7 @@ const PendingReceipts = () => {
                 </div>
 
                 <div className="reg_buttons">
-                    <Link className="linkbutton" to="/managePayments"><button>Back to Dashboard</button></Link>
+                    <Link className="linkbutton" to="/payments/studentPayments">Back to Student Payments</Link>
                 </div>
             </div>
         </div>

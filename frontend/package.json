@@ -27,6 +27,7 @@
     "react-jitsi": "^1.0.4",
     "react-medium-image-zoom": "^4.3.4",
     "react-router-dom": "^5.2.0",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "4.0.3",
     "react-stripe-checkout": "^2.6.3",
     "regex": "^0.1.1",

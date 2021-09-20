@@ -17,7 +17,7 @@ import './Resources/HomeNew.css'
 const HomeNew = () => {
     return (
         <main>
-            <section className="banner">
+            <section className="banner" id="home">
                 <img src={slide1} alt="slide1" width="100%" />
                 <div className="modern">
                     <h1>Modern Day<br />Education</h1>
@@ -32,8 +32,8 @@ const HomeNew = () => {
                     </ul>
                 </div>
             </section>
-            <img src={slide2} alt="slide2" width="100%" />
-            <section className="banner">
+            <img src={slide2} alt="slide2" width="100%" id="staff" />
+            <section className="banner" >
                 <div className="best-panel">
                     <ul>
                         <li className="li33"><h2> <span>The Best</span> Panel</h2></li>
@@ -80,7 +80,7 @@ const HomeNew = () => {
                     <p>Here in E-Tutor, we offer a variety <br /> of non-academic activities to improve <br /> the educational environment of the students.</p>
                 </div>
             </section>
-            <section className="banner">
+            <section className="banner" id="courses">
                 <div className="top-courses">
                     <h2>Top Courses</h2>
                     <p>There are different varieties of courses available. Courses serve a multitude of <br /> purposes for different students: they are sometimes used to bridge the gap <br /> between different phases of academic study.</p>
@@ -96,10 +96,29 @@ const HomeNew = () => {
                     </ul>
                 </div>
             </section>
+
+            <section className="banner" id="about">
+                <div className="about">
+                    <h1>About Us</h1>
+                    <h6>At eTutor our mission is to guide our students towards the fortunes of knowledge. <br /> Our vision is to be the foremost online educational platform in Sri Lanka To produce high calibre students <br /> and help to strengthen the island's online educational standards in these pandemic times and beyond. <br /> With qualified teachers we guarantee our quality of content and higher standards for results. As a developing nation <br /> its our duty to give the best opportunities for the future generations in education as well as technology.</h6>
+                </div>
+            </section>
+
+            <section className="banner" id="contact">
+                <div className="contact">
+                    <h6>Contact Us : etutororganization@gmail.com</h6>
+                </div>
+            </section>
+
             <div className="quote">
                 <h2>“An investment in knowledge <br /> pays the best interest...” </h2>
                 <h6>-Benjamin Franklin - </h6>
-            </div>
+            </div> 
+            <section className="banner" >
+                <div className="contact">
+                    <h6>©2021 | eTutor The Online Education Platform | All Rights Reserved</h6>
+                </div>
+            </section>
         </main>
     );
 }

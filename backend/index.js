@@ -39,7 +39,9 @@ var upload = multer({
     && file.mimetype !== "application/vnd.openxmlformats-officedocument.spreadsheetml.presentation"
     && file.mimetype !== "application/pdf"
     && !file.mimetype.toString().includes("video/")
-    && !file.mimetype.toString().includes("audio/")) {
+    && !file.mimetype.toString().includes("audio/")
+    && !file.mimetype.toString().includes("image/"))
+     {
       return cb(new Error("Unsupported file format"))
     }
     cb(null, true)
@@ -61,11 +63,12 @@ require('./APIs/SignUp')(app, db)
 require('./APIs/Registrations')(app, db)
 require('./APIs/Announcements')(app, db, upload, fs)
 require('./APIs/Course')(app, db, upload, fs)
-require('./APIs/AllCourses')(app, db)
+require('./APIs/AllCourses')(app, db, fs)
 require('./APIs/StuAllCourses')(app, db)
 require('./APIs/StudentCourses')(app, db)
 require('./APIs/Teachers')(app, db)
 require('./APIs/TeacherPayments')(app, db, MySQLEvents, schedule)
+require('./APIs/StudentAccess')(app, db, schedule)
 require('dotenv').config()
 require('./APIs/StudentNotification')(app, db, MySQLEvents, schedule)
 require('./APIs/StudentDetails')(app, db)
@@ -77,7 +80,7 @@ require('./APIs/PaymentStudent')(app, db, stripe, uuid)
 require('./APIs/TeacherHome')(app, db)
 require('./APIs/stuFeedback')(app,db)
 require('./APIs/StudentAnnouncement')(app,db)
-require('./APIs/ViewProfile')(app,db)
+require('./APIs/ViewProfile')(app,db, upload)
 
 const server = http.createServer(app)
 

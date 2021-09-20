@@ -1,6 +1,7 @@
 import { useHistory, useParams } from "react-router-dom";
 import Sidebar from "../Sidebar"
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const Discussion = () => {
 
@@ -114,7 +115,10 @@ const Discussion = () => {
     const editDetails = () => {
 
         const details = document.querySelector(".discussion-details")
-        const editBtn = details.childNodes[1]
+        const deleteBtn = details.childNodes[1]
+        const editBtn = details.childNodes[2]
+
+        deleteBtn.style.display = "none"
         editBtn.style.display = "none"
 
         const topic = details.childNodes[0]
@@ -128,7 +132,7 @@ const Discussion = () => {
         topicInput.style.fontSize = "25px"
         topic.replaceWith(topicInput);
 
-        const post = details.childNodes[5]
+        const post = details.childNodes[6]
 
         const postInput = document.createElement("textarea");
         postInput.innerHTML = post.textContent;
@@ -198,6 +202,15 @@ const Discussion = () => {
 
     }
 
+    const deleteDiscussion = (id) => {
+        if (window.confirm("Confirm Delete")) {
+            fetch("http://localhost:3001/teacherCourses/deleteDiscussion/" + id)
+                .then((data) => {
+                    history.goBack()
+                })
+        }
+    }
+
     const nestedReplies = (arr = [], x, parent) => {
         if (arr.length !== 0) {
             return (
@@ -212,7 +225,7 @@ const Discussion = () => {
                                     <button onClick={addReply} className="reply-btn">Reply</button>
                                 </div>
                                 {item.replies.length !== 0 && (<details>
-                                    <summary><small><i>Load replies</i></small></summary>
+                                    <summary><sub><i><b>Load replies</b></i></sub></summary>
                                     {nestedReplies(item.replies, x + 20, false)}
                                 </details>)}
                             </div>
@@ -229,7 +242,7 @@ const Discussion = () => {
                                     <button onClick={addReply} className="reply-btn">Reply</button>
                                 </div>
                                 {item.replies.length !== 0 && (<details>
-                                    <summary><small><i>Load replies</i></small></summary>
+                                    <summary><sub><i><b>Load replies</b></i></sub></summary>
                                     {nestedReplies(item.replies, x + 20, false)}
                                 </details>)}
                             </div>
@@ -248,6 +261,9 @@ const Discussion = () => {
 
                     <div className="discussion-details">
                         <h1 style={{ display: "inline" }}>{disc.topic}</h1>
+                        <button className="edit-btn" style={{ float: "right" }} >
+                            <DeleteIcon style={{ color: "red" }} fontSize="large" onClick={() => deleteDiscussion(disc.discussion_id)}/>
+                        </button>
                         <button className="edit-btn" style={{ float: "right" }} >
                             <EditIcon style={{ color: "#3ca730" }} fontSize="large" onClick={editDetails}/>
                         </button>

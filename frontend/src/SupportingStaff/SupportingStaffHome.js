@@ -18,45 +18,13 @@ const SupportingStaffHome = (props) => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const [unenrolledCourses, setUenrolledCourses] = useState()
-    const [receipts, setReceipts] = useState()
-
     const logOut = () => {
         props.setLoggedIn(false)
         localStorage.clear();
         history.replace("/")
     };
 
-    const url1 = "http://localhost:3001/adminHome/pendingReceipts"
-
-    useEffect(() => {
-
-        fetch(url1)
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                setReceipts(data)
-            })
-
-    }, [url1])
-
-    const url2 = "http://localhost:3001/adminHome/unenrolledCourses"
-
-    useEffect(() => {
-
-        fetch(url2)
-            .then(res => {
-                return res.json();
-            })
-            .then(data => {
-                setUenrolledCourses(data)
-            })
-
-    }, [url2])
-
     const [data, setData] = useState([])
-
     const url = "http://localhost:3001/mostRecentStaffRegistrations"
     useEffect(() => {
 
@@ -72,6 +40,66 @@ const SupportingStaffHome = (props) => {
             })
 
     }, [url])
+
+    const [pendingReceipts, setPendingReceipts] = useState()
+    const url1 = "http://localhost:3001/adminHome/pendingReceipts"
+
+    useEffect(() => {
+
+        fetch(url1)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setPendingReceipts(data)
+            })
+
+    }, [url1])
+
+    const [verifiedReceipts, setVerifiedReceipts] = useState()
+    const url2 = "http://localhost:3001/adminHome/verifiedReceipts"
+
+    useEffect(() => {
+
+        fetch(url2)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setVerifiedReceipts(data)
+            })
+
+    }, [url2])
+
+    const [rejectedReceipts, setRejectedReceipts] = useState()
+    const url3 = "http://localhost:3001/adminHome/rejectedReceipts"
+
+    useEffect(() => {
+
+        fetch(url3)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setRejectedReceipts(data)
+            })
+
+    }, [url3])
+
+    const [registeredStudents, setRegisteredStudents] = useState()
+    const url4 = "http://localhost:3001/adminHome/totalStudents"
+
+    useEffect(() => {
+
+        fetch(url4)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setRegisteredStudents(data)
+            })
+
+    }, [url4])
 
     return (
         <main>
@@ -100,7 +128,7 @@ const SupportingStaffHome = (props) => {
                                     <ul>
                                         <li><Link className="btn btn-outline-dark mt-4" to="/signUp">Register a Student</Link></li>
                                         <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/registrations/recentStaffRegistrations">Recent Registrations</Link></li>
-                                        <li><Link className="btn btn-outline-dark" to="/pendingReceipts">Pending Receipts</Link></li>
+                                        <li><Link className="btn btn-outline-dark" to="/payments/pendingReceipts">Pending Receipts</Link></li>
                                         <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/studentAccounts">Search Students</Link></li>
                                         {/* <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/reports">Create Reports</Link></li> */}
                                     </ul>
@@ -110,10 +138,10 @@ const SupportingStaffHome = (props) => {
                         </div>
 
                         <div className="wrapper">
-                            <Card2 title="Students Online" description="456" button="View"></Card2>
-                            <Card2 title="Pending Receipts" description={receipts} button="View"></Card2>
-                            <Card2 title="Verified Receipts" description={unenrolledCourses} button="View"></Card2>
-                            <Card2 title="Rejected Receipts" description="10" button="View"></Card2>
+                            <Card2 title="Registered Students" description={registeredStudents} button="View"></Card2>
+                            <Card2 title="Pending Receipts" description={pendingReceipts} button="View"></Card2>
+                            <Card2 title="Verified Receipts" description={verifiedReceipts} button="View"></Card2>
+                            <Card2 title="Rejected Receipts" description={rejectedReceipts} button="View"></Card2>
                             
                         </div>
 

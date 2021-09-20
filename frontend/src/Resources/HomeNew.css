@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-main{
+/* main{
     background-color: #E5E5E5;
-}
+} */
 
 h6 {
     display: inline-block;
@@ -275,6 +275,18 @@ div .counters-list-titles td {
     font-weight: 600;
 }
 
+.banner .about{
+    text-align: left;
+    margin-left: 20vw;
+    padding: 10vh 0;
+    padding-top: 0;
+    white-space: nowrap;
+}
+
+.banner .about h1{
+    margin-bottom: 5vh;
+}
+
 .quote{
     background-color: #212529;
 }
@@ -295,4 +307,12 @@ div .counters-list-titles td {
     padding-bottom: 8%;
     display: block;
     margin: 0;
+}
+
+.banner .contact{
+    background-color: #16191b;
+    color: white;
+    text-align: center;
+    padding: 5vh 0;
+    white-space: nowrap;
 }

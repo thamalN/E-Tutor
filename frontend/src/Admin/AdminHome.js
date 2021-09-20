@@ -1,17 +1,18 @@
-import { useHistory} from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Sidebar from "../Sidebar";
 import Card from "../Card";
-        
+
 const AdminHome = (props) => {
 
     const history = useHistory()
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const [unenrolledCourses, setUenrolledCourses] = useState()
+    const [unenrolledCourses, setUnenrolledCourses] = useState()
     const [receipts, setReceipts] = useState()
     const [studentCount, setStudentCount] = useState()
+    const [unassignedTeachers, setUnassignedTeachers] = useState()
 
     const logOut = () => {
         props.setLoggedIn(false)
@@ -42,7 +43,7 @@ const AdminHome = (props) => {
                 return res.json();
             })
             .then(data => {
-                setUenrolledCourses(data)
+                setUnenrolledCourses(data)
             })
 
     }, [url2])
@@ -61,26 +62,37 @@ const AdminHome = (props) => {
 
     }, [url3])
 
-    return ( 
-        
+    const url4 = "http://localhost:3001/adminHome/unassignedTeachers"
 
-<div>
+    useEffect(() => {
 
-<Sidebar />
+        fetch(url4)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setUnassignedTeachers(data)
+            })
 
-<div className="homeContent">
+    }, [url4])
 
+    return (
 
+        <div>
 
-        <div className="wrapper">
-            <Card title="Registered Students" description={studentCount} button="View"></Card>
-            <Card title="Unenrolled Courses" description={unenrolledCourses} button="View"></Card>
-            <Card title="Incomplete Courses" description="10" button="View"></Card>
-            <Card title="Pending Receipts" description={receipts} button="View"></Card>
+            <Sidebar />
+
+            <div className="homeContent">
+
+                <div className="wrapper">
+                    <Card title="Registered Students" description={studentCount} button="View" onclick={() => history.push("/adminHome/reports/allStudents")}></Card>
+                    <Card title="Unenrolled Courses" description={unenrolledCourses} button="View" onclick={() => history.push("/adminHome/reports/unenrolledCourses")}></Card>
+                    <Card title="Unassigned Teachers" description={unassignedTeachers} button="View" onclick={() => history.push("/adminHome/reports/unassignedTeachers")}></Card>
+                    <Card title="Pending Receipts" description={receipts} button="View" onclick={() => history.push("/payments/pendingReceipts")}></Card>
+                </div>
             </div>
-            </div>
-            </div>
-        );
+        </div>
+    );
 }
- 
+
 export default AdminHome;

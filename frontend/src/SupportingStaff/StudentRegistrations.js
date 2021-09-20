@@ -9,9 +9,9 @@ const StudentRegistrations = () => {
 
                 <h1 className="stuRegHeader">Registrations</h1>
                 <div className="reg_buttons">
-                    <Link className="linkbutton" to="/signUp"><button>Register new Student</button></Link>
-                    <Link className="linkbutton" to="/supportingStaffHome/registrations/recentStaffRegistrations"><button>View Recent Registrations</button></Link>
-                    <Link className="linkbutton" to="/supportingStaffHome/dashboard"><button>Back to Dashboard</button></Link>
+                    <Link className="linkbutton" to="/signUp">Register new Student</Link>
+                    <Link className="linkbutton" to="/supportingStaffHome/registrations/recentStaffRegistrations">View Recent Registrations</Link>
+                    <Link className="linkbutton" to="/supportingStaffHome/dashboard">Back to Dashboard</Link>
                 </div>
             </div>
         </div>

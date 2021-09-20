@@ -35,16 +35,7 @@ const RecentRegistrations = () => {
 
     useEffect(() => {
         doc.autoTable({ html: document.getElementById('reg_table') });
-        // if (data.password.length !== 0) {
-        //     if (data.password === data.confirmPassword) {
-        //         document.getElementById('pass').innerHTML = '(Passwords match!)';
-        //         document.getElementById('pass').style.color = "green";
-        //     } else {
-        //         document.getElementById('pass').innerHTML = '(Passwords do not match!)';
-        //         document.getElementById('pass').style.color = "red";
-
-        //     }
-        // }
+        
     })
 
     return (
@@ -84,8 +75,8 @@ const RecentRegistrations = () => {
                             </table>
                         </li>
                         <div>
-                            <Link to="/adminHome/reports"><button >Reports</button></Link>
-                            <button onClick={(e) => { handleClick(e); doc.save('table.pdf') }}>Download pdf</button>
+                            
+                            <button className="btn btn-dark add-btn" onClick={(e) => { handleClick(e); doc.save('Recent Registrations.pdf') }}>Download pdf</button>
                         </div>
                     </ul>
 

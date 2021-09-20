@@ -2,6 +2,7 @@ import { Hidden } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { Link } from 'react-router-dom';
 // import { useForm } from "react-hook-form";
 // import{ yupResolver } from "@hookform/resolvers/yup";
 // import * as yup from "yup";
@@ -15,18 +16,21 @@ const SignUp = () => {
     const history = useHistory()
 
     const [id, setId] = useState(null);
-    const [usernames, setUsernames] = useState([]);
+    const [userData, setUserData] = useState([]);
     const user = JSON.parse(localStorage.getItem('user'));
     let flag;
     let heading;
+
     if (user === null) {
         flag = 0
         heading = "Sign Up"
+        
     }
     else {
         flag = 1
         heading = "Create Student Account"
     }
+    
 
     const [data, setData] = useState(
         {
@@ -64,7 +68,8 @@ const SignUp = () => {
                 return res.json();
             })
             .then(data => {
-                setUsernames(data)
+                console.log(data)
+                setUserData(data)
             })
 
     }, [url])
@@ -72,10 +77,11 @@ const SignUp = () => {
     const [submitState, setsubmitState] = useState(true);
 
     var contact = new RegExp(/^[a-z\d]{5,12}$/i);
+    var mail = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
     useEffect(() => {
         if (data.username.length !== 0) {
-            if (usernames.some(i => i.username === data.username)) {
+            if (userData.some(i => i.username === data.username)) {
                 document.getElementById('usern').innerHTML = '(Username is already taken!)';
                 document.getElementById('usern').style.color = "red";
             }
@@ -85,6 +91,22 @@ const SignUp = () => {
             } else {
                 document.getElementById('usern').innerHTML = '(Username is available!)';
                 document.getElementById('usern').style.color = "green";
+            }
+        }
+    })
+
+    useEffect(() => {
+        if (data.email.length !== 0) {
+            if (userData.some(i => i.email === data.email)) {
+                document.getElementById('email').innerHTML = '(Email is already in use!)';
+                document.getElementById('email').style.color = "red";
+            }
+            else if (!RegExp(mail).test(data.email)) {
+                document.getElementById('usern').innerHTML = '(Email is not valid!)';
+                document.getElementById('usern').style.color = "red";
+            } else {
+                document.getElementById('email').innerHTML = '(Email is available!)';
+                document.getElementById('email').style.color = "green";
             }
         }
     })
@@ -208,11 +230,11 @@ const SignUp = () => {
                 setId(data);
                 if (flag === 0) {
                     alert("Registration Successful!")
-                    history.push("/signIn")
+                    history.replace("/signIn")
                 }
                 else {
                     alert("Successfully created the Student Account and emailed the user credentials!")
-                    history.push("/adminHome/registrations")
+                    history.replace("/adminHome/registrations")
                 }
             })
     }
@@ -227,7 +249,7 @@ const SignUp = () => {
 
             {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
             <h1 className="h3 mb-3 fw-normal">{heading}</h1>
-            <form onSubmit={handleSubmit} className="row g-3 authForm">
+            <form onSubmit={handleSubmit} className="row g-3 ">
 
 
                 <div className="col-md-6">
@@ -324,17 +346,26 @@ const SignUp = () => {
                 </div>
 
                 <div className="col-md-4">
-                    <label className="mt-2" htmlFor="grade" >Grade</label>
-                    <input
+                    <label className="mt-2" htmlFor="grade" >Exam Year</label>
+                    <select
                         type="text"
                         className="form-control"
                         id="grade"
                         name="grade"
+                        placeholder="Choose..."
                         value={data.grade}
                         // {...register("grade")}
                         onChange={(e) => setData({ ...data, grade: e.target.value })}
                         required
-                    />
+                    >
+                        <option value="">Choose...</option>
+                        <option>2021 O/Level</option>
+                        <option>2022 O/Level</option>
+                        <option>2021 A/Level</option>
+                        <option>2022 A/Level</option>
+                        <option>2023 A/Level</option>
+                    </select>
+
                 </div>
 
                 <div className="col-12">
@@ -409,7 +440,7 @@ const SignUp = () => {
                         onChange={(e) => setData({ ...data, province: e.target.value })}
                         required
                     >
-                        <option>Choose...</option>
+                        <option value="">Choose...</option>
                         <option>Western</option>
                         <option>Central</option>
                         <option>Southern</option>
@@ -434,21 +465,6 @@ const SignUp = () => {
                         value={data.email}
                         // {...register("email")}
                         onChange={(e) => { setData({ ...data, email: e.target.value }); handleChange(e) }}
-                        required
-                    />
-                </div>
-
-                <div className="col-md-5">
-                    <label className="mt-2" htmlFor="contact">Contact</label>
-                    <span id="contact" style={{ "marginLeft": 50, fontSize: 12 }}></span>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="contact"
-                        name="contact"
-                        value={data.contact}
-                        // {...register("contact")}
-                        onChange={(e) => { setData({ ...data, contact: e.target.value }); handleChange(e) }}
                         required
                     />
                 </div>
@@ -479,16 +495,31 @@ const SignUp = () => {
                         // {...register("gender")}
                         onChange={(e) => setData({ ...data, gender: e.target.value })}
                     >
-                        <option>Choose...</option>
+                        <option value="">Choose...</option>
                         <option>Male</option>
                         <option>Female</option>
                     </select>
                 </div>
 
+                <div className="col-md-5">
+                    <label className="mt-2" htmlFor="contact">Contact</label>
+                    <span id="contact" style={{ "marginLeft": 50, fontSize: 12 }}></span>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="contact"
+                        name="contact"
+                        value={data.contact}
+                        // {...register("contact")}
+                        onChange={(e) => { setData({ ...data, contact: e.target.value }); handleChange(e) }}
+                        required
+                    />
+                </div>
 
 
-                <div className="col-12">
-                    <div className="form-check mt-4">
+
+                {flag===0 && (<div className="col-12">
+                    <div className="form-check mt-4"  id="terms">
                         <input
                             className="form-check-input"
                             type="checkbox"
@@ -497,12 +528,13 @@ const SignUp = () => {
                             required
                         />
                         <label className="form-check-label" htmlFor="gridCheck">
-                            I agree to the Terms and Conditions
+                            I agree to the <Link to="/termsAndConditions" target="_blank" rel="noopener noreferrer">Terms and Conditions</Link>
                         </label>
                     </div>
                 </div>
+)}
                 <div className="col-12 mt-4">
-                    <button id="button" type="submit" className="w-100 btn btn-lg btn-dark">
+                    <button id="button" type="submit" className="btn btn-lg btn-dark add-btn">
                         Create Account
                     </button>
                 </div>

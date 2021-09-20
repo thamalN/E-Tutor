@@ -3,8 +3,8 @@ import Sidebar from "../Sidebar";
 import EditIcon from '@material-ui/icons/Edit';
 import { Link } from "react-router-dom";
 
-const StuQuiz = () => {
 
+const  StuQuiz = () => {
     let { id } = useParams()
     //id = id - 1
 
@@ -22,35 +22,54 @@ const StuQuiz = () => {
     }
 
     const quiz = JSON.parse(localStorage.getItem('quiz')).find((item) => item.quiz_id === parseInt(id))
+    const startingMinutes=10;
+    let time=startingMinutes*60;
+
+    
+
+// const timer=()=>{
+//     {setInterval(updateCountdown,1000)};
+
+
+// }
+
+const updateCountdown=()=>{
+    let countdownEl=document.getElementById('countdown');
+    // setInterval(updateCountdown,1000);
+    const minutes=Math.floor(time/60);
+    let seconds=time%60;
+    if(countdownEl)
+        countdownEl.innerHTML=`${minutes}: ${seconds}`;
+    time--;
+    // console.log("alert");
+}
+
+setInterval(updateCountdown,1000)
+
 
     return (
+        
         <div>
-            <Sidebar />
+            
+            <Sidebar />   
             <div className="homeContent">
                 <div className="quiz-details">
                     <div className="quiz-header">
                         <div>
                             <h3 className="quiz-name-1">Quiz Name </h3>
                             <h3 className="quiz-name-2"> - {quiz.quiz_name}</h3>
-                            <Link to={window.location.pathname + "/edit"} className="quiz-icons" title="Edit Quiz">
-                                <EditIcon style={{ color: "#3ca730" }} fontSize="large" />
-                            </Link>
+                           
                         </div>
 
                         <div>
                             <h3 className="quiz-name-1">Duration </h3>
                             <h3 className="quiz-name-2"> - {quiz.duration}</h3>
+                        
+                            <p id="countdown">10:00</p>
+                            
+                            
                         </div>
 
-                        <div>
-                            <h3 className="quiz-name-1">Max Attempts </h3>
-                            <h3 className="quiz-name-2"> - {quiz.max_attempts}</h3>
-                        </div>
-
-                        <div>
-                            <h3 className="quiz-name-1">Deadline </h3>
-                            <h3 className="quiz-name-2"> - {quiz.deadline}</h3>
-                        </div>
                     </div>
 
                     <div>
@@ -64,7 +83,7 @@ const StuQuiz = () => {
                                     <div className="quiz-answers" id={key}>
                                         {value.answers && value.answers.map((value, i) => (
                                             <div id="answerId" key={i}>
-                                                <input type="radio" value={value.answer_id} name={value.answer_id} checked={value.correct} readOnly />
+                                                <input type="radio"  />
                                                 <label>{value.answer}</label>
                                             </div>
                                         ))}
@@ -73,7 +92,7 @@ const StuQuiz = () => {
                                     <div className="quiz-answers" id={key}>
                                         {value.answers && value.answers.map((value, i) => (
                                             <div key={i}>
-                                                <input type="checkbox" value={value.answer_id} name={value.answer_id} checked={value.correct} readOnly />
+                                                <input type="checkbox"  />
                                                 <label >{value.answer}</label>
                                             </div>
                                         ))}
@@ -81,11 +100,13 @@ const StuQuiz = () => {
                                 )}
 
                             </div>
+                            
                         ))}
 
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 }

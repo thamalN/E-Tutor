@@ -1,18 +1,20 @@
 import { useHistory, useParams } from "react-router-dom";
 import Sidebar from "../Sidebar"
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const StuDiscussion = () => {
 
     const { id } = useParams()
     const history = useHistory()
 
-
     const discussion = JSON.parse(localStorage.getItem('discussion')).filter((item) => item.discussion_id === parseInt(id))
+
     const disc = {
         discussion_id: discussion[0].discussion_id,
         topic: discussion[0].topic,
         post: discussion[0].post,
+        post_user_id: discussion[0].post_user_id,
         fname: discussion[0].post_fname,
         lname: discussion[0].post_lname,
         date_time: discussion[0].post_datetime,
@@ -22,8 +24,8 @@ const StuDiscussion = () => {
     //console.log(discussion)
 
     discussion.map((item) => {
-        if(item.reply_id !== null)
-        disc.replies.push({ reply_id: item.reply_id, reply: item.reply, replied_by: item.reply_user_id, reply_datetime: item.reply_date_time, parent_reply: item.parent_reply, replies: [] })
+        if (item.reply_id !== null)
+            disc.replies.push({ reply_id: item.reply_id, reply: item.reply, reply_user_id: item.reply_user_id, replied_by: item.reply_fname + " " + item.reply_lname, reply_datetime: item.reply_date_time, parent_reply: item.parent_reply, replies: [] })
     })
 
     var tmp
@@ -40,7 +42,7 @@ const StuDiscussion = () => {
         item.parent_reply === null
     ))
 
-    console.log(disc)
+    //console.log(disc)
 
     const sendReply = (e) => {
         if (e.target.parentNode.childNodes[0].checkValidity()) {
@@ -55,18 +57,21 @@ const StuDiscussion = () => {
                 parent_reply: nextNode ? parseInt(nextNode) : null
             }
 
-            console.log(reply)
+            //console.log(reply)
 
             fetch("http://localhost:3001/teacherCourses/addReply", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reply)
             }).then(
+                // alert("re")
                 history.goBack()
                 //history.go(0)
+                // history.push("/studentHome/StuDiscussion/" + id)
+                // history.push("/studentHome/StuDiscussion/"+id)
             )
 
-        } else 
+        } else
             alert("Reply cannot be empty")
     }
 
@@ -110,6 +115,98 @@ const StuDiscussion = () => {
 
     }
 
+    const editDetails = () => {
+
+        const details = document.querySelector(".discussion-details")
+        const deleteBtn = details.childNodes[1]
+        const editBtn = details.childNodes[2]
+
+        deleteBtn.style.display = "none"
+        editBtn.style.display = "none"
+
+        const topic = details.childNodes[0]
+
+        const topicInput = document.createElement("input");
+        topicInput.setAttribute("value", topic.textContent);
+        topicInput.style.marginBottom = "5px"
+        topicInput.style.padding = "5px"
+        topicInput.style.width = "100%"
+        topicInput.style.fontWeight = "bold"
+        topicInput.style.fontSize = "25px"
+        topic.replaceWith(topicInput);
+
+        const post = details.childNodes[6]
+
+        const postInput = document.createElement("textarea");
+        postInput.innerHTML = post.textContent;
+        post.replaceWith(postInput);
+        postInput.style.width = "100%"
+        postInput.rows = 5
+
+        const saveBtn = document.createElement("button");
+        saveBtn.setAttribute("class", "course-edit-btn")
+        saveBtn.innerHTML = "Save Changes"
+
+        postInput.insertAdjacentElement('afterend', saveBtn)
+
+
+        const save = function () {
+            const edited = { discussion_id: discussion[0].discussion_id, course_id: discussion[0].course_id, topic: topicInput.value.toString(), post: postInput.value.toString() }
+
+            const url = "http://localhost:3001/teacherCourses/editDiscussion"
+            fetch(url, {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(edited)
+            }).then(data => {
+                history.goBack()
+            })
+        };
+
+        saveBtn.onclick = save
+
+    }
+
+    const editReply = (e) => {
+            const reply = e.target.parentNode.parentNode.childNodes[0]
+
+            const replyInput = document.createElement("input")
+            replyInput.value = reply.innerHTML
+
+            reply.replaceWith(replyInput)
+
+            const sumbitBtn = document.createElement("button")
+            sumbitBtn.innerHTML = "Submit"
+            sumbitBtn.setAttribute("class", "edit-reply-btn")
+
+            e.target.replaceWith(sumbitBtn)
+
+            const submitEdited = () => {
+                var reply = {
+                    discussion_id: disc.discussion_id,
+                    reply_id: parseInt(sumbitBtn.parentNode.parentNode.parentNode.id),
+                    reply: replyInput.value.toString()
+                }
+
+                fetch("http://localhost:3001/teacherCourses/editReply", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(reply)
+                }).then(data => {
+                    //history.goBack()
+                    //history.go(0)
+                    history.push("/teacher/courses/" + discussion[0].course_id)
+
+                }
+                )
+            }
+
+            sumbitBtn.onclick = submitEdited
+
+    }
+
+    
+
     const nestedReplies = (arr = [], x, parent) => {
         if (arr.length !== 0) {
             return (
@@ -120,10 +217,11 @@ const StuDiscussion = () => {
                                 <div className="sub-reply">
                                     <p>{item.reply}</p>
                                     <small style={{ float: "right" }}> by <b>{item.replied_by}</b> on <i>{item.reply_datetime.slice(0, 16).replace(' ', ', ')}</i></small>
+                                    {disc.post_user_id === item.reply_user_id && ( <div> <button onClick={editReply} className="edit-reply-btn">Edit</button>| </div> )}
                                     <button onClick={addReply} className="reply-btn">Reply</button>
                                 </div>
                                 {item.replies.length !== 0 && (<details>
-                                    <summary><small><i>Load replies</i></small></summary>
+                                    <summary><sub><i><b>Load replies</b></i></sub></summary>
                                     {nestedReplies(item.replies, x + 20, false)}
                                 </details>)}
                             </div>
@@ -134,12 +232,13 @@ const StuDiscussion = () => {
                             <div style={{ marginLeft: x }} id={item.reply_id} key={item.reply_id}>
                                 <hr />
                                 <div className="sub-reply">
-                                    <p>- {item.reply}</p>
+                                    <p>{item.reply}</p>
                                     <small style={{ float: "right" }}> by <b>{item.replied_by}</b> on <i>{item.reply_datetime.slice(0, 16).replace(' ', ', ')}</i></small>
+                                    {disc.post_user_id === item.reply_user_id &&( <div> <button onClick={editReply} className="edit-reply-btn">Edit</button>| </div> )}
                                     <button onClick={addReply} className="reply-btn">Reply</button>
                                 </div>
                                 {item.replies.length !== 0 && (<details>
-                                    <summary><small><i>Load replies</i></small></summary>
+                                    <summary><sub><i><b>Load replies</b></i></sub></summary>
                                     {nestedReplies(item.replies, x + 20, false)}
                                 </details>)}
                             </div>
@@ -155,21 +254,27 @@ const StuDiscussion = () => {
             <Sidebar />
             <div className="homeContent">
                 <div className="discussion">
-                    <h1>{disc.topic}</h1>
-                    <h5>{disc.fname} {disc.lname}</h5>
-                    <h6><i>{disc.date_time.slice(0, 16).replace(' ', ', ')}</i></h6>
-                    <p>{disc.post}</p>
+
+                    <div className="discussion-details">
+                        <h1 style={{ display: "inline" }}>{disc.topic}</h1>
+                        
+                        <h5>{disc.fname} {disc.lname}</h5>
+                        <h6><i>{disc.date_time.slice(0, 16).replace(' ', ', ')}</i></h6>
+
+                        <hr />
+                        <p>{disc.post}</p>
+                    </div>
 
                     <hr />
-                    {/* <ExpandMoreIcon onClick={expandReplies} /> */}
+
                     <div className="replies" id="replies">
                         {nestedReplies(disc.replies, 10, true, 0)}
                     </div>
 
                     <div className="comment-box" id="comment-box">
                         <textarea name="" id="" placeholder="Add a comment..." required></textarea>
-                        
-                        <button onClick={sendReply} className="comment-btn">Comment</button>
+
+                        <button onClick={sendReply} className="comment-btn" >Comment</button>
                     </div>
 
                 </div>
