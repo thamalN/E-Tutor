@@ -101,8 +101,9 @@ const MyCourses = () => {
 
                                     <h1>{course.course_name} {course.year}</h1>
                                     <p>{course.description}</p>
-                                     <button className="btn btn-dark add-btn" onClick={()=>handleDelete(course.course_id,user.user_id,course.course_name)}>UnEnroll</button>
-            
+                                    <div style={{ display: "flex", alignItems: "flex-start" }}>
+                                     <button className="btn btn-danger add-btn" style={{ margin: "0" }} onClick={()=>handleDelete(course.course_id,user.user_id,course.course_name)}>UnEnroll</button>
+                                    </div>
 
                                     </div>
                                     <img className="course_icon" src={course.image} alt="physics_icon" />
