@@ -65,8 +65,8 @@ const MyCourseDetails = () => {
   const quizss = JSON.parse(localStorage.getItem('quiz')).find((item) => item.quiz_id === parseInt(id))
 
   const message = (quiz_id) => {
-    
-  
+
+
 
 
     // // console.log()
@@ -166,11 +166,11 @@ const MyCourseDetails = () => {
 
                   <Link to={"/studentHome/studentQuizAttempts/" + value.quiz_id} className="name-sub">
 
-                  <ul>
-                    <li key={value.quiz_id}>{value.quiz_name}  </li>
-                  </ul>
+                    <ul>
+                      <li key={value.quiz_id}>{value.quiz_name}  </li>
+                    </ul>
                   </Link>
-                  <h6>deadline-{value.deadline}</h6>
+                  {/* <h6>deadline-{value.deadline}</h6> */}
 
 
                 </div>
