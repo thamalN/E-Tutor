@@ -129,6 +129,10 @@ function App() {
             <ViewProfile />
           </Route>
 
+          <Route exact path="/viewUser/">
+            <viewUser />
+          </Route>
+
           <Route exact path="/editProfile/">
             <EditProfile />
           </Route>

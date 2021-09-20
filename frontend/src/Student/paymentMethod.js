@@ -75,7 +75,7 @@ const PaymentMethod = () => {
                             {/* <Link to="/studentHome/payments/payslip" > */}
                             <Link to={`/studentHome/payments/payslip/${data.course_id}`} >   
                                 <div className="payment-card">
-                                  <h2>Opload your payslip</h2> 
+                                  <h2>Upload your payslip</h2> 
                                 </div>
                             </Link>
 
