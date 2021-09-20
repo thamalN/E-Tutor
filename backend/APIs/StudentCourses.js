@@ -34,6 +34,15 @@ module.exports = function (app, db, upload) {
         })
     })
 
+    app.post("/courseDetails", (req, res) => {
+        const course_id = req.body.id;
+        console.log(course_id);
+        const query = "SELECT course_id, price,course_name,description,year FROM course WHERE course_id = ? ;";
 
+        db.query(query, course_id, (err, result) => {
+            if (err) throw err;
+            res.json(result)
+        })
+    })
 
 };

@@ -25,7 +25,8 @@ const MyCourses = () => {
             })
             .then(data => {
                 setData(data)
-                console.log(data)
+                // console.log(data)
+                // localStorage.setItem('courseData', JSON.stringify(data))
             })
 
     }, [url])
@@ -46,6 +47,7 @@ const MyCourses = () => {
             console.log("redirect")
         }
     }
+
 
     return (
         <div>
