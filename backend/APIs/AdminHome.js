@@ -1,6 +1,7 @@
+const { validateToken } = require('./JWT')
 module.exports = function (app, db) {
 
-    app.get("/adminHome/pendingReceipts", (req, res) => {
+    app.get("/adminHome/pendingReceipts", validateToken, (req, res) => {
 
         const query = "SELECT COUNT(payment_id) AS pendingReceipts FROM payment WHERE verified=0;";
 
@@ -11,7 +12,7 @@ module.exports = function (app, db) {
         })
     })
 
-    app.get("/adminHome/verifiedReceipts", (req, res) => {
+    app.get("/adminHome/verifiedReceipts", validateToken, (req, res) => {
 
         const query = "SELECT COUNT(payment_id) AS verifiedReceipts FROM payment WHERE verified=1;";
 
@@ -22,7 +23,7 @@ module.exports = function (app, db) {
         })
     })
 
-    app.get("/adminHome/rejectedReceipts", (req, res) => {
+    app.get("/adminHome/rejectedReceipts", validateToken, (req, res) => {
 
         const query = "SELECT COUNT(payment_id) AS rejectedReceipts FROM payment WHERE verified=2;";
 
@@ -33,7 +34,7 @@ module.exports = function (app, db) {
         })
     })
     
-    app.get("/adminHome/unenrolledCourses", (req, res) => {
+    app.get("/adminHome/unenrolledCourses", validateToken, (req, res) => {
 
         const query = "SELECT COUNT(course_id) AS unenrolled from course WHERE course_id NOT IN (SELECT course_id FROM enroll);";
 
@@ -44,7 +45,7 @@ module.exports = function (app, db) {
         })
     })
 
-    app.get("/adminHome/totalStudents", (req, res) => {
+    app.get("/adminHome/totalStudents", validateToken, (req, res) => {
 
         const query = "SELECT COUNT(student_id) AS studentCount from student;";
 
@@ -55,7 +56,7 @@ module.exports = function (app, db) {
         })
     })
 
-    app.get("/adminHome/unassignedTeachers", (req, res) => {
+    app.get("/adminHome/unassignedTeachers", validateToken, (req, res) => {
 
         const query = "SELECT COUNT(teacher_id) AS unassignedTeachers from teacher WHERE teacher_id NOT IN (SELECT teacher_id FROM course);";
 

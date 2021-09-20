@@ -1,5 +1,6 @@
+const { validateToken, requiresAdmin, requiresTeacherStaff } = require('./JWT')
 module.exports = function (app, db) {
-    app.post("/searchUser", (req, res) => {
+    app.post("/searchUser", requiresAdmin, (req, res) => {
         let searchstring = req.body.search_string;
         const flag_user = req.body.user;
         const province = req.body.province;
@@ -104,7 +105,7 @@ module.exports = function (app, db) {
 
     })
 
-    app.post("/searchStudent", (req, res) => {
+    app.post("/searchStudent", requiresTeacherStaff, (req, res) => {
         let searchstring = req.body.search_string;
         const flag_user = req.body.user;
         const province = req.body.province;

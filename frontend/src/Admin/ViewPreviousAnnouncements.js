@@ -15,7 +15,9 @@ const PreviousAnnouncements = () => {
     const url = "http://localhost:3001/viewPreviousAnnouncements"
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            credentials: 'include'
+        })
             .then((res => {
                 return res.json()
             }))

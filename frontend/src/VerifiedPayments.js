@@ -15,7 +15,9 @@ const PendingReceipts = () => {
     const url = "http://localhost:3001/verifiedPayments"
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            credentials: 'include'
+        })
             .then((res => {
                 return res.json()
             }))

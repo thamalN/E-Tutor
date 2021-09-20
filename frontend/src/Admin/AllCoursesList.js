@@ -14,7 +14,8 @@ const AllCoursesList = () => {
 
         fetch(url, {
             method: 'GET',
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include'
         })
             .then(res => {
                 return res.json();

@@ -14,7 +14,9 @@ const Feedback = () => {
     const url = "http://localhost:3001/viewFeedback"
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            credentials: 'include'
+        })
             .then((res => {
                 return res.json()
             }))

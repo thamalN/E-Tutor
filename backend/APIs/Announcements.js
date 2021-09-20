@@ -1,6 +1,7 @@
+const { validateToken, requiresAdminTeacher } = require('./JWT')
 module.exports = function (app, db, upload, fs) {
 
-    app.post("/createAnnouncement", upload.single('file'), (req, res) => {
+    app.post("/createAnnouncement", requiresAdminTeacher, upload.single('file'), (req, res) => {
 
         const user_id = req.body.user_id;
         const topic = req.body.topic;
@@ -27,7 +28,7 @@ module.exports = function (app, db, upload, fs) {
 
     })
 
-    app.get("/viewPreviousAnnouncements", (req, res) => {
+    app.get("/viewPreviousAnnouncements", requiresAdminTeacher, (req, res) => {
         const query = "SELECT announcement_id, topic, description, file_name, attachment, date_time, modified_at, user.user_id AS added_by, fname, lname  FROM announcement LEFT JOIN user on announcement.user_id=user.user_id  ORDER BY announcement.modified_at DESC;";
 
         db.query(query, (err, result) => {
@@ -36,7 +37,7 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
-    app.post("/editAnnouncement", upload.single('file'), (req, res) => {
+    app.post("/editAnnouncement", requiresAdminTeacher, upload.single('file'), (req, res) => {
  
         const announcement_id = req.body.announcement_id;
         const options = req.body.options;
@@ -96,7 +97,7 @@ module.exports = function (app, db, upload, fs) {
 
     })
 
-    app.post("/deleteAnnouncement", (req, res) => {
+    app.post("/deleteAnnouncement", requiresAdminTeacher, (req, res) => {
         console.log(req.body)
         const announcement_id = req.body.id;
         const contentPath = req.body.content_path

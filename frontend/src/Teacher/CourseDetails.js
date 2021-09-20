@@ -280,6 +280,7 @@ const CourseDetails = () => {
             fetch(url3, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify(id)
             })
                 .then((res => {
@@ -294,7 +295,7 @@ const CourseDetails = () => {
                     }
                     else {
                         alert("Sorry the task couldn't be completed");
-                        history.push("/adminHome/courses/allCourses")
+                        history.replace("/adminHome/courses/allCourses")
                     }
                 }))
         }

@@ -35,7 +35,8 @@ const CreateAnnouncement = () => {
 
         fetch(url, {
             method: 'POST',
-            body: formData
+            body: formData,
+            credentials: 'include'
         })
             .then(data => {
                 alert("New Announcement added Successfully!")

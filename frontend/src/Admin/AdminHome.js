@@ -24,7 +24,11 @@ const AdminHome = (props) => {
 
     useEffect(() => {
 
-        fetch(url1)
+        fetch(url1, {
+            method: 'GET',
+            credentials: 'include',
+            headers: { "Content-Type": "application/json" }
+        })
             .then(res => {
                 return res.json();
             })
@@ -38,7 +42,11 @@ const AdminHome = (props) => {
 
     useEffect(() => {
 
-        fetch(url2)
+        fetch(url2, {
+            method: 'GET',
+            credentials: 'include',
+            headers: { "Content-Type": "application/json" }
+        })
             .then(res => {
                 return res.json();
             })
@@ -52,7 +60,11 @@ const AdminHome = (props) => {
 
     useEffect(() => {
 
-        fetch(url3)
+        fetch(url3, {
+            method: 'GET',
+            credentials: 'include',
+            headers: { "Content-Type": "application/json" }
+        })
             .then(res => {
                 return res.json();
             })
@@ -66,7 +78,11 @@ const AdminHome = (props) => {
 
     useEffect(() => {
 
-        fetch(url4)
+        fetch(url4, {
+            method: 'GET',
+            credentials: 'include',
+            headers: { "Content-Type": "application/json" }
+        })
             .then(res => {
                 return res.json();
             })

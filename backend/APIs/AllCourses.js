@@ -1,6 +1,6 @@
-const { validateToken } = require('./JWT')
+const { validateToken, requiresAdmin } = require('./JWT')
 module.exports = function (app, db, fs) {
-    app.get("/allCourses", validateToken, (req, res) => {
+    app.get("/allCourses", requiresAdmin, (req, res) => {
         
      const query = "SELECT course.*, user.fname, user.lname FROM course INNER JOIN user ON course.teacher_id=user.user_id;";
     
@@ -10,7 +10,7 @@ module.exports = function (app, db, fs) {
         })
     })
 
-    app.get("/allCoursesList", (req, res) => {
+    app.get("/allCoursesList", validateToken, (req, res) => {
         
         const query = "SELECT e.course_id, COUNT(e.course_id) AS count, c.course_name, c.year, u.fname, u.lname FROM enroll AS e INNER JOIN course AS c INNER JOIN user AS u ON c.course_id = e.course_id AND c.teacher_id = u.user_id GROUP BY course_id ORDER BY course_id;";
        
@@ -20,7 +20,7 @@ module.exports = function (app, db, fs) {
            })
        })
 
-    app.post("/deleteCourse", (req, res) => {
+    app.post("/deleteCourse", requiresAdmin, (req, res) => {
         const course_id = req.body.id;
         let file_link;
     
@@ -53,7 +53,7 @@ module.exports = function (app, db, fs) {
         
     })
 
-    app.get("/viewUnenrolledCourses", (req, res) => {
+    app.get("/viewUnenrolledCourses", requiresAdmin, (req, res) => {
         
         const query = "SELECT course.*, user.fname, user.lname from course INNER JOIN user ON course.teacher_id=user.user_id WHERE course_id NOT IN (SELECT course_id FROM enroll);";
        

@@ -129,10 +129,6 @@ function App() {
             <ViewProfile />
           </Route>
 
-          <Route exact path="/viewUser/">
-            <viewUser />
-          </Route>
-
           <Route exact path="/editProfile/">
             <EditProfile />
           </Route>
@@ -145,11 +141,11 @@ function App() {
             <AdminHome setLoggedIn={setLoggedIn} />
           </Route>
 
-          <Route exact path="/adminHome/createTeacherAcc">
+          <Route exact path="/adminHome/registrations/createTeacherAcc">
             <CreateTeacherAcc />
           </Route>
 
-          <Route exact path="/adminHome/createSupStaffAcc">
+          <Route exact path="/adminHome/registrations/createSupStaffAcc">
             <CreateSupStaffAcc />
           </Route>
 
