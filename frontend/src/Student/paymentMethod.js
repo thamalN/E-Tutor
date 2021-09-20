@@ -66,13 +66,37 @@ const PaymentMethod = () => {
     return (
         <div>
             <Sidebar />
-            <div className="PaymentContent">
-                <h2>Payment For {data.course_name}</h2>
-                <p>Academic year {data.year}</p>
-                <p>Amount {data.price}</p>
+            <div className="homeContent PaymentContent">
+
                 <div className="payment">
                     <div className="payment-card-content">
-                        <h2>Select Your payment Method</h2>
+                        <h2 className="text-start ms-5 my-5">Complete The Payment Here...</h2>
+                        <table align="left" className="tablepayment ms-5 mb-5 align-start">
+                            <tbody>
+                                <tr>
+                                    <td>Subject</td>
+                                    <td>:</td>
+                                    <td><span className="text-start ms-4 fs-5 fw-bold fst-italic">{data.course_name}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Academic year</td>
+                                    <td>:</td>
+                                    <td><span className="text-start ms-4 fs-5 fw-bold fst-italic">{data.year}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Amount</td>
+                                    <td>:</td>
+                                    <td><span className="text-start ms-4 fs-5 fw-bold fst-italic">Rs.{data.price}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        {/* <p className="text-start ms-5 fs-5 fw-normal">Subject : <span className="text-start ms-4 fs-5 fw-bold fst-italic">{data.course_name}</span></p>
+                        <p className="text-start ms-5 fs-5 fw-normal">Academic year : <span className="text-start ms-4 fs-5 fw-bold fst-italic">{data.year}</span> </p>
+                        <p className="text-start ms-5 fs-5 fw-normal">Amount : <span className="text-start ms-4 fs-5 fw-bold fst-italic">{data.price}</span></p> */}
+                    </div>
+                    <div className="payment-card-content">
+                        <h2 className="text-start ms-5 my-5">Select The Payment Method...</h2>
                         <div>
                             {/* <Link to="/studentHome/payments/payslip" > */}
                             {/* <Link to={`/studentHome/payments/payslip/${data.course_id}`} >   
@@ -80,10 +104,9 @@ const PaymentMethod = () => {
                                   <h2>Upload your payslip</h2> 
                                 </div>
                             </Link> */}
-                            <Link className="btn btn-outline-dark me-4" to={`/studentHome/payments/payslip/${data.course_id}`} >
+                            <Link className="btn payslip btn-outline-dark me-4 mb-5" to={`/studentHome/payments/payslip/${data.course_id}`} >
                                 Upload Your Payslip
                             </Link>
-
                             {/* <div className="payment-card">
                                 <h2>Pay Online</h2>
                                 <StripeCheckout
@@ -97,15 +120,17 @@ const PaymentMethod = () => {
                                 />
                             </div> */}
                             <StripeCheckout
-                                className="btn btn-outline-dark"
                                 stripeKey="pk_test_51JLxqKI3zG84BVe3rKggoFC6pHAF8RyEU6qv54suSBnG7utaxiiJKDZVDo1OIaL46Kg7D37G8DRowLH0Qo2wxSWR00gJRHx9a0"
                                 token={handleToken}
                                 amount={data.price * 100}
                                 name={data.course_name}
                                 billingAddress
                                 shippingAddress
-
-                            />
+                            >
+                                <button className="btn payslip btn-outline-dark ms-4 mb-5">
+                                    Pay With Card
+                                </button>
+                            </StripeCheckout>
 
                         </div>
 

@@ -1798,3 +1798,15 @@ td {
   text-shadow: none; 
   border-radius: .25rem;
 }
+
+.payslip{
+  width: 15vw;
+}
+
+.tablepayment{
+  max-width: 20vw;
+}
+
+.tablepayment tr{
+  height: 7vh;
+}

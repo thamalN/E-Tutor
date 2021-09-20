@@ -138,10 +138,10 @@ const SupportingStaffHome = (props) => {
                         </div>
 
                         <div className="wrapper">
-                            <Card2 title="Registered Students" description={registeredStudents} button="View"></Card2>
-                            <Card2 title="Pending Receipts" description={pendingReceipts} button="View"></Card2>
-                            <Card2 title="Verified Receipts" description={verifiedReceipts} button="View"></Card2>
-                            <Card2 title="Rejected Receipts" description={rejectedReceipts} button="View"></Card2>
+                            <Card2 title="Registered Students" description={registeredStudents} ></Card2>
+                            <Card2 title="Pending Receipts" description={pendingReceipts} ></Card2>
+                            <Card2 title="Verified Receipts" description={verifiedReceipts} ></Card2>
+                            <Card2 title="Rejected Receipts" description={rejectedReceipts} ></Card2>
                             
                         </div>
 
