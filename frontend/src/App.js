@@ -131,6 +131,10 @@ function App() {
             <EditProfile />
           </Route>
 
+          <Route exact path="/viewUser/">
+            <ViewUser />
+          </Route>
+
           <Route exact path="/adminHome/dashboard">
             <AdminHome setLoggedIn={setLoggedIn} />
           </Route>
