@@ -81,6 +81,7 @@ require('./APIs/TeacherHome')(app, db)
 require('./APIs/stuFeedback')(app,db)
 require('./APIs/StudentAnnouncement')(app,db)
 require('./APIs/ViewProfile')(app,db, upload)
+require('./APIs/Home')(app,db)
 
 const server = http.createServer(app)
 
