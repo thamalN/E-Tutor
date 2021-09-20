@@ -84,6 +84,7 @@ const StudentHome = () => {
         <div>
             <Sidebar/>
             <div className="homeContent">
+            
             <h1>Announcements</h1>
             <div className="courses">
                     {data.map(announcement => (

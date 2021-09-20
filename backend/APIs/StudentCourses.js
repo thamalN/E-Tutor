@@ -4,11 +4,23 @@ module.exports = function (app, db, upload) {
         const studentId = req.body.id;
 
         // const query = "SELECT * FROM course WHERE course_id IN( SELECT course_id FROM enroll WHERE student_id=?);";
-        const query = "SELECT * FROM course INNER JOIN enroll ON enroll.course_id = course.course_id WHERE student_id=?;";
-
+        const query = "select course.*, user.fname, user.lname from enroll INNER JOIN course ON course.course_id = enroll.course_id INNER JOIN user ON user.user_id = course.teacher_id where enroll.course_id not in (SELECT course_id from payment where month = MONTHNAME(NOW())) AND student_id=? ";
+        // SELECT course.course_name, course.year from payment INNER JOIN course ON payment.course_id=course.course_id WHERE month != MONTHNAME(NOW()) WHERE student_id=?;
 
         db.query(query, studentId, (err, result) => {
             if (err) throw err;
+            console.log(result);
+            res.json(result)
+        })
+    })
+
+    app.post("/studentAllCourses", (req, res) => {
+        const studentId = req.body.id;
+
+        const query = "SELECT * FROM course WHERE course_id IN( SELECT course_id FROM enroll WHERE student_id=?);";
+        db.query(query, studentId, (err, result) => {
+            if (err) throw err;
+            console.log(result);
             res.json(result)
         })
     })
@@ -43,6 +55,24 @@ module.exports = function (app, db, upload) {
             if (err) throw err;
             res.json(result)
         })
+    })
+
+    app.post("/deleteenrolledcourse",(req,res)=>{
+        console.log(req.body);
+        const course_id=req.body.unenrolledcid;
+    
+        const student_id=req.body.id;
+
+        const query="DELETE from enroll WHERE course_id=? AND student_id=?;";
+
+        db.query(query,[course_id,student_id],(err,result)=>{
+            if(err) throw err;
+            res.json({
+                status:"ok",
+            });
+        
+        })
+       
     })
 
 };

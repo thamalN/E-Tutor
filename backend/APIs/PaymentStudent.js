@@ -7,8 +7,9 @@ module.exports = function (app, db, stripe, uuid, upload) {
   app.post("/paymentStudent", async (req, res) => {
     console.log("Request:", req.body);
     const student_id = req.body.student_id;
-      const course_id = req.body.course_id;
-      const amount = req.body.amount;
+    const course_id = req.body.course_id;
+    const amount = req.body.amount;
+    const enrol = req.body.enrol;
 
     let error;
     let status;
@@ -45,70 +46,86 @@ module.exports = function (app, db, stripe, uuid, upload) {
       );
       console.log("Charge:", { charge });
       status = "success";
-      
+
+
       console.log(amount)
       const payment_method = "Card";
       const verified = 1;
       const today = new Date();
-      const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+      const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
       const month = monthNames[today.getMonth()];
 
 
       const query = "INSERT INTO payment (student_id, course_id, payment_method, amount, month, date_time, verified) VALUES  (?,?,?,?,?,now(),?);";
 
-      db.query(query, [student_id, course_id, payment_method,  amount, month, verified], (err, result) => {
-          if (err) throw err;
-          console.log(result.insertId)
+      db.query(query, [student_id, course_id, payment_method, amount, month, verified], (err, result) => {
+        if (err) throw err;
+        console.log(result.insertId)
+
+        if (enrol) {
+          const query = "INSERT INTO payment (student_id, course_id, payment_method, amount, month, date_time, verified) VALUES  (?,?,?,?,?,now(),?);";
+
+          db.query(query, [student_id, course_id, payment_method, amount, month, verified], (err, result) => {
+            if (err) throw err;
+            console.log(result.insertId)
+          })
+          // insert
+        }
+
+        else {
+
 
           var today_date = new Date();
 
-        var today_month = today_date.toLocaleString('default', { month: 'long' });
-        var day = today_date.getDate();
-        var current = new Date();
-        current.setMonth(current.getMonth() - 1);
-        const previousMonth = current.toLocaleString('default', { month: 'long' });
-        const query2 = "UPDATE enroll SET access=? WHERE student_id= ? AND course_id=?;";
+          var today_month = today_date.toLocaleString('default', { month: 'long' });
+          var day = today_date.getDate();
+          var current = new Date();
+          current.setMonth(current.getMonth() - 1);
+          const previousMonth = current.toLocaleString('default', { month: 'long' });
+          const query2 = "UPDATE enroll SET access=? WHERE student_id= ? AND course_id=?;";
 
 
-  
-   
-    
-      
-        if (month === today_month || (month === previousMonth && day < 14)) {
-          db.query(query2, [1, student_id, course_id], (err, result) => {
-            if (err) throw err;
-            res.json({
-              status: "success",
+
+
+
+
+          if (month === today_month || (month === previousMonth && day < 14)) {
+            db.query(query2, [1, student_id, course_id], (err, result) => {
+              if (err) throw err;
+              res.json({
+                status: "success",
+              });
+
+
             });
-
-
-          });
-        }
-        else {
+          }
+          else {
             res.json({
               status: "success - access 0",
             });
 
 
-          
+
+          }
+
         }
-          
-          });
-      
+      });
+
     } catch (error) {
       console.error("Error:", error);
       status = "failure";
       res.json({ error, status });
     }
 
-   
+
+
   });
 
 
 
 
-  
+
 
   app.post("/paymentUpdate", (req, res) => {
     console.log(req.body)
@@ -121,63 +138,63 @@ module.exports = function (app, db, stripe, uuid, upload) {
 
     const query = "INSERT INTO payment (student_id, course_id, payment_method, amount, month, date_time) VALUES  (?,?,?,?,?,now());";
 
-    db.query(query, [user_id, course_id, payment_method,  amount, month], (err, result) => {
-        if (err) throw err;
-        res.json(result.insertId)
-        console.log(result.insertId)
-        
-        });
-    
-})
-
-app.post("/allPayments", (req, res) => {
-  const studentId = req.body.id;
-
-  const query = "SELECT payment.payment_id, payment.payment_method, payment.date_time, payment.amount, payment.month, course.course_name, course.year, course.description, course.price FROM payment INNER JOIN course ON course.course_id = payment.course_id WHERE payment.student_id=?;";
-
-  db.query(query, studentId, (err, result) => {
-      if (err) throw err;
-      res.json(result)
-  })
-})
-
-app.post("/uploadPayslip", upload.single('file'), (req, res) => {
-  console.log(req.body)
-  console.log(req.file)
-  const student_id = req.body.student_id;
-  const course_id = req.body.course_id;
-  const amount = req.body.amount;
-  const payment_method = "Bank Slip";
-  const verified = 0;
-  const today = new Date();
-  
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
-
-const month = monthNames[today.getMonth()];
-  let content_path;
-  
-  if(req.file !== undefined){
-      content_path = "http://127.0.0.1:8887/" + req.file.path;
-
-  }
-  else{
-      content_path = null
-  }
-  
-  // const query = "INSERT INTO announcement (user_id, topic, description, file_name, attachment, date_time, modified_at) VALUES  (?,?,?,?,?,now(),now());";
-  const query = "INSERT INTO payment (student_id, course_id, payment_method, date_time, amount, month, verified, payment_slip) VALUES  (?,?,?,now(),?,?,?,?);";
-
-
-  db.query(query, [student_id, course_id, payment_method, amount, month , verified, content_path], (err, result) => {
+    db.query(query, [user_id, course_id, payment_method, amount, month], (err, result) => {
       if (err) throw err;
       res.json(result.insertId)
       console.log(result.insertId)
-      
-      });
-  
-})
+
+    });
+
+  })
+
+  app.post("/allPayments", (req, res) => {
+    const studentId = req.body.id;
+
+    const query = "SELECT payment.payment_id, payment.payment_method, payment.date_time, payment.amount, payment.month, course.course_name, course.year, course.description, course.price FROM payment INNER JOIN course ON course.course_id = payment.course_id WHERE payment.student_id=?;";
+
+    db.query(query, studentId, (err, result) => {
+      if (err) throw err;
+      res.json(result)
+    })
+  })
+
+  app.post("/uploadPayslip", upload.single('file'), (req, res) => {
+    console.log(req.body)
+    console.log(req.file)
+    const student_id = req.body.student_id;
+    const course_id = req.body.course_id;
+    const amount = req.body.amount;
+    const payment_method = "Bank Slip";
+    const verified = 0;
+    const today = new Date();
+
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    const month = monthNames[today.getMonth()];
+    let content_path;
+
+    if (req.file !== undefined) {
+      content_path = "http://127.0.0.1:8887/" + req.file.path;
+
+    }
+    else {
+      content_path = null
+    }
+
+    // const query = "INSERT INTO announcement (user_id, topic, description, file_name, attachment, date_time, modified_at) VALUES  (?,?,?,?,?,now(),now());";
+    const query = "INSERT INTO payment (student_id, course_id, payment_method, date_time, amount, month, verified, payment_slip) VALUES  (?,?,?,now(),?,?,?,?);";
+
+
+    db.query(query, [student_id, course_id, payment_method, amount, month, verified, content_path], (err, result) => {
+      if (err) throw err;
+      res.json(result.insertId)
+      console.log(result.insertId)
+
+    });
+
+  })
 
 
 

@@ -98,6 +98,7 @@ import TermsAndConditions from './TermsAndConditions';
 import ViewUser from './ViewUser';
 import MyStudents from './Teacher/MyStudents';
 import UpcomingQuiz from './Teacher/UpcomingQuiz';
+import StudentQuizAttempts from './Student/StudentQuizAttempts';
 
 function App() {
 
@@ -432,6 +433,10 @@ function App() {
 
           <Route exact path="/studentHome/StuQuiz/:id">
             <StuQuiz />
+          </Route>
+
+          <Route exact path="/studentHome/studentQuizAttempts/:id">
+            <StudentQuizAttempts />
           </Route>
 
           <Route exact path="/studentHome/payments/payOnline">

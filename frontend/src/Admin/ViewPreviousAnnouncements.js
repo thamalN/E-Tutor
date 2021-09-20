@@ -65,6 +65,7 @@ const PreviousAnnouncements = () => {
 
 
     }
+    
     return (
         <div>
             <Sidebar />
