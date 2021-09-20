@@ -42,7 +42,7 @@ const MyCourses = () => {
     }
 
     const noAccess = () => {
-        if (window.confirm("Your access to this course has been ")) {
+        if (window.confirm("Your access to this course has been revoked as you have overdue payments")) {
             console.log("redirect")
         }
     }
