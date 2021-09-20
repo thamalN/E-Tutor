@@ -53,15 +53,26 @@ const MyCourses = () => {
             <Sidebar />
             <div className="homeContent">
                 <div className="courses">
+
+
+
                     {data.map(course => (
                         <div className="course-card-container" onClick={(course.access === 0) ? noAccess : () => getCourse(course.course_id)}>
+                          <div className="course-card-container">
                             <div key={course.course_id} className="course-card" >
 
                                 <div className="card-container">
+                                <div className="card-info">
+
                                     <h1>{course.course_name} {course.year}</h1>
                                     <p>{course.description}</p>
+                                    </div>
+                                    <img className="course_icon" src={course.image} alt="physics_icon" />
                                 </div>
+                                
 
+                            </div>
+                            
                             </div>
                         </div>
 

@@ -78,7 +78,7 @@ require('./APIs/UserSearch')(app, db)
 require('./APIs/AdminHome')(app, db)
 require('./APIs/PaymentStudent')(app, db, stripe, uuid)
 require('./APIs/TeacherHome')(app, db)
-require('./APIs/stuFeedback')(app,db)
+require('./APIs/stuFeedback')(app,db,upload,fs)
 require('./APIs/StudentAnnouncement')(app,db)
 require('./APIs/ViewProfile')(app,db, upload)
 

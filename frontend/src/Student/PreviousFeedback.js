@@ -37,6 +37,11 @@ const PreviousFeedback = () => {
                                     <h1>{feedback.topic}</h1>
                                     <h6> Created date: {feedback.date_time}</h6>
                                     <div><p>{feedback.description}</p></div>
+                                    <a href={feedback.attachment} target="_blank" rel="noreferrer">
+
+                                    {feedback.attachment && <div>{feedback.file_name}</div>}
+
+                                </a>
 
                                 </div>
                             </div>
