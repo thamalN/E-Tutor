@@ -59,8 +59,40 @@ module.exports = function (app, db, stripe, uuid, upload) {
 
       db.query(query, [student_id, course_id, payment_method,  amount, month, verified], (err, result) => {
           if (err) throw err;
-          res.json(result.insertId)
           console.log(result.insertId)
+
+          var today_date = new Date();
+
+        var today_month = today_date.toLocaleString('default', { month: 'long' });
+        var day = today_date.getDate();
+        var current = new Date();
+        current.setMonth(current.getMonth() - 1);
+        const previousMonth = current.toLocaleString('default', { month: 'long' });
+        const query2 = "UPDATE enroll SET access=? WHERE student_id= ? AND course_id=?;";
+
+
+  
+   
+    
+      
+        if (month === today_month || (month === previousMonth && day < 14)) {
+          db.query(query2, [1, student_id, course_id], (err, result) => {
+            if (err) throw err;
+            res.json({
+              status: "success",
+            });
+
+
+          });
+        }
+        else {
+            res.json({
+              status: "success - access 0",
+            });
+
+
+          
+        }
           
           });
       
