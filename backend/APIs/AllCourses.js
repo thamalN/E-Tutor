@@ -2,7 +2,7 @@ const { validateToken } = require('./JWT')
 module.exports = function (app, db, fs) {
     app.get("/allCourses", validateToken, (req, res) => {
         
-     const query = "SELECT * FROM course;";
+     const query = "SELECT course.*, user.fname, user.lname FROM course INNER JOIN user ON course.teacher_id=user.user_id;";
     
         db.query(query, (err, result) => {
             if (err) throw err;

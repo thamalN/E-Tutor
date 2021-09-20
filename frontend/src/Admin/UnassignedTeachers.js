@@ -72,8 +72,8 @@ const UnassignedTeachers = () => {
                             </table>
                         </li>
                         <div>
-                            <Link to="/adminHome/reports"><button >Back</button></Link>
-                            <button onClick={(e) => { handleClick(e); doc.save('Unassigned Teachers.pdf') }}>Download pdf</button>
+                            
+                            <button className="btn btn-dark add-btn" onClick={(e) => { handleClick(e); doc.save('Unassigned Teachers.pdf') }}>Download pdf</button>
                         </div>
                     </ul>
                 </div>

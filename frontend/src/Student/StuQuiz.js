@@ -25,7 +25,7 @@ const  StuQuiz = () => {
     const startingMinutes=10;
     let time=startingMinutes*60;
 
-    let countdownEl=document.getElementById('countdown');
+    
 
 // const timer=()=>{
 //     {setInterval(updateCountdown,1000)};
@@ -34,14 +34,19 @@ const  StuQuiz = () => {
 // }
 
 const updateCountdown=()=>{
+    let countdownEl=document.getElementById('countdown');
     // setInterval(updateCountdown,1000);
     const minutes=Math.floor(time/60);
     let seconds=time%60;
-    
-    countdownEl.innerHTML=`${minutes}: ${seconds}`;
+    if(countdownEl)
+        countdownEl.innerHTML=`${minutes}: ${seconds}`;
     time--;
     // console.log("alert");
 }
+
+setInterval(updateCountdown,1000)
+
+
     return (
         
         <div>
@@ -59,7 +64,7 @@ const updateCountdown=()=>{
                         <div>
                             <h3 className="quiz-name-1">Duration </h3>
                             <h3 className="quiz-name-2"> - {quiz.duration}</h3>
-                            {setInterval(updateCountdown,1000)};
+                        
                             <p id="countdown">10:00</p>
                             
                             

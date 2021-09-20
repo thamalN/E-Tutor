@@ -96,19 +96,27 @@ const HomeNew = () => {
                     </ul>
                 </div>
             </section>
+
             <section className="banner" id="about">
                 <div className="about">
                     <h1>About Us</h1>
-                    <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Soluta quos dolorum ullam ipsam error consequatur corrupti, obcaecati cumque.<br /> Nemo non laborum est fugit! Natus quaerat est exercitationem accusamus eum corrupti!<br /> Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Soluta quos dolorum ullam ipsam error consequatur corrupti, obcaecati cumque.<br /> Nemo non laborum est fugit! Natus quaerat est exercitationem accusamus eum corrupti!<br />Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Soluta quos dolorum ullam ipsam error consequatur corrupti, obcaecati cumque.<br /> Nemo non laborum est fugit! Natus quaerat est exercitationem accusamus eum corrupti!<br /> </h6>
+                    <h6>At eTutor our mission is to guide our students towards the fortunes of knowledge. <br /> Our vision is to be the foremost online educational platform in Sri Lanka To produce high calibre students <br /> and help to strengthen the island's online educational standards in these pandemic times and beyond. <br /> With qualified teachers we guarantee our quality of content and higher standards for results. As a developing nation <br /> its our duty to give the best opportunities for the future generations in education as well as technology.</h6>
                 </div>
             </section>
+
+            <section className="banner" id="contact">
+                <div className="contact">
+                    <h6>Contact Us : etutororganization@gmail.com</h6>
+                </div>
+            </section>
+
             <div className="quote">
                 <h2>“An investment in knowledge <br /> pays the best interest...” </h2>
                 <h6>-Benjamin Franklin - </h6>
-            </div>
-            <section className="banner" id="contact">
+            </div> 
+            <section className="banner" >
                 <div className="contact">
-                    <h6>contact us @ 0123123123</h6>
+                    <h6>©2021 | eTutor The Online Education Platform | All Rights Reserved</h6>
                 </div>
             </section>
         </main>

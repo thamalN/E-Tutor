@@ -20,14 +20,17 @@ const SignUp = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     let flag;
     let heading;
+
     if (user === null) {
         flag = 0
         heading = "Sign Up"
+        
     }
     else {
         flag = 1
         heading = "Create Student Account"
     }
+    
 
     const [data, setData] = useState(
         {
@@ -466,21 +469,6 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-5">
-                    <label className="mt-2" htmlFor="contact">Contact</label>
-                    <span id="contact" style={{ "marginLeft": 50, fontSize: 12 }}></span>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="contact"
-                        name="contact"
-                        value={data.contact}
-                        // {...register("contact")}
-                        onChange={(e) => { setData({ ...data, contact: e.target.value }); handleChange(e) }}
-                        required
-                    />
-                </div>
-
 
                 <div className="col-md-4">
                     <label className="mt-2" htmlFor="birthday">Birthday</label>
@@ -513,10 +501,25 @@ const SignUp = () => {
                     </select>
                 </div>
 
+                <div className="col-md-5">
+                    <label className="mt-2" htmlFor="contact">Contact</label>
+                    <span id="contact" style={{ "marginLeft": 50, fontSize: 12 }}></span>
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="contact"
+                        name="contact"
+                        value={data.contact}
+                        // {...register("contact")}
+                        onChange={(e) => { setData({ ...data, contact: e.target.value }); handleChange(e) }}
+                        required
+                    />
+                </div>
 
 
-                <div className="col-12">
-                    <div className="form-check mt-4">
+
+                {flag===0 && (<div className="col-12">
+                    <div className="form-check mt-4"  id="terms">
                         <input
                             className="form-check-input"
                             type="checkbox"
@@ -529,6 +532,7 @@ const SignUp = () => {
                         </label>
                     </div>
                 </div>
+)}
                 <div className="col-12 mt-4">
                     <button id="button" type="submit" className="btn btn-lg btn-dark add-btn">
                         Create Account

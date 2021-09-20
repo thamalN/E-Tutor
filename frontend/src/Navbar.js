@@ -117,6 +117,11 @@ const Navbar = (props) => {
                                             <Link class="dropdown-item" to="#">Payment due on {item.course_name} {item.year}</Link>
                                         </div>
                                     )}
+                                    {notifications && notifications.payments.length === 0 && (
+                                        <div>
+                                            <Link class="dropdown-item" to="#">No Notifications</Link>
+                                        </div>
+                                    )}
                                     <div class="dropdown-divider"></div>
 
                                 </div>
@@ -131,13 +136,13 @@ const Navbar = (props) => {
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <Link class="dropdown-item" to={{
-                                                pathname: "/viewProfile",
-                                                state: {
-                                                    userId: user.user_id,
-                                                    userFlag: user.user_flag
-                                                }
-                                            }}>
-                                                My Details</Link>
+                                    pathname: "/viewProfile",
+                                    state: {
+                                        userId: user.user_id,
+                                        userFlag: user.user_flag
+                                    }
+                                }}>
+                                    My Details</Link>
                                 {/* {user.user_flag === 4 && <a class="dropdown-item" href={`/StudentHome/StudentDetails/${user.user_id}`}>My Details</a>} */}
                                 <div class="dropdown-divider"></div>
                                 <Link class="dropdown-item" onClick={logOut}>Log Out</Link>

@@ -8,8 +8,8 @@ const ViewStuCourses = () => {
 
 
     useEffect(() => {
-        fetch(url,{
-            method:'GET',
+        fetch(url, {
+            method: 'GET',
             credentials: 'include',
             headers: { "Content-Type": "application/json" }
 
@@ -21,7 +21,7 @@ const ViewStuCourses = () => {
                 setData(data)
             })
 
-        }, [])
+    }, [])
 
 
     return (
@@ -31,23 +31,28 @@ const ViewStuCourses = () => {
             <div className="homeContent">
                 <div className="courses">
                     {data.map(course => (
-                        <Link to={`/studentHome/payments`} className="course-card-container">
                         <div className="course-card-container">
-                        <div key={course.course_id} className="course-card" >
-                            
-                                <div className="card-container">
-                                <div className="card-info">
-                                    <h1>{course.course_name} {course.year}</h1>
-                                    <p>{course.description}</p>
-                                        <h3>{course.price}</h3>
-                                        <button className="btn btn-dark">Entroll</button>
-                                      
-                                    </div>
-                                </div>
+                            <div className="course-card-container">
+                                <div key={course.course_id} className="course-card" >
 
+                                    <div className="card-container">
+                                        <div className="card-info">
+                                            <h1>{course.course_name} {course.year}</h1>
+                                            <p>{course.description}</p>
+                                            <h2><small>by </small>{course.fname} {course.lname}</h2>
+                                            <div style={{display: "flex", alignItems: "flex-start"}}>
+                                                <h3 style={{flex: "0 0 90%"}}>RS. {course.price}</h3>
+                                                <Link to={`/studentHome/payments`}><button className="btn btn-dark add-btn" style={{margin:"0"}}>Enroll</button></Link>
+                                            </div>
+                                        </div>
+
+                                        <img className="course_icon" src={course.image} alt="physics_icon" />
+
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
-                        </div>
-                        </Link>
 
                     ))}
                 </div>

@@ -16,6 +16,7 @@ const AddNewCourse = () => {
             description: "",
             teacher: "",
             price: "",
+            image: "",
             user_id: user.user_id
         }
     );
@@ -43,10 +44,12 @@ const AddNewCourse = () => {
 
         const url = "http://localhost:3001/addNewCourse"
 
+        const formData = new FormData(document.getElementById("course-form"))
+        formData.append("user_id", data.user_id)
+
         fetch(url, {
             method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
+            body: formData
         })
             .then(res => {
                 return res.json();
@@ -64,7 +67,7 @@ const AddNewCourse = () => {
 
             {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
             <h1 className="h3 mb-3 fw-normal">Add new Course</h1>
-            <form onSubmit={handleSubmit} className="row g-3">
+            <form onSubmit={handleSubmit} className="row g-3" encType="multipart/form-data" id="course-form">
 
 
                 <div className="col-md-6">
@@ -73,6 +76,7 @@ const AddNewCourse = () => {
                         type="text"
                         className="form-control"
                         id="courseName"
+                        name="course_name"
                         value={data.course_name}
                         onChange={(e) => setData({ ...data, course_name: e.target.value })}
                         required
@@ -85,6 +89,7 @@ const AddNewCourse = () => {
                     <select
                         className="form-control"
                         id="year"
+                        name="course_year"
                         placeholder="Choose..."
                         value={data.year}
                         onChange={(e) => setData({ ...data, year: e.target.value })}
@@ -104,6 +109,7 @@ const AddNewCourse = () => {
                     <select
                         className="form-control"
                         id="teacher"
+                        name="teacher_id"
                         placeholder="Choose..."
                         value={data.teacher}
                         onChange={(e) => setData({ ...data, teacher: e.target.value })}
@@ -111,7 +117,7 @@ const AddNewCourse = () => {
                     >
                         <option value="">Choose...</option>
                         {teacherdata.map((teacherdt, i) => (
-                                            <option>{teacherdt.teacher_id} {teacherdt.fname} {teacherdt.lname}</option>
+                                            <option value={teacherdt.teacher_id}>{teacherdt.teacher_id} {teacherdt.fname} {teacherdt.lname}</option>
                                         ))}
                     </select>
                 </div>
@@ -123,6 +129,7 @@ const AddNewCourse = () => {
                         type="text"
                         className="form-control"
                         id="description"
+                        name="description"
                         value={data.description}
                         onChange={(e) => setData({ ...data, description: e.target.value })}
                         required
@@ -135,15 +142,32 @@ const AddNewCourse = () => {
                         type="text"
                         className="form-control"
                         id="price"
+                        name="price"
                         value={data.price}
                         onChange={(e) => setData({ ...data, price: e.target.value })}
                         required
                     />
                 </div>
 
+                <div className="col-12">
+                            <label htmlFor="image" className="mt-2">Add course Image</label>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                className="form-control"
+                                id="image"
+                                value={data.image}
+                                onChange={(e) => setData({ ...data, image: e.target.value })}
+                                name="file"
+                                required
+
+                            />
+                        </div>
+
                 <div className="col-12 mt-4">
-                    <input type="submit" className="w-100 btn btn-lg btn-dark" value="Add Course" />
+                    <input type="submit" className="btn btn-lg btn-dark add-btn" value="Add Course" />
                 </div>
+
             </form>
 
 

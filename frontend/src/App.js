@@ -149,7 +149,7 @@ function App() {
             <CreateSupStaffAcc />
           </Route>
 
-          <Route exact path="/adminHome/createAnnouncement">
+          <Route exact path="/adminHome/announcements/createAnnouncement">
             <CreateAnnouncement />
           </Route>
 

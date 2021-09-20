@@ -48,8 +48,8 @@ const UnenrolledCourses = () => {
                             <h3>Unenrolled Courses</h3>
                         </li>
                         <li>
-                            <table className="table" id="reg_table">
-                                <thead>
+                            <table className="table table2" id="reg_table">
+                            <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">Course ID</th>
                                         <th scope="col">Course Name</th>
@@ -61,7 +61,7 @@ const UnenrolledCourses = () => {
                                 <tbody>
                                     {data.map((course, i) => (
                                         <tr>
-                                            <td>{course.teacher_id}</td>
+                                            <td>{course.course_id}</td>
                                             <td>{course.course_name}</td>
                                             <td>{course.year}</td>
                                             <td>{course.fname} {course.lname}</td>
@@ -72,8 +72,8 @@ const UnenrolledCourses = () => {
                             </table>
                         </li>
                         <div>
-                            <Link to="/adminHome/reports"><button >Back</button></Link>
-                            <button onClick={(e) => { handleClick(e); doc.save('Unenrolled Courses.pdf') }}>Download pdf</button>
+                            
+                            <button className="btn btn-dark add-btn" onClick={(e) => { handleClick(e); doc.save('Unenrolled Courses.pdf') }}>Download pdf</button>
                         </div>
                     </ul>
                 </div>
