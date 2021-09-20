@@ -36,7 +36,7 @@ module.exports = function (app, db, MySQLEvents, schedule) {
   //     }, {})
   //   }
 
-  const job = schedule.scheduleJob("22 11 14 * *", function () {
+  const job = schedule.scheduleJob("56 07 20 * *", function () {
 
     const query = "SELECT course.*, teacher.*, user.fname, user.lname, user.email, user.contact, user.street_no, user.street, user.city, user.province, SUM(payment.amount)*0.6 AS amount_payable FROM course RIGHT JOIN teacher ON teacher.teacher_id=course.teacher_id  LEFT JOIN user ON user.user_id=teacher.teacher_id LEFT JOIN payment ON payment.course_id=course.course_id AND payment.verified=1 AND payment.month=MONTHNAME(NOW()) GROUP BY course.course_id HAVING course.course_id IS NOT NULL;"
 
@@ -92,7 +92,8 @@ module.exports = function (app, db, MySQLEvents, schedule) {
         })
         var dd = {
           content: [
-            { text: 'ETutor - Teacher Payment Info - ' + this_month, style: 'header' },
+            {image: 'Content/logo_black.png', width: 150, height: 60, lineHeight: 2},
+            { text: 'ETutor - Teacher Payment Info - ' + this_month, style: 'header', lineHeight: 2 },
             { text: 'Teacher Info', style: 'subheader' },
 
             { text: payments.fname + ' ' + payments.lname },
