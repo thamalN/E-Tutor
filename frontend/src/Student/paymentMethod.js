@@ -4,6 +4,7 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import data from "@iconify-icons/cil/clear-all";
+import '../Resources/styles.css';
 
 
 // const student_id = req.body.student_id;
@@ -26,7 +27,8 @@ const PaymentMethod = () => {
 
     const url = "http://localhost:3001/courseDetails";
 
-    useEffect(() => {fetch(url, {
+    useEffect(() => {
+        fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(Id)
@@ -48,15 +50,15 @@ const PaymentMethod = () => {
             course_id: data.course_id,
             amount: data.price,
             token: token
-         }
-    
-         console.log(passData)
-     
+        }
+
+        console.log(passData)
+
         fetch("http://localhost:3001/paymentStudent", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(passData)
-            
+
         }).then((res => {
             console.log(res)
         }))
@@ -73,15 +75,17 @@ const PaymentMethod = () => {
                         <h2>Select Your payment Method</h2>
                         <div>
                             {/* <Link to="/studentHome/payments/payslip" > */}
-                            <Link to={`/studentHome/payments/payslip/${data.course_id}`} >   
+                            {/* <Link to={`/studentHome/payments/payslip/${data.course_id}`} >   
                                 <div className="payment-card">
                                   <h2>Upload your payslip</h2> 
                                 </div>
+                            </Link> */}
+                            <Link className="btn btn-outline-dark me-4" to={`/studentHome/payments/payslip/${data.course_id}`} >
+                                Upload Your Payslip
                             </Link>
 
-
-                            <div className="payment-card">
-                              <h2>Pay Online</h2> 
+                            {/* <div className="payment-card">
+                                <h2>Pay Online</h2>
                                 <StripeCheckout
                                     stripeKey="pk_test_51JLxqKI3zG84BVe3rKggoFC6pHAF8RyEU6qv54suSBnG7utaxiiJKDZVDo1OIaL46Kg7D37G8DRowLH0Qo2wxSWR00gJRHx9a0"
                                     token={handleToken}
@@ -91,7 +95,17 @@ const PaymentMethod = () => {
                                     shippingAddress
 
                                 />
-                            </div>
+                            </div> */}
+                            <StripeCheckout
+                                className="btn btn-outline-dark"
+                                stripeKey="pk_test_51JLxqKI3zG84BVe3rKggoFC6pHAF8RyEU6qv54suSBnG7utaxiiJKDZVDo1OIaL46Kg7D37G8DRowLH0Qo2wxSWR00gJRHx9a0"
+                                token={handleToken}
+                                amount={data.price * 100}
+                                name={data.course_name}
+                                billingAddress
+                                shippingAddress
+
+                            />
 
                         </div>
 
