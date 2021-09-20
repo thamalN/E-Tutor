@@ -39,24 +39,29 @@ const PayCourses = () => {
     }, [url])
     return (
         <div>
-
             <Sidebar />
             <div className="homeContent">
                 <div className="courses">
                     {data.map(course => (
+                        //  <div className="course-card-container">
                         <Link to={`/studentHome/payments/newPayment/paymentMethod/${course.course_id}`} >
 
                             <div className="course-card-container">
                                 <div key={course.course_id} className="course-card" >
                                     <div className="card-container">
-                                        <h1>{course.course_name} {course.year}</h1>
-                                        <p>{course.description}</p>
+                                        <div className="card-nfo">
+                                            <h1>{course.course_name} {course.year}</h1>
+                                            <p>{course.description}</p>
+                                            <h2><small>by </small>{course.fname} {course.lname}</h2>
+                                            <div style={{ display: "flex", alignItems: "flex-start" }}>
+                                                <h3 style={{ flex: "0 0 90%" }}>RS. {course.price}</h3>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </Link>
-
+                        // <div>
                     ))}
                 </div>
             </div>
@@ -65,3 +70,5 @@ const PayCourses = () => {
 }
 
 export default PayCourses;
+
+
