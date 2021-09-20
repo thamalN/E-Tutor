@@ -80,7 +80,7 @@ const CreateStuFeekback = () => {
                         </div>
 
                         <div className="col-12">
-                        <label htmlFor="file_name" className="mt-2">File Name</label>
+                        <label htmlFor="file_name" className="mt-2">screenshot/photo Name</label>
                         <input
                             type="text"
                             className="form-control"
@@ -100,6 +100,8 @@ const CreateStuFeekback = () => {
                             value={data.attachment}
                             onChange={(e) => setData({ ...data, attachment: e.target.value })}
                             name="file"
+                            accept="image/*"
+
 
                         />
                     </div>

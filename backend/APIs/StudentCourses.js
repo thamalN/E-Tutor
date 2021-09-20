@@ -45,4 +45,22 @@ module.exports = function (app, db, upload) {
         })
     })
 
+    app.post("/deleteenrolledcourse",(req,res)=>{
+        console.log(req.body);
+        const course_id=req.body.unenrolledcid;
+    
+        const student_id=req.body.id;
+
+        const query="DELETE from enroll WHERE course_id=? AND student_id=?;";
+
+        db.query(query,[course_id,student_id],(err,result)=>{
+            if(err) throw err;
+            res.json({
+                status:"ok",
+            });
+        
+        })
+       
+    })
+
 };
