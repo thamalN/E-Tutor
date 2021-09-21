@@ -28,10 +28,9 @@ module.exports = function (app, db, upload) {
 
     app.post("/unenrolledCourses", requiresStudent, (req, res) => {
         const studentId = req.body.id;
-
-
         // const query = "select course.*, user.fname, user.lname, enroll.access from enroll INNER JOIN course ON course.course_id = enroll.course_id INNER JOIN user ON user.user_id = course.teacher_id where student_id=?";
-        const query = "select * from course WHERE course_id NOT IN (SELECT course_id FROM enroll WHERE student_id = ?);"
+        // const query = "select course.*, user.fname, user.lname from course WHERE course_id NOT IN (SELECT course_id FROM enroll WHERE student_id = ?);"
+        const query = "select course.*, user.fname, user.lname from course INNER JOIN user ON course.teacher_id = user.user_id WHERE course_id NOT IN (SELECT course_id FROM enroll WHERE student_id = ?);"
         db.query(query, studentId, (err, result) => {
             if (err) throw err;
             console.log(result);
