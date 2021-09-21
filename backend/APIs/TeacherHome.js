@@ -1,4 +1,5 @@
 const { requiresTeacher } = require('./JWT')
+const { requiresStudent } = require('./JWT')
 
 
 module.exports = function (app, db) {
@@ -32,6 +33,30 @@ module.exports = function (app, db) {
 
         db.query(query, teacherId, (err, result) => {
             if (err) throw err;
+            res.json(result)
+        })
+    })
+
+    app.post("/studentHome/courses", requiresStudent, (req, res) => {
+        const studentId = req.body.id;
+
+        const query = "SELECT COUNT(course_id) AS courses FROM course WHERE student_id=?;";
+
+        db.query(query, studentId, (err, result) => {
+            if (err) throw err;
+            console.log(result);
+            res.json(result[0].courses)
+        })
+    })
+
+    app.post("/studentHome/quizzes", requiresStudent, (req, res) => {
+        const studentId = req.body.id;
+
+        const query = "SELECT * FROM quiz INNER JOIN course ON course.course_id = quiz.course_id WHERE quiz.course_id IN (SELECT course_id FROM course WHERE student_id=? GROUP BY course_id) AND quiz.deadline >= CURDATE();";
+
+        db.query(query, studentId, (err, result) => {
+            if (err) throw err;
+            console.log(result);
             res.json(result)
         })
     })

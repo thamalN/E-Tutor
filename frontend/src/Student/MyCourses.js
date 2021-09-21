@@ -106,6 +106,7 @@ const MyCourses = () => {
                                         <div className="card-info" onClick={(course.access === 0) ? noAccess : () => getCourse(course.course_id)}>
 
                                             <h1>{course.course_name} {course.year}</h1>
+                                            <h2>Conducted by: {course.fname} {course.lname}</h2>
                                             <p>{course.description}</p>
 
 
