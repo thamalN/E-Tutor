@@ -250,6 +250,37 @@ const requiresTeacherStaff = (req, res, next) => {
     }    
 };
 
+const requiresAdminStaff = (req, res, next) => {
+    
+    // const Tokens = req.cookies["tokens"]
+    // console.log(Tokens)
+    const accessToken = req.cookies["accessToken"]
+    console.log(accessToken);
+    
+    
+    if(!accessToken) return res.status(400).json({ error: "User not Authenticated"});
+
+    try {
+        const validToken = verify(accessToken, process.env.ACCESS_TOKEN_SECRET)
+        console.log(validToken.userflag);
+        if(validToken){
+            const verify_flag=validToken.userflag;
+            if(verify_flag === 1 || verify_flag === 2) {
+                console.log("User Authenticated")
+                req.authenticated = true
+                return next();
+             }
+             else{
+                 console.log("User not Authorized")
+                return res.status(401).end();
+             }
+            
+        }
+    }   catch(err){
+        return res.status(400).json({ error: err});
+    }    
+};
+
 
 // const refreshToken = (user) => {
 //     const refreshToken = sign({ username: user.username}, process.env.REFRESH_TOKEN_SECRET);
@@ -257,4 +288,4 @@ const requiresTeacherStaff = (req, res, next) => {
 //     return refreshToken;
 // };
     
-module.exports = {createTokens, validateToken, requiresAdmin, requiresStaff, requiresTeacher, requiresStudent, requiresAdminTeacher, requiresTeacherStudent, requiresTeacherStaff}
+module.exports = {createTokens, validateToken, requiresAdmin, requiresStaff, requiresTeacher, requiresStudent, requiresAdminTeacher, requiresTeacherStudent, requiresTeacherStaff, requiresAdminStaff}

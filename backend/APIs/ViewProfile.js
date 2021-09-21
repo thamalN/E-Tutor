@@ -1,8 +1,9 @@
 const bcrypt = require("bcrypt")
+const { validateToken } = require('./JWT')
 
 module.exports = function (app, db, upload) {
 
-    app.post("/viewProfile/", (req, res) => {
+    app.post("/viewProfile/", validateToken, (req, res) => {
         const user_id = req.body.user_id
         const user_flag = req.body.user_flag
 
@@ -31,7 +32,7 @@ module.exports = function (app, db, upload) {
 
     })
 
-    app.post("/editProfile/", upload.none(), (req, res) => {
+    app.post("/editProfile/", validateToken, upload.none(), (req, res) => {
 
         const user_id = req.body.user_id;
         const user_flag = req.body.user_flag;

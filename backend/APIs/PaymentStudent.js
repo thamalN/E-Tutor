@@ -1,10 +1,11 @@
+const { validateToken, requiresStudent } = require('./JWT')
 module.exports = function (app, db, stripe, uuid, upload) {
 
-  app.get("/paymentStudent", (req, res) => {
+  app.get("/paymentStudent", requiresStudent, (req, res) => {
     res.send("Add your Stripe Secret Key to the .require('stripe') statement!");
   });
 
-  app.post("/paymentStudent", async (req, res) => {
+  app.post("/paymentStudent", requiresStudent, async (req, res) => {
     console.log("Request:", req.body);
     const student_id = req.body.student_id;
     const course_id = req.body.course_id;
@@ -158,7 +159,7 @@ module.exports = function (app, db, stripe, uuid, upload) {
     })
   })
 
-  app.post("/uploadPayslip", upload.single('file'), (req, res) => {
+  app.post("/uploadPayslip", requiresStudent, upload.single('file'), (req, res) => {
     console.log(req.body)
     console.log(req.file)
     const student_id = req.body.student_id;

@@ -1,6 +1,9 @@
+const { requiresStudent } = require('./JWT')
 module.exports = function (app, db) {
 
-    app.post("/getQuizAttempts/", (req, res) => {
+const { requiresStudent } = require('./JWT')
+const { requiresStudent } = require('./JWT')
+app.post("/getQuizAttempts/", requiresStudent, (req, res) => {
         const student_id = req.body.student_id
         const quiz_id = req.body.quiz_id
 
@@ -29,7 +32,7 @@ module.exports = function (app, db) {
         })
     })
 
-    app.post("/submitQuiz/", (req, res) => {
+    app.post("/submitQuiz/", requiresStudent, (req, res) => {
         const quiz_id = req.body.quiz_id
         const questions = req.body.questions
 
@@ -55,7 +58,7 @@ module.exports = function (app, db) {
         })
     })
 
-    app.post("/attemptQuiz/", (req, res) => {
+    app.post("/attemptQuiz/", requiresStudent, (req, res) => {
         const student_id = req.body.student_id
         const quiz_id = req.body.quiz_id
         const start_time = req.body.start_time

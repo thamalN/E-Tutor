@@ -4,7 +4,7 @@ import Sidebar from "../Sidebar"
 import { useHistory } from "react-router";
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const AllCourses = (props) => {
+const AllCourses = () => {
     const [data, setData] = useState([])
     const history = useHistory()
     const url = "http://localhost:3001/AllCourses"
@@ -19,23 +19,9 @@ const AllCourses = (props) => {
             headers: { "Content-Type": "application/json" }
         })
             .then(res => {
-                if(res.ok)
                 return res.json();
-                else if(res.status===401){
-                    alert("Sorry you're not Authorized to view this content")
-                    history.goBack();
-                }
-                else if(res.status===400){
-                    alert(res.json.error)
-                    
-                    document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        
-                    localStorage.clear();
-                    history.replace("/signIn")
-                }
             })
             .then(data => {
-                if(data)
                 setData(data)
                 console.log(data)
             })
@@ -44,9 +30,7 @@ const AllCourses = (props) => {
 
 
         const getCourse = (id) => {
-            fetch("http://localhost:3001/teacherCourses/" + id ,{
-                credentials: 'include'
-            })
+            fetch("http://localhost:3001/teacherCourses/" + id)
                 .then(res => {
                     return res.json();
                 })
@@ -71,7 +55,8 @@ const AllCourses = (props) => {
                                 <div className="card-container">
                                 <div className="card-info">
                                 <h1>{course.course_name} {course.year}</h1>
-                                <h3>By {course.fname} {course.lname}</h3>
+                                <h3>{course.fname} {course.lname}</h3>
+                                <h3>RS. {course.price}</h3>
                                     <p>{course.description}</p>
                                     <h3>RS. {course.price}</h3>
                                     

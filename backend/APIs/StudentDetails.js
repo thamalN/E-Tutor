@@ -1,6 +1,7 @@
+const { requiresStudent } = require('./JWT')
 module.exports = function (app, db, upload) {
 
-    app.get("/studentHome/StudentDetails/:id", (req, res) => {
+    app.get("/studentHome/StudentDetails/:id", requiresStudent, (req, res) => {
         const studentId = req.params.id;
 
         const query = "SELECT s.school, s.grade, s.guardian_contact, u.fname,u.lname,u.username,u.street_no,u.street,u.city,u.province,u.contact,DATE_FORMAT (u.birthday, '%d/%m/%Y'),u.gender FROM student AS s INNER JOIN user AS u ON u.user_id = ?;";
@@ -12,7 +13,7 @@ module.exports = function (app, db, upload) {
         })
     })
 
-    app.post("/studentHome/StudentDetailsUpdate/:id", (req, res) => {
+    app.post("/studentHome/StudentDetailsUpdate/:id", requiresStudent, (req, res) => {
         const studentId = req.params.id;
 
         const firstname = req.body.fname;

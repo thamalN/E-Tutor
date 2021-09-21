@@ -1,6 +1,7 @@
+const { requiresStudent } = require('./JWT')
 module.exports = function (app, db, upload) {
 
-    app.post("/studentCourses", (req, res) => {
+    app.post("/studentCourses", requiresStudent, (req, res) => {
         const studentId = req.body.id;
 
         // const query = "SELECT * FROM course WHERE course_id IN( SELECT course_id FROM enroll WHERE student_id=?);";
@@ -14,7 +15,7 @@ module.exports = function (app, db, upload) {
         })
     })
 
-    app.post("/studentAllCourses", (req, res) => {
+    app.post("/studentAllCourses", requiresStudent, (req, res) => {
         const studentId = req.body.id;
 
         const query = "SELECT * FROM course WHERE course_id IN( SELECT course_id FROM enroll WHERE student_id=?);";
@@ -25,7 +26,7 @@ module.exports = function (app, db, upload) {
         })
     })
 
-    app.get("/studentCourses/:id", (req, res) => {
+    app.get("/studentCourses/:id", requiresStudent, (req, res) => {
         const courseId = req.params.id;
         const query = "SELECT course.course_id,course.teacher_id, course.course_name, course.year, course.description, lesson.lesson_id, lesson.topic, content.content_id, content.content_name, content.content, user.fname, user.lname FROM (((course INNER JOIN user ON course.teacher_id = user.user_id )RIGHT JOIN lesson ON course.course_id = lesson.course_id) LEFT JOIN content ON lesson.lesson_id = content.lesson_id) WHERE course.course_id=?;";
 
@@ -35,7 +36,7 @@ module.exports = function (app, db, upload) {
         })
     })    
     
-    app.get("/studentCourseDetails/:id", (req, res) => {
+    app.get("/studentCourseDetails/:id", requiresStudent, (req, res) => {
         const course_id = req.params.id
 
         const query = "SELECT course.course_id, course.teacher_id, course.course_name, course.year, course.description, user.fname, user.lname, user.contact FROM course INNER JOIN user ON course.teacher_id = user.user_id WHERE course.course_id=?"
@@ -57,7 +58,7 @@ module.exports = function (app, db, upload) {
         })
     })
 
-    app.post("/deleteenrolledcourse",(req,res)=>{
+    app.post("/deleteenrolledcourse", requiresStudent, (req,res)=>{
         console.log(req.body);
         const course_id=req.body.unenrolledcid;
     

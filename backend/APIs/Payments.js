@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer")
 const { validateToken } = require('./JWT')
 module.exports = function (app, db) {
-  app.get("/pendingReceipts", validateToken, (req, res) => {
+  app.get("/pendingReceipts", requiresAdminStaff, (req, res) => {
 
     const query = "SELECT payment.payment_id, payment.payment_method, payment.student_id, payment.course_id, payment.date_time, payment.amount, payment.month, payment.verified, payment.payment_slip, user.fname, user.lname, user.email, user.contact FROM payment INNER JOIN user ON payment.student_id=user.user_id WHERE payment.verified=0;";
 
@@ -11,7 +11,7 @@ module.exports = function (app, db) {
     })
   })
 
-  app.get("/verifiedPayments", validateToken, (req, res) => {
+  app.get("/verifiedPayments", requiresAdminStaff, (req, res) => {
 
     const query = "SELECT payment.payment_id, payment.payment_method, payment.student_id, payment.course_id, payment.date_time, payment.amount, payment.month, payment.verified, payment.payment_slip, user.fname, user.lname, user.email, user.contact FROM payment INNER JOIN user ON payment.student_id=user.user_id WHERE payment.verified=1 AND payment.month=MONTHNAME(NOW()) AND payment_method='Bank Slip';";
 
@@ -31,7 +31,7 @@ module.exports = function (app, db) {
     })
   })
 
-  app.get("/rejectedPayments", validateToken, (req, res) => {
+  app.get("/rejectedPayments", requiresAdminStaff, (req, res) => {
 
     const query = "SELECT payment.payment_id, payment.payment_method, payment.student_id, payment.course_id, payment.date_time, payment.amount, payment.month, payment.verified, payment.payment_slip, user.fname, user.lname, user.email, user.contact FROM payment INNER JOIN user ON payment.student_id=user.user_id WHERE payment.verified=2;";
 
@@ -41,7 +41,7 @@ module.exports = function (app, db) {
     })
   })
 
-  app.post("/verifyPayment", validateToken, (req, res) => {
+  app.post("/requiresAdminStaff", validateToken, (req, res) => {
     const verifyflag = req.body.verifyflag;
     const payment_id = req.body.payment_id;
     const student_id = req.body.student_id;
