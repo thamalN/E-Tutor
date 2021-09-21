@@ -49,8 +49,8 @@ const UnassignedTeachers = () => {
                             <h3>Unassigned Teachers</h3>
                         </li>
                         <li>
-                            <table className="table" id="reg_table">
-                                <thead>
+                            <table className="table table2" id="reg_table">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">Teacher ID</th>
                                         <th scope="col">Joined Date</th>

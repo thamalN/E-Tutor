@@ -32,7 +32,7 @@ module.exports = function (app, db, MySQLEvents, schedule) {
 
     const date = new Date(2021, 08, 20, 15, 39, 10);
 
-    const job = schedule.scheduleJob("36 18 21 * *", function () {
+    const job = schedule.scheduleJob("00 57 01 22 * *", function () {
 
         const query = "SELECT payment.student_id, course.course_name, course.year from payment INNER JOIN course ON payment.course_id=course.course_id WHERE month != MONTHNAME(NOW()) GROUP BY payment.student_id, payment.course_id, payment.month;"
 

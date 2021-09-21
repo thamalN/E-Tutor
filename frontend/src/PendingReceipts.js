@@ -16,7 +16,7 @@ const PendingReceipts = () => {
         course_id: "",
         month: "",
         email: ""
-        
+
     });
     const history = useHistory()
 
@@ -33,28 +33,28 @@ const PendingReceipts = () => {
             }))
             .then((data => {
                 setData(data)
-                
-                
+
+
             }))
     }, [verify])
-    
-    
+
+
     const handleVerify = (e) => {
-        if(e.target.id === "verify"){
-            var variable = {...paymentdata}
+        if (e.target.id === "verify") {
+            var variable = { ...paymentdata }
             variable.verifyflag = 1
             setPaymentdata(variable)
-            
+
         }
-        else{
-            var variable = {...paymentdata}
+        else {
+            var variable = { ...paymentdata }
             variable.verifyflag = 2
             setPaymentdata(variable)
         }
         console.log(variable)
-        
-        
-        
+
+
+
         const url2 = "http://localhost:3001/verifyPayment"
 
         fetch(url2, {
@@ -71,23 +71,23 @@ const PendingReceipts = () => {
                 if (data.status === "verified") {
                     alert("Payment Verified Successfully!");
                     history.push("/payments/pendingReceipts");
-                  }
+                }
 
-                  else if (data.status === "verified&enrolled") {
+                else if (data.status === "verified&enrolled") {
                     alert("Payment Verified and enrolled the student Successfully!");
                     history.push("/payments/pendingReceipts");
-                  } 
-                  else if (data.status === "rejected") {
+                }
+                else if (data.status === "rejected") {
                     alert("Payment rejected!");
                     history.push("/payments/pendingReceipts");
-                  }
-                  else if (data.status === "fail") {
+                }
+                else if (data.status === "fail") {
                     alert("Payment rejected successfully but unexpected error occurred in mailing the student!");
                     history.push("/payments/pendingReceipts");
-                  }
+                }
             }))
     }
-    
+
 
     return (
         <div>
@@ -112,42 +112,44 @@ const PendingReceipts = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {data.map((payment, i) => (
-                                    <>
+                                    {data.map((payment, i) => (
+                                        <>
                                             <tr>
-                                            <td scope="row">{payment.date_time}</td>
-                                            <td align="left">{payment.fname} {payment.lname}</td>
-                                            <td>{payment.course_id}</td>
-                                            <td>{payment.amount}</td>
-                                            <td>{payment.month}</td>
-                                            <td><button className="btn btn-dark" onClick={(e) => setPaymentdata({ ...paymentdata, payment_id: payment.payment_id, student_id: payment.student_id, course_id: payment.course_id, month: payment.month, email: payment.email}) } data-bs-toggle="modal" data-bs-target="#exampleModal1">View</button></td>
+                                                <td scope="row">{payment.date_time}</td>
+                                                <td align="left">{payment.fname} {payment.lname}</td>
+                                                <td>{payment.course_id}</td>
+                                                <td>{payment.amount}</td>
+                                                <td>{payment.month}</td>
+                                                <td><button className="btn btn-dark" onClick={() => setPaymentdata({ ...paymentdata, payment_id: payment.payment_id, student_id: payment.student_id, course_id: payment.course_id, month: payment.month, email: payment.email })} data-bs-toggle="modal" data-bs-target="#exampleModal1">View</button></td>
                                             </tr>
                                             <div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div className="modal-dialog modal-dialog-centered">
-                                                <div className="modal-content">
-                                                    <div className="modal-header">
-                                                        <h5 className="modal-title" id="exampleModalLabel">Receipt</h5>
-                                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div className="modal-body text-start m-1">
-                                                    {payment.fname} {payment.lname}<br />
-                                                    {payment.course_id} - {payment.month} <br />
-                                                    {payment.date_time}
-                                                        <Zoom>
-                                                            <img src={payment.payment_slip} alt="slip" width="100%" />
-                                                        </Zoom>
-                                                    </div>
-                                                    <div className="modal-footer">
-                                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                        <button type="button" id="verify" onClick={(e) =>handleVerify(e)} className="btn btn-primary" data-bs-dismiss="modal">Verify</button>
-                                                        <button type="button" id="reject" onClick={(e) =>handleVerify(e)} className="btn btn-danger" data-bs-dismiss="modal">Reject</button>
+                                                <div className="modal-dialog modal-dialog-centered">
+                                                    <div className="modal-content">
+                                                        <div className="modal-header">
+                                                            <h5 className="modal-title" id="exampleModalLabel">Receipt</h5>
+                                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div className="modal-body text-start m-1">
+                                                            {payment.fname} {payment.lname}<br />
+                                                            {payment.course_id} - {payment.month} <br />
+                                                            {payment.date_time}
+                                                            <Zoom>
+
+                                                                <img src={payment.payment_slip} alt="slip" width="100%" />
+
+                                                            </Zoom>
+                                                        </div>
+                                                        <div className="modal-footer">
+                                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="button" id="verify" onClick={(e) => handleVerify(e)} className="btn btn-primary" data-bs-dismiss="modal">Verify</button>
+                                                            <button type="button" id="reject" onClick={(e) => handleVerify(e)} className="btn btn-danger" data-bs-dismiss="modal">Reject</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         </>
-                                        ))}
-                                    
+                                    ))}
+
                                 </tbody>
                             </table>
                         </li>

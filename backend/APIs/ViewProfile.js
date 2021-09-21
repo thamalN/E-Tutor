@@ -33,7 +33,7 @@ module.exports = function (app, db, upload) {
     })
 
     app.post("/editProfile/", validateToken, upload.none(), (req, res) => {
-
+        console.log(req.body)
         const user_id = req.body.user_id;
         const user_flag = req.body.user_flag;
         const fname = req.body.FirstName;
@@ -50,9 +50,9 @@ module.exports = function (app, db, upload) {
         const password = req.body.Password;
 
         const nic = req.body.NIC
-        const guardian_contact = req.body.GuardianContact;
+        const guardian_contact = req.body.guardianContact;
         const school = req.body.School;
-        const grade = req.body.Grade;
+        const grade = req.body.grade;
         const qualifications = req.body.qualifications
 
         const query1 = "UPDATE user SET fname=?, lname=?, street_no=?, street=?, city=?, province=?, email=?, contact=?, birthday=?, gender=?, username=? WHERE user_id=?"

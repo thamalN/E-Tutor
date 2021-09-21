@@ -136,7 +136,7 @@ function App() {
           </Route>
 
           <Route exact path="/editProfile/">
-            <EditProfile />
+            <EditProfile setLoggedIn={setLoggedIn} />
           </Route>
 
           <Route exact path="/viewUser/">

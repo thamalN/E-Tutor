@@ -139,7 +139,7 @@ const SupportingStaffHome = (props) => {
                                 <li>
 
                                     <ul>
-                                        <li><Link className="btn btn-outline-dark mt-4" to="/signUp">Register a Student</Link></li>
+                                        <li><Link className="btn btn-outline-dark mt-4" to="/registrations/signUp">Register a Student</Link></li>
                                         <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/registrations/recentStaffRegistrations">Recent Registrations</Link></li>
                                         <li><Link className="btn btn-outline-dark" to="/payments/pendingReceipts">Pending Receipts</Link></li>
                                         <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/studentAccounts">Search Students</Link></li>

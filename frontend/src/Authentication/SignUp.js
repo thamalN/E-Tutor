@@ -27,7 +27,7 @@ const SignUp = () => {
         heading = "Sign Up"
         
     }
-    else if(user.user_flag===1 || user.user_flag===3){
+    else if(user.user_flag===1 || user.user_flag===2){
         flag = 1
         heading = "Create Student Account"
     }
