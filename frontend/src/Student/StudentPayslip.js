@@ -20,6 +20,7 @@ useEffect(() => {fetch(url, {
         credentials: 'include',
         method: 'POST',
         headers: { "Content-Type": "application/json" },
+        credentials: 'include',
         body: JSON.stringify(Id)
     })
         .then(res => {
@@ -50,7 +51,8 @@ const StudentId =  user.user_id;
         fetch(url, {
             credentials: 'include',
             method: 'POST',
-            body: formData
+            body: formData,
+            credentials: 'include',
         })
             .then((res) => {
                 return res.json()

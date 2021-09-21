@@ -56,7 +56,8 @@ const  StudentAddAssigment = () => {
         fetch(url, {
             credentials: 'include',
             method: 'POST',
-            body: formData
+            body: formData,
+            credentials: 'include'
         })
             .then((res) => {
                 return res.json()

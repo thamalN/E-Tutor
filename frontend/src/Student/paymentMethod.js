@@ -32,6 +32,7 @@ const PaymentMethod = () => {
             method: 'POST',
             credentials: 'include',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(Id)
         })
             .then(res => {
@@ -59,6 +60,7 @@ const PaymentMethod = () => {
             method: 'POST',
             credentials: 'include',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(passData)
 
         }).then((res => {

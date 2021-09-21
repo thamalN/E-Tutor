@@ -27,11 +27,11 @@ const SignUp = () => {
         heading = "Sign Up"
         
     }
-    else if(user.user_id===1 || user.user_id===3){
+    else if(user.user_flag===1 || user.user_flag===3){
         flag = 1
         heading = "Create Student Account"
     }
-    
+   
 
     const [data, setData] = useState(
         {

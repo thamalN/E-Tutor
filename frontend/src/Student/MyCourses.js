@@ -20,6 +20,7 @@ const MyCourses = () => {
             method: 'POST',
             credentials: 'include',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(id)
         })
             .then(res => {
@@ -33,7 +34,9 @@ const MyCourses = () => {
 
     }, [url])
     const getCourse = (id) => {
-        fetch(("http://localhost:3001/studentCourseDetails/" + id),{credentials: 'include'})
+        fetch("http://localhost:3001/studentCourseDetails/" + id,{
+            credentials: 'include',
+        })
             .then(res => {
                 return res.json();
             })
@@ -52,6 +55,7 @@ const MyCourses = () => {
                 method: 'POST',
                 credentials: 'include',
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify(id)
             })
                 .then((res => {

@@ -18,7 +18,8 @@ const StudentQuizAttempts = () => {
             credentials: 'include',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ student_id: user.user_id, quiz_id: id })
+            body: JSON.stringify({ student_id: user.user_id, quiz_id: id }),
+            credentials: 'include'
         })
             .then(res => res.json())
             .then(data => {

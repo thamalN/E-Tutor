@@ -74,7 +74,7 @@ const SignIn = (props) => {
                         required
                     />
 
-                    <button className="w-100 btn btn-lg btn-dark" type="submit" >Sign In</button>
+                    <button className="w-100 btn btn-lg btn-dark" type="submit" style={{marginTop: "20px"}}>Sign In</button>
                 </form>
 
             </main>

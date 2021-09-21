@@ -26,6 +26,7 @@ const PayCourses = () => {
             method: 'POST',
             credentials: 'include',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(id)
         })
             .then(res => {

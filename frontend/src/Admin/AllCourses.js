@@ -30,7 +30,9 @@ const AllCourses = () => {
 
 
         const getCourse = (id) => {
-            fetch("http://localhost:3001/teacherCourses/" + id)
+            fetch("http://localhost:3001/teacherCourses/" + id, {
+                credentials: 'include'
+            })
                 .then(res => {
                     return res.json();
                 })
@@ -55,8 +57,7 @@ const AllCourses = () => {
                                 <div className="card-container">
                                 <div className="card-info">
                                 <h1>{course.course_name} {course.year}</h1>
-                                <h3>{course.fname} {course.lname}</h3>
-                                <h3>RS. {course.price}</h3>
+                                <h3>By {course.fname} {course.lname}</h3>
                                     <p>{course.description}</p>
                                     <h3>RS. {course.price}</h3>
                                     
