@@ -287,7 +287,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-12">
                     <label htmlFor="userName" className="mt-2">Username</label>
                     <span id="usern" style={{ "marginLeft": 50, fontSize: 12 }}></span>
                     <span id="userName" style={{ "marginLeft": 50, fontSize: 12 }}></span>

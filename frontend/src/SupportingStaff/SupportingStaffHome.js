@@ -155,7 +155,7 @@ const SupportingStaffHome = (props) => {
                             <Card2 title="Pending Receipts" description={pendingReceipts} image={pencil2} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
                             <Card2 title="Verified Receipts" description={verifiedReceipts} image={pencil3} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
                             <Card2 title="Rejected Receipts" description={rejectedReceipts} image={pencil4} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
-                            
+
                         </div>
 
                         <div className="b2">
@@ -165,8 +165,8 @@ const SupportingStaffHome = (props) => {
                                     <Link className="viewAll" to="/supportingStaffHome/registrations/recentStaffRegistrations"><h6>View All <Icon icon={clearAll} /></h6></Link>
                                 </li>
                                 <li className="reg_table">
-                                    <table className="table">
-                                        <thead>
+                                    <table className="table table2" id="reg_table">
+                                        <thead className="thead-dark">
                                             <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Date</th>

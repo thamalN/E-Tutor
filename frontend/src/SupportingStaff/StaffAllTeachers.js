@@ -58,8 +58,8 @@ const StaffAllTeachers = () => {
                             <h3>All Teachers</h3>
                         </li>
                         <li>
-                            <table className="table" id="reg_table">
-                                <thead>
+                            <table className="table table2" id="reg_table">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">User ID</th>
                                         <th scope="col">Registered Date</th>
