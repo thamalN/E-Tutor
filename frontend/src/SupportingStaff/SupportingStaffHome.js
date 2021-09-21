@@ -6,9 +6,14 @@ import './staffhome.css';
 import Calendar from 'react-calendar'
 import background1 from "../Resources/background1.jpg";
 import 'react-calendar/dist/Calendar.css';
-// 
+import { useEffect, useState } from "react";
 import { Icon, InlineIcon } from '@iconify/react';
 import clearAll from '@iconify-icons/cil/clear-all';
+import pencil1 from '../Resources/pencil1.jpg';
+import pencil2 from '../Resources/pencil2.jpg';
+import pencil3 from '../Resources/pencil3.jpg';
+import pencil4 from '../Resources/pencil4.jpg';
+
 
 
 const SupportingStaffHome = (props) => {
@@ -22,6 +27,92 @@ const SupportingStaffHome = (props) => {
         localStorage.clear();
         history.replace("/")
     };
+
+    const [data, setData] = useState([])
+    const url = "http://localhost:3001/mostRecentStaffRegistrations"
+    useEffect(() => {
+
+        fetch(url, {
+            method: 'GET',
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include'
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setData(data)
+            })
+
+    }, [url])
+
+    const [pendingReceipts, setPendingReceipts] = useState()
+    const url1 = "http://localhost:3001/adminHome/pendingReceipts"
+
+    useEffect(() => {
+
+        fetch(url1, {
+            credentials: 'include'
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setPendingReceipts(data)
+            })
+
+    }, [url1])
+
+    const [verifiedReceipts, setVerifiedReceipts] = useState()
+    const url2 = "http://localhost:3001/adminHome/verifiedReceipts"
+
+    useEffect(() => {
+
+        fetch(url2, {
+            credentials: 'include'
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setVerifiedReceipts(data)
+            })
+
+    }, [url2])
+
+    const [rejectedReceipts, setRejectedReceipts] = useState()
+    const url3 = "http://localhost:3001/adminHome/rejectedReceipts"
+
+    useEffect(() => {
+
+        fetch(url3, {
+            credentials: 'include'
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setRejectedReceipts(data)
+            })
+
+    }, [url3])
+
+    const [registeredStudents, setRegisteredStudents] = useState()
+    const url4 = "http://localhost:3001/adminHome/totalStudents"
+
+    useEffect(() => {
+
+        fetch(url4, {
+            credentials: 'include'
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                setRegisteredStudents(data)
+            })
+
+    }, [url4])
 
     return (
         <main>
@@ -46,28 +137,36 @@ const SupportingStaffHome = (props) => {
                         <div className="calendarsection">
                             <ul>
                                 <li>
-                                    <h3>Calendar</h3>
+
                                     <ul>
-                                        <li><Link className="linkbutton" to="/contact">Upcoming Events</Link></li>
-                                        <li><Link className="linkbutton" to="/contact">Ongoing Events</Link></li>
-                                        <li><Link className="linkbutton" to="/contact">Completed Events</Link></li>
+                                        <li><Link className="btn btn-outline-dark mt-4" to="/registrations/signUp">Register a Student</Link></li>
+                                        <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/registrations/recentStaffRegistrations">Recent Registrations</Link></li>
+                                        <li><Link className="btn btn-outline-dark" to="/payments/pendingReceipts">Pending Receipts</Link></li>
+                                        <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/studentAccounts">Search Students</Link></li>
+                                        {/* <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/reports">Create Reports</Link></li> */}
                                     </ul>
                                 </li>
                                 <li className="calendar"><Calendar /></li>
                             </ul>
+                        </div>
+
+                        <div className="wrapper">
+                            <Card2 title="Registered Students" description={registeredStudents} image={pencil1} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
+                            <Card2 title="Pending Receipts" description={pendingReceipts} image={pencil2} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
+                            <Card2 title="Verified Receipts" description={verifiedReceipts} image={pencil3} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
+                            <Card2 title="Rejected Receipts" description={rejectedReceipts} image={pencil4} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
 
                         </div>
 
                         <div className="b2">
-
                             <ul>
                                 <li className="reg_title">
-                                    <h3>Recent Registrations</h3>
-                                    <Link className="viewAll" to="/registrations"><h6>View All <Icon icon={clearAll} /></h6></Link>
+                                    <h3>Registrations In Last 7 Days</h3>
+                                    <Link className="viewAll" to="/supportingStaffHome/registrations/recentStaffRegistrations"><h6>View All <Icon icon={clearAll} /></h6></Link>
                                 </li>
                                 <li className="reg_table">
-                                    <table className="table">
-                                        <thead>
+                                    <table className="table table2" id="reg_table">
+                                        <thead className="thead-dark">
                                             <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Date</th>
@@ -77,85 +176,20 @@ const SupportingStaffHome = (props) => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">2501</th>
-                                                <td>14/07/2021</td>
-                                                <td>8:21AM</td>
-                                                <td>Nuvinda Chandrakumara</td>
-                                                <td>0727787778</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2500</th>
-                                                <td>13/07/2021</td>
-                                                <td>9:11PM</td>
-                                                <td>Thamal Nanayakkara</td>
-                                                <td>0123212234</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2499</th>
-                                                <td>13/07/2021</td>
-                                                <td>7:47PM</td>
-                                                <td>Mary Watson</td>
-                                                <td>0123212234</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2498</th>
-                                                <td>13/07/2021</td>
-                                                <td>1:32PM</td>
-                                                <td>Niklaus Mikaelson</td>
-                                                <td>0123212234</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2497</th>
-                                                <td>12/07/2021</td>
-                                                <td>11:51AM</td>
-                                                <td>Malinda Malith</td>
-                                                <td>0123212234</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2496</th>
-                                                <td>12/07/2021</td>
-                                                <td>9:27AM</td>
-                                                <td>Pavan Ransara</td>
-                                                <td>0123212234</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2495</th>
-                                                <td>12/07/2021</td>
-                                                <td>8:58AM</td>
-                                                <td>Mega Mann</td>
-                                                <td>0123212234</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2494</th>
-                                                <td>11/07/2021</td>
-                                                <td>8:21AM</td>
-                                                <td>Yashith Dilhara</td>
-                                                <td>0123212234</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2493</th>
-                                                <td>11/07/2021</td>
-                                                <td>8:21AM</td>
-                                                <td>Ravindu Rajapaksa</td>
-                                                <td>0123212234</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2492</th>
-                                                <td>11/07/2021</td>
-                                                <td>8:21AM</td>
-                                                <td>John Doe</td>
-                                                <td>0123212234</td>
-                                            </tr>
+                                            {data.map((regData, i) => (
+                                                <tr>
+                                                    <td>{regData.user_id}</td>
+                                                    <td>{regData.regDate}</td>
+                                                    <td>{regData.fname} {regData.lname}</td>
+                                                    <td>{regData.email}</td>
+                                                    <td>{regData.contact}</td>
+                                                </tr>
+                                            ))}
                                         </tbody>
                                     </table>
                                 </li>
                             </ul>
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@ function Sidebar() {
                     {SidebarData().map((val, key) => {
                         return (
                             <div className="sidelistadjust" key={key}>
-                                <li key={key} id={window.location.pathname.includes(val.link) ? "active" : ""} >
+                                <li key={key} id={window.location.pathname.includes(val.link.toString().split("/").pop()) ? "active" : ""} >
 
                                     <Link className="row" to={val.link}>
                                         <div className="row">

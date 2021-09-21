@@ -1,30 +1,34 @@
 import Sidebar from "../Sidebar";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import data from "@iconify-icons/akar-icons/plus";
+import Notifications from "@material-ui/icons/Notifications";
 
 const StudentNotification = () => {
 
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user);
     const dueDate = true;
     // let monthNumber = new Date();
     // console.log(monthNumber.getMonth());
     const id = { id: user.user_id };
     const url = "http://localhost:3001/StudentNotification";
-    const [data, setData] = useState([]);
+    const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
 
         fetch(url, {
+            credentials: 'include',
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(id)
         })
             .then(res => {
-                return res.json();
+                return res.json()
             })
             .then(data => {
-                setData(data)
                 console.log(data)
+                setNotifications(data)
             })
 
     }, [url])
@@ -35,15 +39,11 @@ const StudentNotification = () => {
         <div>
             <Sidebar></Sidebar>
             <div className="homeContent">
-                {data.map((value, key) => (
-                    <div className="course-card" key={key} >
-                    <p>Notification</p>
-                    {dueDate && <h2>Hellow {user.fname} , I am the notification</h2>}
-                    <p> {value.course_id} </p>
-                    <p></p>
-                </div>
-                ))}
-
+                {/* {notifications.payments.map(course => (
+                    <div>
+                        <h1>{course.course_name} </h1>
+                    </div>
+                ))} */}
 
             </div>
         </div>

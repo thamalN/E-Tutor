@@ -38,13 +38,13 @@ const SignIn = (props) => {
                 localStorage.setItem('user', JSON.stringify(data))
                 props.setLoggedIn(true)
                 if (flag === 1)
-                    history.push("/adminHome")
+                    history.replace("/adminHome/dashboard")
                 else if (flag === 2) 
-                    history.push("/SupportingStaffHome")
+                    history.replace("/SupportingStaffHome/dashboard")
                 else if (flag === 3) 
-                    history.push("/Teacher/teacherHome")
+                    history.replace("/Teacher/teacherHome")
                 else if (flag === 4) 
-                    history.push("/studentHome")
+                    history.replace("/studentHome/dashboard")
             })
 
     }
@@ -74,11 +74,7 @@ const SignIn = (props) => {
                         required
                     />
 
-                    <label className="mt-2">
-                        <input type="checkbox" value="remember-me" className="checkbox mb-3" /> Remember me
-                    </label>
-
-                    <button className="w-100 btn btn-lg btn-dark" type="submit" >Sign In</button>
+                    <button className="w-100 btn btn-lg btn-dark" type="submit" style={{marginTop: "20px"}}>Sign In</button>
                 </form>
 
             </main>

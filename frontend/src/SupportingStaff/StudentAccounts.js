@@ -8,10 +8,9 @@ const StudentAccounts = () => {
             <div className="homeContent">
                 <h1 className="stuRegHeader">Student Accounts</h1>
                 <div className="reg_buttons">
-                    <Link className="linkbutton" to="/signUp"><button>Create Student Accounts</button></Link>
-                    <Link className="linkbutton" to="/supportingStaffHome/searchToUpdate"><button>Update Student Accounts</button></Link>
-                    <Link className="linkbutton" to="/deleteStudentAccs"><button>Delete Student Account</button></Link>
-                    <Link className="linkbutton" to="/supportingStaffHome"><button>Back to Dashboard</button></Link>
+                    <Link className="linkbutton" to="/registrations/signUp">Create Student Accounts</Link>
+                    <Link className="linkbutton" to="/supportingStaffHome/searchStudents">Search Student Accounts</Link>
+                    <Link className="linkbutton" to="/supportingStaffHome/dashboard">Back to Dashboard</Link>
                 </div>
             </div>
         </div>

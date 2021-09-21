@@ -9,19 +9,44 @@ const socket = require('socket.io')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
+const { getMaxListeners } = require('./db_connection')
+const StudentCourses = require('./APIs/StudentCourses')
+const stripe = require("stripe")("sk_test_51JLxqKI3zG84BVe3Opq0QSdnV7uhVuLKDHlHSTQwK0hYFB0dIntf89apQBZzwHI2TXf1ZKUxWfphazVg94iza5hj0089mYihwi");
+const { uuid } = require('uuidv4');
+const MySQLEvents = require('@rodrigogs/mysql-events');
+const schedule = require('node-schedule');
+const fs = require('fs')
 
 
 var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'Content/')
-    },
-    filename: function (req, file, cb) {
-      const name = file.originalname
-      cb(null, name)
+  destination: function (req, file, cb) {
+    cb(null, 'Content/')
+  },
+  filename: function (req, file, cb) {
+    const name = Date.now() + "-" + file.originalname
+    cb(null, name)
+  }
+})
+
+var upload = multer({ 
+  storage: storage,
+  preservePath: true,
+  fileFilter: function(req, file, cb) {
+
+    console.log(!file.mimetype.toString().includes("video/"))
+    if( file.mimetype !== "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    && file.mimetype !== "application/vnd.openxmlformats-officedocument.wordprocessingml.presentation"
+    && file.mimetype !== "application/vnd.openxmlformats-officedocument.spreadsheetml.presentation"
+    && file.mimetype !== "application/pdf"
+    && !file.mimetype.toString().includes("video/")
+    && !file.mimetype.toString().includes("audio/")
+    && !file.mimetype.toString().includes("image/")
+    ) {
+      return cb(new Error("Unsupported file format"))
     }
-  })
-  
-var upload = multer({ storage: storage, preservePath: true })
+    cb(null, true)
+  }
+ })
 
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
@@ -32,48 +57,40 @@ app.use(cors({
   credentials: true
 }));
 
-require('./APIs/SignIn')(app,db)
-require('./APIs/SignUp')(app,db)
-require('./APIs/Registrations')(app,db)
-require('./APIs/Announcements')(app,db, upload)
-require('./APIs/Course')(app,db, upload)
-require('./APIs/AllCourses')(app,db)
-require('./APIs/StudentCourses')(app,db)
-require('./APIs/Teachers')(app,db)
+
+require('./APIs/SignIn')(app, db)
+require('./APIs/SignUp')(app, db)
+require('./APIs/Registrations')(app, db)
+require('./APIs/Announcements')(app, db, upload, fs)
+require('./APIs/Course')(app, db, upload, fs)
+require('./APIs/AllCourses')(app, db, fs)
+require('./APIs/StuAllCourses')(app, db)
+require('./APIs/StudentCourses')(app, db)
+require('./APIs/Teachers')(app, db)
+require('./APIs/TeacherPayments')(app, db, MySQLEvents, schedule)
+require('./APIs/StudentAccess')(app, db, schedule)
 require('dotenv').config()
-require('./APIs/StudentNotification')(app,db)
+require('./APIs/StudentNotification')(app, db, MySQLEvents, schedule)
+require('./APIs/StudentDetails')(app, db)
+require('./APIs/StudentQuiz')(app, db)
+require('./APIs/Feedback')(app, db)
+require('./APIs/Payments')(app, db)
+require('./APIs/UserSearch')(app, db)
+require('./APIs/AdminHome')(app, db)
+require('./APIs/PaymentStudent')(app, db, stripe, uuid, upload)
+require('./APIs/TeacherHome')(app, db)
+require('./APIs/stuFeedback')(app,db,upload,fs)
+require('./APIs/StudentAnnouncement')(app,db)
+require('./APIs/ViewProfile')(app,db, upload)
+require('./APIs/Home')(app,db)
 
 const server = http.createServer(app)
 
 server.listen(3001, () => {
-    console.log("Server Started")
+  console.log("Server Started")
 })
 
-io = socket(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"]
-  }
-})
+require('./APIs/Chatroom.js')(socket, server)
 
-io.on('connection', (socket) => {
 
-  socket.on('join_chat', (data) => {
-    socket.join(data.room)
-    console.log(data.user + " joined room " + data.room)
-  })
 
-  socket.on('send_message', (data) => {
-    socket.to(data.room).emit('receive_message', data.content)
-  })
-
-  socket.on('leave_chat', (data) => {
-    socket.leave(data.room)
-    console.log(data.user + " left room " + data.room)
-  })
-
-  socket.on('disconnect', (reason) => {
-    console.log("user disconnected due to " + reason)
-  })
-  
-})

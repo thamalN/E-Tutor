@@ -10,6 +10,7 @@ const Chatroom = () => {
 
     const user = JSON.parse(localStorage.getItem('user'))
     const course = JSON.parse(localStorage.getItem('course'))
+    const courseInfo = JSON.parse(localStorage.getItem('courseInfo'))
 
     let userName = user.fname + " " + user.lname
 
@@ -51,14 +52,14 @@ const Chatroom = () => {
         setJoined(true)
         localStorage.setItem('joined', true)
         //localStorage.setItem('messages', JSON.stringify([]))
-        socket.emit('join_chat', { room: course[0].course_id, user: userName })
+        socket.emit('join_chat', { room: courseInfo.course_id, user: userName })
     }
 
     const exitChat = () => {
         setJoined(false)
         setMessageList([])
         localStorage.removeItem('joined')
-        socket.emit('leave_chat', { room: course[0].course_id, user: userName })
+        socket.emit('leave_chat', { room: courseInfo.course_id, user: userName })
         //localStorage.removeItem('messages')
     }
 
@@ -74,7 +75,7 @@ const Chatroom = () => {
     const sendMessage = () => {
         if (message) {
             let messageContent = {
-                room: course[0].course_id,
+                room: courseInfo.course_id,
                 content: {
                     sender: userName,
                     message: message,

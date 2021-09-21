@@ -8,9 +8,9 @@ const Announcements = () => {
             <div className="homeContent">
             <h1>Announcements</h1>
             <div className="reg_buttons">
-            <Link to="/adminHome/createAnnouncement"><button >Add new Announcement</button></Link>
-            <Link to="/adminHome/announcements/viewPreviousAnnouncements"><button >View previous Announcements</button></Link>
-            <Link to="/adminHome"><button >Back to Dashboard</button></Link>
+            <Link to="/adminHome/announcements/createAnnouncement">Add new Announcement</Link>
+            <Link to="/adminHome/announcements/viewPreviousAnnouncements">View previous Announcements</Link>
+            <Link to="/adminHome/dashboard">Back to Dashboard</Link>
         </div>
         </div>
         </div>
