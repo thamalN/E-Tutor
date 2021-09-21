@@ -12,7 +12,7 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
-    app.get("/teacherCourses/:id", (req, res) => {
+    app.get("/teacherCourses/:id", validateToken, (req, res) => {
         const course_id = req.params.id
 
         const query = "SELECT course.course_id, course.teacher_id, course.course_name, course.year, course.description, user.fname, user.lname, user.contact FROM course INNER JOIN user ON course.teacher_id = user.user_id WHERE course.course_id=?"
@@ -37,7 +37,7 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
-    app.get("/teacherCourses/content/:id", (req, res) => {
+    app.get("/teacherCourses/content/:id", validateToken, (req, res) => {
         const courseId = req.params.id;
         const query1 = "SELECT course.course_id,course.teacher_id, course.course_name, course.year, course.description, lesson.lesson_id, lesson.topic, content.content_id, content.content_name, content.content FROM ((course RIGHT JOIN lesson ON course.course_id = lesson.course_id) LEFT JOIN content ON lesson.lesson_id = content.lesson_id) WHERE course.course_id=?;";
 
@@ -48,7 +48,7 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
-    app.get("/teacherCourses/quiz/:id", (req, res) => {
+    app.get("/teacherCourses/quiz/:id", validateToken, (req, res) => {
         const courseId = req.params.id;
         // const query = "select quiz.quiz_id, quiz.quiz_name, question.question_id, question.question, answer.answer_id, answer.answer, answer.correct from quiz left join question on question.quiz_id = quiz.quiz_id left join answer on answer.question_id = question.question_id where course_id=?;";
 
@@ -125,7 +125,7 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
-    app.get("/teacherCourses/discussion/:id", (req, res) => {
+    app.get("/teacherCourses/discussion/:id", validateToken, (req, res) => {
         const courseId = req.params.id;
         const query = "SELECT discussion.discussion_id, discussion.course_id, discussion.topic, discussion.post, discussion.date_time AS post_datetime, user.fname AS post_fname, user.lname AS post_lname, user.user_id AS post_user_id, reply.reply_id, reply.user_id AS reply_user_id, reply_user.fname AS reply_fname, reply_user.lname AS reply_lname, reply.reply, reply.date_time AS reply_date_time, reply.parent_reply FROM discussion INNER JOIN user ON discussion.user_id = user.user_id LEFT JOIN reply ON reply.discussion_id = discussion.discussion_id LEFT JOIN user as reply_user ON reply.user_id = reply_user.user_id WHERE course_id = ?;";
 
@@ -414,7 +414,7 @@ module.exports = function (app, db, upload, fs) {
         res.send("ok")
     })
 
-    app.post("/teacherCourses/addDiscussion", (req, res) => {
+    app.post("/teacherCourses/addDiscussion", requiresTeacherStudent, (req, res) => {
         console.log(req.body)
         const course_id = req.body.course_id
         const user_id = req.body.user_id
@@ -430,7 +430,7 @@ module.exports = function (app, db, upload, fs) {
         res.send("ok")
     })
 
-    app.post("/teacherCourses/addReply", (req, res) => {
+    app.post("/teacherCourses/addReply", requiresTeacherStudent, (req, res) => {
         console.log(req.body)
 
         const discussion_id = req.body.discussion_id
@@ -448,7 +448,7 @@ module.exports = function (app, db, upload, fs) {
         res.send("ok")
     })
 
-    app.post("/teacherCourses/editDiscussion", (req, res) => {
+    app.post("/teacherCourses/editDiscussion", requiresTeacher, (req, res) => {
         const course_id = req.body.course_id
         const discussion_id = req.body.discussion_id
         const topic = req.body.topic
@@ -462,7 +462,7 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
-    app.post("/teacherCourses/editReply", (req, res) => {
+    app.post("/teacherCourses/editReply", requiresTeacherStudent, (req, res) => {
         const reply_id = req.body.reply_id
         const discussion_id = req.body.discussion_id
         const reply = req.body.reply

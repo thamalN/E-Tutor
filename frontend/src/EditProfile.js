@@ -32,7 +32,9 @@ const EditProfile = (props) => {
 
     useEffect(() => {
 
-        fetch(usersUrl)
+        fetch(usersUrl,{
+            credentials: 'include'
+        })
             .then(res => {
                 return res.json();
             })
