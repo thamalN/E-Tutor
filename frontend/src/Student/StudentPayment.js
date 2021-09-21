@@ -13,7 +13,7 @@ const StudentPayment = () => {
         <Link to="/studentHome/payments/allPayments">View All My Payments</Link>
         <Link to="/studentHome/payments/newPayment">Make A New Payment</Link>
         {/* <Link to="/adminHome/createSupStaffAcc"><button >Back To Dashboard</button></Link> */}
-        <Link to="/studentHome">Back to Dashboard</Link>
+        <Link to="/studentHome/dashboard">Back to Dashboard</Link>
     </div>
     </div>
     </div>

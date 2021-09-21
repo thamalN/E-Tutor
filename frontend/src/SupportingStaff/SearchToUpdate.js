@@ -50,53 +50,53 @@ const SearchToUpdate = () => {
                             <h5>Add Fields to Search</h5>
                         </li>
                         <li>
-                            <button onClick={(e) => handleClick(e)} value="" type="button" class="btn btn-outline-dark">
+                            <button onClick={(e) => handleClick(e)} value="" type="button" className="btn btn-outline-dark">
                                 <h6>First Name</h6>
                                  {/* <Icon icon={plusIcon} /> */} 
                             </button>
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>Last Name</h6>
                                  {/* <Icon icon={plusIcon} /> */} 
                             </button>
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>Username</h6>
                                  {/* <Icon icon={plusIcon} /> */} 
                             </button>
                         </li>
                         <li>
 
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>School</h6>
                                 {/* <Icon icon={plusIcon} /> */}
                             </button>
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>Grade</h6>
                                 {/* <Icon icon={plusIcon} /> */}
                             </button>
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>Guardian's Contact</h6>
                                 {/* <Icon icon={plusIcon} /> */}
                             </button>
                         </li>
                         <li>
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>Street No.</h6>
                                 {/* <Icon icon={plusIcon} /> */}
                             </button>
 
 
 
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>Street Name</h6>
                                 {/* <Icon icon={plusIcon} /> */}
                             </button>
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>City</h6>
                                 {/* <Icon icon={plusIcon} /> */}
                             </button>
                         </li>
                         <li>
-                            <button type="button dropdown-toggle" class="btn btn-outline-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button dropdown-toggle" className="btn btn-outline-dark" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <h6>Province</h6>
                                 <ArrowDropDownIcon />
                             </button>
@@ -182,21 +182,21 @@ const SearchToUpdate = () => {
                                     </div>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>Email</h6>
                                 {/* <Icon icon={plusIcon} /> */}
                             </button>
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>Contact</h6>
                                 {/* <Icon icon={plusIcon} /> */}
                             </button>
                         </li>
                         <li>
-                            <button type="button" class="btn btn-outline-dark">
+                            <button type="button" className="btn btn-outline-dark">
                                 <h6>Birthday</h6>
                                 {/* <Icon icon={plusIcon} /> */}
                             </button>
-                            <button type="button dropdown-toggle" class="btn btn-outline-dark" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button dropdown-toggle" className="btn btn-outline-dark" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                 <h6>Gender</h6>
                                 <ArrowDropDownIcon />
                             </button>

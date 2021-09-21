@@ -126,7 +126,7 @@ const EditAnnouncement = () => {
                                 className="form-control"
                                 id="file_name"
                                 name="file_name"
-                                value={data.file_name}
+                                value={(data.file_name) ? data.file_name : ""}
                                 onChange={(e) => setData({ ...data, file_name: e.target.value })}
                                 
                             />

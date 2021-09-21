@@ -8,6 +8,7 @@ import AddAlertIcon from '@material-ui/icons/AddAlert';
 import FeedbackIcon from '@material-ui/icons/Feedback';
 import PeopleIcon from '@material-ui/icons/People';
 import DescriptionIcon from '@material-ui/icons/Description';
+import ImportContactsIcon from '@material-ui/icons/ImportContacts';
 import EmailIcon from '@material-ui/icons/Email';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import FaceIcon from '@material-ui/icons/Face';
@@ -54,7 +55,7 @@ export default function SidebarData() {
         return [
         { title: "Home", icon: <HomeIcon />, link: "/studentHome/dashboard" },
         { title: "Courses", icon: <SchoolIcon />, link: "/studentHome/viewStuCourses" },
-        { title: "My Courses", icon: <SchoolIcon />, link: "/studentHome/myCourses" },
+        { title: "My Courses", icon: <ImportContactsIcon />, link: "/studentHome/myCourses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
         // { title: "Emails", icon: <EmailIcon />, link: "/emails" },
         // { title: "Notifications", icon: <NotificationsIcon />, link: "/studentHome/notifications" },

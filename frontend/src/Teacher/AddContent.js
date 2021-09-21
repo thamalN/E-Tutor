@@ -96,7 +96,7 @@ const AddContent = () => {
                                         }}
                                     >
                                         {courses.map((course, i) => (
-                                            <option>{course.topic}</option>
+                                            <option key={i}>{course.topic}</option>
                                         ))}
                                         <option value="new">Add New Topic</option>
                                     </select>

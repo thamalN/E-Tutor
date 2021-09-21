@@ -102,21 +102,21 @@ const MyCourses = () => {
                             <div className="course-card-container">
                                 <div key={course.course_id} className="course-card" >
 
-                                    <div className="card-container">
-                                        <div className="card-info" onClick={(course.access === 0) ? noAccess : () => getCourse(course.course_id)}>
+                                    <div className="card-container" onClick={(course.access === 0) ? noAccess : () => getCourse(course.course_id)}>
+                                        <div className="card-info" >
 
                                             <h1>{course.course_name} {course.year}</h1>
                                             <h2>Conducted by: {course.fname} {course.lname}</h2>
                                             <p>{course.description}</p>
 
+                                        </div>
 
-                                        </div>
-                                        <div style={{ display: "flex", alignItems: "flex-end" }}>
-                                            <button className="btn btn-danger add-btn" style={{ margin: "0" }} onClick={() => handleDelete(course.course_id, user.user_id, course.course_name)}>UnEnroll</button>
-                                        </div>
                                         <img className="course_icon" src={course.image} alt="physics_icon" />
                                     </div>
 
+                                    <div>
+                                        <button className="btn btn-danger add-btn" style={{ margin: "0" }} onClick={() => handleDelete(course.course_id, user.user_id, course.course_name)}>Unenroll</button>
+                                    </div>
 
                                 </div>
 

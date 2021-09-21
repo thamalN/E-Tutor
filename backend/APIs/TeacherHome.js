@@ -40,7 +40,7 @@ module.exports = function (app, db) {
     app.post("/studentHome/courses", requiresStudent, (req, res) => {
         const studentId = req.body.id;
 
-        const query = "SELECT COUNT(course_id) AS courses FROM course WHERE student_id=?;";
+        const query = "SELECT COUNT(course_id) AS courses FROM enroll WHERE student_id=?;";
 
         db.query(query, studentId, (err, result) => {
             if (err) throw err;
@@ -52,7 +52,7 @@ module.exports = function (app, db) {
     app.post("/studentHome/quizzes", requiresStudent, (req, res) => {
         const studentId = req.body.id;
 
-        const query = "SELECT * FROM quiz INNER JOIN course ON course.course_id = quiz.course_id WHERE quiz.course_id IN (SELECT course_id FROM course WHERE student_id=? GROUP BY course_id) AND quiz.deadline >= CURDATE();";
+        const query = "SELECT * FROM quiz INNER JOIN course ON course.course_id = quiz.course_id WHERE quiz.course_id IN (SELECT course_id FROM enroll WHERE student_id=? GROUP BY course_id) AND quiz.deadline >= CURDATE();";
 
         db.query(query, studentId, (err, result) => {
             if (err) throw err;

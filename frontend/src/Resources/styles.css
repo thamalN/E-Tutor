@@ -316,6 +316,12 @@ html{height:100%}
   background-size: cover;
 } */
 
+.title1{
+  text-align: center;
+  padding-top: 10vh;
+  box-sizing: border-box;
+}
+
 .content {
   /* overflow: auto; */
   position: relative;

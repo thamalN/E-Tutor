@@ -34,9 +34,6 @@ const ViewStuCourses = () => {
             <div className="homeContent">
                 <div className="courses">
 
-
-
-
                     {data.map(course => (
                         <div className="course-card-container">
                             <div className="course-card-container">

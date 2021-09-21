@@ -303,7 +303,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-12">
                     <label htmlFor="password" className="mt-2">Password</label>
                     <span id="password" style={{ "marginLeft": 50, fontSize: 12 }}></span>
                     <input
@@ -318,7 +318,7 @@ const SignUp = () => {
                     />
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-12">
                     <label htmlFor="confirmPassword" className="mt-2">Confirm Password</label>
                     <span id="pass" style={{ "marginLeft": 50, fontSize: 12 }}></span>
                     <input

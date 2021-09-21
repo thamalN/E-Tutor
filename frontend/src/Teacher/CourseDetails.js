@@ -163,7 +163,6 @@ const CourseDetails = () => {
         var details = document.querySelector(".course-details")
         var headingInputName
         var gradeSelect
-        var headingInputYear
         var descriptionInput
         var saveBtn
 

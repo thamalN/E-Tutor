@@ -50,11 +50,11 @@
   vertical-align: center;
 }
 
-.card_description{
+/* .card_description{
   color: rgb(0, 0, 0);
   font-size:70px ;
   padding: 68px;
-}
+} */
 
 .card_body .card_btn {
   padding: 1rem;

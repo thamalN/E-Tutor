@@ -105,24 +105,24 @@ const Navbar = (props) => {
 
                     {user.user_flag === 4 && (
                         <ul className="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <Badge badgeContent={notifyLen}>
                                         <NotificationsIcon />
                                     </Badge>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     {notifications && notifications.payments.map((item) =>
                                         <div>
-                                            <Link class="dropdown-item" to="#">Payment due on {item.course_name} {item.year}</Link>
+                                            <Link className="dropdown-item" to="#">Payment due on {item.course_name} {item.year}</Link>
                                         </div>
                                     )}
                                     {notifications && notifications.payments.length === 0 && (
                                         <div>
-                                            <Link class="dropdown-item" to="#">No Notifications</Link>
+                                            <Link className="dropdown-item" to="#">No Notifications</Link>
                                         </div>
                                     )}
-                                    <div class="dropdown-divider"></div>
+                                    <div className="dropdown-divider"></div>
 
                                 </div>
                             </li>
@@ -130,12 +130,12 @@ const Navbar = (props) => {
                     )}
 
                     <ul className="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <PersonIcon />{" " + user.fname + " " + user.lname}
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link class="dropdown-item" to={{
+                            <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <Link className="dropdown-item" to={{
                                     pathname: "/viewProfile",
                                     state: {
                                         userId: user.user_id,
@@ -143,9 +143,9 @@ const Navbar = (props) => {
                                     }
                                 }}>
                                     My Details</Link>
-                                {/* {user.user_flag === 4 && <a class="dropdown-item" href={`/StudentHome/StudentDetails/${user.user_id}`}>My Details</a>} */}
-                                <div class="dropdown-divider"></div>
-                                <Link class="dropdown-item" onClick={logOut}>Log Out</Link>
+                                {/* {user.user_flag === 4 && <a className="dropdown-item" href={`/StudentHome/StudentDetails/${user.user_id}`}>My Details</a>} */}
+                                <div className="dropdown-divider"></div>
+                                <Link to="/" className="dropdown-item" onClick={logOut}>Log Out</Link>
                             </div>
                         </li>
                     </ul>

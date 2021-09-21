@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useHistory } from "react-router";
 import Sidebar from "../Sidebar";
 
-const CreateStuFeekback = () => {
+const TeacherFeedBack = () => {
     const history = useHistory()
 
     const user = JSON.parse(localStorage.getItem('user'));
@@ -10,24 +10,37 @@ const CreateStuFeekback = () => {
     const [data, setData] = useState({
         topic: "",
         description: "",
+        file_name:"",
+        attachment:"",
         user_id: user.user_id
     }
     );
+
+    useEffect(() => {
+        if (data.file_name !== "") {
+            document.getElementById("attachment").required = true
+        }
+        else {
+            document.getElementById("attachment").required = false
+        }
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const url = "http://localhost:3001/CreateStuFeedback"
+        const formData = new FormData(document.getElementById("discussion-form"))
+        formData.append("user_id", data.user_id)
 
         fetch(url, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify(data)
+            // headers: { 'Content-Type': 'application/json' },
+            body:formData
         })
             .then((data => {
                 alert("New Feedback added Successfully!")
-                history.push("/teacher/teacherHome")
+                history.goBack()
             }))
     }
 
@@ -67,6 +80,31 @@ const CreateStuFeekback = () => {
                             ></textarea>
                         </div>
 
+                        <div className="col-12">
+                        <label htmlFor="file_name" className="mt-2">Screenshot/Photo Name</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="file_name"
+                            name="file_name"
+                            value={data.file_name}
+                            onChange={(e) => setData({ ...data, file_name: e.target.value })}
+                        />
+                    </div>
+
+                    <div className="col-12">
+                        <label htmlFor="attachment" className="mt-2">Attachments</label>
+                        <input
+                            type="file"
+                            className="form-control"
+                            id="attachment"
+                            value={data.attachment}
+                            onChange={(e) => setData({ ...data, attachment: e.target.value })}
+                            name="file"
+                            accept="image/*"
+                        />
+                    </div>
+
                 
 
                         <div className="col-12 mt-4">
@@ -78,4 +116,4 @@ const CreateStuFeekback = () => {
         </div>);
 }
 
-export default CreateStuFeekback;
+export default TeacherFeedBack;

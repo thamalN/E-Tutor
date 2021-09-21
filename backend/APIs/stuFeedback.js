@@ -4,7 +4,7 @@ module.exports = function (app, db,upload,fs) {
         // console.log(req.body.user_id);
         // const StudentId= req.params.id;
         // console.log(req.params.id);
-        const user_id =4;
+        const user_id =req.body.user_id;
         // console.log(user_id);
         const topic = req.body.topic;
         const description = req.body.description;
@@ -37,7 +37,7 @@ module.exports = function (app, db,upload,fs) {
     app.get("/PreviousFeedback/:id", (req, res) => {
          const StudentId= req.params.id;
 
-         const query = "SELECT topic, description, date_time,feedback_id,file_name,attachment From feedback WHERE user_id=4 ORDER BY feedback_id DESC;";
+         const query = "SELECT topic, description, date_time,feedback_id,file_name,attachment From feedback WHERE user_id=? ORDER BY feedback_id DESC;";
 
         db.query(query, StudentId, (err, result) => {
             if (err) throw err;

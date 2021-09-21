@@ -111,7 +111,7 @@ const Students = () => {
 
                     <div className="filterRow my-4">
                         <div>
-                            <h8>Filter by: </h8>
+                            <h6>Filter by: </h6>
                             <Icon icon={filterIcon} />
                         </div>
                         <button type="filter button dropdown-toggle" className="btn btn-outline-dark" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -122,7 +122,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="Western" name="prov" id="western" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         Western
                                     </label>
                                 </div>
@@ -130,7 +130,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="Central" name="prov" id="central" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         Central
                                     </label>
                                 </div>
@@ -138,7 +138,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="Southern" name="prov" id="southern" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         Southern
                                     </label>
                                 </div>
@@ -146,7 +146,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="Uva" name="prov" id="uva" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         Uva
                                     </label>
                                 </div>
@@ -154,7 +154,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="Sabaragamuwa" name="prov" id="sabaragamuwa" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         Sabaragamuwa
                                     </label>
                                 </div>
@@ -162,7 +162,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="North Western" name="prov" id="northwestern" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         North Western
                                     </label>
                                 </div>
@@ -170,7 +170,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="North Central" name="prov" id="northcentral" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         North Central
                                     </label>
                                 </div>
@@ -178,7 +178,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="Nothern" name="prov" id="nothern" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         Nothern
                                     </label>
                                 </div>
@@ -186,13 +186,13 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="Eastern" name="prov" id="eastern" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         Eastern
                                     </label>
                                 </div>
                             </li>
                         </ul>
-                        <button type="filter button dropdown-toggle" class="btn btn-outline-dark" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="filter button dropdown-toggle" className="btn btn-outline-dark" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                             <h6>Gender</h6>
                             <ArrowDropDownIcon />
                         </button>
@@ -200,7 +200,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="radio" name="flexRadioDefault" value="all" id="flexRadioDefault1" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} style={{ flex: "80%" }} for="flexRadioDefault1">
+                                    <label className="form-check-label" style={{ flex: "80%" }} style={{ flex: "80%" }} htmlFor="flexRadioDefault1">
                                         All
                                     </label>
                                 </div>
@@ -208,7 +208,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="radio" name="flexRadioDefault" value="male" id="flexRadioDefault2" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexRadioDefault2">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexRadioDefault2">
                                         Male
                                     </label>
                                 </div>
@@ -216,13 +216,13 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="radio" name="flexRadioDefault" value="female" id="flexRadioDefault3" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexRadioDefault3">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexRadioDefault3">
                                         Female
                                     </label>
                                 </div>
                             </li>
                         </ul>
-                        <button type="button dropdown-toggle" class="btn btn-outline-dark" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button dropdown-toggle" className="btn btn-outline-dark" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                             <h6>Grade</h6>
                             <ArrowDropDownIcon />
                         </button>
@@ -231,7 +231,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="2021 O/Level" name="grd" id="flexCheckDefault" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         2021 O/Level
                                     </label>
                                 </div>
@@ -239,7 +239,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="2022 O/Level" name="grd" id="flexCheckDefault" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         2022 O/Level
                                     </label>
                                 </div>
@@ -247,7 +247,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="2021 A/Level" name="grd" id="flexCheckDefault" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         2021 A/Level
                                     </label>
                                 </div>
@@ -255,7 +255,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="2022 A/Level" name="grd" id="flexCheckDefault" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         2022 A/Level
                                     </label>
                                 </div>
@@ -263,7 +263,7 @@ const Students = () => {
                             <li>
                                 <div className="form-check">
                                     <input style={{ flex: "20%" }} type="checkbox" value="2023 A/Level" name="grd" id="flexCheckDefault" />
-                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
+                                    <label className="form-check-label" style={{ flex: "80%" }} htmlFor="flexCheckDefault">
                                         2023 A/Level
                                     </label>
                                 </div>
@@ -280,15 +280,15 @@ const Students = () => {
                                 </li>
                             </summary>
                             <li>
-                                <button onClick={(e) => setData({ ...data, fname: !data.fname })} value="" type="button" class={data.fname === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, fname: !data.fname })} value="" type="button" className={data.fname === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>First Name</h6>
                                     <Icon icon={plusIcon} />
                                 </button>
-                                <button onClick={(e) => setData({ ...data, lname: !data.lname })} type="button" class={data.lname === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, lname: !data.lname })} type="button" className={data.lname === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Last Name</h6>
                                     <Icon icon={plusIcon} />
                                 </button>
-                                <button onClick={(e) => setData({ ...data, username: !data.username })} type="button" class={data.username === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, username: !data.username })} type="button" className={data.username === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Username</h6>
                                      <Icon icon={plusIcon} /> 
                                 </button>
@@ -296,40 +296,40 @@ const Students = () => {
 
 
                             <li>
-                                <button onClick={(e) => setData({ ...data, street_no: !data.street_no })} type="button" class={data.street_no === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, street_no: !data.street_no })} type="button" className={data.street_no === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Street No.</h6>
                                      <Icon icon={plusIcon} /> 
                                 </button>
-                                <button onClick={(e) => setData({ ...data, street: !data.street })} type="button" class={data.street === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, street: !data.street })} type="button" className={data.street === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Street Name</h6>
                                      <Icon icon={plusIcon} /> 
                                 </button>
-                                <button onClick={(e) => setData({ ...data, city: !data.city })} type="button" class={data.city === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, city: !data.city })} type="button" className={data.city === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>City</h6>
                                      <Icon icon={plusIcon} /> 
                                 </button>
                             </li>
                             <li>
-                                <button onClick={(e) => setData({ ...data, email: !data.email })} type="button" class={data.email === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, email: !data.email })} type="button" className={data.email === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Email</h6>
                                      <Icon icon={plusIcon} /> 
                                 </button>
-                                <button onClick={(e) => setData({ ...data, contact: !data.contact })} type="button" class={data.contact === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, contact: !data.contact })} type="button" className={data.contact === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Contact</h6>
                                      <Icon icon={plusIcon} /> 
                                 </button>
-                                <button onClick={(e) => setData({ ...data, birthday: !data.birthday })} type="button" class={data.birthday === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, birthday: !data.birthday })} type="button" className={data.birthday === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Birthday</h6>
                                      <Icon icon={plusIcon} /> 
                                 </button>
                             </li>
                             <li>
 
-                                <button onClick={(e) => setData({ ...data, school: !data.school })} type="button" id="school" class={data.school === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, school: !data.school })} type="button" id="school" className={data.school === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>School</h6>
                                      <Icon icon={plusIcon} /> 
                                 </button>
-                                <button onClick={(e) => setData({ ...data, guardian: !data.guardian })} type="button" id="guardian" class={data.guardian === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
+                                <button onClick={(e) => setData({ ...data, guardian: !data.guardian })} type="button" id="guardian" className={data.guardian === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Guardian's Contact</h6>
                                      <Icon icon={plusIcon} /> 
                                 </button>

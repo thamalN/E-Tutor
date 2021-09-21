@@ -28,9 +28,9 @@ const SearchResults = (props) => {
 
                             {results.map((searchData, i) => (
 
-                                <tr>
+                                <tr key={i}>
                                     <td>
-                                        <Link class="dropdown-item" to={{
+                                        <Link className="dropdown-item" to={{
                                             pathname: "/viewUser",
                                             state: {
                                                 userId: searchData.user_id,

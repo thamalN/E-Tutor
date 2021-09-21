@@ -103,6 +103,7 @@ import StudentQuizAttempts from './Student/StudentQuizAttempts';
 import StudentQuizResults from './Student/StudentQuizResults';
 import NotFound from './NotFound';
 import EnrollNewCourse from './Student/enrollNewCourse';
+import UpcomingStuQuiz from './Student/UpcomingStuQuiz';
 
 function App() {
 
@@ -491,7 +492,9 @@ function App() {
             <StuDiscussion />
           </Route>
 
-
+          <Route exact path="/studentHome/upcomingQuizzes/">
+            <UpcomingStuQuiz />
+          </Route>
 
 
           {/* <Route exact path="/student/StuaddQuiz">

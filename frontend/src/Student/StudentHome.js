@@ -10,6 +10,7 @@ import pencil2 from '../Resources/pencil2.jpg';
 import pencil3 from '../Resources/pencil3.jpg';
 import pencil4 from '../Resources/pencil4.jpg';
 import Card2 from "../Card2.js";
+import Card from "../Card";
 
 const StudentHome = () => {
 
@@ -97,7 +98,10 @@ const StudentHome = () => {
     useEffect(() => {
 
         fetch(url3, {
-            credentials: 'include'
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include',
+            body: JSON.stringify(id)
         })
             .then(res => {
                 return res.json();
@@ -114,7 +118,10 @@ const StudentHome = () => {
     useEffect(() => {
 
         fetch(url4, {
-            credentials: 'include'
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include',
+            body: JSON.stringify(id)
         })
             .then(res => {
                 return res.json();
@@ -130,14 +137,16 @@ const StudentHome = () => {
             <Sidebar />
             <div className="homeContent">
 
-                <div className="title">
+                <div className="title1">
                     <h2>Welcome back, {user.fname}  {user.lname} !</h2>
                 </div>
 
                 <div className="wrapper">
-                    <Card2 title="My Courses" description={courses} image={pencil1}></Card2>
-                    <Card2 title="Upcoming Quizzes" description={quizzes} image={pencil2}></Card2>
+                    <Card title="My Courses" description={courses} button="View" onclick={() => history.push("/studentHome/myCourses")}></Card>
+                    <Card title="Upcoming Quizzes" description={quizzes && quizzes.length} button="View" onclick={() => history.push("/studentHome/upcomingQuizzes", {state: quizzes})}></Card>
                 </div>
+
+                <hr />
 
                 <h1>Announcements</h1>
                 <div className="courses">

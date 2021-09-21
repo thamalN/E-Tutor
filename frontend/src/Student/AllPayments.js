@@ -41,8 +41,8 @@ const AllPayments = () => {
         <h3>My Payments</h3>
     </li>
     <li>
-        <table className="table">
-            <thead>
+        <table className="table table2">
+            <thead className="thead-dark">
                 <tr>
                     <th scope="col">Payment ID</th>
                     <th scope="col">Course Name</th>

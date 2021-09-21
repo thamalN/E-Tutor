@@ -80,6 +80,10 @@ const TeacherHome = () => {
 
             <div className="homeContent">
 
+            <div className="title1">
+                    <h2>Welcome back, {user.fname}  {user.lname} !</h2>
+                </div>
+
                 <div id="adminCard">
                     <Card title="My Courses" description={courses} button="View" onclick={() => history.push("/teacher/courses")}></Card>
                     <Card title="Total Students" description={students && students.length} button="View" onclick={() => history.push("/teacher/myStudents", {state: students})}></Card>

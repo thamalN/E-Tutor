@@ -35,11 +35,14 @@ const StudentQuizAttempts = () => {
             currentAttempts = attempts.attempts.length
         }
 
+        console.log( new Date(attempts.deadline))
+        console.log(new Date())
+
         const attemptBtn = document.getElementById("attempt-btn")
-        if(currentAttempts < attempts.max_attempts) {
-            attemptBtn.disabled = false
-        } else {
+        if(currentAttempts >= attempts.max_attempts || new Date(attempts.deadline) < new Date()) {
             attemptBtn.disabled = true
+        } else {
+            attemptBtn.disabled = false
         }
         
     }
