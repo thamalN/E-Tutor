@@ -31,6 +31,7 @@ import ViewPreviousAnnouncements from './Admin/ViewPreviousAnnouncements';
 import StudentHome from './Student/StudentHome';
 import ViewCourses from './Student/ViewCourses';
 import MyCourses from './Student/MyCourses';
+import AddStuDiscussion from './Student/AddStuDiscussion';
 // import StudentDiscussion from './Student/StudentDiscussion';
 import StudentAddAssigment from './Student/StudentAddAssigment';
 import HomeNew from './HomeNew';
@@ -456,6 +457,10 @@ function App() {
           <Route exact path="/studentHome/StuFeedback">
             <StuFeedback />
           </Route>
+
+          <Route exact path="/studentHome/AddStuDiscussion">
+          <AddStuDiscussion />
+        </Route>
 
 
           <Route exact path="/studentHome/PreviousFeedback">

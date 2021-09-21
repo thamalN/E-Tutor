@@ -184,7 +184,7 @@ const MyCourseDetails = () => {
           <div className="course-discn">
             <div className="content-add">
               <h4>Discussions</h4>
-              <Link to="/teacher/addDiscussion">
+              <Link to="/studentHome/AddStuDiscussion">
                 <button className="course-btn">
                   <AddCircleOutlineIcon /> Add Discussion
                 </button>
