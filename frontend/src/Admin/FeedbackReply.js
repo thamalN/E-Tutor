@@ -36,10 +36,10 @@ const FeedbackReply = () => {
             .then((data => {
                 if (data.status === "success") {
                     alert("Successfully sent the reply to the user and marked the feedback as handled!");
-                    history.push("/adminHome/viewFeedback");
+                    history.replace("/adminHome/feedback");
                   } else if (data.status === "fail") {
                     alert("Sorry the task couldn't be completed");
-                    history.push("/adminHome/viewFeedback");
+                    history.replace("/adminHome/feedback");
                   }
                 
             }))

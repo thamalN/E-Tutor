@@ -186,72 +186,72 @@ const UserAccounts = () => {
                         <ul className="dropdown-menu" id="province" aria-labelledby="dropdownMenuButton1">
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="Western" name="prov" id="western" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input style={{ flex: "5%" }} type="checkbox" value="Western" name="prov" id="western" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
                                         Western
                                     </label>
                                 </div>
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="Central" name="prov" id="central" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input style={{ flex: "5%" }} type="checkbox" value="Central" name="prov" id="central" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
                                         Central
                                     </label>
                                 </div>
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="Southern" name="prov" id="southern" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input style={{ flex: "5%" }} type="checkbox" value="Southern" name="prov" id="southern" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
                                         Southern
                                     </label>
                                 </div>
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="Uva" name="prov" id="uva" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input style={{ flex: "5%" }} type="checkbox" value="Uva" name="prov" id="uva" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
                                         Uva
                                     </label>
                                 </div>
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="Sabaragamuwa" name="prov" id="sabaragamuwa" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input style={{ flex: "5%" }} type="checkbox" value="Sabaragamuwa" name="prov" id="sabaragamuwa" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
                                         Sabaragamuwa
                                     </label>
                                 </div>
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="North Western" name="prov" id="northwestern" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input style={{ flex: "5%" }} type="checkbox" value="North Western" name="prov" id="northwestern" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
                                         North Western
                                     </label>
                                 </div>
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="North Central" name="prov" id="northcentral" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input style={{ flex: "5%" }} type="checkbox" value="North Central" name="prov" id="northcentral" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
                                         North Central
                                     </label>
                                 </div>
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="Nothern" name="prov" id="nothern" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input style={{ flex: "5%" }} type="checkbox" value="Nothern" name="prov" id="nothern" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
                                         Nothern
                                     </label>
                                 </div>
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="Eastern" name="prov" id="eastern" />
-                                    <label className="form-check-label" for="flexCheckDefault">
+                                    <input style={{ flex: "5%" }} type="checkbox" value="Eastern" name="prov" id="eastern" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexCheckDefault">
                                         Eastern
                                     </label>
                                 </div>
@@ -264,24 +264,24 @@ const UserAccounts = () => {
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2" onChange={(e) => setData({ ...data, gender: e.target.value })} >
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" value="all" id="flexRadioDefault1" />
-                                    <label className="form-check-label" for="flexRadioDefault1">
+                                    <input style={{ flex: "20%" }} type="radio" name="flexRadioDefault" value="all" id="flexRadioDefault1" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} style={{ flex: "80%" }} for="flexRadioDefault1">
                                         All
                                     </label>
                                 </div>
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" value="male" id="flexRadioDefault2" />
-                                    <label className="form-check-label" for="flexRadioDefault2">
+                                    <input style={{ flex: "20%" }} type="radio" name="flexRadioDefault" value="male" id="flexRadioDefault2" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexRadioDefault2">
                                         Male
                                     </label>
                                 </div>
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="radio" name="flexRadioDefault" value="female" id="flexRadioDefault3" />
-                                    <label className="form-check-label" for="flexRadioDefault3">
+                                    <input style={{ flex: "20%" }} type="radio" name="flexRadioDefault" value="female" id="flexRadioDefault3" />
+                                    <label className="form-check-label" style={{ flex: "80%" }} for="flexRadioDefault3">
                                         Female
                                     </label>
                                 </div>
@@ -295,7 +295,7 @@ const UserAccounts = () => {
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton3">
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="2021 O/Level" name="grd" id="flexCheckDefault" />
+                                    <input type="checkbox" value="2021 O/Level" name="grd" id="flexCheckDefault" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         2021 O/Level
                                     </label>
@@ -303,7 +303,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="2022 O/Level" name="grd" id="flexCheckDefault" />
+                                    <input type="checkbox" value="2022 O/Level" name="grd" id="flexCheckDefault" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         2022 O/Level
                                     </label>
@@ -311,7 +311,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="2021 A/Level" name="grd" id="flexCheckDefault" />
+                                    <input type="checkbox" value="2021 A/Level" name="grd" id="flexCheckDefault" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         2021 A/Level
                                     </label>
@@ -319,7 +319,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="2022 A/Level" name="grd" id="flexCheckDefault" />
+                                    <input type="checkbox" value="2022 A/Level" name="grd" id="flexCheckDefault" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         2022 A/Level
                                     </label>
@@ -327,7 +327,7 @@ const UserAccounts = () => {
                             </li>
                             <li>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" value="2023 A/Level" name="grd" id="flexCheckDefault" />
+                                    <input type="checkbox" value="2023 A/Level" name="grd" id="flexCheckDefault" />
                                     <label className="form-check-label" for="flexCheckDefault">
                                         2023 A/Level
                                     </label>
