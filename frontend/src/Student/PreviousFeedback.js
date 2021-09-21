@@ -25,7 +25,7 @@ const PreviousFeedback = () => {
         <div>
             <Sidebar />
             <div className="homeContent">
-                <h1>Previous Feedbacks</h1>
+                <h1>Previous Feedback</h1>
                 <div className="courses">
                     {data.map(feedback => (
                         <div key={feedback.feedback_id} className="display-card" >
