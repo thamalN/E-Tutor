@@ -13,7 +13,6 @@ const CourseDetails = () => {
 
     const history = useHistory()
 
-    //const { id } = useParams()
     const [content, setContent] = useState([])
     const [quiz, setQuiz] = useState([])
     const [discussion, setDiscussion] = useState([])
@@ -41,7 +40,7 @@ const CourseDetails = () => {
                 setContent(data)
             }))
 
-        fetch(quizUrl ,{
+        fetch(quizUrl, {
             credentials: 'include'
         })
             .then(res => {
@@ -51,7 +50,7 @@ const CourseDetails = () => {
                 setQuiz(data)
             })
 
-        fetch(discussionUrl ,{
+        fetch(discussionUrl, {
             credentials: 'include'
         })
             .then(res => {
@@ -163,110 +162,83 @@ const CourseDetails = () => {
     const editDetails = () => {
         var details = document.querySelector(".course-details")
         var headingInputName
+        var gradeSelect
         var headingInputYear
         var descriptionInput
         var saveBtn
-        if (user_flag === 3) {
 
+        if (user_flag === 3) {
             const editBtn = details.childNodes[1]
             editBtn.style.display = "none"
 
-            const heading = details.childNodes[0]
-
-            const headingDetails = heading.textContent.toString().split(" - ")
-
-            headingInputName = document.createElement("input");
-            headingInputName.setAttribute("value", headingDetails[0]);
-            headingInputName.style.marginBottom = "5px"
-            headingInputName.style.padding = "5px"
-            headingInputName.style.width = "100%"
-            headingInputName.style.fontWeight = "bold"
-            headingInputName.style.fontSize = "25px"
-
-            headingInputYear = document.createElement("input");
-            headingInputYear.setAttribute("value", headingDetails[1]);
-            headingInputYear.style.marginBottom = "5px"
-            headingInputYear.style.padding = "5px"
-            headingInputYear.style.width = "100%"
-            headingInputYear.style.fontWeight = "bold"
-            headingInputYear.style.fontSize = "25px"
-
-            const container = document.createElement("div")
-            container.insertAdjacentElement("afterbegin", headingInputName)
-            headingInputName.insertAdjacentElement("afterend", headingInputYear)
-
-            heading.replaceWith(container);
-
-            const description = details.childNodes[5]
-
-            descriptionInput = document.createElement("textarea");
-            descriptionInput.innerHTML = description.textContent;
-            description.replaceWith(descriptionInput);
-            descriptionInput.style.width = "100%"
-            descriptionInput.rows = 5
-
-            saveBtn = document.createElement("button");
-            saveBtn.setAttribute("class", "course-edit-btn")
-            saveBtn.innerHTML = "Save Changes"
-
-            descriptionInput.insertAdjacentElement('afterend', saveBtn)
-
-
         } else if (user_flag === 1) {
-
             const editBtn = details.childNodes[1]
             editBtn.style.display = "none"
 
             const dltBtn = details.childNodes[2]
             dltBtn.style.display = "none"
-
-            const heading = details.childNodes[0]
-
-            const headingDetails = heading.textContent.toString().split(" - ")
-
-            headingInputName = document.createElement("input");
-            headingInputName.setAttribute("value", headingDetails[0]);
-            headingInputName.style.marginBottom = "5px"
-            headingInputName.style.padding = "5px"
-            headingInputName.style.width = "100%"
-            headingInputName.style.fontWeight = "bold"
-            headingInputName.style.fontSize = "25px"
-
-            headingInputYear = document.createElement("input");
-            headingInputYear.setAttribute("value", headingDetails[1]);
-            headingInputYear.style.marginBottom = "5px"
-            headingInputYear.style.padding = "5px"
-            headingInputYear.style.width = "100%"
-            headingInputYear.style.fontWeight = "bold"
-            headingInputYear.style.fontSize = "25px"
-
-            const container = document.createElement("div")
-            container.insertAdjacentElement("afterbegin", headingInputName)
-            headingInputName.insertAdjacentElement("afterend", headingInputYear)
-
-            heading.replaceWith(container);
-
-            const description = details.childNodes[5]
-
-            descriptionInput = document.createElement("textarea");
-            descriptionInput.innerHTML = description.textContent;
-            description.replaceWith(descriptionInput);
-            descriptionInput.style.width = "100%"
-            descriptionInput.rows = 5
-
-            saveBtn = document.createElement("button");
-            saveBtn.setAttribute("class", "course-edit-btn")
-            saveBtn.innerHTML = "Save Changes"
-
-            descriptionInput.insertAdjacentElement('afterend', saveBtn)
         }
+
+        const heading = details.childNodes[0]
+
+        const headingDetails = heading.textContent.toString().split(" - ")
+
+        headingInputName = document.createElement("input");
+        headingInputName.setAttribute("value", headingDetails[0]);
+        headingInputName.style.marginBottom = "5px"
+        headingInputName.style.padding = "5px"
+        headingInputName.style.width = "100%"
+        headingInputName.style.fontWeight = "bold"
+        headingInputName.style.fontSize = "25px"
+
+        gradeSelect = document.createElement("select");
+        gradeSelect.style.marginBottom = "5px"
+        gradeSelect.style.padding = "5px"
+        gradeSelect.style.fontWeight = "bold"
+        gradeSelect.style.fontSize = "20px"
+
+        const container = document.createElement("div")
+        container.insertAdjacentElement("afterbegin", headingInputName)
+        headingInputName.insertAdjacentElement("afterend", gradeSelect)
+
+        const grades = ["2021 O/Level", "2022 O/Level", "2021 A/Level", "2022 A/Level", "2023 A/Level"]
+
+        grades.forEach(grade => {
+            var gradeOption = document.createElement("option")
+            gradeOption.innerHTML = grade
+            gradeOption.value = grade
+            if(grade === headingDetails[1]) {
+                gradeOption.selected = grade
+            }
+            gradeSelect.insertAdjacentElement("beforeend", gradeOption)
+        })
+
+        gradeSelect.setAttribute("value", headingDetails[1]);
+
+        heading.replaceWith(container);
+
+        const description = details.childNodes[5]
+
+        descriptionInput = document.createElement("textarea");
+        descriptionInput.innerHTML = description.textContent;
+        description.replaceWith(descriptionInput);
+        descriptionInput.style.width = "100%"
+        descriptionInput.rows = 5
+
+        saveBtn = document.createElement("button");
+        saveBtn.setAttribute("class", "course-edit-btn")
+        saveBtn.innerHTML = "Save Changes"
+
+        descriptionInput.insertAdjacentElement('afterend', saveBtn)
+
 
         const save = function () {
             let courseName = headingInputName.value.toString()
-            let year = headingInputYear.value.toString()
+            let year = gradeSelect.value.toString()
             const edited = { course_id: parseInt(id), course_name: courseName, year: year, description: descriptionInput.value.toString() }
 
             const url = "http://localhost:3001/teacherCourses/editCourseDetails"
+
             fetch(url, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
