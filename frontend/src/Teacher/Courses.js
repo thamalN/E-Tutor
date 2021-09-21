@@ -32,7 +32,9 @@ const Courses = () => {
     }, [url])
 
     const getCourse = (id) => {
-        fetch("http://localhost:3001/teacherCourses/" + id)
+        fetch("http://localhost:3001/teacherCourses/" + id ,{
+            credentials: 'include'
+        })
             .then(res => {
                 return res.json();
             })

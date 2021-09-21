@@ -30,7 +30,8 @@ const SupportingStaffHome = (props) => {
 
         fetch(url, {
             method: 'GET',
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include'
         })
             .then(res => {
                 return res.json();
@@ -46,7 +47,9 @@ const SupportingStaffHome = (props) => {
 
     useEffect(() => {
 
-        fetch(url1)
+        fetch(url1, {
+            credentials: 'include'
+        })
             .then(res => {
                 return res.json();
             })
@@ -61,7 +64,9 @@ const SupportingStaffHome = (props) => {
 
     useEffect(() => {
 
-        fetch(url2)
+        fetch(url2, {
+            credentials: 'include'
+        })
             .then(res => {
                 return res.json();
             })
@@ -76,7 +81,9 @@ const SupportingStaffHome = (props) => {
 
     useEffect(() => {
 
-        fetch(url3)
+        fetch(url3, {
+            credentials: 'include'
+        })
             .then(res => {
                 return res.json();
             })
@@ -91,7 +98,9 @@ const SupportingStaffHome = (props) => {
 
     useEffect(() => {
 
-        fetch(url4)
+        fetch(url4, {
+            credentials: 'include'
+        })
             .then(res => {
                 return res.json();
             })

@@ -22,7 +22,7 @@ module.exports = function (app, db,upload,fs) {
             file_name = null
         }
 
-        const query = "INSERT INTO feedback (user_id, topic, description, file_name, attachment) VALUES  (?,?,?,?,?);";
+        const query = "INSERT INTO feedback (user_id, topic, description, date_time, file_name, attachment) VALUES (?,?,?,now(),?,?);";
         // const query = "INSERT INTO feedback (user_id, topic, description) VALUES  (?,?,?);";
     
         db.query(query, [user_id, topic, description,file_name,content_path], (err, result) => {

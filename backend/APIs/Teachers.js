@@ -1,5 +1,6 @@
+const { validateToken } = require('./JWT')
 module.exports = function (app, db) {
-    app.get("/getAllTeachers", (req, res) =>{
+    app.get("/getAllTeachers", validateToken, (req, res) =>{
 
         const query = "SELECT teacher.teacher_id, user.fname, user.lname FROM teacher INNER JOIN user ON teacher.teacher_id=user.user_id";
 
@@ -9,7 +10,7 @@ module.exports = function (app, db) {
         })
     })
 
-    app.get("/getTeacherPayments", (req, res) =>{
+    app.get("/getTeacherPayments", validateToken, (req, res) =>{
 
         let teacherPayments = []
         let paymentArray = []
@@ -60,7 +61,7 @@ module.exports = function (app, db) {
         })
     })
 
-    app.get("/viewUnassignedTeachers", (req, res) => {
+    app.get("/viewUnassignedTeachers", validateToken, (req, res) => {
         
         const query = "SELECT teacher.*, user.fname, user.lname, user.email, user.contact from teacher INNER JOIN user ON teacher.teacher_id=user.user_id WHERE teacher_id NOT IN (SELECT teacher_id FROM course);";
        

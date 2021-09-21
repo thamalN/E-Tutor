@@ -14,7 +14,9 @@ const Feedback = () => {
     const url = "http://localhost:3001/viewFeedback"
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            credentials: 'include'
+        })
             .then((res => {
                 return res.json()
             }))
@@ -43,6 +45,11 @@ const Feedback = () => {
                                     <h1>{feedback.topic}</h1>
                                     <h6> By {feedback.fname} {feedback.lname} {feedback.date_time}</h6>
                                     <div><p>{feedback.description}</p></div>
+                                    <a href={feedback.attachment} target="_blank" rel="noreferrer">
+
+                                        {feedback.attachment && <div>{feedback.file_name}</div>}
+
+                                    </a>
                                     <button onClick={() => saveFeedback(feedback)} className="btn-small">
                                      Manage
                                     </button>

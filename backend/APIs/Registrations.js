@@ -1,9 +1,10 @@
 const bcrypt = require('bcrypt')
 const nodemailer = require("nodemailer")
+const { validateToken, requiresAdmin } = require('./JWT')
 
 module.exports = function (app, db) {
 
-  app.post("/createTeacherAcc", (req, res) => {
+  app.post("/createTeacherAcc", requiresAdmin, (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     const street_no = req.body.street_no;
@@ -86,7 +87,7 @@ module.exports = function (app, db) {
 
   })
 
-  app.post("/createSupStaffAcc", (req, res) => {
+  app.post("/createSupStaffAcc", requiresAdmin, (req, res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     const street_no = req.body.street_no;
@@ -165,7 +166,7 @@ module.exports = function (app, db) {
     })
   })
 
-  app.get("/recentRegistrations", (req, res) => {
+  app.get("/recentRegistrations", validateToken, (req, res) => {
 
     const query = "SELECT * FROM user where regDate BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW();";
 
@@ -175,7 +176,7 @@ module.exports = function (app, db) {
     })
   })
 
-  app.get("/recentStaffRegistrations", (req, res) => {
+  app.get("/recentStaffRegistrations", validateToken, (req, res) => {
 
     const query = "SELECT * FROM user where regDate BETWEEN DATE_SUB(NOW(), INTERVAL 30 DAY) AND NOW();";
 
@@ -185,7 +186,7 @@ module.exports = function (app, db) {
     })
   })
 
-  app.get("/mostRecentStaffRegistrations", (req, res) => {
+  app.get("/mostRecentStaffRegistrations", validateToken, (req, res) => {
 
     const query = "SELECT * FROM user where regDate BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW();";
 
@@ -195,7 +196,7 @@ module.exports = function (app, db) {
     })
   })
 
-  app.get("/allStudents", (req, res) => {
+  app.get("/allStudents", validateToken, (req, res) => {
 
     const query = "SELECT * FROM student AS s INNER JOIN user AS u ON u.user_id = s.student_id;";
 
@@ -205,7 +206,7 @@ module.exports = function (app, db) {
     })
   })
 
-  app.get("/allTeachers", (req, res) => {
+  app.get("/allTeachers", validateToken, (req, res) => {
 
     const query = "SELECT * FROM teacher AS t INNER JOIN user AS u ON u.user_id = t.teacher_id;";
 
@@ -215,7 +216,7 @@ module.exports = function (app, db) {
     })
   })
 
-  app.get("/allStaff", (req, res) => {
+  app.get("/allStaff", validateToken, (req, res) => {
 
     const query = "SELECT * FROM staff AS s INNER JOIN user AS u ON u.user_id = s.staff_id;";
 

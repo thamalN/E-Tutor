@@ -143,11 +143,11 @@ function App() {
             <AdminHome setLoggedIn={setLoggedIn} />
           </Route>
 
-          <Route exact path="/adminHome/createTeacherAcc">
+          <Route exact path="/adminHome/registrations/createTeacherAcc">
             <CreateTeacherAcc />
           </Route>
 
-          <Route exact path="/adminHome/createSupStaffAcc">
+          <Route exact path="/adminHome/registrations/createSupStaffAcc">
             <CreateSupStaffAcc />
           </Route>
 
@@ -229,7 +229,7 @@ function App() {
             <EditAnnouncement />
           </Route>
 
-          <Route exact path="/adminHome/viewFeedback">
+          <Route exact path="/adminHome/feedback">
             <Feedback />
           </Route>
 

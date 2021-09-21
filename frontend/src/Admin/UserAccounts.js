@@ -103,6 +103,7 @@ const UserAccounts = () => {
         fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(variable)
         })
             .then(res => {

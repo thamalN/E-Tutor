@@ -198,7 +198,8 @@ const EditProfile = (props) => {
 
         fetch(url, {
             method: 'POST',
-            body: formData
+            body: formData,
+            credentials: 'include'
         }).then(data => {
             const user = JSON.parse(localStorage.getItem("user"))
             user.fname = formData.get("FirstName")

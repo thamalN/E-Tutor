@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
+import Sidebar from "../Sidebar";
 const FeedbackReply = () => {
     const history = useHistory()
 
@@ -26,6 +27,7 @@ const FeedbackReply = () => {
         fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(data)
         })
             .then((res) => {
@@ -44,9 +46,12 @@ const FeedbackReply = () => {
     }
 
     return (
-    <div className="form-signup">
-        <h1 className="h3 mb-3 fw-normal">Reply to feedback</h1>
-    <form onSubmit = { handleSubmit } className="row g-3"  encType="multipart/form-data" id="content-form">
+        <div>
+            <Sidebar />
+        <div className="homeContent">
+            <div className="form-signup">
+                <h1 className="h3 mb-3 fw-normal">Reply to feedback</h1>
+            <form onSubmit = { handleSubmit } className="row g-3"  encType="multipart/form-data" id="content-form">
             
             <div className="col-md-6">
                     <label htmlFor="name" className="mt-2">Name</label>
@@ -112,10 +117,12 @@ const FeedbackReply = () => {
                 </div>
 
             <div className="col-12 mt-4">
-        <input type="submit" className="btn btn-dark" value="Send Email"/>
+        <input type="submit" className="btn btn-dark add-btn" value="Send Email"/>
         </div>
     </form>
-</div>  );
+</div>
+</div>
+    </div>  );
 }
  
 export default FeedbackReply;

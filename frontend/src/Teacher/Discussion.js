@@ -63,6 +63,7 @@ const Discussion = () => {
             fetch("http://localhost:3001/teacherCourses/addReply", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify(reply)
             }).then(
                 history.goBack()
@@ -155,6 +156,7 @@ const Discussion = () => {
             fetch(url, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify(edited)
             }).then(data => {
                 history.goBack()
@@ -189,6 +191,7 @@ const Discussion = () => {
                 fetch("http://localhost:3001/teacherCourses/editReply", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
+                    credentials: 'include',
                     body: JSON.stringify(reply)
                 }).then(data => {
                     //history.goBack()
@@ -205,7 +208,9 @@ const Discussion = () => {
 
     const deleteDiscussion = (id) => {
         if (window.confirm("Confirm Delete")) {
-            fetch("http://localhost:3001/teacherCourses/deleteDiscussion/" + id)
+            fetch("http://localhost:3001/teacherCourses/deleteDiscussion/" + id ,{
+                credentials: 'include'
+            })
                 .then((data) => {
                     history.goBack()
                 })

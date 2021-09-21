@@ -28,7 +28,7 @@ module.exports = function (app, db) {
                         const accessToken = createTokens(user)
                         res.cookie("accessToken", accessToken, {
                             maxAge: 60 * 60 * 24 * 1000,
-                            // httpOnly: true
+                            httpOnly: true
                         });
 
                         res.json(result[0])

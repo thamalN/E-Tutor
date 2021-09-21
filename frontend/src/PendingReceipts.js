@@ -25,7 +25,9 @@ const PendingReceipts = () => {
     const url = "http://localhost:3001/pendingReceipts"
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            credentials: 'include'
+        })
             .then((res => {
                 return res.json()
             }))
@@ -58,6 +60,7 @@ const PendingReceipts = () => {
         fetch(url2, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(variable)
         })
             .then((res) => {
@@ -67,6 +70,11 @@ const PendingReceipts = () => {
                 setVerify(data)
                 if (data.status === "verified") {
                     alert("Payment Verified Successfully!");
+                    history.push("/payments/pendingReceipts");
+                  }
+
+                  else if (data.status === "verified&enrolled") {
+                    alert("Payment Verified and enrolled the student Successfully!");
                     history.push("/payments/pendingReceipts");
                   } 
                   else if (data.status === "rejected") {

@@ -59,7 +59,8 @@ const EditAnnouncement = () => {
 
         fetch(url, {
             method: 'POST',
-            body: formData
+            body: formData,
+            credentials: 'include'
         })
             .then(data => {
                 alert("Announcement edited Successfully!")

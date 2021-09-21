@@ -3,6 +3,7 @@ import { green } from "@material-ui/core/colors";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from 'react-router-dom';
+import Sidebar from "../Sidebar";
 // import { useForm } from "react-hook-form";
 // import{ yupResolver } from "@hookform/resolvers/yup";
 // import * as yup from "yup";
@@ -26,7 +27,7 @@ const SignUp = () => {
         heading = "Sign Up"
         
     }
-    else {
+    else if(user.user_id===1 || user.user_id===3){
         flag = 1
         heading = "Create Student Account"
     }
@@ -244,8 +245,11 @@ const SignUp = () => {
     // });
 
     return (
+        <div>
+            {flag===1 && (<Sidebar />)}
+        <div className={flag===1? "homeContent": ""}>
 
-        <main className="form-signup">
+        <div className="form-signup">
 
             {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
             <h1 className="h3 mb-3 fw-normal">{heading}</h1>
@@ -540,9 +544,9 @@ const SignUp = () => {
                 </div>
             </form>
 
-
-        </main>
-
+            </div>
+        </div>
+     </div>
     );
 }
 

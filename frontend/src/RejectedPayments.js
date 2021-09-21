@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const RejectedPayments = () => {
 
     const [data, setData] = useState([])
+    const [verify, setVerify] = useState([])
     const [paymentdata, setPaymentdata] = useState({
         payment_id: "",
         verifyflag: "",
@@ -22,7 +23,9 @@ const RejectedPayments = () => {
     const url = "http://localhost:3001/rejectedPayments"
 
     useEffect(() => {
-        fetch(url)
+        fetch(url,{
+            credentials: 'include'
+        })
             .then((res => {
                 return res.json()
             }))
@@ -31,7 +34,7 @@ const RejectedPayments = () => {
                 
                 
             }))
-    }, [url])
+    }, [verify])
     
     
     const handleVerify = (e) => {
@@ -55,19 +58,21 @@ const RejectedPayments = () => {
         fetch(url2, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(variable)
         })
             .then((res) => {
                 return res.json()
             })
             .then((data => {
+                setVerify(data)
 
                 if (data.status === "verified") {
                     alert("Payment Verified Successfully!");
                     history.push("/payments/rejectedPayments");
                   } 
-                  else if (data.status === "rejected") {
-                    alert("Payment rejected!");
+                  else {
+                    alert("Sorry the task couldn't be completed!");
                     history.push("/payments/rejectedPayments");
                   }
             }))

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import Sidebar from "../Sidebar";
 
 import '../Resources/signUp.css'
 
@@ -26,7 +27,8 @@ const AddNewCourse = () => {
 
         fetch(url, {
             method: 'GET',
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include'
         })
             .then(res => {
                 return res.json();
@@ -49,7 +51,8 @@ const AddNewCourse = () => {
 
         fetch(url, {
             method: 'POST',
-            body: formData
+            body: formData,
+            credentials: 'include'
         })
             .then(res => {
                 return res.json();
@@ -62,8 +65,11 @@ const AddNewCourse = () => {
     }
 
     return (
-
-        <main className="form-signup">
+        
+        <div>
+            <Sidebar />
+        <div className="homeContent">
+                <div className="form-signup">
 
             {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
             <h1 className="h3 mb-3 fw-normal">Add new Course</h1>
@@ -165,13 +171,15 @@ const AddNewCourse = () => {
                         </div>
 
                 <div className="col-12 mt-4">
-                    <input type="submit" className="btn btn-lg btn-dark add-btn" value="Add Course" />
+                    <input type="submit" className="btn btn-dark add-btn" value="Add Course" />
                 </div>
 
             </form>
 
 
-        </main>
+        </div>
+        </div>
+    </div>
 
     );
 }

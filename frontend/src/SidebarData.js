@@ -25,7 +25,7 @@ export default function SidebarData() {
         { title: "User Accounts", icon: <PeopleIcon />, link: "/adminHome/userAccounts" },
         { title: "Payments", icon: <PaymentIcon />, link: "/adminHome/payments" },
         { title: "Announcements", icon: <AddAlertIcon />, link: "/adminHome/announcements" },
-        { title: "Feedback", icon: <FeedbackIcon />, link: "/adminHome/viewFeedback" },
+        { title: "Feedback", icon: <FeedbackIcon />, link: "/adminHome/feedback" },
         { title: "Reports", icon: <DescriptionIcon />, link: "/adminHome/reports" }
         
         ]

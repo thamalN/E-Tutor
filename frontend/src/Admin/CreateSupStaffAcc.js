@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import Valid from '@material-ui/icons/CheckCircle';
 import Invalid from '@material-ui/icons/Cancel';
+import Sidebar from "../Sidebar";
 const CreateSupStaffAcc = () => {
     const history = useHistory()
 
@@ -42,7 +43,8 @@ const CreateSupStaffAcc = () => {
 
         fetch(url, {
             method: 'GET',
-            headers: { "Content-Type": "application/json" }
+            headers: { "Content-Type": "application/json" },
+            credentials: 'include'
         })
             .then(res => {
                 return res.json();
@@ -194,6 +196,7 @@ const CreateSupStaffAcc = () => {
         fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(data)
         })
         .then(res => {
@@ -209,6 +212,9 @@ const CreateSupStaffAcc = () => {
    
 
     return ( 
+        <div>
+            <Sidebar />
+        <div className="homeContent">
         <div className="form-signup">
 
 {/* <img className="mb-4" src="logo_icon.png" alt="" width="72" height="72" /> */}
@@ -453,11 +459,11 @@ const CreateSupStaffAcc = () => {
 
     
     <div className="col-12 mt-4">
-        <input id="button" type="submit" className="btn btn-dark" value="Create Account" />
+        <input id="button" type="submit" className="btn btn-dark add-btn" value="Create Account" />
     </div>
 </form>
-
-
+</div>
+</div>
 </div>
      );
 }

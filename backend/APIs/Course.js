@@ -1,6 +1,7 @@
+const { validateToken, requiresAdminTeacher, requiresTeacher, requiresAdmin, requiresTeacherStudent } = require('./JWT')
 module.exports = function (app, db, upload, fs) {
 
-    app.post("/teacherCourses", (req, res) => {
+    app.post("/teacherCourses", requiresTeacher, (req, res) => {
         const teacherId = req.body.id;
 
         const query = "SELECT * FROM course WHERE teacher_id=?;";
@@ -22,7 +23,7 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
-    app.post("/teacherCourses/editCourseDetails", (req, res) => {
+    app.post("/teacherCourses/editCourseDetails", requiresAdminTeacher, (req, res) => {
         const course_id = req.body.course_id
         const course_name = req.body.course_name
         const year = req.body.year
@@ -135,7 +136,7 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
-    app.post("/teacherCourses/addContent", upload.single('file'), (req, res) => {
+    app.post("/teacherCourses/addContent", requiresTeacher, upload.single('file'), (req, res) => {
 
         var topic = req.body.topic;
         var lesson_id = parseInt(req.body.lesson_id)
@@ -182,7 +183,7 @@ module.exports = function (app, db, upload, fs) {
 
     })
 
-    app.post("/teacherCourses/editLesson/", (req, res) => {
+    app.post("/teacherCourses/editLesson/", requiresTeacher, (req, res) => {
         const course_id = req.body.course_id
         const lesson_id = req.body.lesson_id
         const lesson = req.body.lesson
@@ -196,7 +197,7 @@ module.exports = function (app, db, upload, fs) {
 
     })
 
-    app.post("/teacherCourses/deleteLesson/", (req, res) => {
+    app.post("/teacherCourses/deleteLesson/", requiresTeacher, (req, res) => {
         const course_id = req.body.course_id
         const lesson_id = req.body.lesson_id
 
@@ -209,7 +210,7 @@ module.exports = function (app, db, upload, fs) {
 
     })
 
-    app.post("/teacherCourses/editContent", upload.single('file'), (req, res) => {
+    app.post("/teacherCourses/editContent", requiresTeacher, upload.single('file'), (req, res) => {
 
         const lesson_id = req.body.lesson_id
         const content_id = req.body.content_id
@@ -246,7 +247,7 @@ module.exports = function (app, db, upload, fs) {
         res.send("ok")
     })
 
-    app.post("/teacherCourses/deleteContent/", (req, res) => {
+    app.post("/teacherCourses/deleteContent/", requiresTeacher, (req, res) => {
         const lessonId = req.body.lesson_id
         const contentId = req.body.content_id
         const contentPath = req.body.content_path
@@ -267,7 +268,7 @@ module.exports = function (app, db, upload, fs) {
         res.send("ok")
     })
 
-    app.post("/teacherCourses/addQuiz", (req, res) => {
+    app.post("/teacherCourses/addQuiz", requiresTeacher, (req, res) => {
         const quiz = req.body;
 
         const quizName = quiz.name
@@ -327,7 +328,7 @@ module.exports = function (app, db, upload, fs) {
 
     })
 
-    app.post("/teacherCourses/editQuiz", (req, res) => {
+    app.post("/teacherCourses/editQuiz", requiresTeacher, (req, res) => {
         const quiz_id = req.body.quiz_id
         const course_id = req.body.course_id
         const quiz_name = req.body.quiz_name
@@ -401,7 +402,7 @@ module.exports = function (app, db, upload, fs) {
         res.send("ok")
     })
 
-    app.get("/teacherCourses/deleteQuiz/:id", (req, res) => {
+    app.get("/teacherCourses/deleteQuiz/:id", requiresTeacher, (req, res) => {
         const quizId = req.params.id
 
         const query = "DELETE FROM quiz WHERE quiz_id=?"
@@ -474,7 +475,7 @@ module.exports = function (app, db, upload, fs) {
         })
     })
 
-    app.get("/teacherCourses/deleteDiscussion/:id", (req, res) => {
+    app.get("/teacherCourses/deleteDiscussion/:id", requiresTeacher, (req, res) => {
         const quizId = req.params.id
 
         const query = "DELETE FROM discussion WHERE discussion_id=?"
@@ -486,7 +487,7 @@ module.exports = function (app, db, upload, fs) {
         res.send("ok")
     })
 
-    app.post("/addNewCourse", upload.single('file'), (req, res) => {
+    app.post("/addNewCourse", requiresAdmin, upload.single('file'), (req, res) => {
         console.log(req.body.teacher);
         const course_name = req.body.course_name;
         const user_id = parseInt(req.body.user_id);

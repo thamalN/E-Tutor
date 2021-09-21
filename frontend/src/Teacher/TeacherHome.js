@@ -21,6 +21,7 @@ const TeacherHome = () => {
         fetch(courseUrl, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(id)
         })
             .then(res => {
@@ -39,6 +40,7 @@ const TeacherHome = () => {
         fetch(studentUrl, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(id)
         })
             .then(res => {
@@ -57,6 +59,7 @@ const TeacherHome = () => {
         fetch(quizUrl, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(id)
         })
             .then(res => {
