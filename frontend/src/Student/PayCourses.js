@@ -65,6 +65,8 @@ const PayCourses = () => {
                         </Link>
                         // <div>
                     ))}
+
+                    {data.length === 0 && <h1>No due payments...</h1>}
                 </div>
             </div>
         </div>);

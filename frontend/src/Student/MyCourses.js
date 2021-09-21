@@ -124,6 +124,8 @@ const MyCourses = () => {
                         </div>
 
                     ))}
+
+                    {data.length === 0 && <h1>You have not enrolled to any course...</h1>}
                 </div>
             </div>
         </div>);
