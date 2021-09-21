@@ -121,7 +121,7 @@ function App() {
             <SignIn setLoggedIn={setLoggedIn} />
           </Route>
 
-          <Route exact path="/signUp">
+          <Route exact path="/registrations/signUp">
             <SignUp />
           </Route>
 

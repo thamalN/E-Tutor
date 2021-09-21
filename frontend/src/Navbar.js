@@ -79,7 +79,7 @@ const Navbar = (props) => {
                             <Link className="nav-link" to="/signIn">Sign In</Link>
                         </li>
                         <li className="nav-item ms-2 d-none d-md-inline">
-                            <Link className="btn btn-secondary rounded-pill" to="/signUp">Join For Free</Link>
+                            <Link className="btn btn-secondary rounded-pill" to="/registrations/signUp">Join For Free</Link>
                         </li>
                     </ul>
                 </div>
