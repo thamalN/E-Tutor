@@ -14,7 +14,9 @@ const StudentDetails = () => {
     const url = "http://localhost:3001/StudentHome/StudentDetails/" + user.user_id;
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            credentials: 'include'
+        })
             .then(res => {
                 return res.json()
             })
@@ -36,6 +38,7 @@ const StudentDetails = () => {
         fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(data)
         })
             .then(res => {

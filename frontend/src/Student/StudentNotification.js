@@ -19,6 +19,7 @@ const StudentNotification = () => {
         fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(id)
         })
             .then(res => {
