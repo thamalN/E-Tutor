@@ -58,8 +58,8 @@ const StaffAllCourses = () => {
                             <h3>All Courses With Students Enrolled</h3>
                         </li>
                         <li>
-                            <table className="table" id="reg_table">
-                                <thead>
+                            <table className="table table2" id="reg_table">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th scope="col">Course ID</th>
                                         <th scope="col">Course Name</th>

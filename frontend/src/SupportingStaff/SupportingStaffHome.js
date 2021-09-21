@@ -139,7 +139,7 @@ const SupportingStaffHome = (props) => {
                                 <li>
 
                                     <ul>
-                                        <li><Link className="btn btn-outline-dark mt-4" to="/signUp">Register a Student</Link></li>
+                                        <li><Link className="btn btn-outline-dark mt-4" to="/registrations/signUp">Register a Student</Link></li>
                                         <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/registrations/recentStaffRegistrations">Recent Registrations</Link></li>
                                         <li><Link className="btn btn-outline-dark" to="/payments/pendingReceipts">Pending Receipts</Link></li>
                                         <li><Link className="btn btn-outline-dark" to="/supportingStaffHome/studentAccounts">Search Students</Link></li>
@@ -155,7 +155,7 @@ const SupportingStaffHome = (props) => {
                             <Card2 title="Pending Receipts" description={pendingReceipts} image={pencil2} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
                             <Card2 title="Verified Receipts" description={verifiedReceipts} image={pencil3} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
                             <Card2 title="Rejected Receipts" description={rejectedReceipts} image={pencil4} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
-                            
+
                         </div>
 
                         <div className="b2">
@@ -165,8 +165,8 @@ const SupportingStaffHome = (props) => {
                                     <Link className="viewAll" to="/supportingStaffHome/registrations/recentStaffRegistrations"><h6>View All <Icon icon={clearAll} /></h6></Link>
                                 </li>
                                 <li className="reg_table">
-                                    <table className="table">
-                                        <thead>
+                                    <table className="table table2" id="reg_table">
+                                        <thead className="thead-dark">
                                             <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Date</th>
