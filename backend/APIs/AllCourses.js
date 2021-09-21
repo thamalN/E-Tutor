@@ -1,6 +1,6 @@
 const { validateToken, requiresAdmin } = require('./JWT')
 module.exports = function (app, db, fs) {
-    app.get("/allCourses", requiresAdmin, (req, res) => {
+    app.get("/allCourses", validateToken, (req, res) => {
         
      const query = "SELECT course.*, user.fname, user.lname FROM course INNER JOIN user ON course.teacher_id=user.user_id;";
     
