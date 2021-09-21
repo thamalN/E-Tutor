@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer")
-const { validateToken } = require('./JWT')
+const { validateToken, requiresAdminStaff } = require('./JWT')
 module.exports = function (app, db) {
   app.get("/pendingReceipts", requiresAdminStaff, (req, res) => {
 

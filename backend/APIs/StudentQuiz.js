@@ -1,8 +1,6 @@
 const { requiresStudent } = require('./JWT')
 module.exports = function (app, db) {
 
-const { requiresStudent } = require('./JWT')
-const { requiresStudent } = require('./JWT')
 app.post("/getQuizAttempts/", requiresStudent, (req, res) => {
         const student_id = req.body.student_id
         const quiz_id = req.body.quiz_id
