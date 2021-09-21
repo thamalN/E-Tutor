@@ -41,6 +41,7 @@ const PreviousAnnouncements = () => {
             fetch(url3, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify(id)
             })
                 .then((res => {

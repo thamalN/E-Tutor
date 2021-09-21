@@ -60,7 +60,7 @@ module.exports = function (app, db) {
     })
 
     app.get("/viewFeedback", requiresAdmin, (req, res) => {
-      const query = "SELECT feedback_id, feedback.user_id, topic, description, date_time, fname, lname, email  FROM feedback LEFT JOIN user ON feedback.user_id=user.user_id WHERE feedback.handled=0;";
+      const query = "SELECT feedback.*, fname, lname, email  FROM feedback LEFT JOIN user ON feedback.user_id=user.user_id WHERE feedback.handled=0;";
 
       db.query(query, (err, result) => {
           if (err) throw err;

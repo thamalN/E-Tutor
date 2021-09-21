@@ -27,7 +27,8 @@ const EditContent = () => {
 
         fetch(url, {
             method: 'POST',
-            body: formData
+            body: formData,
+            credentials: 'include'
         })
             .then((data => {
                 history.goBack()

@@ -227,7 +227,7 @@ function App() {
             <EditAnnouncement />
           </Route>
 
-          <Route exact path="/adminHome/viewFeedback">
+          <Route exact path="/adminHome/feedback">
             <Feedback />
           </Route>
 

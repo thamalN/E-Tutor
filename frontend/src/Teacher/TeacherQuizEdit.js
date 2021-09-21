@@ -164,6 +164,7 @@ const TeacherQuizEdit = () => {
             fetch('http://localhost:3001/teacherCourses/editQuiz/', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify(values)
             }).then(data => {
                 history.push("/teacher/courses/" + course_id)

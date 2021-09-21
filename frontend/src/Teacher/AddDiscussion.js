@@ -30,6 +30,7 @@ const AddDiscussion = () => {
         fetch("http://localhost:3001/teacherCourses/addDiscussion", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(data)
         }).then(
             history.goBack()

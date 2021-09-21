@@ -31,7 +31,9 @@ const CourseDetails = () => {
     const discussionUrl = "http://localhost:3001/teacherCourses/discussion/" + id
 
     useEffect(() => {
-        fetch(contentUrl)
+        fetch(contentUrl, {
+            credentials: 'include'
+        })
             .then((res => {
                 return res.json()
             }))
@@ -39,7 +41,9 @@ const CourseDetails = () => {
                 setContent(data)
             }))
 
-        fetch(quizUrl)
+        fetch(quizUrl ,{
+            credentials: 'include'
+        })
             .then(res => {
                 return res.json()
             })
@@ -47,7 +51,9 @@ const CourseDetails = () => {
                 setQuiz(data)
             })
 
-        fetch(discussionUrl)
+        fetch(discussionUrl ,{
+            credentials: 'include'
+        })
             .then(res => {
                 return res.json()
             })
@@ -106,6 +112,7 @@ const CourseDetails = () => {
             fetch(url, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify({ course_id: id, lesson_id: lessonId, lesson: lessonInput.value.toString() })
             })
                 .then((data) => {
@@ -125,6 +132,7 @@ const CourseDetails = () => {
             fetch(url, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify({ course_id: id, lesson_id: lessonId })
             })
                 .then((data) => {
@@ -143,6 +151,7 @@ const CourseDetails = () => {
             fetch(url, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify({ lesson_id: lessonId, content_id: contentId, content_path: relativePath })
             })
                 .then((data) => {
@@ -261,6 +270,7 @@ const CourseDetails = () => {
             fetch(url, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
+                credentials: 'include',
                 body: JSON.stringify(edited)
             }).then(
                 history.go()

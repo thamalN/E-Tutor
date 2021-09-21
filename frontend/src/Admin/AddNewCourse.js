@@ -171,7 +171,7 @@ const AddNewCourse = () => {
                         </div>
 
                 <div className="col-12 mt-4">
-                    <input type="submit" className="btn btn-lg btn-dark add-btn" value="Add Course" />
+                    <input type="submit" className="btn btn-dark add-btn" value="Add Course" />
                 </div>
 
             </form>

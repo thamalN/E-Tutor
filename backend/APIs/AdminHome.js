@@ -45,7 +45,7 @@ module.exports = function (app, db) {
         })
     })
 
-    app.get("/adminHome/totalStudents", validateToken, (req, res) => {
+    app.get("/adminHome/totalStudents", (req, res) => {
 
         const query = "SELECT COUNT(student_id) AS studentCount from student;";
 

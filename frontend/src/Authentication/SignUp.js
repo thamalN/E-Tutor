@@ -22,15 +22,14 @@ const SignUp = () => {
     let flag;
     let heading;
 
-    
-    if(user.user_id===1 || user.user_id===2){
-        flag = 1
-        heading = "Create Student Account"
-    }
-    else {
+    if (user === null) {
         flag = 0
         heading = "Sign Up"
         
+    }
+    else if(user.user_id===1 || user.user_id===3){
+        flag = 1
+        heading = "Create Student Account"
     }
     
 

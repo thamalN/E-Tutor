@@ -14,6 +14,7 @@ const ViewProfile = () => {
         fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({ user_id: location.state.userId, user_flag: location.state.userFlag })
         })
 

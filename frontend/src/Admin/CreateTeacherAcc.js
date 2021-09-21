@@ -488,7 +488,7 @@ const CreateTeacherAcc = () => {
 
     
     <div className="col-12 mt-4">
-        <input id="button" type="submit" className="btn btn-dark" value="Create Account" />
+        <input id="button" type="submit" className="btn btn-dark add-btn" value="Create Account" />
     </div>
 </form>
 
