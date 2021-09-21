@@ -65,9 +65,11 @@ module.exports = function (app, db, stripe, uuid, upload) {
         console.log(result.insertId)
 
         if (enrol) {
-          const query = "INSERT INTO payment (student_id, course_id, payment_method, amount, month, date_time, verified) VALUES  (?,?,?,?,?,now(),?);";
 
-          db.query(query, [student_id, course_id, payment_method, amount, month, verified], (err, result) => {
+          // const query = "INSERT INTO payment (student_id, course_id, payment_method, amount, month, date_time, verified) VALUES  (?,?,?,?,?,now(),?);";
+          const access = 1;
+          const query = "INSERT INTO enroll (student_id, course_id, access) VALUES  (?,?,?);";
+          db.query(query, [student_id, course_id, access], (err, result) => {
             if (err) throw err;
             console.log(result.insertId)
           })

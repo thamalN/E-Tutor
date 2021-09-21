@@ -26,7 +26,7 @@ const MyCourseDetails = () => {
   const url = "http://localhost:3001/studentCourses/" + id;
 
   useEffect(() => {
-    fetch(url)
+    fetch(url,{credentials: 'include'})
       .then((res) => {
         return res.json();
       })
@@ -46,7 +46,7 @@ const MyCourseDetails = () => {
   const quizUrl = "http://localhost:3001/teacherCourses/quiz/" + id
 
   useEffect(() => {
-    fetch(quizUrl)
+    fetch(quizUrl,{credentials: 'include'})
       .then(res => {
         return res.json()
       })
@@ -94,7 +94,7 @@ const MyCourseDetails = () => {
   const discussionUrl = "http://localhost:3001/teacherCourses/discussion/" + id
 
   useEffect(() => {
-    fetch(discussionUrl)
+    fetch(discussionUrl,{credentials: 'include'})
       .then((res => {
         return res.json()
       }))

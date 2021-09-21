@@ -61,6 +61,7 @@ const StuDiscussion = () => {
             //console.log(reply)
 
             fetch("http://localhost:3001/teacherCourses/addReply", {
+                credentials: 'include',
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(reply)
@@ -156,6 +157,7 @@ const StuDiscussion = () => {
 
             const url = "http://localhost:3001/teacherCourses/editDiscussion"
             fetch(url, {
+                credentials: 'include',
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(edited)
@@ -190,6 +192,7 @@ const StuDiscussion = () => {
                 }
 
                 fetch("http://localhost:3001/teacherCourses/editReply", {
+                    credentials: 'include',
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(reply)

@@ -57,7 +57,7 @@ export default function SidebarData() {
         { title: "My Courses", icon: <SchoolIcon />, link: "/studentHome/myCourses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
         // { title: "Emails", icon: <EmailIcon />, link: "/emails" },
-        { title: "Notifications", icon: <NotificationsIcon />, link: "/studentHome/notifications" },
+        // { title: "Notifications", icon: <NotificationsIcon />, link: "/studentHome/notifications" },
         { title: "Feedback", icon: <DescriptionIcon />, link: "/studentHome/StuFeedback" }
         ]
     }

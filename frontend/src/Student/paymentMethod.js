@@ -30,6 +30,7 @@ const PaymentMethod = () => {
     useEffect(() => {
         fetch(url, {
             method: 'POST',
+            credentials: 'include',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(Id)
         })
@@ -56,6 +57,7 @@ const PaymentMethod = () => {
 
         fetch("http://localhost:3001/paymentStudent", {
             method: 'POST',
+            credentials: 'include',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(passData)
 

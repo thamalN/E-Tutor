@@ -41,6 +41,7 @@ const StuAddContent = () => {
         formData.append("course_id", data.course_id)
 
         fetch(url, {
+            credentials: 'include',
             method: 'POST',
             body: formData
         })

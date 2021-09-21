@@ -19,6 +19,7 @@ const StudentHome = () => {
     useEffect(() => {
         fetch(url, {
             method: 'POST',
+            credentials: 'include',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(id)
         }).then(res =>  {
@@ -32,7 +33,9 @@ const StudentHome = () => {
     const url2 = "http://localhost:3001/studentAnnouncements"
 
     useEffect(() => {
-        fetch(url2)
+        fetch(url2,{
+            credentials: 'include' 
+        })
             .then((res => {
                 return res.json()
             }))

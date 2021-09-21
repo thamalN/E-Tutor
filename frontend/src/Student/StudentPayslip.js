@@ -17,6 +17,7 @@ const [myData, setmyData] = useState([]);
 const url = "http://localhost:3001/courseDetails";
 
 useEffect(() => {fetch(url, {
+        credentials: 'include',
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Id)
@@ -47,6 +48,7 @@ const StudentId =  user.user_id;
         // formData.append("verified",  0)
 
         fetch(url, {
+            credentials: 'include',
             method: 'POST',
             body: formData
         })
