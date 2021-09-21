@@ -84,7 +84,8 @@ const StuQuiz = () => {
             fetch("http://localhost:3001/submitQuiz/", {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(values)
+                body: JSON.stringify(values),
+                credentials: 'include'
             }).then(res =>
                 res.json()
             ).then(data => {
@@ -132,7 +133,8 @@ const StuQuiz = () => {
         fetch("http://localhost:3001/attemptQuiz", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ student_id: user.user_id, quiz_id: quiz.quiz_id, start_time: startString, duration: time, marks: totalMarks })
+            body: JSON.stringify({ student_id: user.user_id, quiz_id: quiz.quiz_id, start_time: startString, duration: time, marks: totalMarks }),
+            credentials: 'include'
         })
             .then(
                 history.replace("/studentHome/studentQuizResults/", { quiz_id: quiz.quiz_id, correct: marks, values: values, marks: totalMarks })

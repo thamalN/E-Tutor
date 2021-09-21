@@ -63,7 +63,8 @@ const StuDiscussion = () => {
             fetch("http://localhost:3001/teacherCourses/addReply", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(reply)
+                body: JSON.stringify(reply),
+                credentials: 'include'
             }).then(
                 // alert("re")
                 history.goBack()
@@ -158,7 +159,8 @@ const StuDiscussion = () => {
             fetch(url, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(edited)
+                body: JSON.stringify(edited),
+                credentials: 'include'
             }).then(data => {
                 history.goBack()
             })
@@ -192,7 +194,8 @@ const StuDiscussion = () => {
                 fetch("http://localhost:3001/teacherCourses/editReply", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(reply)
+                    body: JSON.stringify(reply),
+                    credentials: 'include'
                 }).then(data => {
                     //history.goBack()
                     //history.go(0)
