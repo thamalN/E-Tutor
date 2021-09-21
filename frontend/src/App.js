@@ -401,7 +401,7 @@ function App() {
             <TeacherFeedback />
           </Route>
 
-          <Route exact path="/studentHome">
+          <Route exact path="/studentHome/dashboard">
             <StudentHome setLoggedIn={setLoggedIn} />
           </Route>
 

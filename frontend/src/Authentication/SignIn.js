@@ -44,7 +44,7 @@ const SignIn = (props) => {
                 else if (flag === 3) 
                     history.replace("/Teacher/teacherHome")
                 else if (flag === 4) 
-                    history.replace("/studentHome")
+                    history.replace("/studentHome/dashboard")
             })
 
     }

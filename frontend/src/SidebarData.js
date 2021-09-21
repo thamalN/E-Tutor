@@ -52,7 +52,7 @@ export default function SidebarData() {
     }
     else if (flag === 4) {
         return [
-        { title: "Home", icon: <HomeIcon />, link: "/studentHome" },
+        { title: "Home", icon: <HomeIcon />, link: "/studentHome/dashboard" },
         { title: "Courses", icon: <SchoolIcon />, link: "/studentHome/viewStuCourses" },
         { title: "My Courses", icon: <SchoolIcon />, link: "/studentHome/myCourses" },
         { title: "Payments", icon: <PaymentIcon />, link: "/studentHome/payments" },
