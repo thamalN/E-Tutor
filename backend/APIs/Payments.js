@@ -41,7 +41,7 @@ module.exports = function (app, db) {
     })
   })
 
-  app.post("/requiresAdminStaff", validateToken, (req, res) => {
+  app.post("/verifyPayment", requiresAdminStaff, (req, res) => {
     const verifyflag = req.body.verifyflag;
     const payment_id = req.body.payment_id;
     const student_id = req.body.student_id;
