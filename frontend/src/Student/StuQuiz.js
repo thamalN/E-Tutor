@@ -82,6 +82,7 @@ const StuQuiz = () => {
             })
 
             fetch("http://localhost:3001/submitQuiz/", {
+                credentials: 'include',
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(values),
@@ -131,6 +132,7 @@ const StuQuiz = () => {
         totalMarks *= 100 / parseFloat(marks.length)
 
         fetch("http://localhost:3001/attemptQuiz", {
+            credentials: 'include',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ student_id: user.user_id, quiz_id: quiz.quiz_id, start_time: startString, duration: time, marks: totalMarks }),

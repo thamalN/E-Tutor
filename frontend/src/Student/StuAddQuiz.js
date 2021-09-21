@@ -114,6 +114,7 @@ const StuAddQuiz = () => {
         let url = "http://localhost:3001/StudentCourses/StuaddQuiz"
 
         fetch(url, {
+            credentials: 'include',
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             credentials: 'include',

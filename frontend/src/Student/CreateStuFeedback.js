@@ -33,6 +33,7 @@ const CreateStuFeekback = () => {
         formData.append("user_id", data.user_id)
 
         fetch(url, {
+            credentials: 'include',
             method: 'POST',
             credentials: 'include',
             // headers: { 'Content-Type': 'application/json' },

@@ -102,6 +102,7 @@ import UpcomingQuiz from './Teacher/UpcomingQuiz';
 import StudentQuizAttempts from './Student/StudentQuizAttempts';
 import StudentQuizResults from './Student/StudentQuizResults';
 import NotFound from './NotFound';
+import EnrollNewCourse from './Student/enrollNewCourse';
 
 function App() {
 
@@ -187,6 +188,10 @@ function App() {
 
           <Route exact path="/studentHome/payments/newPayment/paymentMethod/:id">
             <PaymentMethod />
+          </Route>
+
+          <Route exact path="/studentHome/payments/newPayment/newEnrollment/:id">
+            <EnrollNewCourse/>
           </Route>
 
           <Route exact path="/studentHome/payments/payslip/:id">

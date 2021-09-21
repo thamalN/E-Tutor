@@ -18,6 +18,7 @@ const MyCourses = () => {
 
         fetch(url, {
             method: 'POST',
+            credentials: 'include',
             headers: { "Content-Type": "application/json" },
             credentials: 'include',
             body: JSON.stringify(id)
@@ -52,6 +53,7 @@ const MyCourses = () => {
 
             fetch(url1, {
                 method: 'POST',
+                credentials: 'include',
                 headers: { "Content-Type": "application/json" },
                 credentials: 'include',
                 body: JSON.stringify(id)
