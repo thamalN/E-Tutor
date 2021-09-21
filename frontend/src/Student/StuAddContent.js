@@ -42,7 +42,8 @@ const StuAddContent = () => {
 
         fetch(url, {
             method: 'POST',
-            body: formData
+            body: formData,
+            credentials: 'include'
         })
             .then((res) => {
                 return res.json()

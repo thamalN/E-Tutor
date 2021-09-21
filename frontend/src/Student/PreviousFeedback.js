@@ -11,7 +11,9 @@ const PreviousFeedback = () => {
     const url = "http://localhost:3001/PreviousFeedback/" + user.user_id
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, {
+            credentials: 'include',
+        })
             .then((res => {
                 return res.json()
             }))

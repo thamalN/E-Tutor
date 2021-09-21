@@ -31,6 +31,7 @@ const PaymentMethod = () => {
         fetch(url, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(Id)
         })
             .then(res => {
@@ -57,6 +58,7 @@ const PaymentMethod = () => {
         fetch("http://localhost:3001/paymentStudent", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
+            credentials: 'include',
             body: JSON.stringify(passData)
 
         }).then((res => {
