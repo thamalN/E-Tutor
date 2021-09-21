@@ -9,6 +9,10 @@ import 'react-calendar/dist/Calendar.css';
 import { useEffect, useState } from "react";
 import { Icon, InlineIcon } from '@iconify/react';
 import clearAll from '@iconify-icons/cil/clear-all';
+import pencil1 from '../Resources/pencil1.jpg';
+import pencil2 from '../Resources/pencil2.jpg';
+import pencil3 from '../Resources/pencil3.jpg';
+import pencil4 from '../Resources/pencil4.jpg';
 
 
 
@@ -147,10 +151,10 @@ const SupportingStaffHome = (props) => {
                         </div>
 
                         <div className="wrapper">
-                            <Card2 title="Registered Students" description={registeredStudents} ></Card2>
-                            <Card2 title="Pending Receipts" description={pendingReceipts} ></Card2>
-                            <Card2 title="Verified Receipts" description={verifiedReceipts} ></Card2>
-                            <Card2 title="Rejected Receipts" description={rejectedReceipts} ></Card2>
+                            <Card2 title="Registered Students" description={registeredStudents} image={pencil1} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
+                            <Card2 title="Pending Receipts" description={pendingReceipts} image={pencil2} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
+                            <Card2 title="Verified Receipts" description={verifiedReceipts} image={pencil3} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
+                            <Card2 title="Rejected Receipts" description={rejectedReceipts} image={pencil4} onclick={() => history.push("/payments/pendingReceipts")}></Card2>
                             
                         </div>
 
