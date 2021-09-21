@@ -101,6 +101,7 @@ import MyStudents from './Teacher/MyStudents';
 import UpcomingQuiz from './Teacher/UpcomingQuiz';
 import StudentQuizAttempts from './Student/StudentQuizAttempts';
 import StudentQuizResults from './Student/StudentQuizResults';
+import NotFound from './NotFound';
 
 function App() {
 
@@ -491,6 +492,10 @@ function App() {
           {/* <Route exact path="/student/StuaddQuiz">
             <StuAddQuiz />
           </Route> */}
+
+          <Route>
+            <NotFound />
+          </Route>
 
         </Switch>
       </div>
