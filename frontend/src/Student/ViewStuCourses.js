@@ -4,14 +4,16 @@ import Sidebar from "../Sidebar"
 
 const ViewStuCourses = () => {
     const [data, setData] = useState([])
-    const url = "http://localhost:3001/StudentAllCourses"
-
-
+    const url = "http://localhost:3001/unenrolledCourses"
+    const user = JSON.parse(localStorage.getItem('user'))
+    const id = { id: user.user_id }
+    
     useEffect(() => {
         fetch(url, {
             credentials: 'include',
-            method: 'GET',
+            method: 'POST',
             credentials: 'include',
+            body: JSON.stringify(id),
             headers: { "Content-Type": "application/json" }
 
         })
