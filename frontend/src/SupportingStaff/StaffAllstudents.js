@@ -82,8 +82,8 @@ const StaffAllStudents = () => {
                             </table>
                         </li>
                         <div>
-                            <Link to="/supportingStaffHome/reports"><button >Back</button></Link>
-                            <button onClick={(e) => { handleClick(e); doc.save('All Students.pdf') }}>Download pdf</button>
+                            <Link to="/supportingStaffHome/reports"><button className="btn btn-outline-dark">Back</button></Link>
+                            <button className="btn btn-outline-dark ms-1" onClick={(e) => { handleClick(e); doc.save('All Students.pdf') }}>Download pdf</button>
                         </div>
                     </ul>
                 </div>

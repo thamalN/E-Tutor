@@ -79,7 +79,7 @@ const StudentQuizAttempts = () => {
                     </tbody>
                 </table>
 
-                <Link to={`/studentHome/StuQuiz/${attempts.quiz_id}`}><button  id="attempt-btn">Attempt</button></Link>
+                <Link to={`/studentHome/StuQuiz/${attempts.quiz_id}`}><button className="btn btn-outline-dark" id="attempt-btn">Attempt</button></Link>
             </div>
         </div>
     );
