@@ -68,7 +68,7 @@ app.post("/getQuizAttempts/", requiresStudent, (req, res) => {
         db.query(query, [student_id, quiz_id], (err, result) => {
             if (err) throw err
 
-            const query2 = "INSERT INTO student_attempts_quiz (student_id, quiz_id, attempt_no, start_time, attempt_duration, marks) VALUES (?,?,?,?,?,?);"
+            const query2 = "INSERT INTO student_attempts_quiz (student_id, quiz_id, attempt_no, date, start_time, attempt_duration, marks) VALUES (?,?,?, CURDATE(),?,?,?);"
 
             db.query(query2, [student_id, quiz_id, (result[0]) ? parseInt(result[0].attempt_no)+1 : 1, start_time, duration, marks], (err, result) => {
                 if (err) throw err
