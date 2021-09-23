@@ -12,11 +12,15 @@ import pencil4 from './Resources/pencil4.jpg';
 import physics from './Resources/Physics.jpg';
 import mathematics from './Resources/Mathematics.jpg';
 import biology from './Resources/Biology.jpg';
-import { Icon, InlineIcon } from '@iconify/react';
-import bxBookReader from '@iconify-icons/bx/bx-book-reader';
-import certificate24Regular from '@iconify-icons/fluent/certificate-24-regular';
-import payment16Regular from '@iconify-icons/fluent/payment-16-regular';
-import puzzleEditOutline from '@iconify-icons/mdi/puzzle-edit-outline';
+import MenuBookOutlinedIcon from '@material-ui/icons/MenuBookOutlined';
+import CardMembershipOutlinedIcon from '@material-ui/icons/CardMembershipOutlined';
+import PaymentOutlinedIcon from '@material-ui/icons/PaymentOutlined';
+import ExtensionOutlinedIcon from '@material-ui/icons/ExtensionOutlined';
+// import { Icon, InlineIcon } from '@iconify/react';
+// import bxBookReader from '@iconify-icons/bx/bx-book-reader';
+// import certificate24Regular from '@iconify-icons/fluent/certificate-24-regular';
+// import payment16Regular from '@iconify-icons/fluent/payment-16-regular';
+// import puzzleEditOutline from '@iconify-icons/mdi/puzzle-edit-outline';
 import './Resources/HomeNew.css'
 import './SupportingStaff/staffhome.css';
 import Card2 from "./Card2.js";
@@ -25,7 +29,7 @@ import { useEffect, useState } from "react";
 const HomeNew = () => {
 
     const [teachers, setTeachers] = useState()
-    const url1 = "http://localhost:3001/home/teachers"
+    const url1 = "https://etutor-backend.herokuapp.com/home/teachers"
 
     useEffect(() => {
 
@@ -40,7 +44,7 @@ const HomeNew = () => {
     }, [url1])
 
     const [students, setStudents] = useState()
-    const url2 = "http://localhost:3001/adminHome/totalStudents"
+    const url2 = "https://etutor-backend.herokuapp.com/adminHome/totalStudents"
 
     useEffect(() => {
 
@@ -55,7 +59,7 @@ const HomeNew = () => {
     }, [url2])
 
     const [courses, setCourses] = useState()
-    const url3 = "http://localhost:3001/home/courses"
+    const url3 = "https://etutor-backend.herokuapp.com/home/courses"
 
     useEffect(() => {
 
@@ -70,7 +74,7 @@ const HomeNew = () => {
     }, [url3])
 
     const [lessons, setLessons] = useState()
-    const url4 = "http://localhost:3001/home/lessons"
+    const url4 = "https://etutor-backend.herokuapp.com/home/lessons"
 
     useEffect(() => {
 
@@ -94,10 +98,10 @@ const HomeNew = () => {
                 </div>
                 <div className="features-list">
                     <ul>
-                        <li><h6><span><Icon icon={bxBookReader} /></span><br />Full Course<br />Materials</h6></li>
-                        <li><h6><span><Icon icon={certificate24Regular} /></span> <br /> Certified<br />Teachers</h6></li>
-                        <li><h6><span><Icon icon={payment16Regular} /></span> <br /> Online<br />Payments</h6></li>
-                        <li><h6><span><Icon icon={puzzleEditOutline} /></span> <br /> Creative<br />Lessons</h6></li>
+                        <li><h6><span><MenuBookOutlinedIcon fontSize="large"/></span><br />Full Course<br />Materials</h6></li>
+                        <li><h6><span><CardMembershipOutlinedIcon fontSize="large"/></span> <br /> Certified<br />Teachers</h6></li>
+                        <li><h6><span><PaymentOutlinedIcon fontSize="large"/></span> <br /> Online<br />Payments</h6></li>
+                        <li><h6><span><ExtensionOutlinedIcon fontSize="large"/></span> <br /> Creative<br />Lessons</h6></li>
                     </ul>
                 </div>
             </section>

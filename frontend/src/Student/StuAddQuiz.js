@@ -111,7 +111,7 @@ const StuAddQuiz = () => {
             }
         }
 
-        let url = "http://localhost:3001/StudentCourses/StuaddQuiz"
+        let url = "https://etutor-backend.herokuapp.com/StudentCourses/StuaddQuiz"
 
         fetch(url, {
             credentials: 'include',

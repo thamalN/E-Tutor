@@ -4,7 +4,7 @@ import Sidebar from "../Sidebar"
 
 const ViewCourses = () => {
     const [data, setData] = useState([])
-    const url = "http://localhost:3001/AllCourses"
+    const url = "https://etutor-backend.herokuapp.com/AllCourses"
 
 
     useEffect(() => {

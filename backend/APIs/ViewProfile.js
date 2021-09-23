@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 const { validateToken } = require('./JWT')
 
 module.exports = function (app, db, upload) {

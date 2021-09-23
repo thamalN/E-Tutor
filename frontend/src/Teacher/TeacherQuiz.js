@@ -27,7 +27,7 @@ const TeacherQuiz = () => {
 
     const deleteQuiz = (id) => {
         if (window.confirm("Confirm Delete")) {
-            fetch("http://localhost:3001/teacherCourses/deleteQuiz/" + id ,{
+            fetch("https://etutor-backend.herokuapp.com/teacherCourses/deleteQuiz/" + id ,{
                 credentials: 'include'
             })
                 .then((data) => {

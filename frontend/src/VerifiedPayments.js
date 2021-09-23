@@ -12,7 +12,7 @@ const PendingReceipts = () => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const url = "http://localhost:3001/verifiedPayments"
+    const url = "https://etutor-backend.herokuapp.com/verifiedPayments"
 
     useEffect(() => {
         fetch(url, {

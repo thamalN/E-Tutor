@@ -20,7 +20,7 @@ const RejectedPayments = () => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const url = "http://localhost:3001/rejectedPayments"
+    const url = "https://etutor-backend.herokuapp.com/rejectedPayments"
 
     useEffect(() => {
         fetch(url,{
@@ -53,7 +53,7 @@ const RejectedPayments = () => {
         
         
         
-        const url2 = "http://localhost:3001/verifyPayment"
+        const url2 = "https://etutor-backend.herokuapp.com/verifyPayment"
 
         fetch(url2, {
             method: 'POST',

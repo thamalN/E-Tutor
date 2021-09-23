@@ -7,8 +7,9 @@ import Calendar from 'react-calendar'
 import background1 from "../Resources/background1.jpg";
 import 'react-calendar/dist/Calendar.css';
 import { useEffect, useState } from "react";
-import { Icon, InlineIcon } from '@iconify/react';
-import clearAll from '@iconify-icons/cil/clear-all';
+import ClearAllIcon from '@material-ui/icons/ClearAll';
+// import { Icon, InlineIcon } from '@iconify/react';
+// import clearAll from '@iconify-icons/cil/clear-all';
 import pencil1 from '../Resources/pencil1.jpg';
 import pencil2 from '../Resources/pencil2.jpg';
 import pencil3 from '../Resources/pencil3.jpg';
@@ -29,7 +30,7 @@ const SupportingStaffHome = (props) => {
     };
 
     const [data, setData] = useState([])
-    const url = "http://localhost:3001/mostRecentStaffRegistrations"
+    const url = "https://etutor-backend.herokuapp.com/mostRecentStaffRegistrations"
     useEffect(() => {
 
         fetch(url, {
@@ -47,7 +48,7 @@ const SupportingStaffHome = (props) => {
     }, [url])
 
     const [pendingReceipts, setPendingReceipts] = useState()
-    const url1 = "http://localhost:3001/adminHome/pendingReceipts"
+    const url1 = "https://etutor-backend.herokuapp.com/adminHome/pendingReceipts"
 
     useEffect(() => {
 
@@ -64,7 +65,7 @@ const SupportingStaffHome = (props) => {
     }, [url1])
 
     const [verifiedReceipts, setVerifiedReceipts] = useState()
-    const url2 = "http://localhost:3001/adminHome/verifiedReceipts"
+    const url2 = "https://etutor-backend.herokuapp.com/adminHome/verifiedReceipts"
 
     useEffect(() => {
 
@@ -81,7 +82,7 @@ const SupportingStaffHome = (props) => {
     }, [url2])
 
     const [rejectedReceipts, setRejectedReceipts] = useState()
-    const url3 = "http://localhost:3001/adminHome/rejectedReceipts"
+    const url3 = "https://etutor-backend.herokuapp.com/adminHome/rejectedReceipts"
 
     useEffect(() => {
 
@@ -98,7 +99,7 @@ const SupportingStaffHome = (props) => {
     }, [url3])
 
     const [registeredStudents, setRegisteredStudents] = useState()
-    const url4 = "http://localhost:3001/adminHome/totalStudents"
+    const url4 = "https://etutor-backend.herokuapp.com/adminHome/totalStudents"
 
     useEffect(() => {
 
@@ -162,7 +163,7 @@ const SupportingStaffHome = (props) => {
                             <ul>
                                 <li className="reg_title">
                                     <h3>Registrations In Last 7 Days</h3>
-                                    <Link className="viewAll" to="/supportingStaffHome/registrations/recentStaffRegistrations"><h6>View All <Icon icon={clearAll} /></h6></Link>
+                                    <Link className="viewAll" to="/supportingStaffHome/registrations/recentStaffRegistrations"><h6>View All <ClearAllIcon /> </h6></Link>
                                 </li>
                                 <li className="reg_table">
                                     <table className="table table2" id="reg_table">

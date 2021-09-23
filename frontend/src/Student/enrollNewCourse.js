@@ -12,7 +12,7 @@ const EnrollNewCourse = () => {
     const [data, setData] = useState([]);
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const url = "http://localhost:3001/courseDetails";
+    const url = "https://etutor-backend.herokuapp.com/courseDetails";
 
     useEffect(() => {
         fetch(url, {
@@ -44,7 +44,7 @@ const EnrollNewCourse = () => {
 
         console.log(passData)
 
-        fetch("http://localhost:3001/paymentStudent", {
+        fetch("https://etutor-backend.herokuapp.com/paymentStudent", {
             method: 'POST',
             credentials: 'include',
             headers: { "Content-Type": "application/json" },

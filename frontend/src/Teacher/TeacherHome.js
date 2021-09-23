@@ -7,14 +7,14 @@ import Card from "../Card";
 const TeacherHome = () => {
     const history = useHistory()
 
-    const [courses, setCourses] = useState()
-    const [students, setStudents] = useState()
-    const [quizzes, setQuizzes] = useState()
+    const [courses, setCourses] = useState(0)
+    const [students, setStudents] = useState([])
+    const [quizzes, setQuizzes] = useState([])
 
     const user = JSON.parse(localStorage.getItem('user'))
     const id = { id: user.user_id }
 
-    const courseUrl = "http://localhost:3001/teacherHome/courses"
+    const courseUrl = "https://etutor-backend.herokuapp.com/teacherHome/courses"
 
     useEffect(() => {
 
@@ -33,7 +33,7 @@ const TeacherHome = () => {
 
     }, [courseUrl])
 
-    const studentUrl = "http://localhost:3001/teacherHome/students"
+    const studentUrl = "https://etutor-backend.herokuapp.com/teacherHome/students"
 
     useEffect(() => {
 
@@ -52,7 +52,7 @@ const TeacherHome = () => {
 
     }, [studentUrl])
 
-    const quizUrl = "http://localhost:3001/teacherHome/quizzes"
+    const quizUrl = "https://etutor-backend.herokuapp.com/teacherHome/quizzes"
 
     useEffect(() => {
 

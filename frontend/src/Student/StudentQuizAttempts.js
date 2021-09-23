@@ -10,7 +10,7 @@ const StudentQuizAttempts = () => {
 
     const [attempts, setAttempts] = useState({})
 
-    const url = "http://localhost:3001/getQuizAttempts/"
+    const url = "https://etutor-backend.herokuapp.com/getQuizAttempts/"
 
     useEffect(() => {
 

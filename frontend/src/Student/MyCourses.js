@@ -12,7 +12,7 @@ const MyCourses = () => {
     const user = JSON.parse(localStorage.getItem('user'))
     const id = { id: user.user_id }
 
-    const url = "http://localhost:3001/studentAllCourses"
+    const url = "https://etutor-backend.herokuapp.com/studentAllCourses"
 
     useEffect(() => {
 
@@ -34,7 +34,7 @@ const MyCourses = () => {
 
     }, [url])
     const getCourse = (id) => {
-        fetch("http://localhost:3001/studentCourseDetails/" + id, {
+        fetch("https://etutor-backend.herokuapp.com/studentCourseDetails/" + id, {
             credentials: 'include',
         })
             .then(res => {
@@ -49,7 +49,7 @@ const MyCourses = () => {
     const handleDelete = (cid, uid, cname) => {
         if (window.confirm("Are you sure you want to unroll this " + cname + " course!\n If you confirmed all meterials will be deleted ")) {
             const id = { unenrolledcid: cid, id: uid }
-            const url1 = "http://localhost:3001/deleteenrolledcourse";
+            const url1 = "https://etutor-backend.herokuapp.com/deleteenrolledcourse";
 
             fetch(url1, {
                 method: 'POST',

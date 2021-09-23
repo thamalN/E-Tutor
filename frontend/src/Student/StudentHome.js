@@ -21,7 +21,7 @@ const StudentHome = () => {
     const user = JSON.parse(localStorage.getItem('user'))
     const id = { id: user.user_id };
 
-    const url = "http://localhost:3001/StudentNotification"
+    const url = "https://etutor-backend.herokuapp.com/StudentNotification"
 
     useEffect(() => {
         fetch(url, {
@@ -38,7 +38,7 @@ const StudentHome = () => {
         })
     })
 
-    const url2 = "http://localhost:3001/studentAnnouncements"
+    const url2 = "https://etutor-backend.herokuapp.com/studentAnnouncements"
 
     useEffect(() => {
         fetch(url2, {
@@ -62,7 +62,7 @@ const StudentHome = () => {
     // const handleDelete = (key) => {
     //     if (window.confirm("Are you sure you want to delete announcement id " + key + "?")) {
     //         const id = { id: key }
-    //     const url3 = "http://localhost:3001/deleteAnnouncement"
+    //     const url3 = "https://etutor-backend.herokuapp.com/deleteAnnouncement"
 
     //         fetch(url3, {
     //             method: 'POST',
@@ -93,7 +93,7 @@ const StudentHome = () => {
     // }
 
     const [courses, setCourses] = useState()
-    const url3 = "http://localhost:3001/studentHome/courses"
+    const url3 = "https://etutor-backend.herokuapp.com/studentHome/courses"
 
     useEffect(() => {
 
@@ -113,7 +113,7 @@ const StudentHome = () => {
     }, [url3])
 
     const [quizzes, setQuizzes] = useState()
-    const url4 = "http://localhost:3001/studentHome/quizzes"
+    const url4 = "https://etutor-backend.herokuapp.com/studentHome/quizzes"
 
     useEffect(() => {
 

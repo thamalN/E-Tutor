@@ -12,7 +12,7 @@ const PreviousAnnouncements = () => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const url = "http://localhost:3001/viewPreviousAnnouncements"
+    const url = "https://etutor-backend.herokuapp.com/viewPreviousAnnouncements"
 
     useEffect(() => {
         fetch(url, {
@@ -36,7 +36,7 @@ const PreviousAnnouncements = () => {
         if (window.confirm("Are you sure you want to delete announcement id " + key + "?")) {
             const relativePath = decodeURI(attachment).toString().split("/").pop()
             const id = { id: key, content_path: relativePath }
-            const url3 = "http://localhost:3001/deleteAnnouncement"
+            const url3 = "https://etutor-backend.herokuapp.com/deleteAnnouncement"
 
             fetch(url3, {
                 method: 'POST',

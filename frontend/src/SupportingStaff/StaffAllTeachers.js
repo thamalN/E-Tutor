@@ -9,7 +9,7 @@ const StaffAllTeachers = () => {
 
     const [data, setData] = useState([])
 
-    const url = "http://localhost:3001/allTeachers"
+    const url = "https://etutor-backend.herokuapp.com/allTeachers"
     useEffect(() => {
 
         fetch(url, {

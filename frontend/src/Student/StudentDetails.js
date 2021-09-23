@@ -11,7 +11,7 @@ const StudentDetails = () => {
     const user = JSON.parse(localStorage.getItem('user'));
     console.log(user);
 
-    const url = "http://localhost:3001/StudentHome/StudentDetails/" + user.user_id;
+    const url = "https://etutor-backend.herokuapp.com/StudentHome/StudentDetails/" + user.user_id;
 
     useEffect(() => {
         fetch(url, {
@@ -32,7 +32,7 @@ const StudentDetails = () => {
         e.preventDefault();
 
 
-        const url = "http://localhost:3001/studentHome/StudentDetailsUpdate/" + user.user_id;
+        const url = "https://etutor-backend.herokuapp.com/studentHome/StudentDetailsUpdate/" + user.user_id;
 
         
         fetch(url, {

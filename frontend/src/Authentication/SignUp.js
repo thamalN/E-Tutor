@@ -58,7 +58,7 @@ const SignUp = () => {
 
 
 
-    const url = "http://localhost:3001/getAllUsernames"
+    const url = "https://etutor-backend.herokuapp.com/getAllUsernames"
     useEffect(() => {
 
         fetch(url, {
@@ -217,7 +217,7 @@ const SignUp = () => {
         e.preventDefault();
 
 
-        const url = "http://localhost:3001/signUp"
+        const url = "https://etutor-backend.herokuapp.com/signUp"
 
         fetch(url, {
             method: 'POST',

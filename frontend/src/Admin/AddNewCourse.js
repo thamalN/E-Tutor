@@ -22,7 +22,7 @@ const AddNewCourse = () => {
         }
     );
 
-    const url = "http://localhost:3001/getAllTeachers"
+    const url = "https://etutor-backend.herokuapp.com/getAllTeachers"
     useEffect(() => {
 
         fetch(url, {
@@ -44,7 +44,7 @@ const AddNewCourse = () => {
         e.preventDefault();
 
 
-        const url = "http://localhost:3001/addNewCourse"
+        const url = "https://etutor-backend.herokuapp.com/addNewCourse"
 
         const formData = new FormData(document.getElementById("course-form"))
         formData.append("user_id", data.user_id)

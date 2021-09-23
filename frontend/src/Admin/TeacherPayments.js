@@ -13,7 +13,7 @@ const TeacherPayments = () => {
     const [totalPayments, setTotalPayments] = useState([])
     const history = useHistory()
 
-    const url = "http://localhost:3001/getTeacherPayments"
+    const url = "https://etutor-backend.herokuapp.com/getTeacherPayments"
     useEffect(() => {
 
         fetch(url, {

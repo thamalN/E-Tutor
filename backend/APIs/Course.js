@@ -155,7 +155,7 @@ module.exports = function (app, db, upload, fs) {
                 if (req.file !== undefined) {
 
                     const content_name = req.body.fileName
-                    const content_path = "http://127.0.0.1:8887/" + req.file.path
+                    const content_path = "https://etutor-backend.herokuapp.com/" + req.file.path
                     const query2 = "INSERT INTO content (lesson_id, content_name, content) VALUES (?,?,?);";
 
                     db.query(query2, [lesson_id, content_name, content_path], (err, result) => {
@@ -170,7 +170,7 @@ module.exports = function (app, db, upload, fs) {
 
         } else {
             const content_name = req.body.fileName
-            const content_path = "http://127.0.0.1:8887/" + req.file.path
+            const content_path = "https://etutor-backend.herokuapp.com/" + req.file.path
 
             const query2 = "INSERT INTO content (lesson_id, content_name, content) VALUES (?,?,?);";
 
@@ -220,7 +220,7 @@ module.exports = function (app, db, upload, fs) {
         console.log(req.file)
 
         if (req.file !== undefined) {
-            const new_path = "http://127.0.0.1:8887/" + req.file.path
+            const new_path = "https://etutor-backend.herokuapp.com/" + req.file.path
             const old_path = req.body.old_path
 
             const query1 = "UPDATE content SET content_name = ?, content = ? WHERE lesson_id = ? AND content_id = ?"
@@ -495,7 +495,7 @@ module.exports = function (app, db, upload, fs) {
         const year = req.body.course_year;
         const description = req.body.description;
         const price = req.body.price;
-        const content_path = "http://127.0.0.1:8887/" + req.file.path;
+        const content_path = "https://etutor-backend.herokuapp.com/" + req.file.path;
         console.log(teacher);
 
         const query = "INSERT INTO course (course_name, added_by, teacher_id, year, description, price, image) VALUES (?,?,?,?,?,?,?);";

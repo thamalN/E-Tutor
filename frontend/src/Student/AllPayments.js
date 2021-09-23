@@ -8,7 +8,7 @@ const AllPayments = () => {
     const user = JSON.parse(localStorage.getItem('user'))
     const id = { id: user.user_id }
      
-    const url = "http://localhost:3001/allPayments" 
+    const url = "https://etutor-backend.herokuapp.com/allPayments" 
 
     useEffect(() => {
 

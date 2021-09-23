@@ -179,7 +179,7 @@ module.exports = function (app, db, stripe, uuid, upload) {
     let content_path;
 
     if (req.file !== undefined) {
-      content_path = "http://127.0.0.1:8887/" + req.file.path;
+      content_path = "https://etutor-backend.herokuapp.com/" + req.file.path;
 
     }
     else {

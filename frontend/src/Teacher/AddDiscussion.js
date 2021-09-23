@@ -27,7 +27,7 @@ const AddDiscussion = () => {
         e.preventDefault()
         console.log(data)
 
-        fetch("http://localhost:3001/teacherCourses/addDiscussion", {
+        fetch("https://etutor-backend.herokuapp.com/teacherCourses/addDiscussion", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             credentials: 'include',

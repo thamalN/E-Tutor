@@ -9,7 +9,7 @@ const RecentRegistrations = () => {
 
     const [data, setData] = useState([])
 
-    const url = "http://localhost:3001/recentRegistrations"
+    const url = "https://etutor-backend.herokuapp.com/recentRegistrations"
     useEffect(() => {
 
         fetch(url, {

@@ -13,7 +13,7 @@ const Courses = () => {
 
     const [course, setCourse] = useState({})
 
-    const url = "http://localhost:3001/teacherCourses"
+    const url = "https://etutor-backend.herokuapp.com/teacherCourses"
 
     useEffect(() => {
 
@@ -33,7 +33,7 @@ const Courses = () => {
     }, [url])
 
     const getCourse = (id) => {
-        fetch("http://localhost:3001/teacherCourses/" + id ,{
+        fetch("https://etutor-backend.herokuapp.com/teacherCourses/" + id ,{
             credentials: 'include'
         })
             .then(res => {

@@ -6,7 +6,7 @@ const db = require('./db_connection')
 const multer = require('multer')
 const http = require("http");
 const socket = require('socket.io')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 const { getMaxListeners } = require('./db_connection')
@@ -52,7 +52,7 @@ app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors({
-  origin: ["http://localhost:3000"],
+  origin: ["https://etutor-ucsc.herokuapp.com", "http://localhost:3000"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
@@ -86,7 +86,7 @@ require('./APIs/Home')(app,db)
 
 const server = http.createServer(app)
 
-server.listen(3001, () => {
+server.listen(process.env.PORT || 3001, () => {
   console.log("Server Started")
 })
 

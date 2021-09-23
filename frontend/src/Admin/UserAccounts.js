@@ -2,12 +2,11 @@ import Sidebar from "../Sidebar";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router";
-import { Icon, InlineIcon } from '@iconify/react';
-import plusIcon from '@iconify-icons/akar-icons/plus';
-import searchOutlined from '@iconify-icons/ant-design/search-outlined';
+// import { Icon, InlineIcon } from '@iconify/react';
+// import searchOutlined from '@iconify-icons/ant-design/search-outlined';
+import SearchIcon from '@material-ui/icons/Search';
 // import dropdownIcon from '@iconify-icons/ls/dropdown';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import filterIcon from '@iconify-icons/codicon/filter';
 import SearchResults from "../SearchResults";
 
 
@@ -98,7 +97,7 @@ const UserAccounts = () => {
         console.log(data.grade);
 
 
-        const url = "http://localhost:3001/searchUser"
+        const url = "https://etutor-backend.herokuapp.com/searchUser"
 
         fetch(url, {
             method: 'POST',
@@ -148,7 +147,7 @@ const UserAccounts = () => {
                             onChange={(e) => setData({ ...data, search_string: e.target.value })}
                         />
                         <button type="submit">
-                            <Icon icon={searchOutlined} />
+                            <SearchIcon />
                         </button>
                     </div>
                     {/* <div className="searchBar">

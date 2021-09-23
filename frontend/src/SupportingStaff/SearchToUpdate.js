@@ -3,9 +3,10 @@ import { useHistory } from "react-router";
 import Sidebar from "../Sidebar";
 import { Link, Route } from 'react-router-dom';
 import './staffhome.css';
-import { Icon, InlineIcon } from '@iconify/react';
+// import { Icon, InlineIcon } from '@iconify/react';
 //import plusIcon from '@iconify-icons/akar-icons/plus';
-import searchOutlined from '@iconify-icons/ant-design/search-outlined';
+// import searchOutlined from '@iconify-icons/ant-design/search-outlined';
+
 // import dropdownIcon from '@iconify-icons/ls/dropdown';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 

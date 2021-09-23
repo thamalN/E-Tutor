@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import '../Resources/signIn.css'
+import Cookies from 'js-cookie';
 
 const SignIn = (props) => {
 
@@ -16,7 +17,7 @@ const SignIn = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:3001/signIn";
+        const url = "https://etutor-backend.herokuapp.com/signIn";
 
         fetch(url, {
             method: 'POST',
@@ -33,6 +34,9 @@ const SignIn = (props) => {
                 return res.json();
             })
             .then(data => {
+
+                const cookie = Cookies.get("accessToken")
+                Cookies.set("accessToken", cookie)
                 let flag = data.user_flag
 
                 localStorage.setItem('user', JSON.stringify(data))

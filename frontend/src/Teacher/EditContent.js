@@ -18,7 +18,7 @@ const EditContent = () => {
 
         const form = document.getElementById("content-form")
 
-        const url = "http://localhost:3001/teacherCourses/editContent"
+        const url = "https://etutor-backend.herokuapp.com/teacherCourses/editContent"
 
         const formData = new FormData(form)
         formData.append('lesson_id', data.lessonId)

@@ -18,7 +18,7 @@ const PayCourses = () => {
 
     const id = { id: user.user_id }
 
-    const url = "http://localhost:3001/studentCourses"
+    const url = "https://etutor-backend.herokuapp.com/studentCourses"
 
     useEffect(() => {
 

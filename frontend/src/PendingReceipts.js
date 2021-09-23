@@ -22,7 +22,7 @@ const PendingReceipts = () => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const url = "http://localhost:3001/pendingReceipts"
+    const url = "https://etutor-backend.herokuapp.com/pendingReceipts"
 
     useEffect(() => {
         fetch(url, {
@@ -55,7 +55,7 @@ const PendingReceipts = () => {
 
 
 
-        const url2 = "http://localhost:3001/verifyPayment"
+        const url2 = "https://etutor-backend.herokuapp.com/verifyPayment"
 
         fetch(url2, {
             method: 'POST',

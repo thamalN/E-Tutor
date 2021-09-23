@@ -2,12 +2,12 @@ import Sidebar from "../Sidebar";
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router";
-import { Icon, InlineIcon } from '@iconify/react';
-import plusIcon from '@iconify-icons/akar-icons/plus';
-import searchOutlined from '@iconify-icons/ant-design/search-outlined';
+// import { Icon, InlineIcon } from '@iconify/react';
+// import searchOutlined from '@iconify-icons/ant-design/search-outlined';
+import SearchIcon from '@material-ui/icons/Search';
 // import dropdownIcon from '@iconify-icons/ls/dropdown';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import filterIcon from '@iconify-icons/codicon/filter';
+// import filterIcon from '@iconify-icons/codicon/filter';
 import SearchResults from "../SearchResults";
 
 const Students = () => {
@@ -64,7 +64,7 @@ const Students = () => {
         console.log(data.grade);
 
 
-        const url = "http://localhost:3001/searchStudent"
+        const url = "https://etutor-backend.herokuapp.com/searchStudent"
 
         fetch(url, {
             method: 'POST',
@@ -105,14 +105,14 @@ const Students = () => {
                             onChange={(e) => setData({ ...data, search_string: e.target.value })}
                         />
                         <button type="submit">
-                            <Icon icon={searchOutlined} />
+                            <SearchIcon />
                         </button>
                     </div>
 
                     <div className="filterRow my-4">
                         <div>
                             <h6>Filter by: </h6>
-                            <Icon icon={filterIcon} />
+                            {/* <Icon icon={filterIcon} /> */}
                         </div>
                         <button type="filter button dropdown-toggle" className="btn btn-outline-dark" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             <h6>Province</h6>
@@ -282,15 +282,15 @@ const Students = () => {
                             <li>
                                 <button onClick={(e) => setData({ ...data, fname: !data.fname })} value="" type="button" className={data.fname === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>First Name</h6>
-                                    <Icon icon={plusIcon} />
+                                    { /* <Icon icon={plusIcon} /> */}
                                 </button>
                                 <button onClick={(e) => setData({ ...data, lname: !data.lname })} type="button" className={data.lname === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Last Name</h6>
-                                    <Icon icon={plusIcon} />
+                                    { /* <Icon icon={plusIcon} /> */}
                                 </button>
                                 <button onClick={(e) => setData({ ...data, username: !data.username })} type="button" className={data.username === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Username</h6>
-                                     <Icon icon={plusIcon} /> 
+                                     { /* <Icon icon={plusIcon} /> */} 
                                 </button>
                             </li>
 
@@ -298,40 +298,40 @@ const Students = () => {
                             <li>
                                 <button onClick={(e) => setData({ ...data, street_no: !data.street_no })} type="button" className={data.street_no === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Street No.</h6>
-                                     <Icon icon={plusIcon} /> 
+                                     { /* <Icon icon={plusIcon} /> */} 
                                 </button>
                                 <button onClick={(e) => setData({ ...data, street: !data.street })} type="button" className={data.street === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Street Name</h6>
-                                     <Icon icon={plusIcon} /> 
+                                     { /* <Icon icon={plusIcon} /> */} 
                                 </button>
                                 <button onClick={(e) => setData({ ...data, city: !data.city })} type="button" className={data.city === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>City</h6>
-                                     <Icon icon={plusIcon} /> 
+                                     { /* <Icon icon={plusIcon} /> */} 
                                 </button>
                             </li>
                             <li>
                                 <button onClick={(e) => setData({ ...data, email: !data.email })} type="button" className={data.email === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Email</h6>
-                                     <Icon icon={plusIcon} /> 
+                                     { /* <Icon icon={plusIcon} /> */} 
                                 </button>
                                 <button onClick={(e) => setData({ ...data, contact: !data.contact })} type="button" className={data.contact === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Contact</h6>
-                                     <Icon icon={plusIcon} /> 
+                                     { /* <Icon icon={plusIcon} /> */} 
                                 </button>
                                 <button onClick={(e) => setData({ ...data, birthday: !data.birthday })} type="button" className={data.birthday === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Birthday</h6>
-                                     <Icon icon={plusIcon} /> 
+                                     { /* <Icon icon={plusIcon} /> */} 
                                 </button>
                             </li>
                             <li>
 
                                 <button onClick={(e) => setData({ ...data, school: !data.school })} type="button" id="school" className={data.school === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>School</h6>
-                                     <Icon icon={plusIcon} /> 
+                                     { /* <Icon icon={plusIcon} /> */} 
                                 </button>
                                 <button onClick={(e) => setData({ ...data, guardian: !data.guardian })} type="button" id="guardian" className={data.guardian === true ? "btn btn-outline-dark newbutton" : "btn btn-outline-dark"}>
                                     <h6>Guardian's Contact</h6>
-                                     <Icon icon={plusIcon} /> 
+                                     { /* <Icon icon={plusIcon} /> */} 
                                 </button>
 
                             </li>

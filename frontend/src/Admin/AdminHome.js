@@ -20,7 +20,7 @@ const AdminHome = (props) => {
         history.replace("/")
     };
 
-    const url1 = "http://localhost:3001/adminHome/pendingReceipts"
+    const url1 = "https://etutor-backend.herokuapp.com/adminHome/pendingReceipts"
 
     useEffect(() => {
 
@@ -38,7 +38,7 @@ const AdminHome = (props) => {
 
     }, [url1])
 
-    const url2 = "http://localhost:3001/adminHome/unenrolledCourses"
+    const url2 = "https://etutor-backend.herokuapp.com/adminHome/unenrolledCourses"
 
     useEffect(() => {
 
@@ -56,7 +56,7 @@ const AdminHome = (props) => {
 
     }, [url2])
 
-    const url3 = "http://localhost:3001/adminHome/totalStudents"
+    const url3 = "https://etutor-backend.herokuapp.com/adminHome/totalStudents"
 
     useEffect(() => {
 
@@ -74,7 +74,7 @@ const AdminHome = (props) => {
 
     }, [url3])
 
-    const url4 = "http://localhost:3001/adminHome/unassignedTeachers"
+    const url4 = "https://etutor-backend.herokuapp.com/adminHome/unassignedTeachers"
 
     useEffect(() => {
 

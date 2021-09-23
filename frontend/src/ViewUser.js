@@ -7,7 +7,7 @@ const ViewUser = () => {
     const [data, setData] = useState({})
     const location = useLocation()
 
-    const url = "http://localhost:3001/viewProfile/"
+    const url = "https://etutor-backend.herokuapp.com/viewProfile/"
 
     useEffect(() => {
         fetch(url, {

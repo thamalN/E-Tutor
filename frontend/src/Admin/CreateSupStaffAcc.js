@@ -38,7 +38,7 @@ const CreateSupStaffAcc = () => {
         NIC: false,
     })
 
-    const url = "http://localhost:3001/getAllUsernames"
+    const url = "https://etutor-backend.herokuapp.com/getAllUsernames"
     useEffect(() => {
 
         fetch(url, {
@@ -191,7 +191,7 @@ const CreateSupStaffAcc = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        const url = "http://localhost:3001/createSupStaffAcc"
+        const url = "https://etutor-backend.herokuapp.com/createSupStaffAcc"
 
         fetch(url, {
             method: 'POST',

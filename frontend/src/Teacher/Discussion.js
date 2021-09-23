@@ -60,7 +60,7 @@ const Discussion = () => {
 
             //console.log(reply)
 
-            fetch("http://localhost:3001/teacherCourses/addReply", {
+            fetch("https://etutor-backend.herokuapp.com/teacherCourses/addReply", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: 'include',
@@ -152,7 +152,7 @@ const Discussion = () => {
         const save = function () {
             const edited = { discussion_id: discussion[0].discussion_id, course_id: discussion[0].course_id, topic: topicInput.value.toString(), post: postInput.value.toString() }
 
-            const url = "http://localhost:3001/teacherCourses/editDiscussion"
+            const url = "https://etutor-backend.herokuapp.com/teacherCourses/editDiscussion"
             fetch(url, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
@@ -188,7 +188,7 @@ const Discussion = () => {
                     reply: replyInput.value.toString()
                 }
 
-                fetch("http://localhost:3001/teacherCourses/editReply", {
+                fetch("https://etutor-backend.herokuapp.com/teacherCourses/editReply", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     credentials: 'include',
@@ -208,7 +208,7 @@ const Discussion = () => {
 
     const deleteDiscussion = (id) => {
         if (window.confirm("Confirm Delete")) {
-            fetch("http://localhost:3001/teacherCourses/deleteDiscussion/" + id ,{
+            fetch("https://etutor-backend.herokuapp.com/teacherCourses/deleteDiscussion/" + id ,{
                 credentials: 'include'
             })
                 .then((data) => {

@@ -43,7 +43,7 @@ const CreateTeacherAcc = () => {
         NIC: true,
     })
 
-    const url = "http://localhost:3001/getAllUsernames"
+    const url = "https://etutor-backend.herokuapp.com/getAllUsernames"
     useEffect(() => {
 
         fetch(url, {
@@ -198,7 +198,7 @@ const CreateTeacherAcc = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        const url = "http://localhost:3001/createTeacherAcc"
+        const url = "https://etutor-backend.herokuapp.com/createTeacherAcc"
 
         fetch(url, {
             method: 'POST',

@@ -2,7 +2,7 @@ module.exports = function(socket, server) {
     
 io = socket(server, {
     cors: {
-      origin: "http://localhost:3000",
+      origin: ["https://etutor-ucsc.herokuapp.com", "http://localhost:3000"],
       methods: ["GET", "POST"]
     }
   })

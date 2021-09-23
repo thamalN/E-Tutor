@@ -14,7 +14,7 @@ const Id = { id: id }
 
 const [myData, setmyData] = useState([]);
 
-const url = "http://localhost:3001/courseDetails";
+const url = "https://etutor-backend.herokuapp.com/courseDetails";
 
 useEffect(() => {fetch(url, {
         credentials: 'include',
@@ -39,7 +39,7 @@ const StudentId =  user.user_id;
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:3001/uploadPayslip"
+        const url = "https://etutor-backend.herokuapp.com/uploadPayslip"
 
         const formData = new FormData(document.getElementById("content-form"))
         formData.append("student_id", StudentId)

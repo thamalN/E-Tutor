@@ -21,7 +21,7 @@ const FeedbackReply = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:3001/feedbackReply"
+        const url = "https://etutor-backend.herokuapp.com/feedbackReply"
         console.log(data)
 
         fetch(url, {

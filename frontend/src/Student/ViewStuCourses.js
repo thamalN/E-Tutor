@@ -4,7 +4,7 @@ import Sidebar from "../Sidebar"
 
 const ViewStuCourses = () => {
     const [data, setData] = useState([])
-    const url = "http://localhost:3001/unenrolledCourses"
+    const url = "https://etutor-backend.herokuapp.com/unenrolledCourses"
     const user = JSON.parse(localStorage.getItem('user'))
     const id = { id: user.user_id }
     

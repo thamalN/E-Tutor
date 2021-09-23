@@ -151,7 +151,7 @@ const AddQuiz = () => {
             }
         }
 
-        let url = "http://localhost:3001/teacherCourses/addQuiz"
+        let url = "https://etutor-backend.herokuapp.com/teacherCourses/addQuiz"
 
         fetch(url, {
             method: 'POST',

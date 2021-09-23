@@ -81,7 +81,7 @@ const StuQuiz = () => {
                 values.questions.push(tmp)
             })
 
-            fetch("http://localhost:3001/submitQuiz/", {
+            fetch("https://etutor-backend.herokuapp.com/submitQuiz/", {
                 credentials: 'include',
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -131,7 +131,7 @@ const StuQuiz = () => {
 
         totalMarks *= 100 / parseFloat(marks.length)
 
-        fetch("http://localhost:3001/attemptQuiz", {
+        fetch("https://etutor-backend.herokuapp.com/attemptQuiz", {
             credentials: 'include',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

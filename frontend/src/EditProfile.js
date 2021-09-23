@@ -28,7 +28,7 @@ const EditProfile = (props) => {
         NIC: true,
     })
 
-    const usersUrl = "http://localhost:3001/getOtherUsernames/" + data.user_id
+    const usersUrl = "https://etutor-backend.herokuapp.com/getOtherUsernames/" + data.user_id
 
     useEffect(() => {
 
@@ -191,7 +191,7 @@ const EditProfile = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:3001/editProfile/"
+        const url = "https://etutor-backend.herokuapp.com/editProfile/"
 
         const form = document.getElementById("details-form")
         const formData = new FormData(form)

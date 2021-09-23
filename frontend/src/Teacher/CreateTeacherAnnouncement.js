@@ -28,7 +28,7 @@ const CreateAnnouncement = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:3001/createAnnouncement"
+        const url = "https://etutor-backend.herokuapp.com/createAnnouncement"
 
         const formData = new FormData(document.getElementById("discussion-form"))
         formData.append("user_id", data.user_id)

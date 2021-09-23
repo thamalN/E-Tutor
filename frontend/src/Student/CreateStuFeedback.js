@@ -28,7 +28,7 @@ const CreateStuFeekback = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:3001/CreateStuFeedback"
+        const url = "https://etutor-backend.herokuapp.com/CreateStuFeedback"
         const formData = new FormData(document.getElementById("discussion-form"))
         formData.append("user_id", data.user_id)
 

@@ -9,7 +9,7 @@ const CoursePayments = () => {
 
     const [data, setData] = useState([])
 
-    const url = "http://localhost:3001/totalPayments"
+    const url = "https://etutor-backend.herokuapp.com/totalPayments"
     useEffect(() => {
 
         fetch(url, {

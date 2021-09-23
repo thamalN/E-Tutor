@@ -23,7 +23,7 @@ const MyCourseDetails = () => {
   // const quizss=localStorage.getItem('quiz');
 
 
-  const url = "http://localhost:3001/studentCourses/" + id;
+  const url = "https://etutor-backend.herokuapp.com/studentCourses/" + id;
 
   useEffect(() => {
     fetch(url, {
@@ -45,7 +45,7 @@ const MyCourseDetails = () => {
     //console.log(unique);
   }
 
-  const quizUrl = "http://localhost:3001/teacherCourses/quiz/" + id
+  const quizUrl = "https://etutor-backend.herokuapp.com/teacherCourses/quiz/" + id
 
   useEffect(() => {
     fetch(quizUrl, {
@@ -95,7 +95,7 @@ const MyCourseDetails = () => {
 
   }
 
-  const discussionUrl = "http://localhost:3001/teacherCourses/discussion/" + id
+  const discussionUrl = "https://etutor-backend.herokuapp.com/teacherCourses/discussion/" + id
 
   useEffect(() => {
     fetch(discussionUrl, {

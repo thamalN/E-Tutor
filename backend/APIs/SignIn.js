@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cookieParser = require("cookie-parser");
 const { createTokens, validateToken } = require('./JWT')
@@ -28,7 +28,8 @@ module.exports = function (app, db) {
                         const accessToken = createTokens(user)
                         res.cookie("accessToken", accessToken, {
                             maxAge: 60 * 60 * 24 * 1000,
-                            httpOnly: true
+                            sameSite: "none",
+                            secure: true
                         });
 
                         res.json(result[0])

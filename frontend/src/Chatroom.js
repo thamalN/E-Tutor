@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import SendIcon from '@material-ui/icons/Send';
 
-const connentionPort = 'http://localhost:3001/'
+const connentionPort = 'https://etutor-backend.herokuapp.com/'
 let socket = io(connentionPort)
 
 const Chatroom = () => {

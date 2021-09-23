@@ -8,7 +8,7 @@ const PreviousFeedback = () => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const url = "http://localhost:3001/PreviousFeedback/" + user.user_id
+    const url = "https://etutor-backend.herokuapp.com/PreviousFeedback/" + user.user_id
 
     useEffect(() => {
         fetch(url, {

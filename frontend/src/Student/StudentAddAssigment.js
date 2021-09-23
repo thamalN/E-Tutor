@@ -45,7 +45,7 @@ const  StudentAddAssigment = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const url = "http://localhost:3001/teacherCourses/addContent"
+        const url = "https://etutor-backend.herokuapp.com/teacherCourses/addContent"
 
         const formData = new FormData(document.getElementById("content-form"))
         formData.append("lesson_id", data.lesson_id)

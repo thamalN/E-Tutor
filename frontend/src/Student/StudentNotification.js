@@ -1,8 +1,6 @@
 import Sidebar from "../Sidebar";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import data from "@iconify-icons/akar-icons/plus";
-import Notifications from "@material-ui/icons/Notifications";
 
 const StudentNotification = () => {
 
@@ -11,7 +9,7 @@ const StudentNotification = () => {
     // let monthNumber = new Date();
     // console.log(monthNumber.getMonth());
     const id = { id: user.user_id };
-    const url = "http://localhost:3001/StudentNotification";
+    const url = "https://etutor-backend.herokuapp.com/StudentNotification";
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {

@@ -9,7 +9,7 @@ const AllCoursesList = () => {
 
     const [data, setData] = useState([])
 
-    const url = "http://localhost:3001/allCoursesList"
+    const url = "https://etutor-backend.herokuapp.com/allCoursesList"
     useEffect(() => {
 
         fetch(url, {

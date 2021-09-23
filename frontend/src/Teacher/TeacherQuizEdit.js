@@ -161,7 +161,7 @@ const TeacherQuizEdit = () => {
 
             console.log(values)
 
-            fetch('http://localhost:3001/teacherCourses/editQuiz/', {
+            fetch('https://etutor-backend.herokuapp.com/teacherCourses/editQuiz/', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 credentials: 'include',

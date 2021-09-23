@@ -7,7 +7,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 const AllCourses = () => {
     const [data, setData] = useState([])
     const history = useHistory()
-    const url = "http://localhost:3001/AllCourses"
+    const url = "https://etutor-backend.herokuapp.com/AllCourses"
     const [course, setCourse] = useState({})
 
 
@@ -30,7 +30,7 @@ const AllCourses = () => {
 
 
         const getCourse = (id) => {
-            fetch("http://localhost:3001/teacherCourses/" + id, {
+            fetch("https://etutor-backend.herokuapp.com/teacherCourses/" + id, {
                 credentials: 'include'
             })
                 .then(res => {

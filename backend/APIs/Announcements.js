@@ -11,7 +11,7 @@ module.exports = function (app, db, upload, fs) {
         let content_path;
 
         if (req.file !== undefined) {
-            content_path = "http://127.0.0.1:8887/" + req.file.path;
+            content_path = "https://etutor-backend.herokuapp.com/" + req.file.path;
             file_name = req.body.file_name;
         }
         else {
@@ -52,7 +52,7 @@ module.exports = function (app, db, upload, fs) {
 
         if (req.file !== undefined) {
             file_name = req.body.file_name;
-            content_path = "http://127.0.0.1:8887/" + req.file.path;
+            content_path = "https://etutor-backend.herokuapp.com/" + req.file.path;
 
             fs.unlink(old_path, (err) => {
                 if (err) {

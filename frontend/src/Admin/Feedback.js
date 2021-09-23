@@ -11,7 +11,7 @@ const Feedback = () => {
 
     const user = JSON.parse(localStorage.getItem('user'))
 
-    const url = "http://localhost:3001/viewFeedback"
+    const url = "https://etutor-backend.herokuapp.com/viewFeedback"
 
     useEffect(() => {
         fetch(url, {

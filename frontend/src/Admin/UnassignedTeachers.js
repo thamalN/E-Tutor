@@ -9,7 +9,7 @@ const UnassignedTeachers = () => {
 
     const [data, setData] = useState([])
 
-    const url = "http://localhost:3001/viewUnassignedTeachers"
+    const url = "https://etutor-backend.herokuapp.com/viewUnassignedTeachers"
     useEffect(() => {
 
         fetch(url, {

@@ -23,11 +23,11 @@ const CourseDetails = () => {
     const id = courseInfo.course_id
     const user_flag = user.user_flag
 
-    const contentUrl = "http://localhost:3001/teacherCourses/content/" + id
+    const contentUrl = "https://etutor-backend.herokuapp.com/teacherCourses/content/" + id
 
-    const quizUrl = "http://localhost:3001/teacherCourses/quiz/" + id
+    const quizUrl = "https://etutor-backend.herokuapp.com/teacherCourses/quiz/" + id
 
-    const discussionUrl = "http://localhost:3001/teacherCourses/discussion/" + id
+    const discussionUrl = "https://etutor-backend.herokuapp.com/teacherCourses/discussion/" + id
 
     useEffect(() => {
         fetch(contentUrl, {
@@ -106,7 +106,7 @@ const CourseDetails = () => {
         editIcon.replaceWith(saveBtn)
 
         const save = () => {
-            const url = "http://localhost:3001/teacherCourses/editLesson/"
+            const url = "https://etutor-backend.herokuapp.com/teacherCourses/editLesson/"
 
             fetch(url, {
                 method: 'POST',
@@ -125,7 +125,7 @@ const CourseDetails = () => {
 
     const deleteLesson = (lessonId) => {
 
-        const url = "http://localhost:3001/teacherCourses/deleteLesson/"
+        const url = "https://etutor-backend.herokuapp.com/teacherCourses/deleteLesson/"
 
         if (window.confirm("Confirm Delete")) {
             fetch(url, {
@@ -144,7 +144,7 @@ const CourseDetails = () => {
 
         const relativePath = path.toString().split("/").pop()
 
-        const url = "http://localhost:3001/teacherCourses/deleteContent/"
+        const url = "https://etutor-backend.herokuapp.com/teacherCourses/deleteContent/"
 
         if (window.confirm("Confirm Delete")) {
             fetch(url, {
@@ -236,7 +236,7 @@ const CourseDetails = () => {
             let year = gradeSelect.value.toString()
             const edited = { course_id: parseInt(id), course_name: courseName, year: year, description: descriptionInput.value.toString() }
 
-            const url = "http://localhost:3001/teacherCourses/editCourseDetails"
+            const url = "https://etutor-backend.herokuapp.com/teacherCourses/editCourseDetails"
 
             fetch(url, {
                 method: 'POST',
@@ -256,7 +256,7 @@ const CourseDetails = () => {
     const handleDelete = (key) => {
         if (window.confirm("Are you sure you want to delete the course with course id " + key + "?")) {
             const id = { id: key }
-            const url3 = "http://localhost:3001/deleteCourse"
+            const url3 = "https://etutor-backend.herokuapp.com/deleteCourse"
 
             fetch(url3, {
                 method: 'POST',
